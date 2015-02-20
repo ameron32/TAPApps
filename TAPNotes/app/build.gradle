@@ -1,0 +1,151 @@
+buildscript {
+  repositories {
+    maven {
+      // required for Fabric/Crashlytics
+      url 'https://maven.fabric.io/public'
+
+      // for SlidingMenu
+//      url "https://jitpack.io"
+    }
+    mavenCentral()
+  }
+
+  dependencies {
+    // required for Fabric/Crashlytics
+    classpath 'io.fabric.tools:gradle:1.15.2'
+  }
+}
+
+apply plugin: 'com.android.application'
+// required for Fabric/Crashlytics
+apply plugin: 'io.fabric'
+
+repositories {
+  maven {
+    // required for Fabric/Crashlytics
+    url 'https://maven.fabric.io/public'
+  }
+  mavenCentral()
+}
+
+android {
+  compileSdkVersion 21
+  buildToolsVersion "21.1.2"
+
+  defaultConfig {
+    applicationId "com.ameron32.apps.tapnotes"
+    minSdkVersion 15
+    targetSdkVersion 21
+    versionCode 2
+    versionName "0.0.1.1"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  // =================================================================================
+  // CORE REQUIRED LIBRARIES
+  // =================================================================================
+
+  // Parse
+  // https://parse.com
+  compile fileTree(dir: 'libs', include: ['Parse-1.8.2.jar'])
+  compile fileTree(dir: 'libs', include: ['ParseCrashReporting-1.8.2.jar'])
+
+  // TODO Remove universal JAR inclusion
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+
+  // Bolts for Android by Parse/Facebook
+  // https://github.com/BoltsFramework/Bolts-Android
+  compile 'com.parse.bolts:bolts-android:1.1.4'
+
+  // Fabric/Crashlytics
+  // https://www.fabric.io
+  compile('com.crashlytics.sdk.android:crashlytics:2.2.1@aar') {
+    transitive = true;
+  }
+
+  // Google Support Libraries for Material Design
+  compile 'com.android.support:support-v4:21.0.3'
+  compile 'com.android.support:appcompat-v7:21.0.3'
+  compile 'com.android.support:cardview-v7:21.0.3'
+  compile 'com.android.support:recyclerview-v7:21.0.3'
+  compile 'com.android.support:palette-v7:21.0.3'
+
+  // ButterKnife view injection
+  // https://github.com/JakeWharton/butterknife
+  // https://jakewharton.github.io/butterknife/
+  compile 'com.jakewharton:butterknife:6.0.0'
+
+  // Picasso by Square concurrent image handling
+  // https://github.com/square/picasso
+  // https://square.github.io/picasso/
+  compile 'com.squareup.picasso:picasso:2.4.0'
+
+  // IntelliJ smart annotations for improved realtime error checking
+  // http://blog.jetbrains.com/idea/2014/10/automatic-notnullnullablecontract-inference-in-intellij-idea-14/
+  compile 'com.intellij:annotations:12.0@jar'
+
+  // RxAndroid of RxJava Reactive Extensions
+  // https://github.com/ReactiveX/RxAndroid
+  compile 'io.reactivex:rxandroid:0.24.0'
+
+
+  // =================================================================================
+  // POSSIBLE LIBRARIES WITH POTENTIALLY VALUABLE FEATURES
+  // =================================================================================
+
+  // [CURRENT PROGRAM]
+  //   EXPANDABLELISTVIEW ALTERNATIVE FOR RECYCLERVIEW
+  // ---------------------------------------------------------------------------------
+  // Expandable-RecyclerView
+  //   https://github.com/levelup/Expandable-RecyclerView
+//  compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
+
+  // [NOTE EDITOR ADDON for SCRIPTURE NOTES]
+  //   MAKE SCRIPTURE REFERENCES "POP" WITHIN EDITTEXT
+  // ---------------------------------------------------------------------------------
+  // AwesomeText
+  //   https://github.com/JMPergar/AwesomeText
+//  compile 'com.jmpergar:AwesomeText:1.0.0'
+
+  // [GLOBAL UI DECORATION]
+  //   SIMPLIFY SHADOWING OF COMPATIBILITY VIEWS
+  // ---------------------------------------------------------------------------------
+  // Material Shadow 9-patch
+  //   https://github.com/h6ah4i/android-materialshadowninepatch
+//  compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
+
+  // [CURRENT PROGRAM]
+  //   SLIDINGPANELAYOUT ALTERNATIVE WITH MORE FUNCTIONALITY
+  // ---------------------------------------------------------------------------------
+  // SlidingMenu
+  //   https://github.com/jfeinstein10/SlidingMenu
+//  compile 'com.github.jfeinstein10:SlidingMenu:4254feca3ece9397cd501921ee733f19ea0fdad8'
+
+  // [NOTE CONTEXTUAL MENU]
+  //   OPTIONAL MENU FOR PROVIDING OPTIONS WHEN A NOTE IS LONG-PRESSED
+  // ---------------------------------------------------------------------------------
+  // BottomSheet
+  //   https://github.com/soarcn/BottomSheet
+//  compile 'com.cocosw:bottomsheet:0.6@aar'
+
+
+
+  // =================================================================================
+  // UNLIKELY LIBRARIES STORED FOR REMINDER, ONLY IF NEEDED
+  // =================================================================================
+
+  // SuperRecyclerView
+//  compile 'com.malinskiy:superrecyclerview:1.0.1'
+//  compile 'com.eowise:recyclerview-stickyheaders:0.5.0@aar'
+
+  // Parse with LoginUI
+//  compile project(':ParseLoginUI')
+
+}

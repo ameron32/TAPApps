@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--<color name="debug_text">#BDBDBD</color>-->
+  <!--<color name="debug_text_bg">#FFFFFF</color>-->
+  <!--<color name="message_text_color">#005353</color>-->
+  <!--<color name="message_game_text_color">#1B2982</color>-->
+  <!--<color name="message_system_text_color">#FFFFFF</color>-->
+  <!--<color name="chat_manager_background">#FFFFFF</color>-->
+  <!--<color name="chat_manager_page_indicator_selected">#FF880000</color>-->
+  <!--<color name="chat_manager_page_indicator_unselected">#FF888888</color>-->
+  <!--<color name="link_text_color">#000080</color>-->
+  <!--<color name="game_text_bg">#FEE955</color>-->
+
+  <!--<color name="colorPrimary">#C3C3C3</color>-->
+  <!--<color name="colorPrimaryDark">#030303</color>-->
+  <!--<color name="myPrimaryColor">#3F51B5</color>-->
+  <!--<color name="myPrimaryDarkColor">#3F51B5</color>-->
+  <!--<color name="myAccentColor">#3F51B5</color>-->
+  <!--<color name="myDrawerBackground">#F2F2F2</color>-->
+  <!--<color name="myWindowBackground">#DEDEDE</color>-->
+  <!--<color name="myTextPrimaryColor">#000000</color>-->
+  <!--<color name="myTextPrimaryHintColor">#666666</color>-->
+  <!--<color name="myNavigationColor">#000000</color>-->
+  <!--<color name="selected_gray">#ffdbdbdb</color>-->
+
+  <!--<color name="character_toolbar_selected_outline">#FFD700</color>-->
+  <color name="background_transparent_overlay_navigation_drawer">#CCFFFFFF</color>
+
+  <!--<color name="colorPrimary">#C3C3C3</color>-->
+  <!--<color name="colorPrimaryDark">#030303</color>-->
+  <color name="myPrimaryColor">#673ab7</color>
+  <color name="myPrimaryDarkColor">#303f9f</color>
+  <color name="myAccentColor">#536dfe</color>
+  <color name="myDrawerBackground">#F2F2F2</color>
+  <color name="myWindowBackground">#DEDEDE</color>
+  <color name="myTextPrimaryColor">#000000</color>
+  <color name="myTextPrimaryHintColor">#666666</color>
+  <color name="myNavigationColor">#000000</color>
+  <color name="selected_gray">#ffdbdbdb</color>
+
+
+
+
+  <color name="background_light">#FFF5F5F5</color>
+  <color name="background_normal">#FFEBEBF0</color>
+  <color name="background_private">#FF292C29</color>
+  <color name="background_tabs">#FF363B40</color>
+  <color name="highlight">#33000000</color>
+  <color name="highlight_focused">#1A000000</color>
+  <color name="highlight_dark">#33FFFFFF</color>
+  <color name="highlight_dark_focused">#1AFFFFFF</color>
+
+  <!-- highlight on shaped button: 20% white over background_tabs -->
+  <color name="highlight_shaped">#FF696D71</color>
+
+  <!-- highlight-focused on shaped button: 10% white over background_tabs -->
+  <color name="highlight_shaped_focused">#FF565B60</color>
+
+  <!-- highlight on nav button: 20% black over background_normal -->
+  <color name="highlight_nav">#FFA5ACB2</color>
+
+  <!-- highlight-focused on nav button: 10% black over background_normal -->
+  <color name="highlight_nav_focused">#FFB9C1C7</color>
+
+  <!-- highlight on private nav button: 20% white over background_private -->
+  <color name="highlight_nav_pb">#FF545654</color>
+
+  <!-- highlight-focused on private nav button: 10% white over background_private -->
+  <color name="highlight_nav_focused_pb">#FF3F423F</color>
+
+  <!-- Onboarding start pane -->
+  <color name="onboard_start">#EAEAEA</color>
+  <color name="onboard_start_highlight">#D8D8D8</color>
+
+  <!-- Application theme colors -->
+  <!-- Default colors -->
+  <color name="text_color_primary">#222222</color>
+  <color name="text_color_secondary">#777777</color>
+  <color name="text_color_tertiary">#9198A1</color>
+
+  <!-- Default inverse colors -->
+  <color name="text_color_primary_inverse">#FFFFFF</color>
+  <color name="text_color_secondary_inverse">#DDDDDD</color>
+  <color name="text_color_tertiary_inverse">#A4A7A9</color>
+
+  <!-- Colour used for share overlay button labels -->
+  <color name="text_color_overlaybtn">#666666</color>
+  <color name="text_color_overlaybtn_disabled">#AFB1B3</color>
+
+  <color name="overlay_share_header_background">#FFFFFFFF</color>
+
+  <!-- Colours used for share overlay button background -->
+  <color name="overlay_share_background">#FFEBEBF0</color>
+  <color name="overlay_share_selected">#FFF5F5F5</color>
+
+  <!-- Disabled colors -->
+  <color name="text_color_primary_disable_only">#999999</color>
+
+  <!-- Hint colors -->
+  <color name="text_color_hint">#666666</color>
+  <color name="text_color_hint_inverse">#7F828A</color>
+  <color name="text_color_hint_floating_focused">#33b5e5</color>
+
+  <!-- Highlight colors -->
+  <color name="text_color_highlight">#FF9500</color>
+  <color name="text_color_highlight_inverse">#D06BFF</color>
+
+  <!-- Link colors -->
+  <color name="text_color_link">#22629E</color>
+
+  <!-- Divider colors -->
+  <color name="divider_light">#FFD7D9DB</color>
+  <color name="divider_dark">#FFB3C2CE</color>
+
+  <color name="splash_background">#000000</color>
+  <color name="splash_msgfont">#ffffff</color>
+  <color name="splash_urlfont">#000000</color>
+  <color name="splash_content">#ffffff</color>
+
+  <color name="doorhanger_text">#FF222222</color>
+  <color name="doorhanger_link">#FF2AA1FE</color>
+  <color name="doorhanger_background_dark">#FFDDE4EA</color>
+
+  <color name="validation_message_text">#ffffff</color>
+  <color name="url_bar_text_highlight">#FFFF9500</color>
+  <color name="url_bar_text_highlight_pb">#FFD06BFF</color>
+  <color name="suggestion_primary">#dddddd</color>
+  <color name="suggestion_pressed">#bbbbbb</color>
+  <color name="tab_row_pressed">#4D000000</color>
+
+  <color name="textbox_background">#FFF</color>
+  <color name="textbox_background_disabled">#DDD</color>
+  <color name="textbox_stroke">#000</color>
+  <color name="textbox_stroke_disabled">#666</color>
+
+  <color name="url_bar_urltext">#A6A6A6</color>
+  <color name="url_bar_domaintext">#000</color>
+  <color name="url_bar_domaintext_private">#FFF</color>
+  <color name="url_bar_blockedtext">#b14646</color>
+  <color name="url_bar_shadow">#12000000</color>
+
+  <color name="home_button_bar_bg">#FFF5F7F9</color>
+
+  <color name="panel_image_item_background">#D1D9E1</color>
+
+  <!-- Swipe to refresh colors for dynamic panel -->
+  <color name="swipe_refresh_orange">#FFFFC26C</color>
+  <color name="swipe_refresh_white">#FFFFFFFF</color>
+
+  <!-- Swipe to refresh colors for remote tabs -->
+  <color name="swipe_refresh_orange1">#EE6700</color>
+  <color name="swipe_refresh_orange2">#FF9400</color>
+  <color name="swipe_refresh_orange3">#F57900</color>
+  <color name="swipe_refresh_orange4">#FFB44C</color>
+
+  <!-- Remote tabs setup -->
+  <color name="remote_tabs_setup_button_background">#E66000</color>
+  <color name="remote_tabs_setup_button_background_hit">#D95300</color>
+
+  <!-- Button toast colors. -->
+  <color name="toast_background">#DD363B40</color>
+  <color name="toast_button_background">#00000000</color>
+  <color name="toast_button_pressed">#DD2C3136</color>
+  <color name="toast_button_text">#FFFFFFFF</color>
+
+
+
+<!-- CONVENTION NOTES COLORS -->
+  <color name="CN_BG">#dfdfdf</color>
+  <color name="CN_Text">#000001</color>
+  <color name="CN_TextAccent">#492d90</color>
+  <color name="CN_BGLight">#efefef</color>
+  <color name="CN_Accent">#929292</color>
+  <color name="CN_AccentBG">#E9C9A0</color>
+  <color name="CN_AccentNoTransparent">#C3864B</color>
+  <color name="CN_HighlightBG">#e2e2e2</color>
+  <color name="CN_ListBG">#f4f4f4</color>
+
+
+  <color name="CN_main_body_background">#dfdfdf</color>
+  <color name="CN_note_text_and_sidebar_text">#000000</color>
+  <color name="CN_scripture_divider_lines">#929292</color>
+  <color name="CN_current_talk_sidebar_highlight">#e2e2e2</color>
+  <color name="CN_background_for_sidebar_and_note_taker">#efefef</color>
+  <color name="CN_sidebar_divider_lines">#dadada</color>
+  <color name="CN_previous_and_next_talk_arrows">#989898</color>
+  <color name="CN_friday_sidebar_highlight">#cec9da</color>
+  <color name="CN_friday_sidebar_text_scripture_and_sidebar_arrow">#34245d</color>
+  <color name="CN_friday_talk_title">#492d8f</color>
+  <color name="CN_saturday_sidebar_highlight">#c9d0da</color>
+  <color name="CN_saturday_sidebar_text_scripture_and_sidebar_arrow">#242c5d</color>
+  <color name="CN_saturday_talk_title">#2d3d8f</color>
+  <color name="CN_sunday_sidebar_highlight">#c9dad7</color>
+  <color name="CN_sunday_sidebar_text_scripture_and_sidebar_arrow">#1f4352</color>
+  <color name="CN_sunday_talk_title">#2d7e8f</color>
+  <color name="CN_song_sidebar">#b56b02</color>
+
+  <!-- GENERIC COLORS -->
+  <color name="white">#FFFFFF</color>
+  <color name="yellow">#FFFF00</color>
+  <color name="fuchsia">#FF00FF</color>
+  <color name="red">#FF0000</color>
+  <color name="silver">#C0C0C0</color>
+  <color name="gray">#808080</color>
+  <color name="olive">#808000</color>
+  <color name="purple">#800080</color>
+  <color name="maroon">#800000</color>
+  <color name="aqua">#00FFFF</color>
+  <color name="lime">#00FF00</color>
+  <color name="teal">#008080</color>
+  <color name="green">#008000</color>
+  <color name="blue">#0000FF</color>
+  <color name="navy">#000080</color>
+  <color name="black">#000000</color>
+  <color name="White">#FFFFFF</color>
+  <color name="Ivory">#FFFFF0</color>
+  <color name="LightYellow">#FFFFE0</color>
+  <color name="Yellow">#FFFF00</color>
+  <color name="Snow">#FFFAFA</color>
+  <color name="FloralWhite">#FFFAF0</color>
+  <color name="LemonChiffon">#FFFACD</color>
+  <color name="Cornsilk">#FFF8DC</color>
+  <color name="Seashell">#FFF5EE</color>
+  <color name="LavenderBlush">#FFF0F5</color>
+  <color name="PapayaWhip">#FFEFD5</color>
+  <color name="BlanchedAlmond">#FFEBCD</color>
+  <color name="MistyRose">#FFE4E1</color>
+  <color name="Bisque">#FFE4C4</color>
+  <color name="Moccasin">#FFE4B5</color>
+  <color name="NavajoWhite">#FFDEAD</color>
+  <color name="PeachPuff">#FFDAB9</color>
+  <color name="Gold">#FFD700</color>
+  <color name="Pink">#FFC0CB</color>
+  <color name="LightPink">#FFB6C1</color>
+  <color name="Orange">#FFA500</color>
+  <color name="LightSalmon">#FFA07A</color>
+  <color name="DarkOrange">#FF8C00</color>
+  <color name="Coral">#FF7F50</color>
+  <color name="HotPink">#FF69B4</color>
+  <color name="Tomato">#FF6347</color>
+  <color name="OrangeRed">#FF4500</color>
+  <color name="DeepPink">#FF1493</color>
+  <color name="Fuchsia">#FF00FF</color>
+  <color name="Magenta">#FF00FF</color>
+  <color name="Red">#FF0000</color>
+  <color name="OldLace">#FDF5E6</color>
+  <color name="LightGoldenrodYellow">#FAFAD2</color>
+  <color name="Linen">#FAF0E6</color>
+  <color name="AntiqueWhite">#FAEBD7</color>
+  <color name="Salmon">#FA8072</color>
+  <color name="GhostWhite">#F8F8FF</color>
+  <color name="MintCream">#F5FFFA</color>
+  <color name="WhiteSmoke">#F5F5F5</color>
+  <color name="Beige">#F5F5DC</color>
+  <color name="Wheat">#F5DEB3</color>
+  <color name="SandyBrown">#F4A460</color>
+  <color name="Azure">#F0FFFF</color>
+  <color name="Honeydew">#F0FFF0</color>
+  <color name="AliceBlue">#F0F8FF</color>
+  <color name="Khaki">#F0E68C</color>
+  <color name="LightCoral">#F08080</color>
+  <color name="PaleGoldenrod">#EEE8AA</color>
+  <color name="Violet">#EE82EE</color>
+  <color name="DarkSalmon">#E9967A</color>
+  <color name="Lavender">#E6E6FA</color>
+  <color name="LightCyan">#E0FFFF</color>
+  <color name="BurlyWood">#DEB887</color>
+  <color name="Plum">#DDA0DD</color>
+  <color name="Gainsboro">#DCDCDC</color>
+  <color name="Crimson">#DC143C</color>
+  <color name="PaleVioletRed">#DB7093</color>
+  <color name="Goldenrod">#DAA520</color>
+  <color name="Orchid">#DA70D6</color>
+  <color name="Thistle">#D8BFD8</color>
+  <color name="LightGrey">#D3D3D3</color>
+  <color name="Tan">#D2B48C</color>
+  <color name="Chocolate">#D2691E</color>
+  <color name="Peru">#CD853F</color>
+  <color name="IndianRed">#CD5C5C</color>
+  <color name="MediumVioletRed">#C71585</color>
+  <color name="Silver">#C0C0C0</color>
+  <color name="DarkKhaki">#BDB76B</color>
+  <color name="RosyBrown">#BC8F8F</color>
+  <color name="MediumOrchid">#BA55D3</color>
+  <color name="DarkGoldenrod">#B8860B</color>
+  <color name="FireBrick">#B22222</color>
+  <color name="PowderBlue">#B0E0E6</color>
+  <color name="LightSteelBlue">#B0C4DE</color>
+  <color name="PaleTurquoise">#AFEEEE</color>
+  <color name="GreenYellow">#ADFF2F</color>
+  <color name="LightBlue">#ADD8E6</color>
+  <color name="DarkGray">#A9A9A9</color>
+  <color name="Brown">#A52A2A</color>
+  <color name="Sienna">#A0522D</color>
+  <color name="YellowGreen">#9ACD32</color>
+  <color name="DarkOrchid">#9932CC</color>
+  <color name="PaleGreen">#98FB98</color>
+  <color name="DarkViolet">#9400D3</color>
+  <color name="MediumPurple">#9370DB</color>
+  <color name="LightGreen">#90EE90</color>
+  <color name="DarkSeaGreen">#8FBC8F</color>
+  <color name="SaddleBrown">#8B4513</color>
+  <color name="DarkMagenta">#8B008B</color>
+  <color name="DarkRed">#8B0000</color>
+  <color name="BlueViolet">#8A2BE2</color>
+  <color name="LightSkyBlue">#87CEFA</color>
+  <color name="SkyBlue">#87CEEB</color>
+  <color name="Gray">#808080</color>
+  <color name="Olive">#808000</color>
+  <color name="Purple">#800080</color>
+  <color name="Maroon">#800000</color>
+  <color name="Aquamarine">#7FFFD4</color>
+  <color name="Chartreuse">#7FFF00</color>
+  <color name="LawnGreen">#7CFC00</color>
+  <color name="MediumSlateBlue">#7B68EE</color>
+  <color name="LightSlateGray">#778899</color>
+  <color name="SlateGray">#708090</color>
+  <color name="OliveDrab">#6B8E23</color>
+  <color name="SlateBlue">#6A5ACD</color>
+  <color name="DimGray">#696969</color>
+  <color name="MediumAquamarine">#66CDAA</color>
+  <color name="CornflowerBlue">#6495ED</color>
+  <color name="CadetBlue">#5F9EA0</color>
+  <color name="DarkOliveGreen">#556B2F</color>
+  <color name="Indigo">#4B0082</color>
+  <color name="MediumTurquoise">#48D1CC</color>
+  <color name="DarkSlateBlue">#483D8B</color>
+  <color name="SteelBlue">#4682B4</color>
+  <color name="RoyalBlue">#4169E1</color>
+  <color name="Turquoise">#40E0D0</color>
+  <color name="MediumSeaGreen">#3CB371</color>
+  <color name="LimeGreen">#32CD32</color>
+  <color name="DarkSlateGray">#2F4F4F</color>
+  <color name="SeaGreen">#2E8B57</color>
+  <color name="ForestGreen">#228B22</color>
+  <color name="LightSeaGreen">#20B2AA</color>
+  <color name="DodgerBlue">#1E90FF</color>
+  <color name="MidnightBlue">#191970</color>
+  <color name="Aqua">#00FFFF</color>
+  <color name="Cyan">#00FFFF</color>
+  <color name="SpringGreen">#00FF7F</color>
+  <color name="Lime">#00FF00</color>
+  <color name="MediumSpringGreen">#00FA9A</color>
+  <color name="DarkTurquoise">#00CED1</color>
+  <color name="DeepSkyBlue">#00BFFF</color>
+  <color name="DarkCyan">#008B8B</color>
+  <color name="Teal">#008080</color>
+  <color name="Green">#008000</color>
+  <color name="DarkGreen">#006400</color>
+  <color name="Blue">#0000FF</color>
+  <color name="MediumBlue">#0000CD</color>
+  <color name="DarkBlue">#00008B</color>
+  <color name="Navy">#000080</color>
+  <color name="Black">#000000</color>
+
+
+
+  <!-- OLD COLORS -->
+  <color name="MikeyBlueBG">#1f3ff2</color>
+  <color name="MikeyBlueBGLight">#ffffff</color>
+  <color name="MikeyBlueAccent">#CCc5cccc</color>
+  <color name="KrisBlueBG">#bcdbf4</color>
+  <color name="KrisBlueBGLight">#ccffffff</color>
+  <color name="KrisBlueAccent">#cc96afc3</color>
+  <color name="KrisBlueAccentNoTransparent">#96afc3</color>
+
+  <color name="REDBG">#F9E8DE</color>
+  <color name="REDText">#750300</color>
+  <color name="REDBGLight">#ccffffff</color>
+  <color name="REDAccent">#400200</color>
+  <color name="REDAccentBG">#F9C9C6</color>
+  <color name="REDAccentNoTransparent">#400200</color>
+
+
+  <color name="OBG">#E9D8BA</color>
+  <color name="OText">#50371F</color>
+  <color name="OBGLight">#ccffffff</color>
+  <color name="OAccent">#362515</color>
+  <color name="OAccentBG">#E9C9A0</color>
+  <color name="OAccentNoTransparent">#C3864B</color>
+
+</resources>
+
+
+    <!--
+            Check Android Theme colors for color reference:
+            https://developer.android.com/training/material/images/ThemeColors.png
+
+            Refer also to Color palette for the UI colors you should use:
+            http://www.google.com/design/spec/style/color.html#color-ui-color-palette
+    -->

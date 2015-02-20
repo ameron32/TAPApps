@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity">
+
+  <android.support.v4.widget.DrawerLayout
+      android:id="@+id/drawer_layout"
+      xmlns:android="http://schemas.android.com/apk/res/android"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      tools:context="com.ameron32.apps.tapnotes.MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+      <!-- INFLATE TOOLBAR HERE -->
+      <FrameLayout
+          android:id="@+id/toolbar_actionbar_container"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"/>
+      <!-- /TOOLBAR -->
+
+      <!-- INFLATE CONTENT HERE -->
+      <FrameLayout
+          android:id="@+id/container"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_below="@+id/toolbar_actionbar_container"/>
+      <!-- /CONTENT -->
+
+    </RelativeLayout>
+
+    <fragment
+        android:id="@+id/navigation_drawer"
+        android:name="com.ameron32.apps.tapnotes.NavigationDrawerFragment"
+        android:layout_width="@dimen/navigation_drawer_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        tools:layout="@layout/fragment_navigation_drawer_recycler"/>
+  </android.support.v4.widget.DrawerLayout>
+
+</RelativeLayout>
