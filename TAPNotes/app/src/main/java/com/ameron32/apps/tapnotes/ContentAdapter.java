@@ -130,7 +130,7 @@ public class ContentAdapter
   }
 
   @Override public int getItemCount() {
-    // +1 for header
+    // +1 for header row
     return (mData != null ? mData.size() + 1 : 1);
   }
 
