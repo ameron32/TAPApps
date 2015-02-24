@@ -336,12 +336,6 @@ public class NavigationDrawerFragment
   }
 
   protected ContentAdapter createAdapter() {
-    // return new ArrayAdapter<String>(getActivity(),
-    // android.R.layout.simple_list_item_activated_1, android.R.id.text1, new
-    // String[] {
-    // getString(R.string.title_section1),
-    // getString(R.string.title_section2),
-    // getString(R.string.title_section3), });
     return ContentManager.get().getAdapter();
   }
 
@@ -350,33 +344,6 @@ public class NavigationDrawerFragment
       int position) {
     selectItem(position);
   }
-
-//  @Override public void onCharacterChange(
-//      CharacterManager manager,
-//      Character newCharacter) {
-//    setCharacterImageAndText(newCharacter);
-//  }
-//
-//  @Override public void onChatCharacterChange(
-//      CharacterManager manager,
-//      Character newCharacter) {
-//    // ignore
-//  }
-//
-//  private void setCharacterImageAndText(
-//      Character newCharacter) {
-//    final String name = newCharacter.getString("name");
-//    final String urlFullSize = newCharacter.getUrlFullSize();
-//
-//    characterTitle.setText(name);
-//    Picasso.with(getActivity()).load(urlFullSize).placeholder(R.drawable.ic_bandit_clear).into(characterImage);
-//  }
-//
-//  private void setGameText(
-//      Game currentGame) {
-//    final String name = currentGame.getName();
-//    gameTitle.setText(name.toUpperCase(Locale.ENGLISH));
-//  }
 
   public interface NavigationDrawerCallbacks {
     public void onLogoutClick();

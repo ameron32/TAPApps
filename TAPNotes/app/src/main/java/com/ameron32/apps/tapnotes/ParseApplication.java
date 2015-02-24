@@ -28,7 +28,7 @@ public class ParseApplication extends Application {
   }
 
   protected List<Object> getModules() {
-    return Arrays.asList(
+    return Arrays.<Object>asList(
         new AndroidModule(this),
         new DemoModule()
     );
@@ -54,5 +54,10 @@ public class ParseApplication extends Application {
     });
 
     Parse.setLogLevel(Parse.LOG_LEVEL_VERBOSE);
+  }
+
+
+  public ObjectGraph getApplicationGraph() {
+    return graph;
   }
 }

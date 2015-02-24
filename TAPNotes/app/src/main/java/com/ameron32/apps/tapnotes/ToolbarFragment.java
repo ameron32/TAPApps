@@ -63,5 +63,9 @@ public class ToolbarFragment
   public interface OnToolbarFragmentCallbacks {
     public void onToolbarCreated(Toolbar toolbar);
   }
+
+  public void setTitle(CharSequence title) {
+    mToolbar.setTitle(title);
+  }
 }
 
