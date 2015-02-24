@@ -26,8 +26,7 @@ import butterknife.ButterKnife;
 import io.fabric.sdk.android.Fabric;
 
 
-public class
-      MainActivity
+public class MainActivity
     extends
       ActionBarActivity
     implements
@@ -76,7 +75,7 @@ public class
   }
 
   private void loadToolbarFragment() {
-    mToolbarFragment = ToolbarFragment.newInstance();
+    mToolbarFragment = CollapsingToolbarFragment.newInstance();
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     transaction.replace(R.id.toolbar_actionbar_container, mToolbarFragment);
     transaction.commit();

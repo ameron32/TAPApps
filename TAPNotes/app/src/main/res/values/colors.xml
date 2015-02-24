@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+  <color name="floating_hint_text">@color/myAccentColor</color>
+
   <!--<color name="debug_text">#BDBDBD</color>-->
   <!--<color name="debug_text_bg">#FFFFFF</color>-->
   <!--<color name="message_text_color">#005353</color>-->

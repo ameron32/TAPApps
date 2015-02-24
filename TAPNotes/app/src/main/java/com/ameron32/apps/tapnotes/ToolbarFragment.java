@@ -14,7 +14,7 @@ public class ToolbarFragment
     extends Fragment
 {
 
-  private Toolbar mToolbar;
+  protected Toolbar mToolbar;
   private RecyclerView.Adapter mAdapter;
   private RecyclerView mCharacterRecyclerView;
   private OnToolbarFragmentCallbacks mCallbacks;
