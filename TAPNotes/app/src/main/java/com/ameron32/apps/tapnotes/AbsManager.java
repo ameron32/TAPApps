@@ -17,8 +17,7 @@ public abstract class AbsManager implements IManager {
   public static boolean isInitializationComplete(
       AbsManager... managers) {
     for (AbsManager m : managers) {
-      if (!m.isInitialized())
-        return false;
+      if (!m.isInitialized()) return false;
     }
     return true;
   }

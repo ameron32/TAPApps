@@ -16,7 +16,9 @@ import android.widget.EditText;
 
 import com.ameron32.apps.tapnotes.R;
 
-
+/**
+ * Floating Label Edit Text from Mozilla Firefox for Android
+ */
 public class FloatingHintEditText extends EditText {
 
   private static enum Animation {

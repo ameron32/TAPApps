@@ -16,30 +16,37 @@ package com.ameron32.apps.tapnotes._trial.ui;
  * limitations under the License.
  */
 
-    import android.content.Context;
-    import android.content.res.TypedArray;
-    import android.graphics.Bitmap;
-    import android.graphics.Canvas;
-    import android.graphics.Color;
-    import android.graphics.Paint;
-    import android.graphics.Rect;
-    import android.os.Build;
-    import android.support.v4.view.ViewCompat;
-    import android.support.v7.widget.Toolbar;
-    import android.text.TextPaint;
-    import android.text.TextUtils;
-    import android.util.AttributeSet;
-    import android.util.DisplayMetrics;
-    import android.util.TypedValue;
-    import android.view.View;
-    import android.view.ViewGroup;
-    import android.view.animation.AnimationUtils;
-    import android.view.animation.Interpolator;
-    import android.widget.FrameLayout;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
+import android.os.Build;
+import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.Toolbar;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.util.AttributeSet;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
+import android.widget.FrameLayout;
 
-    import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.R;
 
-
+/**
+ * Wrapper Layout for appcompat Toolbar
+ * Allows scroll-based scaling
+ *   https://gist.github.com/chrisbanes/91ac8a20acfbdc410a68
+ *
+ * usage in a fragment
+ *   https://github.com/chrisbanes/philm/blob/master/app/src/main/java/app/philm/in/fragments/MovieDetailFragment.java
+ */
 public class CollapsingTitleLayout extends FrameLayout {
 
   // Pre-JB-MR2 doesn't support HW accelerated canvas scaled text so we will workaround it

@@ -18,7 +18,10 @@ import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.R;
 
-
+/**
+ * Floating Label TextView
+ * slightly modified from FloatingHintEditText for Mozilla Firefox for Android
+ */
 public class FloatingHintTextView
     extends TextView {
 

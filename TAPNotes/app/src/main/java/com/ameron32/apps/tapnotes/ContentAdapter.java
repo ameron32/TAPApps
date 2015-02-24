@@ -1,8 +1,8 @@
 package com.ameron32.apps.tapnotes;
 
-
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,48 +13,57 @@ import android.widget.TextView;
 
 import java.util.List;
 
-
-
 public class ContentAdapter
     extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+  // CONSTANTS
+  private static final int NOT_TOUCHING = -1;
+
+  private static final int TYPE_SPACER_HEADER = 0;
+  private static final int TYPE_ITEM = 1;
 
 
+  // LAYOUTS
+  @LayoutRes
+  private static final int HEADER_LAYOUT = R.layout.view_spacer;
+  @LayoutRes
+  private static final int ROW_LAYOUT = R.layout.row_nav_text_drawer;
+
+
+  // FIELDS
   private List<ContentManager.ContentItem> mData;
   private int mSelectedDataPosition;
-  private int mTouchedDataPosition = -1;
-  private boolean isClick = false;
+  private int mTouchedDataPosition = NOT_TOUCHING;
 
+  /**
+   * NAVIGATION DRAWER ADAPTER including one (1) header view
+   */
   public ContentAdapter(
       List<ContentManager.ContentItem> data) {
     mData = data;
   }
 
-  private static final int POSITION_SPACER_HEADER = 0;
-
-  private static final int TYPE_SPACER_HEADER = 0;
-  private static final int TYPE_ITEM = 1;
-
-  @Override public RecyclerView.ViewHolder onCreateViewHolder(
+  @Override
+  public RecyclerView.ViewHolder onCreateViewHolder(
       ViewGroup viewGroup, int viewType) {
     LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
     if (viewType == TYPE_SPACER_HEADER) {
-      View v = inflater.inflate(R.layout.view_spacer, viewGroup, false);
+      final View v = inflater.inflate(HEADER_LAYOUT, viewGroup, false);
       return new HeaderViewHolder(v);
     }
 
-    View v = inflater.inflate(R.layout.row_nav_text_drawer, viewGroup, false);
+    final View v = inflater.inflate(ROW_LAYOUT, viewGroup, false);
     return new ViewHolder(v);
   }
 
   @Override public int getItemViewType(
-      int position) {
+      final int position) {
     if (isPositionHeader(position)) { return TYPE_SPACER_HEADER; }
     return TYPE_ITEM;
   }
 
-  private boolean isPositionHeader(int position) {
-    return position == POSITION_SPACER_HEADER;
+  private boolean isPositionHeader(final int position) {
+    return position < getHeaderCount();
   }
 
   private ContentManager.ContentItem getItem(int itemPosition) {
@@ -69,7 +78,7 @@ public class ContentAdapter
     }
 
     ContentAdapter.ViewHolder holder = (ViewHolder) viewHolder;
-    final int dataPosition = recyclerPosition - 1;
+    final int dataPosition = recyclerPosition - getHeaderCount();
     holder.textView.setText(getItem(dataPosition).title);
     Drawable d = holder.textView.getContext().getResources().getDrawable(getItem(dataPosition).imageResource);
     holder.textView.setCompoundDrawablesWithIntrinsicBounds(d, null, null, null);
@@ -83,12 +92,12 @@ public class ContentAdapter
             touchPosition(dataPosition);
             return false;
           case MotionEvent.ACTION_CANCEL:
-            touchPosition(-1);
+            touchPosition(NOT_TOUCHING);
             return false;
           case MotionEvent.ACTION_MOVE:
             return false;
           case MotionEvent.ACTION_UP:
-            touchPosition(-1);
+            touchPosition(NOT_TOUCHING);
             return false;
         }
         return true;
@@ -111,27 +120,34 @@ public class ContentAdapter
 
   private void touchPosition(
       int dataPosition) {
-    int lastDataPosition = mTouchedDataPosition;
+    // notify old position
+    if (mTouchedDataPosition >= 0) { notifyItemChanged(mTouchedDataPosition + getHeaderCount()); }
+
+    // update position
     mTouchedDataPosition = dataPosition;
-    Log.d("itt", lastDataPosition + " / " + dataPosition);
-    if (lastDataPosition >= 0)
-      notifyItemChanged(lastDataPosition+1);
-    if (dataPosition >= 0)
-      notifyItemChanged(dataPosition+1);
+
+    // notify new position
+    if (dataPosition >= 0) { notifyItemChanged(dataPosition + getHeaderCount()); }
   }
 
   public void selectPosition(
       int dataPosition) {
-    int prevItemPosition = mSelectedDataPosition;
+    // notify old position
+    notifyItemChanged(mSelectedDataPosition + getHeaderCount());
+
+    // update position
     mSelectedDataPosition = dataPosition;
-    Log.d("its", prevItemPosition + " / " + dataPosition);
-    notifyItemChanged(prevItemPosition+1);
-    notifyItemChanged(dataPosition+1);
+
+    // notify new position
+    notifyItemChanged(dataPosition + getHeaderCount());
   }
 
   @Override public int getItemCount() {
-    // +1 for header row
-    return (mData != null ? mData.size() + 1 : 1);
+    return (mData != null ? mData.size() + getHeaderCount() : getHeaderCount());
+  }
+
+  public int getHeaderCount() {
+    return 1;
   }
 
   public static class ViewHolder extends RecyclerView.ViewHolder {

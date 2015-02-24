@@ -14,9 +14,7 @@ public class ToolbarFragment
     extends Fragment
 {
 
-  protected Toolbar mToolbar;
-  private RecyclerView.Adapter mAdapter;
-  private RecyclerView mCharacterRecyclerView;
+  private Toolbar mToolbar;
   private OnToolbarFragmentCallbacks mCallbacks;
 
   public static ToolbarFragment newInstance() {
@@ -31,10 +29,7 @@ public class ToolbarFragment
     final Context context = getActivity();
     View v = inflater.inflate(R.layout.fragment_toolbar_default, container, false);
     mToolbar = (Toolbar) v.findViewById(R.id.toolbar_actionbar);
-
-    // implement custom slider
-//    loadCustomViews();
-
+    inflateCustomViews(v);
     return v;
   }
 
@@ -43,46 +38,12 @@ public class ToolbarFragment
       Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     mCallbacks.onToolbarCreated(mToolbar);
-    init();
+    initializeViews();
   }
 
-//  private void loadCustomViews() {
-//    final Context context = getActivity();
-//    View layout = LayoutInflater.from(context).inflate(R.layout.view_toolbar_character_recyclerview, mToolbar, false);
-//    mCharacterRecyclerView = (RecyclerView) layout.findViewById(R.id.recyclerview);
-//    mToolbar.addView(mCharacterRecyclerView);
-//  }
+  protected void inflateCustomViews(View view) {}
 
-  private void init() {
-    // load custom slider
-//    addCharacterIcons_v2(mToolbar);
-  }
-
-//  private void addCharacterIcons_v2(
-//      Toolbar toolbar) {
-//    final Context context = getActivity();
-//    mCharacterRecyclerView.setHasFixedSize(true);
-//
-//    LinearLayoutManager mLayoutManager = new LinearLayoutManager(context);
-//    mLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-//    mCharacterRecyclerView.setLayoutManager(mLayoutManager);
-//    // mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-//
-//    mAdapter = createAdapter();
-//    mCharacterRecyclerView.setAdapter(mAdapter);
-//    mCharacterRecyclerView.addOnItemTouchListener(new CharacterClickListener(context, new OnCharacterClickListener() {
-//
-//      @Override public void onCharacterClick(
-//          View view, int position) {
-//        mAdapter.setSelection(position);
-//      }
-//    }));
-//  }
-
-//  private void createAdapter() {
-//    final Context context = getActivity();
-//    return new CharacterSelectorAdapter(context);
-//  }
+  protected void initializeViews() {}
 
   @Override public void onAttach(
       Activity activity) {
@@ -102,29 +63,5 @@ public class ToolbarFragment
   public interface OnToolbarFragmentCallbacks {
     public void onToolbarCreated(Toolbar toolbar);
   }
-
-  @Override public void onResume() {
-    super.onResume();
-//    CharacterManager.get().addOnCharacterChangeListener(this);
-  }
-
-  @Override public void onPause() {
-    super.onPause();
-//    CharacterManager.get().removeOnCharacterChangeListener(this);
-  }
-
-//  @Override public void onCharacterChange(
-//      CharacterManager manager,
-//      com.ameron32.apps.projectbanditv3.object.Character newCharacter) {
-//    // TODO When Characters change, Toolbar doesn't know
-//
-//  }
-//
-//  @Override public void onChatCharacterChange(
-//      CharacterManager manager,
-//      Character newCharacter) {
-//    // TODO Auto-generated method stub
-//
-//  }
 }
 

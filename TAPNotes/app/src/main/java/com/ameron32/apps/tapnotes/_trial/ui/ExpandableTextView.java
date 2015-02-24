@@ -21,10 +21,8 @@ import com.ameron32.apps.tapnotes.R;
 
 
 /**
- *
  * RETYPE FROM THE FOLLOWING LINK:
  * https://github.com/Manabu-GT/ExpandableTextView/blob/master/lib/src/main/java/com/ms/square/android/expandabletextview/ExpandableTextView.java
- *
  */
 public class ExpandableTextView
     extends LinearLayout

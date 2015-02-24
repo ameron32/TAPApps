@@ -28,7 +28,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class MainActivity
     extends
-      ActionBarActivity
+      RootActionBarActivity
     implements
       ContentManager.OnContentChangeListener,
       ToolbarFragment.OnToolbarFragmentCallbacks,
@@ -75,7 +75,7 @@ public class MainActivity
   }
 
   private void loadToolbarFragment() {
-    mToolbarFragment = CollapsingToolbarFragment.newInstance();
+    mToolbarFragment = ToolbarFragment.newInstance();
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     transaction.replace(R.id.toolbar_actionbar_container, mToolbarFragment);
     transaction.commit();
@@ -97,8 +97,8 @@ public class MainActivity
   }
 
   @Override public void onContentChange(
-      ContentManager manager,
-      int position) {
+      final ContentManager manager,
+      final int position) {
     // update the main content by replacing fragments
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction transaction = fragmentManager.beginTransaction();
