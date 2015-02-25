@@ -36,13 +36,13 @@ import javax.inject.Singleton;
         MainActivity.class,
         TestFragment.class
     },
-    addsTo = AndroidModule.class,
+    addsTo = AndroidApplicationModule.class,
     library = true
 )
 public class ActivityModule {
-  private final RootActionBarActivity activity;
+  private final AbsDaggerActivity activity;
 
-  public ActivityModule(RootActionBarActivity activity) {
+  public ActivityModule(AbsDaggerActivity activity) {
     this.activity = activity;
   }
 

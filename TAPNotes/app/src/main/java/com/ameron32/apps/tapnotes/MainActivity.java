@@ -4,12 +4,11 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.widget.DrawerLayout;
 
-import com.ameron32.apps.tapnotes.di.RootActionBarActivity;
+import com.ameron32.apps.tapnotes.di.AbsDaggerActivity;
 import com.crashlytics.android.Crashlytics;
 
 import butterknife.ButterKnife;
@@ -18,7 +17,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class MainActivity
     extends
-      RootActionBarActivity
+    AbsDaggerActivity
     implements
       ContentManager.OnContentChangeListener,
       ToolbarFragment.OnToolbarFragmentCallbacks,

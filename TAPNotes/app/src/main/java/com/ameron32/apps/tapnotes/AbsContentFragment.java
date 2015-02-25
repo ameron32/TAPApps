@@ -1,15 +1,13 @@
 package com.ameron32.apps.tapnotes;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.ameron32.apps.tapnotes.di.RootActionBarActivity;
+import com.ameron32.apps.tapnotes.di.AbsDaggerFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -17,10 +15,8 @@ import butterknife.Optional;
 
 
 
-
-
 public abstract class AbsContentFragment
-    extends Fragment
+    extends AbsDaggerFragment
 {
 
   public AbsContentFragment() {}
@@ -53,11 +49,4 @@ public abstract class AbsContentFragment
     super.onDestroyView();
     ButterKnife.reset(this);
   }
-
-  @Override
-  public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-    super.onActivityCreated(savedInstanceState);
-    ((RootActionBarActivity) getActivity()).inject(this);
-  }
-
 }

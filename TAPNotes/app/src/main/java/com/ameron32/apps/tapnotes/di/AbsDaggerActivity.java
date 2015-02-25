@@ -14,7 +14,7 @@ import javax.inject.Inject;
 
 import dagger.ObjectGraph;
 
-public abstract class RootActionBarActivity extends ActionBarActivity {
+public abstract class AbsDaggerActivity extends ActionBarActivity {
 
   private ObjectGraph activityGraph;
 

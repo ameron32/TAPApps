@@ -2,7 +2,7 @@ package com.ameron32.apps.tapnotes;
 
 import android.app.Application;
 
-import com.ameron32.apps.tapnotes.di.AndroidModule;
+import com.ameron32.apps.tapnotes.di.AndroidApplicationModule;
 import com.ameron32.apps.tapnotes.di.DemoModule;
 import com.parse.Parse;
 import com.parse.ParseException;
@@ -29,7 +29,7 @@ public class ParseApplication extends Application {
 
   protected List<Object> getModules() {
     return Arrays.<Object>asList(
-        new AndroidModule(this),
+        new AndroidApplicationModule(this),
         new DemoModule()
     );
   }

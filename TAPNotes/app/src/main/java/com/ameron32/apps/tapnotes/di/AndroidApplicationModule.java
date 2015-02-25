@@ -32,10 +32,10 @@ import static android.content.Context.LOCATION_SERVICE;
  * {@link android.app.Application} to create.
  */
 @Module(library = true)
-public class AndroidModule {
+public class AndroidApplicationModule {
   private final ParseApplication application;
 
-  public AndroidModule(ParseApplication application) {
+  public AndroidApplicationModule(ParseApplication application) {
     this.application = application;
   }
 
