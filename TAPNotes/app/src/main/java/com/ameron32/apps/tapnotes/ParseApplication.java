@@ -1,42 +1,23 @@
 package com.ameron32.apps.tapnotes;
 
-import android.app.Application;
-
-import com.ameron32.apps.tapnotes.di.AndroidApplicationModule;
-import com.ameron32.apps.tapnotes.di.DemoModule;
+import com.ameron32.apps.tapnotes.di.AbsDaggerApplication;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.SaveCallback;
 
-import java.util.Arrays;
-import java.util.List;
-
 import dagger.ObjectGraph;
 
 
-public class ParseApplication extends Application {
+public class ParseApplication extends AbsDaggerApplication {
 
   private ObjectGraph graph;
 
   public void onCreate() {
     super.onCreate();
-
-    graph = ObjectGraph.create(getModules().toArray());
-
     initializeParse();
   }
 
-  protected List<Object> getModules() {
-    return Arrays.<Object>asList(
-        new AndroidApplicationModule(this),
-        new DemoModule()
-    );
-  }
-
-  public void inject(Object object) {
-    graph.inject(object);
-  }
 
   private void initializeParse() {
     Parse.enableLocalDatastore(this);
@@ -54,10 +35,5 @@ public class ParseApplication extends Application {
     });
 
     Parse.setLogLevel(Parse.LOG_LEVEL_VERBOSE);
-  }
-
-
-  public ObjectGraph getApplicationGraph() {
-    return graph;
   }
 }

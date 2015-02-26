@@ -32,10 +32,10 @@ import static android.content.Context.LOCATION_SERVICE;
  * {@link android.app.Application} to create.
  */
 @Module(library = true)
-public class AndroidApplicationModule {
-  private final ParseApplication application;
+public class ApplicationModule {
+  private final AbsDaggerApplication application;
 
-  public AndroidApplicationModule(ParseApplication application) {
+  public ApplicationModule(AbsDaggerApplication application) {
     this.application = application;
   }
 
@@ -43,11 +43,16 @@ public class AndroidApplicationModule {
    * Allow the application context to be injected but require that it be annotated with
    * {@link ForApplication @Annotation} to explicitly differentiate it from an activity context.
    */
-  @Provides @Singleton @ForApplication Context provideApplicationContext() {
+  @Provides
+  @Singleton
+  @ForApplication
+  Context provideApplicationContext() {
     return application;
   }
 
-  @Provides @Singleton LocationManager provideLocationManager() {
+  @Provides
+  @Singleton
+  LocationManager provideLocationManager() {
     return (LocationManager) application.getSystemService(LOCATION_SERVICE);
   }
 }

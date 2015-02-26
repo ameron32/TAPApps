@@ -17,7 +17,6 @@ package com.ameron32.apps.tapnotes.di;
  */
 
 import android.app.Activity;
-import android.util.Log;
 
 /**
  * A simple abstraction which provides the ability to set the title on an activity.
@@ -27,15 +26,13 @@ import android.util.Log;
  * control of the activity title. While not exceedingly useful in practice, this concept could be
  * expanded to things like facilitating control over the action bar, dialogs, notifications, etc.
  */
-public class ActivityTitleController {
-  private final Activity activity;
+public class ActivityTitleController extends AbsController {
 
   public ActivityTitleController(Activity activity) {
-    this.activity = activity;
+    super(activity);
   }
 
   public void setTitle(CharSequence title) {
-    Log.d("setTitle(ATC)", "activity is: " + activity.getClass().getSimpleName());
-    activity.setTitle(title);
+    getActivity().setTitle(title);
   }
 }

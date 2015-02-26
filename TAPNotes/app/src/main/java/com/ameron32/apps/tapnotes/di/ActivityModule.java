@@ -36,7 +36,7 @@ import javax.inject.Singleton;
         MainActivity.class,
         TestFragment.class
     },
-    addsTo = AndroidApplicationModule.class,
+    addsTo = ApplicationModule.class,
     library = true
 )
 public class ActivityModule {
@@ -50,11 +50,22 @@ public class ActivityModule {
    * Allow the activity context to be injected but require that it be annotated with
    * {@link ForActivity @ForActivity} to explicitly differentiate it from application context.
    */
-  @Provides @Singleton @ForActivity Context provideActivityContext() {
+  @Provides
+  @Singleton
+  @ForActivity
+  Context provideActivityContext() {
     return activity;
   }
 
-  @Provides @Singleton ActivityTitleController provideTitleController() {
+  @Provides
+  @Singleton
+  ActivityTitleController provideTitleController() {
     return new ActivityTitleController(activity);
+  }
+
+  @Provides
+  @Singleton
+  ActivitySharedPreferencesController provideSharedPreferencesController() {
+    return new ActivitySharedPreferencesController(activity);
   }
 }

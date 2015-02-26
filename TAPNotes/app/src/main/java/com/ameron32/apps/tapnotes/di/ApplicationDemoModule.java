@@ -24,6 +24,6 @@ import dagger.Module;
     injects = MainActivity.class,
     complete = false
 )
-public class DemoModule {
+public class ApplicationDemoModule {
   // TODO put your application-specific providers here!
 }

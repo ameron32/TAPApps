@@ -7,11 +7,11 @@ buildscript {
     // required for Fabric/Crashlytics
     maven { url 'https://maven.fabric.io/public' }
 
-    // for SlidingMenu, AndroidRecording, ShowTipsView
-    //  maven { url "https://jitpack.io" }
+    // for SlidingMenu, AndroidRecording, ShowTipsView, Stabbed-Android
+//    maven { url "https://jitpack.io" }
 
     // for SnackBar
-    //  maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+//    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 
     //  mavenLocal()
     mavenCentral()
@@ -34,8 +34,8 @@ repositories {
   // required for Fabric/Crashlytics
   maven { url 'https://maven.fabric.io/public' }
 
-  // for SlidingMenu, AndroidRecording, ShowTipsView
-  //  maven { url "https://jitpack.io" }
+  // for SlidingMenu, AndroidRecording, ShowTipsView, Stabbed-Android
+//  maven { url "https://jitpack.io" }
 
   // for SnackBar
   //  maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
@@ -105,10 +105,12 @@ dependencies {
   // https://parse.com
   compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
   compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
+  compile fileTree(include: ['stabbed-android-1.0.8.jar'], dir: 'libs')
   // TODO Remove universal JAR inclusion
   compile fileTree(include: ['*.jar'], dir: 'libs')
   compile files('libs/Parse-1.8.2.jar')
   compile files('libs/ParseCrashReporting-1.8.2.jar')
+  compile files('libs/stabbed-android-1.0.8.jar')
   //
   // Bolts for Android by Parse/Facebook
   // https://github.com/BoltsFramework/Bolts-Android
@@ -268,6 +270,12 @@ dependencies {
          compile 'javax.inject:javax.inject:1@jar'
          compile 'com.squareup.dagger:dagger:1.2.2'
          provided 'com.squareup.dagger:dagger-compiler:1.2.2'
+  // TEMPLATE dagger injection classes
+  // ---------------------------------------------------------------------------------
+  // https://github.com/PSDev/stabbed-android
+  // ---------------------------------------------------------------------------------
+  //       [jitpack.io]
+  //       compile 'com.github.psdev:stabbed-android:1.0.8'
   //
   //
   // ViewPager Indicator

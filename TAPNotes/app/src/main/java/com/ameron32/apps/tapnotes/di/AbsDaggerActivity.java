@@ -18,9 +18,6 @@ public abstract class AbsDaggerActivity extends ActionBarActivity {
 
   private ObjectGraph activityGraph;
 
-  @Inject
-  LocationManager locationManager;
-
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
