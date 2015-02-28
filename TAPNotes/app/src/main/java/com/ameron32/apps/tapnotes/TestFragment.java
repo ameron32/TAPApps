@@ -43,7 +43,7 @@ public class TestFragment extends AbsContentFragment
   public void onPause() {
     super.onPause();
 
-    String value = String.valueOf(System.currentTimeMillis());
+    final String value = String.valueOf(System.currentTimeMillis());
     sharedPreferencesController.savePreference("time", value);
   }
 }

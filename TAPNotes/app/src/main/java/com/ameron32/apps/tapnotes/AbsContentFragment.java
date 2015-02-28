@@ -1,6 +1,7 @@
 package com.ameron32.apps.tapnotes;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,10 @@ import com.ameron32.apps.tapnotes.di.AbsDaggerFragment;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.Optional;
-
+import rx.android.view.OnClickEvent;
+import rx.android.view.ViewAction1;
+import rx.android.view.ViewObservable;
+import rx.functions.Action1;
 
 
 public abstract class AbsContentFragment
@@ -41,6 +45,7 @@ public abstract class AbsContentFragment
   }
 
   protected abstract int getCustomLayoutResource();
+
   protected int onReplaceFragmentLayout(int storedLayoutResource) {
     return storedLayoutResource;
   }
