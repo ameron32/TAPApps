@@ -20,6 +20,7 @@ package com.ameron32.apps.tapnotes.di;
 import android.content.Context;
 
 import com.ameron32.apps.tapnotes.MainActivity;
+import com.ameron32.apps.tapnotes.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes.TestFragment;
 
 import dagger.Module;
@@ -34,7 +35,8 @@ import javax.inject.Singleton;
 @Module(
     injects = {
         MainActivity.class,
-        TestFragment.class
+        TestFragment.class,
+        MaterialImageViewTestFragment.class
     },
     addsTo = ApplicationModule.class,
     library = true

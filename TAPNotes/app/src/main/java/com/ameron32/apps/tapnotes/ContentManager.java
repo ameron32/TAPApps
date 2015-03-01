@@ -39,7 +39,8 @@ public class ContentManager extends AbsManager {
     items.add(new ContentItem("Item 2", R.drawable.ic_construction, new TestFragment()));
     items.add(new ContentItem("Item 3", R.drawable.ic_construction, new TestFragment()));
     items.add(new ContentItem("Item 4", R.drawable.ic_construction, new TestFragment()));
-    items.add(new ContentItem("Item 5", R.drawable.ic_construction, new TestFragment()));
+    items.add(new ContentItem("Item 5: MaterialImageView",
+        R.drawable.ic_construction, new MaterialImageViewTestFragment()));
 
 //    items.add(new ContentItem("Test:Game", R.drawable.ic_construction,
 //        GameFragment.newInstance(R.layout.section_game)));
