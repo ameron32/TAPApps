@@ -156,10 +156,10 @@ dependencies {
   //
   //
   //
+  //
   // =================================================================================
   // POSSIBLE LIBRARIES WITH POTENTIALLY VALUABLE FEATURES
   // =================================================================================
-  //
   //
   // [CURRENT PROGRAM]
   //   EXPANDABLELISTVIEW ALTERNATIVE FOR RECYCLERVIEW
@@ -270,6 +270,8 @@ dependencies {
          compile 'javax.inject:javax.inject:1@jar'
          compile 'com.squareup.dagger:dagger:1.2.2'
          provided 'com.squareup.dagger:dagger-compiler:1.2.2'
+  //
+  //
   // TEMPLATE dagger injection classes
   // ---------------------------------------------------------------------------------
   // https://github.com/PSDev/stabbed-android
@@ -302,6 +304,14 @@ dependencies {
   //       compile 'net.danlew:android.joda:2.7.1'
   //
   //
+  // Awesome Validation
+  // ---------------------------------------------------------------------------------
+  // https://github.com/thyrlian/AwesomeValidation
+  // ---------------------------------------------------------------------------------
+  //       [jitpack.io]
+  //       compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
+  //
+  //
   //
   //
   // =================================================================================
@@ -309,11 +319,33 @@ dependencies {
   // =================================================================================
   //
   // SuperRecyclerView
+  // ---------------------------------------------------------------------------------
+  // https://github.com/Malinskiy/SuperRecyclerView
+  // ---------------------------------------------------------------------------------
   //       compile 'com.malinskiy:superrecyclerview:1.0.1'
+  //         [required library for ItemDecoration headers]
   //       compile 'com.eowise:recyclerview-stickyheaders:0.5.0@aar'
   //
+  //
   // Parse with LoginUI
+  // ---------------------------------------------------------------------------------
+  // https://github.com/ParsePlatform/ParseUI-Android
+  // ---------------------------------------------------------------------------------
+  //       [jitpack.io: commit snapshot only]
+  //       compile 'com.github.ParsePlatform:ParseUI-Android:3b2e94f2ee'
+  //         OR
+  //       [needs ParseLoginUI project module]
   //       compile project(':ParseLoginUI')
+  //         [required if using facebook login]
+  //       compile 'com.facebook.android:facebook-android-sdk:3.21.1'
+  //
+  //
+  // Material Painter / Color Palette Viewer
+  // ---------------------------------------------------------------------------------
+  // https://github.com/novoda/material-painter
+  // ---------------------------------------------------------------------------------
+  //       [jitpack.io: commit snapshot only]
+  //       compile 'com.github.novoda:material-painter:1941f67da8'
   //
   //
   //
