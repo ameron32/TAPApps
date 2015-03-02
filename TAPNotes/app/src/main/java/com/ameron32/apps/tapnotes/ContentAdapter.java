@@ -106,7 +106,7 @@ public class ContentAdapter
     holder.itemView.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(
           View v) {
-        ContentManager.get().setCurrentSelectedFragmentPosition(dataPosition);
+        ContentManager.get().setSelectedFragment(dataPosition);
       }
     });
 

@@ -18,6 +18,7 @@ package com.ameron32.apps.tapnotes.di;
 
 import android.content.Context;
 import android.location.LocationManager;
+import android.view.LayoutInflater;
 
 import com.ameron32.apps.tapnotes.ParseApplication;
 
@@ -26,6 +27,7 @@ import dagger.Provides;
 import javax.inject.Singleton;
 
 import static android.content.Context.LOCATION_SERVICE;
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 /**
  * A module for Android-specific dependencies which require a {@link Context} or
@@ -54,5 +56,11 @@ public class ApplicationModule {
   @Singleton
   LocationManager provideLocationManager() {
     return (LocationManager) application.getSystemService(LOCATION_SERVICE);
+  }
+
+  @Provides
+  @Singleton
+  LayoutInflater provideLayoutInflater() {
+    return (LayoutInflater) application.getSystemService(LAYOUT_INFLATER_SERVICE);
   }
 }

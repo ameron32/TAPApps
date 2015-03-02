@@ -20,8 +20,8 @@ package com.ameron32.apps.tapnotes.di;
 import android.content.Context;
 
 import com.ameron32.apps.tapnotes.MainActivity;
-import com.ameron32.apps.tapnotes.MaterialImageViewTestFragment;
-import com.ameron32.apps.tapnotes.TestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
 
 import dagger.Module;
 import dagger.Provides;
@@ -69,5 +69,11 @@ public class ActivityModule {
   @Singleton
   ActivitySharedPreferencesController provideSharedPreferencesController() {
     return new ActivitySharedPreferencesController(activity);
+  }
+
+  @Provides
+  @Singleton
+  ActivitySnackBarController provideSnackBarController() {
+    return new ActivitySnackBarController(activity);
   }
 }

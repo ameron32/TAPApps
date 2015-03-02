@@ -1,10 +1,16 @@
 package com.ameron32.apps.tapnotes;
 
 
+import android.support.v4.app.Fragment;
+
+import com.ameron32.apps.tapnotes._trial._demo.FragmentProvider;
+import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContentManager extends AbsManager {
+public class ContentManager extends AbsManager implements FragmentProvider {
 
   private static ContentManager contentManager;
 
@@ -25,6 +31,7 @@ public class ContentManager extends AbsManager {
 
   private ContentManager() {
     listeners = new ArrayList<OnContentChangeListener>();
+    listeners2 = new ArrayList<>();
     contentItems = createContentItems();
   }
 
@@ -115,6 +122,7 @@ public class ContentManager extends AbsManager {
   }
 
   public List<OnContentChangeListener> listeners;
+  public List<OnFragmentChangeListener> listeners2;
 
   public boolean addOnContentChangeListener(
       OnContentChangeListener listener) {
@@ -126,9 +134,25 @@ public class ContentManager extends AbsManager {
     return listeners.remove(listener);
   }
 
+  @Override
+  public void addFragmentChangeListener(OnFragmentChangeListener listener) {
+    listeners2.add(listener);
+  }
+
+  @Override
+  public void removeFragmentChangeListener(OnFragmentChangeListener listener) {
+    listeners2.remove(listener);
+  }
+
   private void notifyListenersOfContentChange(int position) {
     for (OnContentChangeListener listener : listeners) {
       listener.onContentChange(this, position);
+    }
+  }
+
+  private void notifyListenersOfFragmentChange(int position) {
+    for (OnFragmentChangeListener listener : listeners2) {
+      listener.onFragmentChange(position);
     }
   }
 
@@ -143,7 +167,12 @@ public class ContentManager extends AbsManager {
   public void setCurrentSelectedFragmentPosition(
       int position) {
     mCurrentSelectedFragment = position;
-    notifyListenersOfContentChange(position);
+//    notifyListenersOfContentChange(position);
+    notifyListenersOfFragmentChange(position);
+  }
+
+  public void setSelectedFragment(int position) {
+    setCurrentSelectedFragmentPosition(position);
   }
 
   public int getCurrentSelectedFragment() {
@@ -158,6 +187,10 @@ public class ContentManager extends AbsManager {
   public AbsContentFragment getNewFragmentForPosition(
       int position) {
     return contentItems.get(position).fragment;
+  }
+
+  public Fragment getFragment(int position) {
+    return getNewFragmentForPosition(position);
   }
 
   public String[] getTitles() {

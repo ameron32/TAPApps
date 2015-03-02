@@ -38,7 +38,7 @@ repositories {
 //  maven { url "https://jitpack.io" }
 
   // for SnackBar
-  //  maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 
   //  mavenLocal()
   mavenCentral()
@@ -169,6 +169,14 @@ dependencies {
   //       compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
   //
   //
+  // [NOTE EDITOR WIDGET]
+  //   STRONG CUSTOMIZATION OPTIONS FOR EDITTEXT ALTERNATIVE
+  // ---------------------------------------------------------------------------------
+  // NAME: MaterialEditText
+  // LINK: https://github.com/rengwuxian/MaterialEditText
+  //       compile 'com.rengwuxian.materialedittext:library:1.8.3'
+  //
+  //
   // [NOTE EDITOR ADDON for SCRIPTURE NOTES]
   //   MAKE SCRIPTURE REFERENCES "POP" WITHIN EDITTEXT
   // ---------------------------------------------------------------------------------
@@ -208,9 +216,9 @@ dependencies {
   // NAME: SnackBar
   // LINK: https://github.com/Kennyc1012/SnackBar
   // For api11+
-  //       compile 'com.github.kennyc1012:snackbar:1.0.4-SNAPSHOT:api11Release@aar'
+         compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api11Release@aar'
   // For api8+
-  //       compile 'com.github.kennyc1012:snackbar:1.0.4-SNAPSHOT:api8Release@aar'
+  //       compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api8Release@aar'
   //
   //
   // ["ADD NEW PROGRAM" BUTTON on PROGRAM SELECTION SCREEN]
@@ -253,6 +261,14 @@ dependencies {
   // LINK: https://github.com/steelkiwi/AndroidRecording
   //       [jitpack.io]
   //       compile 'com.github.steelkiwi:AndroidRecording:4d7956c30dbd6b12e8477a1070773730fa31ed50'
+  //
+  //
+  // [PROPER FONT TEXTVIEWS]
+  //   OVERRIDE FOR SAMSUNG GALAXY SERIES COMIC-Y FONTS
+  // ---------------------------------------------------------------------------------
+  // NAME: RobotoTextView
+  // LINK: https://github.com/johnkil/Android-RobotoTextView
+  //       compile 'com.github.johnkil.android-robototextview:robototextview:2.3.0'
   //
   //
   //
@@ -310,6 +326,13 @@ dependencies {
   // ---------------------------------------------------------------------------------
   //       [jitpack.io]
   //       compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
+  //
+  //
+  //  MaterialDrawer
+  // ---------------------------------------------------------------------------------
+  //  https://github.com/mikepenz/MaterialDrawer
+  // ---------------------------------------------------------------------------------
+         compile('com.mikepenz.materialdrawer:library:1.0.2@aar') { transitive = true }
   //
   //
   //

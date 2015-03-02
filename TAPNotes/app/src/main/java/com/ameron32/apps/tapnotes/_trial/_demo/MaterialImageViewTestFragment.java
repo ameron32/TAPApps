@@ -1,9 +1,11 @@
-package com.ameron32.apps.tapnotes;
+package com.ameron32.apps.tapnotes._trial._demo;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.ameron32.apps.tapnotes.AbsContentFragment;
+import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.MaterialImageView;
 import com.ameron32.apps.tapnotes.di.ActivityTitleController;
 

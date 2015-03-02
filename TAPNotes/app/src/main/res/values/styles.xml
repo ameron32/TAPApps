@@ -16,6 +16,9 @@
     <item name="android:textColorPrimary">@color/myTextPrimaryColor</item>
     <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     <item name="android:windowBackground">@color/myWindowBackground</item>
+
+    <item name="snack_bar_text_color">@color/myTextPrimaryHintColor</item>
+    <item name="snack_bar_duration">5000</item>
   </style>
 
   <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
