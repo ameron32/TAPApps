@@ -1,5 +1,16 @@
 package com.ameron32.apps.tapnotes._trial._demo;
 
+/*********************************************************************
+ * *******************************************************************
+ * *******************************************************************
+ *
+ * WARNING: OBJECT NOT NECESSARY AT THE MOMENT
+ *
+ * *******************************************************************
+ * *******************************************************************
+ * *******************************************************************
+ */
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +27,8 @@ public class TestContentAdapter
 
   @Override
   public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_nav_text_drawer,parent,false);
+    final View itemView = LayoutInflater.from(parent.getContext())
+        .inflate(R.layout.row_nav_text_drawer, parent, false);
     return new ViewHolder(itemView);
   }
 

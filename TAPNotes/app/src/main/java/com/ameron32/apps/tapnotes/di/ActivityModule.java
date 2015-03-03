@@ -18,19 +18,16 @@ package com.ameron32.apps.tapnotes.di;
 
 
 import android.app.Activity;
-import android.content.Context;
 
 import com.ameron32.apps.tapnotes.MainActivity;
-import com.ameron32.apps.tapnotes.ParseApplication;
 import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
-import com.ameron32.apps.tapnotes.di.stabbed.DefaultAndroidApplicationModule;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.psdev.stabbedandroid.ForActivity;
-
-import javax.inject.Singleton;
 
 /**
  * This module represents objects which exist only for the scope of a single activity. We can
@@ -41,7 +38,8 @@ import javax.inject.Singleton;
     injects = {
         MainActivity.class,
         TestFragment.class,
-        MaterialImageViewTestFragment.class
+        MaterialImageViewTestFragment.class,
+        PhotoViewerTestFragment.class
     },
     addsTo = ApplicationModule.class,
     library = true

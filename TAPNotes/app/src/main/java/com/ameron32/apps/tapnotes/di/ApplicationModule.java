@@ -16,22 +16,18 @@ package com.ameron32.apps.tapnotes.di;
  * limitations under the License.
  */
 
-import android.app.Application;
 import android.content.Context;
-import android.location.LocationManager;
 import android.view.LayoutInflater;
 
 import com.ameron32.apps.tapnotes.ParseApplication;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsApplication;
 import com.ameron32.apps.tapnotes.di.stabbed.DefaultAndroidApplicationModule;
 
-import dagger.Module;
-import dagger.Provides;
-import de.psdev.stabbedandroid.ForApplication;
-
 import javax.inject.Singleton;
 
-import static android.content.Context.LOCATION_SERVICE;
+import dagger.Module;
+import dagger.Provides;
+
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 /**

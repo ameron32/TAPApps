@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.ameron32.apps.tapnotes.di.me.AbsDaggerFragment;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsSupportFragment;
 
 import butterknife.ButterKnife;

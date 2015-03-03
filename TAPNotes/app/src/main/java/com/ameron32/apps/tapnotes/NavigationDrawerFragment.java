@@ -32,6 +32,17 @@ import java.util.Locale;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
+/*********************************************************************
+ * *******************************************************************
+ * *******************************************************************
+ *
+ * WARNING: OBJECT NOT NECESSARY AT THE MOMENT
+ *
+ * *******************************************************************
+ * *******************************************************************
+ * *******************************************************************
+ */
+
 public class NavigationDrawerFragment
     extends Fragment
     implements
@@ -282,10 +293,10 @@ public class NavigationDrawerFragment
     super.onCreateOptionsMenu(menu, inflater);
   }
 
-  private void inflateGlobalMenu(Menu menu,
-                                 MenuInflater inflater) {
-    inflater.inflate(R.menu.global, menu);
-  }
+//  private void inflateGlobalMenu(Menu menu,
+//                                 MenuInflater inflater) {
+//    inflater.inflate(R.menu.global, menu);
+//  }
 
   @Override public void onActivityCreated(
       Bundle savedInstanceState) {

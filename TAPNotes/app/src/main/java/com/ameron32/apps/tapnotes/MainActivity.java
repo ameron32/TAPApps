@@ -18,8 +18,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 
+import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
-import com.ameron32.apps.tapnotes.di.me.AbsDaggerActivity;
+import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
 import com.crashlytics.android.Crashlytics;
 import com.mikepenz.iconics.typeface.FontAwesome;
@@ -32,7 +34,6 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import de.psdev.stabbedandroid.ForApplication;
 import io.fabric.sdk.android.Fabric;
 
 
@@ -79,22 +80,11 @@ public class MainActivity
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-     mDrawer = new Drawer().withActivity(this).withToolbar(toolbar)
+    mDrawer = new Drawer().withActivity(this).withToolbar(toolbar)
         .withHeader(getHeaderView(R.layout.trial_header_only))
         .withActionBarDrawerToggle(true)
-        .addDrawerItems(
-            new PrimaryDrawerItem().withName("Item 1").withIcon(FontAwesome.Icon.faw_home),
-            new DividerDrawerItem(),
-            new SecondaryDrawerItem().withName("Settings").withIcon(FontAwesome.Icon.faw_cog)
-        )
-        .withOnDrawerItemClickListener(
-            new Drawer.OnDrawerItemClickListener() {
-              @Override
-              public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem iDrawerItem) {
-                changeFragment(new TestFragment());
-              }
-            }
-        )
+        .addDrawerItems(getDrawerItems())
+        .withOnDrawerItemClickListener(getDrawerOnItemClickListener())
         .build();
 
     mDrawer.openDrawer();
@@ -104,6 +94,37 @@ public class MainActivity
 //    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
     // drawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.colorPrimary));
 //    mNavigationDrawerFragment.setup(R.id.navigation_drawer, mDrawerLayout, mToolbar);
+  }
+
+  private IDrawerItem[] getDrawerItems() {
+    return new IDrawerItem[]{
+        new PrimaryDrawerItem().withName("TestFragment").withIcon(FontAwesome.Icon.faw_coffee),
+        new PrimaryDrawerItem().withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
+        new PrimaryDrawerItem().withName("MaterialImageViewTestFragment").withIcon(FontAwesome.Icon.faw_image),
+        new DividerDrawerItem(),
+        new SecondaryDrawerItem().withName("Settings").withIcon(FontAwesome.Icon.faw_cog)
+    };
+  }
+
+  private Drawer.OnDrawerItemClickListener getDrawerOnItemClickListener() {
+    return new Drawer.OnDrawerItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem iDrawerItem) {
+        switch (position) {
+          case 1:
+            changeFragment(new TestFragment());
+            break;
+          case 2:
+            changeFragment(new PhotoViewerTestFragment());
+            break;
+          case 3:
+            changeFragment(new MaterialImageViewTestFragment());
+            break;
+          default:
+            changeFragment(new TestFragment());
+        }
+      }
+    };
   }
 
   @Inject
@@ -208,10 +229,11 @@ public class MainActivity
       // Only show items in the action bar relevant to this screen
       // if the drawer is not showing. Otherwise, let the drawer
       // decide what to show in the action bar.
-      inflateCoreMenu(menu);
+
       return true;
     }
-    inflateGlobalMenu(menu);
+    inflateCoreMenu(menu);
+//    inflateGlobalMenu(menu);
     return super.onCreateOptionsMenu(menu);
   }
 
@@ -219,9 +241,9 @@ public class MainActivity
     getMenuInflater().inflate(R.menu.main, menu);
   }
 
-  private void inflateGlobalMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.global, menu);
-  }
+//  private void inflateGlobalMenu(Menu menu) {
+//    getMenuInflater().inflate(R.menu.global, menu);
+//  }
 
   @Override
   public boolean onOptionsItemSelected(
@@ -235,11 +257,12 @@ public class MainActivity
     }
     return super.onOptionsItemSelected(item);
   }
-//
+
 //  @Inject
 //  @ForApplication
 //  Context mContext;
 
+//  TODO: fails to @Inject. likely module hasn't loaded at the time @Inject calls
 //  @Inject
 //  ActivitySnackBarController snackBarController;
 

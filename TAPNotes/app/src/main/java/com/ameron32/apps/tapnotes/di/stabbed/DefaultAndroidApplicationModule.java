@@ -42,11 +42,11 @@ import android.os.storage.StorageManager;
 import android.preference.PreferenceManager;
 import android.telephony.TelephonyManager;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import de.psdev.stabbedandroid.ForApplication;
-
-import javax.inject.Singleton;
 
 /**
  * Default application module which provides standard android classes.

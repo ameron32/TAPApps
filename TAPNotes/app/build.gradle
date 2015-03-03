@@ -44,6 +44,12 @@ repositories {
   mavenCentral()
 }
 
+def versionICode = 3
+def versionMajor = 0
+def versionMinor = 0
+def versionPatch = 1
+def versionBuild = 2
+
 android {
   compileSdkVersion 21
   buildToolsVersion "21.1.2"
@@ -52,8 +58,8 @@ android {
     applicationId "com.ameron32.apps.tapnotes"
     minSdkVersion 15
     targetSdkVersion 21
-    versionCode 2
-    versionName "0.0.1.1"
+    versionCode versionICode
+    versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
   }
 
   packagingOptions {
@@ -375,6 +381,13 @@ dependencies {
   // ---------------------------------------------------------------------------------
   //       [jitpack.io: commit snapshot only]
   //       compile 'com.github.novoda:material-painter:1941f67da8'
+  //
+  //
+  // PhotoView
+  // ---------------------------------------------------------------------------------
+  // https://github.com/chrisbanes/PhotoView
+  // ---------------------------------------------------------------------------------
+         compile 'com.github.chrisbanes.photoview:library:1.2.3'
   //
   //
   //
