@@ -1,5 +1,6 @@
 package com.ameron32.apps.tapnotes;
 
+import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -18,6 +19,8 @@ import android.widget.ImageButton;
 
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
 import com.ameron32.apps.tapnotes.di.AbsDaggerActivity;
+import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
+import com.ameron32.apps.tapnotes.di.ForActivity;
 import com.crashlytics.android.Crashlytics;
 import com.kenny.snackbar.SnackBar;
 import com.mikepenz.iconics.typeface.FontAwesome;
@@ -230,8 +233,15 @@ public class MainActivity
     return super.onOptionsItemSelected(item);
   }
 
-  public void onLogoutClick() {
+//  @Inject
+//  @ForActivity
+//  Context mContext;
 
+//  @Inject
+//  ActivitySnackBarController snackBarController;
+
+  public void onLogoutClick() {
+//    snackBarController.toast("Logout");
   }
 }
 
