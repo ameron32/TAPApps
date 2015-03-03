@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.di;
+package com.ameron32.apps.tapnotes.di.me;
 
 /*
  * Copyright (C) 2013 Square, Inc.
@@ -22,5 +22,5 @@ import javax.inject.Qualifier;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Qualifier @Retention(RUNTIME)
-public @interface ForApplication {
+public @interface ForActivity {
 }

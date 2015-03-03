@@ -9,6 +9,8 @@ import com.ameron32.apps.tapnotes.di.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.ActivityTitleController;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 public class TestFragment extends AbsContentFragment
@@ -38,7 +40,8 @@ public class TestFragment extends AbsContentFragment
     final String time = sharedPreferencesController.restorePreference("time", "none");
     titleController.setTitle(time);
 
-    snackBarController.toast(time);
+    final List<String> allProviders = locationManager.getAllProviders();
+    snackBarController.toast(allProviders.toString());
   }
 
   @Override

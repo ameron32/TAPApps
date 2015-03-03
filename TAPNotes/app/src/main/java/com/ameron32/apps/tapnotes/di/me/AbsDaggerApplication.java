@@ -1,6 +1,9 @@
-package com.ameron32.apps.tapnotes.di;
+package com.ameron32.apps.tapnotes.di.me;
 
 import android.app.Application;
+
+import com.ameron32.apps.tapnotes.di.ApplicationDemoModule;
+import com.ameron32.apps.tapnotes.di.ApplicationModule;
 
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +23,7 @@ public abstract class AbsDaggerApplication extends Application {
 
   protected List<Object> getModules() {
     return Arrays.<Object>asList(
-        new ApplicationModule(this),
+//        new ApplicationModule(this),
         new ApplicationDemoModule()
     );
   }

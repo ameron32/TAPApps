@@ -17,14 +17,19 @@ package com.ameron32.apps.tapnotes.di;
  */
 
 
+import android.app.Activity;
 import android.content.Context;
 
 import com.ameron32.apps.tapnotes.MainActivity;
+import com.ameron32.apps.tapnotes.ParseApplication;
 import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
+import com.ameron32.apps.tapnotes.di.stabbed.DefaultAndroidApplicationModule;
 
 import dagger.Module;
 import dagger.Provides;
+import de.psdev.stabbedandroid.ForActivity;
+
 import javax.inject.Singleton;
 
 /**
@@ -42,22 +47,22 @@ import javax.inject.Singleton;
     library = true
 )
 public class ActivityModule {
-  private final AbsDaggerActivity activity;
+  private final Activity activity;
 
-  public ActivityModule(AbsDaggerActivity activity) {
+  public ActivityModule(Activity activity) {
     this.activity = activity;
   }
 
-  /**
-   * Allow the activity context to be injected but require that it be annotated with
-   * {@link ForActivity @ForActivity} to explicitly differentiate it from application context.
-   */
-  @Provides
-  @Singleton
-  @ForActivity
-  Context provideActivityContext() {
-    return activity;
-  }
+//  /**
+//   * Allow the activity context to be injected but require that it be annotated with
+//   * {@link com.ameron32.apps.tapnotes.di.me.ForActivity @ForActivity} to explicitly differentiate it from application context.
+//   */
+//  @Provides
+//  @Singleton
+//  @ForActivity
+//  Context provideActivityContext() {
+//    return activity;
+//  }
 
   @Provides
   @Singleton

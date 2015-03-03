@@ -3,6 +3,7 @@ package com.ameron32.apps.tapnotes;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
@@ -18,11 +19,9 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
-import com.ameron32.apps.tapnotes.di.AbsDaggerActivity;
-import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
-import com.ameron32.apps.tapnotes.di.ForActivity;
+import com.ameron32.apps.tapnotes.di.me.AbsDaggerActivity;
+import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
 import com.crashlytics.android.Crashlytics;
-import com.kenny.snackbar.SnackBar;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -33,14 +32,15 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import de.psdev.stabbedandroid.ForApplication;
 import io.fabric.sdk.android.Fabric;
 
 
 public class MainActivity
     extends
-    AbsDaggerActivity
+      AbsActionBarActivity
     implements
-    ToolbarFragment.OnToolbarFragmentCallbacks
+      ToolbarFragment.OnToolbarFragmentCallbacks
 //      ,ContentManager.OnContentChangeListener
 //      ,FragmentProvider.OnFragmentChangeListener
 //      , NavigationDrawerFragment.NavigationDrawerCallbacks
@@ -48,6 +48,9 @@ public class MainActivity
 //
 //  @Inject
 //  FragmentProvider mContentManager;
+
+//  @Inject
+//  LocationManager mLocation;
 
   /**
    * Fragment managing the behaviors, interactions and presentation of the
@@ -232,9 +235,9 @@ public class MainActivity
     }
     return super.onOptionsItemSelected(item);
   }
-
+//
 //  @Inject
-//  @ForActivity
+//  @ForApplication
 //  Context mContext;
 
 //  @Inject

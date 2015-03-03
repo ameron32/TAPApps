@@ -1,6 +1,7 @@
 package com.ameron32.apps.tapnotes;
 
-import com.ameron32.apps.tapnotes.di.AbsDaggerApplication;
+import com.ameron32.apps.tapnotes.di.me.AbsDaggerApplication;
+import com.ameron32.apps.tapnotes.di.stabbed.AbsApplication;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
@@ -9,15 +10,12 @@ import com.parse.SaveCallback;
 import dagger.ObjectGraph;
 
 
-public class ParseApplication extends AbsDaggerApplication {
-
-  private ObjectGraph graph;
+public class ParseApplication extends AbsApplication {
 
   public void onCreate() {
     super.onCreate();
     initializeParse();
   }
-
 
   private void initializeParse() {
     Parse.enableLocalDatastore(this);

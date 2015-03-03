@@ -16,14 +16,19 @@ package com.ameron32.apps.tapnotes.di;
  * limitations under the License.
  */
 
+import android.app.Application;
 import android.content.Context;
 import android.location.LocationManager;
 import android.view.LayoutInflater;
 
 import com.ameron32.apps.tapnotes.ParseApplication;
+import com.ameron32.apps.tapnotes.di.stabbed.AbsApplication;
+import com.ameron32.apps.tapnotes.di.stabbed.DefaultAndroidApplicationModule;
 
 import dagger.Module;
 import dagger.Provides;
+import de.psdev.stabbedandroid.ForApplication;
+
 import javax.inject.Singleton;
 
 import static android.content.Context.LOCATION_SERVICE;
@@ -33,30 +38,35 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
  * A module for Android-specific dependencies which require a {@link Context} or
  * {@link android.app.Application} to create.
  */
-@Module(library = true)
+@Module(
+    injects = {
+      ParseApplication.class
+    },
+    addsTo = DefaultAndroidApplicationModule.class,
+    library = true)
 public class ApplicationModule {
-  private final AbsDaggerApplication application;
+  private final AbsApplication application;
 
-  public ApplicationModule(AbsDaggerApplication application) {
+  public ApplicationModule(AbsApplication application) {
     this.application = application;
   }
 
-  /**
-   * Allow the application context to be injected but require that it be annotated with
-   * {@link ForApplication @Annotation} to explicitly differentiate it from an activity context.
-   */
-  @Provides
-  @Singleton
-  @ForApplication
-  Context provideApplicationContext() {
-    return application;
-  }
-
-  @Provides
-  @Singleton
-  LocationManager provideLocationManager() {
-    return (LocationManager) application.getSystemService(LOCATION_SERVICE);
-  }
+//  /**
+//   * Allow the application context to be injected but require that it be annotated with
+//   * {@link com.ameron32.apps.tapnotes.di.me.ForApplication @Annotation} to explicitly differentiate it from an activity context.
+//   */
+//  @Provides
+//  @Singleton
+//  @ForApplication
+//  Context provideApplicationContext() {
+//    return application;
+//  }
+//
+//  @Provides
+//  @Singleton
+//  LocationManager provideLocationManager() {
+//    return (LocationManager) application.getSystemService(LOCATION_SERVICE);
+//  }
 
   @Provides
   @Singleton

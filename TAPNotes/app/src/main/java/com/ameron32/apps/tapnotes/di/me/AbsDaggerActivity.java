@@ -1,16 +1,13 @@
-package com.ameron32.apps.tapnotes.di;
+package com.ameron32.apps.tapnotes.di.me;
 
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 
 import com.ameron32.apps.tapnotes.ParseApplication;
+import com.ameron32.apps.tapnotes.di.ActivityModule;
 
 import java.util.Arrays;
 import java.util.List;
-
-import javax.inject.Inject;
 
 import dagger.ObjectGraph;
 
@@ -25,7 +22,7 @@ public abstract class AbsDaggerActivity extends ActionBarActivity {
     ParseApplication app = (ParseApplication) getApplication();
 //    app.inject(this);
 
-    activityGraph = app.getApplicationGraph().plus(getModules().toArray());
+    activityGraph = app.getObjectGraph().plus(getModules().toArray());
     activityGraph.inject(this);
   }
 

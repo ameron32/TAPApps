@@ -35,10 +35,10 @@ repositories {
   maven { url 'https://maven.fabric.io/public' }
 
   // for SlidingMenu, AndroidRecording, ShowTipsView, Stabbed-Android
-//  maven { url "https://jitpack.io" }
+  maven { url "https://jitpack.io" }
 
   // for SnackBar
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+  maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 
   //  mavenLocal()
   mavenCentral()
@@ -105,12 +105,17 @@ dependencies {
   // https://parse.com
   compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
   compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
+  //
+  // Stabbed-Android [see reference below for details]
+  // https://github.com/PSDev/stabbed-android
   compile fileTree(include: ['stabbed-android-1.0.8.jar'], dir: 'libs')
+  compile files('libs/stabbed-android-1.0.8.jar')
+  //
   // TODO Remove universal JAR inclusion
-  compile fileTree(include: ['*.jar'], dir: 'libs')
+  // compile fileTree(include: ['*.jar'], dir: 'libs')
   compile files('libs/Parse-1.8.2.jar')
   compile files('libs/ParseCrashReporting-1.8.2.jar')
-  compile files('libs/stabbed-android-1.0.8.jar')
+  //
   //
   // Bolts for Android by Parse/Facebook
   // https://github.com/BoltsFramework/Bolts-Android
@@ -293,7 +298,8 @@ dependencies {
   // https://github.com/PSDev/stabbed-android
   // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-  //       compile 'com.github.psdev:stabbed-android:1.0.8'
+  //       TODO Using JAR. Gradle build fails for some reason related to pom.xml
+  //       compile 'com.github.PSDev:stabbed-android:1.0.8'
   //
   //
   // ViewPager Indicator
@@ -325,7 +331,7 @@ dependencies {
   // https://github.com/thyrlian/AwesomeValidation
   // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-  //       compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
+         compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
   //
   //
   //  MaterialDrawer
