@@ -44,6 +44,8 @@ repositories {
   mavenCentral()
 }
 
+
+
 def versionICode = 3
 def versionMajor = 0
 def versionMinor = 0
@@ -84,6 +86,7 @@ android {
   buildTypes {
     debug {
       applicationIdSuffix '.debug'
+      versionNameSuffix "-debug"
       minifyEnabled false
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
       // runProguard false
@@ -154,6 +157,7 @@ dependencies {
   //
   // RxAndroid of RxJava Reactive Extensions
   // https://github.com/ReactiveX/RxAndroid
+  compile 'io.reactivex:rxjava:1.+'
   compile 'io.reactivex:rxandroid:0.24.0'
   //
   // Google JSON Deserialization Library
@@ -322,7 +326,7 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // https://github.com/JakeWharton/timber
   // ---------------------------------------------------------------------------------
-  //       compile 'com.jakewharton.timber:timber:2.7.1'
+         compile 'com.jakewharton.timber:timber:2.7.1'
   //
   //
   // Joda-Time for Android

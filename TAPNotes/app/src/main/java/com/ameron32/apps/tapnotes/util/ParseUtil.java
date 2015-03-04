@@ -1,22 +1,25 @@
-package com.ameron32.apps.tapnotes;
+package com.ameron32.apps.tapnotes.util;
 
-import com.ameron32.apps.tapnotes.di.stabbed.AbsApplication;
+import android.app.Application;
+import android.content.res.Resources;
+
+import com.ameron32.apps.tapnotes.R;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.SaveCallback;
 
+/**
+ * Created by klemeilleur on 3/4/2015.
+ */
+public class ParseUtil {
 
-public class ParseApplication extends AbsApplication {
+  public static void initializeParse(Application app) {
 
-  public void onCreate() {
-    super.onCreate();
-    initializeParse();
-  }
+    final Resources r = app.getResources();
 
-  private void initializeParse() {
-    Parse.enableLocalDatastore(this);
-    Parse.initialize(this, getString(R.string.APPLICATION_ID), getString(R.string.CLIENT_KEY));
+    Parse.enableLocalDatastore(app);
+    Parse.initialize(app, r.getString(R.string.APPLICATION_ID), r.getString(R.string.CLIENT_KEY));
 
     // Save the current Installation to Parse.
     ParseInstallation.getCurrentInstallation().saveInBackground(new SaveCallback() {

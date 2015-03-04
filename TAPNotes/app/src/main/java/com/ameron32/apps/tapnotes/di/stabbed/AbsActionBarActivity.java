@@ -4,7 +4,7 @@ package com.ameron32.apps.tapnotes.di.stabbed;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
-import com.ameron32.apps.tapnotes.ParseApplication;
+import com.ameron32.apps.tapnotes.CoreApplication;
 import com.ameron32.apps.tapnotes.di.ActivityModule;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public abstract class AbsActionBarActivity extends StabbedActionBarActivity {
   @Override
   public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
     super.onCreate(savedInstanceState, persistentState);
-    ParseApplication app = (ParseApplication) getApplication();
+    CoreApplication app = (CoreApplication) getApplication();
   }
 
   @Override

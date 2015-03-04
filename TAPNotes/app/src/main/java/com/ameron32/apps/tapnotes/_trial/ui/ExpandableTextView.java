@@ -312,5 +312,4 @@ public class ExpandableTextView
       return true;
     }
   }
-
 }

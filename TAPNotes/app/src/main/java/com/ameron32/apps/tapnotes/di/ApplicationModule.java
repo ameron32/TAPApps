@@ -19,9 +19,11 @@ package com.ameron32.apps.tapnotes.di;
 import android.content.Context;
 import android.view.LayoutInflater;
 
-import com.ameron32.apps.tapnotes.ParseApplication;
+import com.ameron32.apps.tapnotes.CoreApplication;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsApplication;
 import com.ameron32.apps.tapnotes.di.stabbed.DefaultAndroidApplicationModule;
+import com.squareup.otto.Bus;
+import com.squareup.otto.ThreadEnforcer;
 
 import javax.inject.Singleton;
 
@@ -36,7 +38,7 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
  */
 @Module(
     injects = {
-      ParseApplication.class
+      CoreApplication.class
     },
     addsTo = DefaultAndroidApplicationModule.class,
     library = true)
@@ -68,5 +70,11 @@ public class ApplicationModule {
   @Singleton
   LayoutInflater provideLayoutInflater() {
     return (LayoutInflater) application.getSystemService(LAYOUT_INFLATER_SERVICE);
+  }
+
+  @Provides
+  @Singleton
+  Bus provideOttoEventBusOnUIThread() {
+    return new Bus(ThreadEnforcer.MAIN);
   }
 }
