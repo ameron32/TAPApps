@@ -3,7 +3,7 @@
        xmlns:tools="http://schemas.android.com/tools" >
 
   <RelativeLayout
-      android:background="#EEF2F2F2"
+      android:background="@color/transparent_material_drawer_background"
       android:layout_width="320dp"
       android:layout_height="160dp" >
 
@@ -37,7 +37,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/imageview_character_image_full_size"
         android:layout_alignRight="@+id/imageview_character_image_full_size"
-        android:background="@color/background_transparent_overlay_navigation_drawer"
+        android:background="@color/material_drawer_background_overlay"
         android:gravity="center"
         android:orientation="vertical" >
 

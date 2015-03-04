@@ -27,19 +27,50 @@
   <!--<color name="selected_gray">#ffdbdbdb</color>-->
 
   <!--<color name="character_toolbar_selected_outline">#FFD700</color>-->
-  <color name="background_transparent_overlay_navigation_drawer">#CCFFFFFF</color>
 
   <!--<color name="colorPrimary">#C3C3C3</color>-->
   <!--<color name="colorPrimaryDark">#030303</color>-->
-  <color name="myPrimaryColor">#673ab7</color>
-  <color name="myPrimaryDarkColor">#303f9f</color>
-  <color name="myAccentColor">#536dfe</color>
-  <color name="myDrawerBackground">#F2F2F2</color>
-  <color name="myWindowBackground">#DEDEDE</color>
-  <color name="myTextPrimaryColor">#000000</color>
-  <color name="myTextPrimaryHintColor">#666666</color>
-  <color name="myNavigationColor">#000000</color>
-  <color name="selected_gray">#ffdbdbdb</color>
+
+  <!--<color name="myPrimaryColor">#673ab7</color>-->
+  <!--<color name="myPrimaryDarkColor">#303f9f</color>-->
+  <!--<color name="myAccentColor">#536dfe</color>-->
+  <!--<color name="myDrawerBackground">#F2F2F2</color>-->
+  <!--<color name="myWindowBackground">#DEDEDE</color>-->
+  <!--<color name="myTextPrimaryColor">#000000</color>-->
+  <!--<color name="myTextPrimaryHintColor">#666666</color>-->
+  <!--<color name="myNavigationColor">#000000</color>-->
+  <!--<color name="selected_gray">#ffdbdbdb</color>-->
+
+  <color name="myPrimaryColor"               >#fff19c37</color>
+  <color name="myPrimaryDarkColor"           >#ff9c281f</color>
+  <color name="myAccentColor"                >#fffbe495</color>
+  <color name="myDrawerBackground"           >#ffa58f61</color>
+  <color name="myDrawerTransparentBackground">#dda58f61</color>
+  <color name="myWindowBackground"           >#ff494438</color>
+  <color name="myTextPrimaryColor"           >#ff261f11</color>
+  <color name="myTextPrimaryHintColor"       >#fffbe495</color>
+  <color name="myNavigationColor"            >#ff453920</color>
+  <color name="selected_gray"                >#ff494438</color>
+
+
+  <!-- Material DEFAULT colors -->
+  <color name="material_drawer_primary">@color/myPrimaryColor</color>
+  <color name="material_drawer_primary_dark">@color/myPrimaryDarkColor</color>
+  <color name="material_drawer_primary_light">#ffdec083</color>
+  <color name="material_drawer_accent">@color/myAccentColor</color>
+  <color name="material_drawer_window_background">@color/myWindowBackground</color>
+  <color name="material_drawer_background">@color/myDrawerBackground</color>
+  <color name="transparent_material_drawer_background">@color/myDrawerTransparentBackground</color>
+  <!-- Material DEFAULT text / items colors -->
+  <color name="material_drawer_icons">#FFF</color>
+  <color name="material_drawer_primary_text">@color/myTextPrimaryColor</color>
+  <color name="material_drawer_secondary_text">#ff494438</color>
+  <color name="material_drawer_hint_text">@color/myTextPrimaryHintColor</color>
+  <color name="material_drawer_divider">#ffceaa67</color>
+  <!-- Material DEFAULT drawer colors -->
+  <color name="material_drawer_selected">#fffbe495</color>
+  <color name="material_drawer_selected_text">#ff453920</color>
+  <color name="material_drawer_background_overlay">#ccffffff</color>
 
 
 

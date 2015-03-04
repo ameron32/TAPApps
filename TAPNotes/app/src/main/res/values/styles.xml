@@ -7,7 +7,8 @@
     <!-- All customizations that are NOT specific to a particular API-level can go here. -->
   </style>
 
-  <style name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
+  <!--<style name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+  <style name="CustomTheme" parent="MaterialDrawerTheme.Light.TranslucentStatus">
 
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/myPrimaryColor</item>
