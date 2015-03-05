@@ -3,18 +3,20 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
                 tools:context=".MainActivity">
 
-  <android.support.v4.widget.DrawerLayout
-      android:id="@+id/drawer_layout"
-      xmlns:android="http://schemas.android.com/apk/res/android"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      tools:context="com.ameron32.apps.tapnotes.MainActivity">
+  <!--<android.support.v4.widget.DrawerLayout-->
+      <!--android:id="@+id/drawer_layout"-->
+      <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+      <!--android:layout_width="match_parent"-->
+      <!--android:layout_height="match_parent"-->
+      <!--tools:context="com.ameron32.apps.tapnotes.MainActivity">-->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!-->-->
 
       <!-- INFLATE TOOLBAR HERE -->
       <FrameLayout
@@ -23,18 +25,45 @@
           android:layout_height="wrap_content"/>
       <!-- /TOOLBAR -->
 
-      <!-- INFLATE CONTENT HERE -->
-      <FrameLayout
-          android:id="@+id/container"
+      <com.ameron32.apps.tapnotes._trial.ui.CrossFadeSlidingPaneLayout
+          android:id="@+id/sliding_pane_layout"
+          android:layout_below="@+id/toolbar_actionbar_container"
           android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_below="@+id/toolbar_actionbar_container"/>
-      <!-- /CONTENT -->
+          android:layout_height="match_parent" >
 
-    </RelativeLayout>
+        <!-- LEFT PANE -->
+
+        <FrameLayout
+            android:layout_width="@dimen/side_pane_width"
+            android:layout_height="match_parent"
+            android:background="@color/myDrawerBackground">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:text="FULL"/>
+          <TextView
+              android:layout_width="@dimen/partial_pane_width"
+              android:layout_height="match_parent"
+              android:background="@color/myTextPrimaryHintColor"
+              android:text="PARTIAL"/>
+        </FrameLayout>
+
+        <!-- MAIN CONTENT PANE -->
+
+        <!-- INFLATE CONTENT HERE -->
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/partial_pane_width"/>
+        <!-- /CONTENT -->
+
+      </com.ameron32.apps.tapnotes._trial.ui.CrossFadeSlidingPaneLayout>
+
+    <!--</RelativeLayout>-->
 
     <!--<include layout="@layout/merg_nav_drawer" />-->
 
-  </android.support.v4.widget.DrawerLayout>
+  <!--</android.support.v4.widget.DrawerLayout>-->
 
 </RelativeLayout>

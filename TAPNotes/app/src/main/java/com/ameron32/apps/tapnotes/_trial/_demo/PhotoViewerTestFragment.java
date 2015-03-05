@@ -41,7 +41,7 @@ public class PhotoViewerTestFragment
     mAttacher = new PhotoViewAttacher(mPhotoView);
 
     Picasso.with(getActivity())
-        .load("http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-110001.jpg")
+        .load("http://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-70503.jpg")
         .into(mPhotoView);
   }
 

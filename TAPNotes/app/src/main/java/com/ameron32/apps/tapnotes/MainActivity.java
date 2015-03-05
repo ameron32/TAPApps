@@ -80,7 +80,8 @@ public class MainActivity
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-    mDrawer = new Drawer().withActivity(this).withToolbar(toolbar)
+    mDrawer = new Drawer().withActivity(this)
+        .withTranslucentStatusBar(true).withToolbar(toolbar)
         .withHeader(getHeaderView(R.layout.trial_header_only))
         .withActionBarDrawerToggle(true)
         .addDrawerItems(getDrawerItems())

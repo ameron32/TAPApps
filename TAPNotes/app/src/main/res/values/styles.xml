@@ -8,7 +8,7 @@
   </style>
 
   <!--<style name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
-  <style name="CustomTheme" parent="MaterialDrawerTheme.Light.TranslucentStatus">
+  <style name="CustomTheme" parent="MaterialDrawerTheme.Light">
 
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/myPrimaryColor</item>
@@ -20,6 +20,10 @@
 
     <item name="snack_bar_text_color">@color/myTextPrimaryHintColor</item>
     <item name="snack_bar_duration">5000</item>
+
+    <item name="android:windowNoTitle">true</item>
+    <!-- For 2.x version -->
+    <item name="windowActionBar">false</item>
   </style>
 
   <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
