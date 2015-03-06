@@ -341,14 +341,22 @@ dependencies {
   // https://github.com/thyrlian/AwesomeValidation
   // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-         compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
+//         compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
   //
   //
-  //  MaterialDrawer
+  // MaterialDrawer
   // ---------------------------------------------------------------------------------
   //  https://github.com/mikepenz/MaterialDrawer
   // ---------------------------------------------------------------------------------
          compile('com.mikepenz.materialdrawer:library:1.0.2@aar') { transitive = true }
+  //
+  //
+  // ngAndroid
+  // AngularJS-style
+  // ---------------------------------------------------------------------------------
+  //  https://github.com/davityle/ngAndroid
+  // ---------------------------------------------------------------------------------
+//         compile 'com.github.davityle:ngandroid:0.0.1'
   //
   //
   //
