@@ -20,12 +20,17 @@ buildscript {
   dependencies {
     // required for Fabric/Crashlytics
     classpath 'io.fabric.tools:gradle:1.15.2'
+
+    // suggested in AndroidTestingPlease
+    // https://github.com/farmapromlab/AndroidTestingPlease
+//    classpath 'com.github.jcandksolutions.gradle:android-unit-test:1.6.3'
   }
 }
 
 apply plugin: 'com.android.application'
 // required for Fabric/Crashlytics
 apply plugin: 'io.fabric'
+
 
 repositories {
   // from android-bootstrap
@@ -34,7 +39,7 @@ repositories {
   // required for Fabric/Crashlytics
   maven { url 'https://maven.fabric.io/public' }
 
-  // for SlidingMenu, AndroidRecording, ShowTipsView, Stabbed-Android
+  // for a TON of libraries below
   maven { url "https://jitpack.io" }
 
   // for SnackBar
@@ -47,6 +52,7 @@ repositories {
 
 
 def versionICode = 3
+
 def versionMajor = 0
 def versionMinor = 0
 def versionPatch = 1
@@ -65,7 +71,7 @@ android {
   }
 
   packagingOptions {
-    // Exclude file to avoid
+    // Exclude file to avoid (ButterKnife, Dagger, Otto)
     // Error: Duplicate files during packaging of APK
     exclude 'META-INF/services/javax.annotation.processing.Processor'
   }
@@ -101,9 +107,20 @@ android {
       // zipAlign true // this is default for release
       // testPackageName 'com.ameron32.root.BootstrapApp.tests'
       // testInstrumentationRunner 'android.test.InstrumentationTestRunner' // this is the default
+      // testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
     }
+
+//    sourceSets {
+//      androidTest {
+//        setRoot('src/espressoTest')
+//      }
+//    }
   }
 }
+
+// suggested in AndroidTestingPlease
+// https://github.com/farmapromlab/AndroidTestingPlease
+//apply plugin: 'android-unit-test'
 
 dependencies {
   // =================================================================================
@@ -112,62 +129,67 @@ dependencies {
   //
   // Parse
   // https://parse.com
-  compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
-  compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
+       compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
+       compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
+       compile files('libs/Parse-1.8.2.jar')
+       compile files('libs/ParseCrashReporting-1.8.2.jar')
   //
   // Stabbed-Android [see reference below for details]
   // https://github.com/PSDev/stabbed-android
-  compile fileTree(include: ['stabbed-android-1.0.8.jar'], dir: 'libs')
-  compile files('libs/stabbed-android-1.0.8.jar')
+       compile fileTree(include: ['stabbed-android-1.0.8.jar'], dir: 'libs')
+       compile files('libs/stabbed-android-1.0.8.jar')
   //
   // TODO Remove universal JAR inclusion
   // compile fileTree(include: ['*.jar'], dir: 'libs')
-  compile files('libs/Parse-1.8.2.jar')
-  compile files('libs/ParseCrashReporting-1.8.2.jar')
   //
   //
   // Bolts for Android by Parse/Facebook
   // https://github.com/BoltsFramework/Bolts-Android
-  compile 'com.parse.bolts:bolts-android:1.1.4'
+       compile 'com.parse.bolts:bolts-android:1.1.4'
   //
   // Fabric/Crashlytics
   // https://www.fabric.io
-  compile('com.crashlytics.sdk.android:crashlytics:2.2.1@aar') { transitive = true; }
+       compile('com.crashlytics.sdk.android:crashlytics:2.2.2@aar') { transitive = true; }
   //
   // Google Support Libraries for Material Design
-  compile 'com.android.support:support-v4:21.0.3'
-  compile 'com.android.support:appcompat-v7:21.0.3'
-  compile 'com.android.support:cardview-v7:21.0.3'
-  compile 'com.android.support:recyclerview-v7:21.0.3'
-  compile 'com.android.support:palette-v7:21.0.3'
+       compile 'com.android.support:support-v4:21.0.3'
+       compile 'com.android.support:appcompat-v7:21.0.3'
+       compile 'com.android.support:cardview-v7:21.0.3'
+       compile 'com.android.support:recyclerview-v7:21.0.3'
+       compile 'com.android.support:palette-v7:21.0.3'
+  //
+  // MultiDex for >65K methods
+  // NOTE: More configuration needed. See associated link.
+  // https://developer.android.com/tools/building/multidex.html
+  //     compile 'com.android.support:multidex:1.0.0'
   //
   // ButterKnife view injection
   // https://github.com/JakeWharton/butterknife
   // https://jakewharton.github.io/butterknife/
-  compile 'com.jakewharton:butterknife:6.0.0'
+       compile 'com.jakewharton:butterknife:6.0.0'
   //
   // Picasso by Square concurrent image handling
   // https://github.com/square/picasso
   // https://square.github.io/picasso/
-  compile 'com.squareup.picasso:picasso:2.4.0'
+       compile 'com.squareup.picasso:picasso:2.4.0'
   //
   // IntelliJ smart annotations for improved realtime error checking
   // http://blog.jetbrains.com/idea/2014/10/automatic-notnullnullablecontract-inference-in-intellij-idea-14/
-  compile 'com.intellij:annotations:12.0@jar'
+       compile 'com.intellij:annotations:12.0@jar'
   //
   // RxAndroid of RxJava Reactive Extensions
   // https://github.com/ReactiveX/RxAndroid
-  compile 'io.reactivex:rxjava:1.+'
-  compile 'io.reactivex:rxandroid:0.24.0'
+       compile 'io.reactivex:rxjava:1.0.8'
+       compile 'io.reactivex:rxandroid:0.24.0'
   //
   // Google JSON Deserialization Library
-  compile 'com.google.code.gson:gson:2.3.1'
+       compile 'com.google.code.gson:gson:2.3.1'
   //
   // HTTP
-  compile 'com.squareup.retrofit:retrofit:1.9.0'
+       compile 'com.squareup.retrofit:retrofit:1.9.0'
   //
   // Event Bus
-  compile 'com.squareup:otto:1.3.6'
+       compile 'com.squareup:otto:1.3.6'
   //
   //
   //
@@ -277,6 +299,14 @@ dependencies {
   //       compile 'com.malinskiy:materialicons:1.0.1'
   //
   //
+  // [MATERIAL DESIGN]
+  //   VAST LIBRARY OF MATERIAL DESIGN RESOURCES FOR MISCELLANEOUS USE
+  // ---------------------------------------------------------------------------------
+  // NAME: MaterialDesignLibrary
+  // LINK: https://github.com/navasmdc/MaterialDesignLibrary
+         compile 'com.github.navasmdc:MaterialDesign:1.3@aar'
+  //
+  //
   // [RECORD AUDIO]
   //   VIDEO AND AUDIO RECORDING LIBRARY
   // ---------------------------------------------------------------------------------
@@ -342,6 +372,8 @@ dependencies {
   // https://github.com/dlew/joda-time-android
   // ---------------------------------------------------------------------------------
   //       compile 'net.danlew:android.joda:2.7.1'
+  //         ALTERNATE
+  //       compile 'joda-time:joda-time:2.3'
   //
   //
   // Awesome Validation
@@ -427,4 +459,25 @@ dependencies {
   //       androidTestCompile 'junit:junit:4.11'
   //       androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
   //       androidTestCompile 'org.mockito:mockito-core:1.9.5'
+  //
+  //
+  // from AndroidTestingPlease
+  // https://github.com/farmapromlab/AndroidTestingPlease
+  // Espresso
+  //       androidTestCompile files('lib/espresso-1.1.jar', 'lib/testrunner-1.1.jar', 'lib/testrunner-runtime-1.1.jar')
+  //       androidTestCompile 'com.google.guava:guava:14.0.1'
+  //       androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
+  //       androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
+  //       androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
+  //
+  // Robolectric
+  //       testCompile('junit:junit:4.11') { exclude module: 'hamcrest-core' }
+  //       testCompile files('lib/robolectric-2.4-SNAPSHOT-jar-with-dependencies.jar')
+  //       testCompile 'org.mockito:mockito-all:1.9.5'
+  //       testCompile 'com.squareup:fest-android:1.0.+'
+  //       testCompile 'com.googlecode.catch-exception:catch-exception:1.2.0'
 }
+
+// from AndroidTestingPlease
+// https://github.com/farmapromlab/AndroidTestingPlease
+//tasks.findByName("assembleDebug").dependsOn("testDebugClasses")
