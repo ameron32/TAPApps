@@ -184,7 +184,16 @@ dependencies {
   //       compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
   //
   //
-  // [NOTE EDITOR WIDGET]
+  // [CURRENT PROGRAM]
+  //   SLIDINGPANELAYOUT ALTERNATIVE WITH MORE FUNCTIONALITY
+  // ---------------------------------------------------------------------------------
+  // NAME: SlidingMenu
+  // LINK: https://github.com/jfeinstein10/SlidingMenu
+  //       [jitpack.io]
+  //       compile 'com.github.jfeinstein10:SlidingMenu:4254feca3ece9397cd501921ee733f19ea0fdad8'
+  //
+  //
+  // [NOTE EDITOR]
   //   STRONG CUSTOMIZATION OPTIONS FOR EDITTEXT ALTERNATIVE
   // ---------------------------------------------------------------------------------
   // NAME: MaterialEditText
@@ -192,12 +201,20 @@ dependencies {
   //       compile 'com.rengwuxian.materialedittext:library:1.8.3'
   //
   //
-  // [NOTE EDITOR ADDON for SCRIPTURE NOTES]
+  // [NOTE EDITOR]
   //   MAKE SCRIPTURE REFERENCES "POP" WITHIN EDITTEXT
   // ---------------------------------------------------------------------------------
   // NAME: AwesomeText
   // LINK: https://github.com/JMPergar/AwesomeText
   //       compile 'com.jmpergar:AwesomeText:1.0.0'
+  //
+  //
+  // [NOTE CONTEXTUAL MENU]
+  //   OPTIONAL MENU FOR PROVIDING OPTIONS WHEN A NOTE IS LONG-PRESSED
+  // ---------------------------------------------------------------------------------
+  // NAME: BottomSheet
+  // LINK: https://github.com/soarcn/BottomSheet
+  //       compile 'com.cocosw:bottomsheet:0.6@aar'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -208,21 +225,12 @@ dependencies {
   //       compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
   //
   //
-  // [CURRENT PROGRAM]
-  //   SLIDINGPANELAYOUT ALTERNATIVE WITH MORE FUNCTIONALITY
+  // [GLOBAL UI DECORATION]
+  //   SHADOW LAYOUT
   // ---------------------------------------------------------------------------------
-  // NAME: SlidingMenu
-  // LINK: https://github.com/jfeinstein10/SlidingMenu
-  //       [jitpack.io]
-  //       compile 'com.github.jfeinstein10:SlidingMenu:4254feca3ece9397cd501921ee733f19ea0fdad8'
-  //
-  //
-  // [NOTE CONTEXTUAL MENU]
-  //   OPTIONAL MENU FOR PROVIDING OPTIONS WHEN A NOTE IS LONG-PRESSED
-  // ---------------------------------------------------------------------------------
-  // NAME: BottomSheet
-  // LINK: https://github.com/soarcn/BottomSheet
-  //       compile 'com.cocosw:bottomsheet:0.6@aar'
+  // NAME: ZDepthShadowLayout
+  // LINK: https://github.com/ShogoMizumoto/ZDepthShadowLayout
+  //        compile 'com.github.ShogoMizumoto:ZDepthShadowLayout:6c7ac80cbb'
   //
   //
   // [IMPROVED TOASTS]
@@ -393,6 +401,13 @@ dependencies {
   // ---------------------------------------------------------------------------------
   //       [jitpack.io: commit snapshot only]
   //       compile 'com.github.novoda:material-painter:1941f67da8'
+  //
+  //
+  // RecyclerViewPager
+  // ---------------------------------------------------------------------------------
+  // https://github.com/lsjwzh/RecyclerViewPager
+  // ---------------------------------------------------------------------------------
+         compile 'com.lsjwzh:recyclerviewpager:0.5.0'
   //
   //
   // PhotoView
