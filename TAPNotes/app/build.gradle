@@ -132,71 +132,143 @@ dependencies {
   // CORE REQUIRED LIBRARIES
   // =================================================================================
   //
-  // Parse
-  // https://parse.com
+  // TODO Remove universal JAR inclusion
+  // compile fileTree(include: ['*.jar'], dir: 'libs')
+  //
+  //
+  // Improved Debugging via Chrome Developer Tools
+  // ---------------------------------------------------------------------------------
+  // NAME: Stetho
+  // LINK: https://github.com/facebook/stetho
+  // ---------------------------------------------------------------------------------
+  //     compile 'com.facebook.stetho:stetho:1.0.1'
+  //     compile 'com.facebook.stetho:stetho-okhttp:1.0.1'
+  //     compile 'com.facebook.stetho:stetho-urlconnection:1.0.1'
+  //
+  //
+  // Cloud MBaaS (Mobile Backend as a Service)
+  // ---------------------------------------------------------------------------------
+  // NAME: Parse
+  // LINK: https://parse.com
+  // ---------------------------------------------------------------------------------
        compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
        compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
        compile files('libs/Parse-1.8.2.jar')
        compile files('libs/ParseCrashReporting-1.8.2.jar')
   //
-  // Stabbed-Android [see reference below for details]
-  // https://github.com/PSDev/stabbed-android
+  //
+  // Base classes for Dagger (Square)
+  // ---------------------------------------------------------------------------------
+  // NAME: Stabbed Android
+  // LINK: https://github.com/PSDev/stabbed-android
+  // ---------------------------------------------------------------------------------
        compile fileTree(include: ['stabbed-android-1.0.8.jar'], dir: 'libs')
        compile files('libs/stabbed-android-1.0.8.jar')
   //
-  // TODO Remove universal JAR inclusion
-  // compile fileTree(include: ['*.jar'], dir: 'libs')
   //
-  //
-  // Bolts for Android by Parse/Facebook
-  // https://github.com/BoltsFramework/Bolts-Android
+  // Async simplification
+  // ---------------------------------------------------------------------------------
+  // NAME: Bolts
+  // LINK: https://github.com/BoltsFramework/Bolts-Android
+  // ---------------------------------------------------------------------------------
        compile 'com.parse.bolts:bolts-android:1.1.4'
   //
-  // Fabric/Crashlytics
-  // https://www.fabric.io
+  //
+  // Web-managed Crash Reporting
+  // ---------------------------------------------------------------------------------
+  // NAME: Fabric/Crashlytics
+  // LINK: https://www.fabric.io
+  // ---------------------------------------------------------------------------------
        compile('com.crashlytics.sdk.android:crashlytics:2.2.2@aar') { transitive = true; }
   //
+  //
   // Google Support Libraries for Material Design
+  // ---------------------------------------------------------------------------------
+  // LINK: https://developer.android.com/tools/support-library/index.html
+  //       https://developer.android.com/tools/support-library/features.html
+  // ---------------------------------------------------------------------------------
        compile 'com.android.support:support-v4:21.0.3'
        compile 'com.android.support:appcompat-v7:21.0.3'
        compile 'com.android.support:cardview-v7:21.0.3'
        compile 'com.android.support:recyclerview-v7:21.0.3'
        compile 'com.android.support:palette-v7:21.0.3'
   //
-  // MultiDex for >65K methods
+  //
+  // Large application >65K methods repair
+  // ---------------------------------------------------------------------------------
+  // NAME: MultiDex
+  // LINK: https://developer.android.com/tools/building/multidex.html
+  // ---------------------------------------------------------------------------------
   // NOTE: More configuration needed. See associated link.
-  // https://developer.android.com/tools/building/multidex.html
   //     compile 'com.android.support:multidex:1.0.0'
   //
-  // ButterKnife view injection
-  // https://github.com/JakeWharton/butterknife
-  // https://jakewharton.github.io/butterknife/
+  //
+  // View injection
+  // ---------------------------------------------------------------------------------
+  // NAME: ButterKnife
+  // LINK: https://github.com/JakeWharton/butterknife
+  //       https://jakewharton.github.io/butterknife/
+  // ---------------------------------------------------------------------------------
        compile 'com.jakewharton:butterknife:6.0.0'
   //
-  // Picasso by Square concurrent image handling
-  // https://github.com/square/picasso
-  // https://square.github.io/picasso/
+  //
+  // Concurrent image handling
+  // ---------------------------------------------------------------------------------
+  // NAME: Picasso
+  // LINK: https://github.com/square/picasso
+  //       https://square.github.io/picasso/
+  // ---------------------------------------------------------------------------------
        compile 'com.squareup.picasso:picasso:2.4.0'
   //
-  // IntelliJ smart annotations for improved realtime error checking
-  // http://blog.jetbrains.com/idea/2014/10/automatic-notnullnullablecontract-inference-in-intellij-idea-14/
+  //
+  // Improved realtime error checking
+  // ---------------------------------------------------------------------------------
+  // NAME: Intellij Annotations
+  // LINK: http://blog.jetbrains.com/idea/2014/10/automatic-notnullnullablecontract-inference-in-intellij-idea-14/
+  // ---------------------------------------------------------------------------------
        compile 'com.intellij:annotations:12.0@jar'
   //
-  // RxAndroid of RxJava Reactive Extensions
-  // https://github.com/ReactiveX/RxAndroid
+  //
+  // Reactive Extensions
+  // ---------------------------------------------------------------------------------
+  // NAME: RxJava & RxAndroid
+  // LINK: https://github.com/ReactiveX/RxAndroid
+  // ---------------------------------------------------------------------------------
        compile 'io.reactivex:rxjava:1.0.8'
        compile 'io.reactivex:rxandroid:0.24.0'
   //
+  //
   // Google JSON Deserialization Library
+  // ---------------------------------------------------------------------------------
+  // NAME: GSON
+  // LINK: https://code.google.com/p/google-gson/
+  // ---------------------------------------------------------------------------------
        compile 'com.google.code.gson:gson:2.3.1'
   //
+  //
   // HTTP
+  // ---------------------------------------------------------------------------------
+  // NAME: Retrofit
+  // LINK: https://github.com/square/retrofit
+  //       https://square.github.io/retrofit/
+  // ---------------------------------------------------------------------------------
        compile 'com.squareup.retrofit:retrofit:1.9.0'
   //
+  //
   // Event Bus
+  // ---------------------------------------------------------------------------------
+  // NAME: Otto
+  // LINK: https://github.com/square/otto
+  //       https://square.github.io/otto/
+  // ---------------------------------------------------------------------------------
        compile 'com.squareup:otto:1.3.6'
   //
-  // Guava
+  //
+  // Google Core Libraries for Java 6+
+  // ---------------------------------------------------------------------------------
+  // NAME: Guava
+  // LINK: https://github.com/google/guava
+  // ---------------------------------------------------------------------------------
        compile 'com.google.guava:guava:18.0'
   //
   //
@@ -226,6 +298,8 @@ dependencies {
   // [NOTE EDITOR]
   //   STRONG CUSTOMIZATION OPTIONS FOR EDITTEXT ALTERNATIVE
   // ---------------------------------------------------------------------------------
+  //   Error: typeface in colors.xml
+  // ---------------------------------------------------------------------------------
   // NAME: MaterialEditText
   // LINK: https://github.com/rengwuxian/MaterialEditText
 //         compile 'com.rengwuxian.materialedittext:library:1.8.3'
@@ -236,7 +310,7 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: AwesomeText
   // LINK: https://github.com/JMPergar/AwesomeText
-//         compile 'com.jmpergar:AwesomeText:1.0.0'
+         compile 'com.jmpergar:AwesomeText:1.0.0'
   //
   //
   // [NOTE CONTEXTUAL MENU]
@@ -244,7 +318,7 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: BottomSheet
   // LINK: https://github.com/soarcn/BottomSheet
-//         compile 'com.cocosw:bottomsheet:0.6@aar'
+         compile 'com.cocosw:bottomsheet:0.6@aar'
   //
   //
   // [GLOBAL UI DECORATION]
