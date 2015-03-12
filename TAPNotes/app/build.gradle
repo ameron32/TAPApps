@@ -511,6 +511,16 @@ dependencies {
 //           compile 'com.github.davityle:ngandroid:0.0.1'
   //
   //
+  // Android Utilities and Collections Library
+  // ---------------------------------------------------------------------------------
+  // NAME: Genius-Android
+  // LINK: http://genius.qiujuer.net/
+  //       http://genius.qiujuer.net/second/second-module.html
+  //       https://github.com/qiujuer/Genius-Android
+  // ---------------------------------------------------------------------------------
+           compile 'com.github.qiujuer:genius:2.4.0'
+  //
+  //
   //
   //
   // =================================================================================
@@ -566,7 +576,7 @@ dependencies {
            compile 'com.lsjwzh:recyclerviewpager:0.5.0'
   //
   //
-  // ImageView with zoom and pan
+  // ImageView with Zoom/Pan
   // ---------------------------------------------------------------------------------
   // NAME: PhotoView
   // LINK: https://github.com/chrisbanes/PhotoView
@@ -582,6 +592,16 @@ dependencies {
 //           compile 'com.github.castorflex.smoothprogressbar:library:1.1.0-SNAPSHOT'
   //         OR
            compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0-SNAPSHOT'
+  //
+  //
+  // Stream Audio [OGG Format]
+  // ---------------------------------------------------------------------------------
+  // NAME: AndroidOggStreamPlayer
+  // LINK: https://github.com/radzio/AndroidOggStreamPlayer
+  // ---------------------------------------------------------------------------------
+  //       [jitpack.io]
+  //       ERROR: Gradle build fails for some reason related to pom.xml
+//           compile 'com.github.radzio:AndroidOggStreamPlayer:1.0.1'
   //
   //
   //
