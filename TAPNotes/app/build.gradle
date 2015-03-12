@@ -141,9 +141,9 @@ dependencies {
   // NAME: Stetho
   // LINK: https://github.com/facebook/stetho
   // ---------------------------------------------------------------------------------
-  //     compile 'com.facebook.stetho:stetho:1.0.1'
-  //     compile 'com.facebook.stetho:stetho-okhttp:1.0.1'
-  //     compile 'com.facebook.stetho:stetho-urlconnection:1.0.1'
+//           compile 'com.facebook.stetho:stetho:1.0.1'
+//           compile 'com.facebook.stetho:stetho-okhttp:1.0.1'
+//           compile 'com.facebook.stetho:stetho-urlconnection:1.0.1'
   //
   //
   // Cloud MBaaS (Mobile Backend as a Service)
@@ -151,27 +151,27 @@ dependencies {
   // NAME: Parse
   // LINK: https://parse.com
   // ---------------------------------------------------------------------------------
-       compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
-       compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
-       compile files('libs/Parse-1.8.2.jar')
-       compile files('libs/ParseCrashReporting-1.8.2.jar')
+           compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
+           compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
+           compile files('libs/Parse-1.8.2.jar')
+           compile files('libs/ParseCrashReporting-1.8.2.jar')
   //
   //
-  // Base classes for Dagger (Square)
+  // Base Classes for Dagger (Square)
   // ---------------------------------------------------------------------------------
   // NAME: Stabbed Android
   // LINK: https://github.com/PSDev/stabbed-android
   // ---------------------------------------------------------------------------------
-       compile fileTree(include: ['stabbed-android-1.0.8.jar'], dir: 'libs')
-       compile files('libs/stabbed-android-1.0.8.jar')
+           compile fileTree(include: ['stabbed-android-1.0.8.jar'], dir: 'libs')
+           compile files('libs/stabbed-android-1.0.8.jar')
   //
   //
-  // Async simplification
+  // Async Simplification
   // ---------------------------------------------------------------------------------
   // NAME: Bolts
   // LINK: https://github.com/BoltsFramework/Bolts-Android
   // ---------------------------------------------------------------------------------
-       compile 'com.parse.bolts:bolts-android:1.1.4'
+           compile 'com.parse.bolts:bolts-android:1.1.4'
   //
   //
   // Web-managed Crash Reporting
@@ -179,19 +179,20 @@ dependencies {
   // NAME: Fabric/Crashlytics
   // LINK: https://www.fabric.io
   // ---------------------------------------------------------------------------------
-       compile('com.crashlytics.sdk.android:crashlytics:2.2.2@aar') { transitive = true; }
+           compile('com.crashlytics.sdk.android:crashlytics:2.2.2@aar') { transitive = true; }
   //
   //
-  // Google Support Libraries for Material Design
+  // Support Libraries for Material Design
   // ---------------------------------------------------------------------------------
+  // NAME: Google Support & AppCompat Libraries
   // LINK: https://developer.android.com/tools/support-library/index.html
   //       https://developer.android.com/tools/support-library/features.html
   // ---------------------------------------------------------------------------------
-       compile 'com.android.support:support-v4:21.0.3'
-       compile 'com.android.support:appcompat-v7:21.0.3'
-       compile 'com.android.support:cardview-v7:21.0.3'
-       compile 'com.android.support:recyclerview-v7:21.0.3'
-       compile 'com.android.support:palette-v7:21.0.3'
+           compile 'com.android.support:support-v4:21.0.3'
+           compile 'com.android.support:appcompat-v7:21.0.3'
+           compile 'com.android.support:cardview-v7:21.0.3'
+           compile 'com.android.support:recyclerview-v7:21.0.3'
+           compile 'com.android.support:palette-v7:21.0.3'
   //
   //
   // Large application >65K methods repair
@@ -200,7 +201,7 @@ dependencies {
   // LINK: https://developer.android.com/tools/building/multidex.html
   // ---------------------------------------------------------------------------------
   // NOTE: More configuration needed. See associated link.
-  //     compile 'com.android.support:multidex:1.0.0'
+  //         compile 'com.android.support:multidex:1.0.0'
   //
   //
   // View injection
@@ -209,7 +210,7 @@ dependencies {
   // LINK: https://github.com/JakeWharton/butterknife
   //       https://jakewharton.github.io/butterknife/
   // ---------------------------------------------------------------------------------
-       compile 'com.jakewharton:butterknife:6.0.0'
+           compile 'com.jakewharton:butterknife:6.0.0'
   //
   //
   // Concurrent image handling
@@ -218,7 +219,7 @@ dependencies {
   // LINK: https://github.com/square/picasso
   //       https://square.github.io/picasso/
   // ---------------------------------------------------------------------------------
-       compile 'com.squareup.picasso:picasso:2.4.0'
+           compile 'com.squareup.picasso:picasso:2.4.0'
   //
   //
   // Improved realtime error checking
@@ -226,7 +227,7 @@ dependencies {
   // NAME: Intellij Annotations
   // LINK: http://blog.jetbrains.com/idea/2014/10/automatic-notnullnullablecontract-inference-in-intellij-idea-14/
   // ---------------------------------------------------------------------------------
-       compile 'com.intellij:annotations:12.0@jar'
+           compile 'com.intellij:annotations:12.0@jar'
   //
   //
   // Reactive Extensions
@@ -234,8 +235,8 @@ dependencies {
   // NAME: RxJava & RxAndroid
   // LINK: https://github.com/ReactiveX/RxAndroid
   // ---------------------------------------------------------------------------------
-       compile 'io.reactivex:rxjava:1.0.8'
-       compile 'io.reactivex:rxandroid:0.24.0'
+           compile 'io.reactivex:rxjava:1.0.8'
+           compile 'io.reactivex:rxandroid:0.24.0'
   //
   //
   // Google JSON Deserialization Library
@@ -243,7 +244,7 @@ dependencies {
   // NAME: GSON
   // LINK: https://code.google.com/p/google-gson/
   // ---------------------------------------------------------------------------------
-       compile 'com.google.code.gson:gson:2.3.1'
+           compile 'com.google.code.gson:gson:2.3.1'
   //
   //
   // HTTP
@@ -252,7 +253,7 @@ dependencies {
   // LINK: https://github.com/square/retrofit
   //       https://square.github.io/retrofit/
   // ---------------------------------------------------------------------------------
-       compile 'com.squareup.retrofit:retrofit:1.9.0'
+           compile 'com.squareup.retrofit:retrofit:1.9.0'
   //
   //
   // Event Bus
@@ -261,7 +262,7 @@ dependencies {
   // LINK: https://github.com/square/otto
   //       https://square.github.io/otto/
   // ---------------------------------------------------------------------------------
-       compile 'com.squareup:otto:1.3.6'
+           compile 'com.squareup:otto:1.3.6'
   //
   //
   // Google Core Libraries for Java 6+
@@ -269,7 +270,7 @@ dependencies {
   // NAME: Guava
   // LINK: https://github.com/google/guava
   // ---------------------------------------------------------------------------------
-       compile 'com.google.guava:guava:18.0'
+           compile 'com.google.guava:guava:18.0'
   //
   //
   //
@@ -283,7 +284,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: Expandable-RecyclerView
   // LINK: https://github.com/levelup/Expandable-RecyclerView
-//         compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
+  // ---------------------------------------------------------------------------------
+           compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
   //
   //
   // [CURRENT PROGRAM]
@@ -291,18 +293,19 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: SlidingMenu
   // LINK: https://github.com/jfeinstein10/SlidingMenu
+  // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-//         compile 'com.github.jfeinstein10:SlidingMenu:4254feca3ece9397cd501921ee733f19ea0fdad8'
+//           compile 'com.github.jfeinstein10:SlidingMenu:4254feca3ece9397cd501921ee733f19ea0fdad8'
   //
   //
   // [NOTE EDITOR]
   //   STRONG CUSTOMIZATION OPTIONS FOR EDITTEXT ALTERNATIVE
   // ---------------------------------------------------------------------------------
-  //   Error: typeface in colors.xml
-  // ---------------------------------------------------------------------------------
   // NAME: MaterialEditText
   // LINK: https://github.com/rengwuxian/MaterialEditText
-//         compile 'com.rengwuxian.materialedittext:library:1.8.3'
+  // ---------------------------------------------------------------------------------
+  //       ERROR: typeface in colors.xml
+//           compile 'com.rengwuxian.materialedittext:library:1.8.3'
   //
   //
   // [NOTE EDITOR]
@@ -310,7 +313,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: AwesomeText
   // LINK: https://github.com/JMPergar/AwesomeText
-         compile 'com.jmpergar:AwesomeText:1.0.0'
+  // ---------------------------------------------------------------------------------
+           compile 'com.jmpergar:AwesomeText:1.0.0'
   //
   //
   // [NOTE CONTEXTUAL MENU]
@@ -318,7 +322,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: BottomSheet
   // LINK: https://github.com/soarcn/BottomSheet
-         compile 'com.cocosw:bottomsheet:0.6@aar'
+  // ---------------------------------------------------------------------------------
+           compile 'com.cocosw:bottomsheet:0.6@aar'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -326,7 +331,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: Material Shadow 9-patch
   // LINK: https://github.com/h6ah4i/android-materialshadowninepatch
-//         compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
+  // ---------------------------------------------------------------------------------
+           compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -334,7 +340,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: ZDepthShadowLayout
   // LINK: https://github.com/ShogoMizumoto/ZDepthShadowLayout
-  //        compile 'com.github.ShogoMizumoto:ZDepthShadowLayout:6c7ac80cbb'
+  // ---------------------------------------------------------------------------------
+  //         compile 'com.github.ShogoMizumoto:ZDepthShadowLayout:6c7ac80cbb'
   //
   //
   // [IMPROVED TOASTS]
@@ -342,10 +349,11 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: SnackBar
   // LINK: https://github.com/Kennyc1012/SnackBar
+  // ---------------------------------------------------------------------------------
   // For api11+
-         compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api11Release@aar'
+           compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api11Release@aar'
   // For api8+
-//         compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api8Release@aar'
+//           compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api8Release@aar'
   //
   //
   // ["ADD NEW PROGRAM" BUTTON on PROGRAM SELECTION SCREEN]
@@ -353,7 +361,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: Floating Action Button
   // LINK: https://github.com/makovkastar/FloatingActionButton
-         compile 'com.melnykov:floatingactionbutton:1.2.0'
+  // ---------------------------------------------------------------------------------
+           compile 'com.melnykov:floatingactionbutton:1.2.0'
   //
   //
   // [EPUB FILE-SELECTOR]
@@ -361,7 +370,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: FilePicker Activity
   // LINK: https://github.com/spacecowboy/NoNonsense-FilePicker
-         compile 'com.nononsenseapps:filepicker:1.1.3'
+  // ---------------------------------------------------------------------------------
+           compile 'com.nononsenseapps:filepicker:1.1.3'
   //
   //
   // [APP WALKTHROUGH]
@@ -369,8 +379,9 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: ShowTipsView
   // LINK: https://github.com/fredericojssilva/ShowTipsView
+  // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-//         compile 'com.github.fredericojssilva:ShowTipsView:e7a2584a86f670414c1f9605e3af49cfde3480c7'
+//           compile 'com.github.fredericojssilva:ShowTipsView:e7a2584a86f670414c1f9605e3af49cfde3480c7'
   //
   //
   // [ASSORTED ICONS]
@@ -378,7 +389,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: AndroidMaterialIcons
   // LINK: https://github.com/Malinskiy/android-material-icons
-         compile 'com.malinskiy:materialicons:1.0.1'
+  // ---------------------------------------------------------------------------------
+           compile 'com.malinskiy:materialicons:1.0.1'
   //
   //
   // [MATERIAL DESIGN]
@@ -386,7 +398,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: MaterialDesignLibrary
   // LINK: https://github.com/navasmdc/MaterialDesignLibrary
-         compile 'com.github.navasmdc:MaterialDesign:1.3@aar'
+  // ---------------------------------------------------------------------------------
+           compile 'com.github.navasmdc:MaterialDesign:1.3@aar'
   //
   //
   // [RECORD AUDIO]
@@ -394,8 +407,9 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: Android Recording Library
   // LINK: https://github.com/steelkiwi/AndroidRecording
+  // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-//         compile 'com.github.steelkiwi:AndroidRecording:4d7956c30dbd6b12e8477a1070773730fa31ed50'
+//           compile 'com.github.steelkiwi:AndroidRecording:4d7956c30dbd6b12e8477a1070773730fa31ed50'
   //
   //
   // [PROPER FONT TEXTVIEWS]
@@ -403,7 +417,8 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NAME: RobotoTextView
   // LINK: https://github.com/johnkil/Android-RobotoTextView
-         compile 'com.github.johnkil.android-robototextview:robototextview:2.3.0'
+  // ---------------------------------------------------------------------------------
+           compile 'com.github.johnkil.android-robototextview:robototextview:2.3.0'
   //
   //
   //
@@ -413,72 +428,87 @@ dependencies {
   // =================================================================================
   //
   // IMPORTED LIBRARIES FROM android-bootstrap
-  // Dependency Injection
+  //
+  // Dependency Injection Framework
   // ---------------------------------------------------------------------------------
-  // https://square.github.io/dagger/
-  // https://github.com/square/dagger
+  // NAME: Dagger 1.0
+  // LINK: https://square.github.io/dagger/
+  //       https://github.com/square/dagger
   // ---------------------------------------------------------------------------------
-         compile 'javax.inject:javax.inject:1@jar'
-         compile 'com.squareup.dagger:dagger:1.2.2'
-         provided 'com.squareup.dagger:dagger-compiler:1.2.2'
+           compile 'javax.inject:javax.inject:1@jar'
+           compile 'com.squareup.dagger:dagger:1.2.2'
+           provided 'com.squareup.dagger:dagger-compiler:1.2.2'
   //
   //
-  // TEMPLATE dagger injection classes
+  // Template Dagger Injection Classes
   // ---------------------------------------------------------------------------------
-  // https://github.com/PSDev/stabbed-android
+  // NAME: Stabbed Android
+  // LINK: https://github.com/PSDev/stabbed-android
   // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-  //       TODO Using JAR. Gradle build fails for some reason related to pom.xml
-//         compile 'com.github.PSDev:stabbed-android:1.0.8'
+  //       TODO Currently using JAR instead. Gradle build fails for some reason related to pom.xml
+//           compile 'com.github.PSDev:stabbed-android:1.0.8'
   //
   //
-  // ViewPager Indicator
+  // Tracking Indicator for ViewPagers
   // ---------------------------------------------------------------------------------
-//         compile 'com.actionbarsherlock:viewpagerindicator:2.4.1'
-  //
-  //
-  // Nine Old Androids
+  // NAME: ViewPager Indicator
+  // LINK: http://viewpagerindicator.com/
+  //       https://github.com/JakeWharton/ViewPagerIndicator
   // ---------------------------------------------------------------------------------
-//         compile 'com.nineoldandroids:library:2.4.0'
+//           compile 'com.actionbarsherlock:viewpagerindicator:2.4.1'
   //
   //
-  // Timber [Logging] by Jake Wharton
+  // Animation Library for REALLY OLD DEVICES
   // ---------------------------------------------------------------------------------
-  // https://github.com/JakeWharton/timber
+  // NAME: Nine Old Androids
+  // LINK: https://github.com/JakeWharton/NineOldAndroids
   // ---------------------------------------------------------------------------------
-         compile 'com.jakewharton.timber:timber:2.7.1'
+  //       WARNING: Use only as a last resort
+//           compile 'com.nineoldandroids:library:2.4.0'
   //
   //
-  // Joda-Time for Android
+  // Logging
   // ---------------------------------------------------------------------------------
-  // https://github.com/dlew/joda-time-android
+  // NAME: Timber
+  // LINK: https://github.com/JakeWharton/timber
   // ---------------------------------------------------------------------------------
-         compile 'net.danlew:android.joda:2.7.1'
+           compile 'com.jakewharton.timber:timber:2.7.1'
+  //
+  //
+  // Improved Time/Date Handling
+  // ---------------------------------------------------------------------------------
+  // NAME: Joda-Time [Android]
+  // LINK: https://github.com/dlew/joda-time-android
+  // ---------------------------------------------------------------------------------
+           compile 'net.danlew:android.joda:2.7.1'
   //         ALTERNATE
-//         compile 'joda-time:joda-time:2.3'
+//           compile 'joda-time:joda-time:2.3'
   //
   //
-  // Awesome Validation
+  // Simplified Validation for EditText
   // ---------------------------------------------------------------------------------
-  // https://github.com/thyrlian/AwesomeValidation
+  // NAME: Awesome Validation
+  // LINK: https://github.com/thyrlian/AwesomeValidation
   // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-//         compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
+//           compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
   //
   //
-  // MaterialDrawer
+  // Fast Implementation Navigation Drawer in Material Design
   // ---------------------------------------------------------------------------------
-  //  https://github.com/mikepenz/MaterialDrawer
+  // NAME: MaterialDrawer
+  // LINK: https://github.com/mikepenz/MaterialDrawer
   // ---------------------------------------------------------------------------------
-         compile('com.mikepenz.materialdrawer:library:1.0.2@aar') { transitive = true }
+           compile('com.mikepenz.materialdrawer:library:1.0.2@aar') { transitive = true }
   //
   //
-  // ngAndroid
   // AngularJS-style
   // ---------------------------------------------------------------------------------
-  //  https://github.com/davityle/ngAndroid
+  // NAME: ngAndroid
+  // LINK: https://github.com/davityle/ngAndroid
   // ---------------------------------------------------------------------------------
-//         compile 'com.github.davityle:ngandroid:0.0.1'
+//           compile 'com.github.davityle:ngandroid:0.0.1'
   //
   //
   //
@@ -487,64 +517,71 @@ dependencies {
   // UNLIKELY LIBRARIES STORED FOR REMINDER, ONLY IF NEEDED
   // =================================================================================
   //
-  // SuperRecyclerView
+  // Improved RecyclerView
   // ---------------------------------------------------------------------------------
-  // https://github.com/Malinskiy/SuperRecyclerView
+  // NAME: SuperRecyclerView
+  // LINK: https://github.com/Malinskiy/SuperRecyclerView
   // ---------------------------------------------------------------------------------
-//         compile 'com.malinskiy:superrecyclerview:1.0.1'
+//           compile 'com.malinskiy:superrecyclerview:1.0.1'
   //         [required library for ItemDecoration headers]
-//         compile 'com.eowise:recyclerview-stickyheaders:0.5.0@aar'
+//           compile 'com.eowise:recyclerview-stickyheaders:0.5.0@aar'
   //
   //
-  // UltimateRecyclerView
+  // Improved SuperRecyclerView
   // ---------------------------------------------------------------------------------
-  // https://github.com/cymcsg/UltimateRecyclerView
+  // NAME: UltimateRecyclerView
+  // LINK: https://github.com/cymcsg/UltimateRecyclerView
   // ---------------------------------------------------------------------------------
-         compile 'com.marshalchen.ultimaterecyclerview:library:0.2.1'
+           compile 'com.marshalchen.ultimaterecyclerview:library:0.2.1'
   //
   //
-  // Parse with LoginUI
+  // Activities/Fragments for Parse
   // ---------------------------------------------------------------------------------
-  // https://github.com/ParsePlatform/ParseUI-Android
+  // NAME: ParseUI for Parse
+  // LINK: https://github.com/ParsePlatform/ParseUI-Android
   // ---------------------------------------------------------------------------------
   //       [jitpack.io: commit snapshot only]
-//         compile 'com.github.ParsePlatform:ParseUI-Android:3b2e94f2ee'
+//           compile 'com.github.ParsePlatform:ParseUI-Android:3b2e94f2ee'
   //         OR
   //       [needs ParseLoginUI project module]
-//         compile project(':ParseLoginUI')
-  //         [required if using facebook login]
-//         compile 'com.facebook.android:facebook-android-sdk:3.21.1'
+//           compile project(':ParseLoginUI')
+  //       [required if using facebook login]
+//           compile 'com.facebook.android:facebook-android-sdk:3.21.1'
   //
   //
-  // Material Painter / Color Palette Viewer
+  // Color Palette Views
   // ---------------------------------------------------------------------------------
-  // https://github.com/novoda/material-painter
+  // NAME: Material Painter
+  // LINK: https://github.com/novoda/material-painter
   // ---------------------------------------------------------------------------------
   //       [jitpack.io: commit snapshot only]
-//         compile 'com.github.novoda:material-painter:1941f67da8'
+//           compile 'com.github.novoda:material-painter:1941f67da8'
   //
   //
-  // RecyclerViewPager
+  // Improved ViewPager
   // ---------------------------------------------------------------------------------
-  // https://github.com/lsjwzh/RecyclerViewPager
+  // NAME: RecyclerViewPager
+  // LINK: https://github.com/lsjwzh/RecyclerViewPager
   // ---------------------------------------------------------------------------------
-//         compile 'com.lsjwzh:recyclerviewpager:0.5.0'
+           compile 'com.lsjwzh:recyclerviewpager:0.5.0'
   //
   //
-  // PhotoView
+  // ImageView with zoom and pan
   // ---------------------------------------------------------------------------------
-  // https://github.com/chrisbanes/PhotoView
+  // NAME: PhotoView
+  // LINK: https://github.com/chrisbanes/PhotoView
   // ---------------------------------------------------------------------------------
-         compile 'com.github.chrisbanes.photoview:library:1.2.3'
+           compile 'com.github.chrisbanes.photoview:library:1.2.3'
   //
   //
-  // SmoothProgressBar
+  // ProgressBar in Material Design
   // ---------------------------------------------------------------------------------
-  // https://github.com/castorflex/SmoothProgressBar
+  // NAME: SmoothProgressBar
+  // LINK: https://github.com/castorflex/SmoothProgressBar
   // ---------------------------------------------------------------------------------
-//         compile 'com.github.castorflex.smoothprogressbar:library:1.1.0-SNAPSHOT'
+//           compile 'com.github.castorflex.smoothprogressbar:library:1.1.0-SNAPSHOT'
   //         OR
-//         compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0-SNAPSHOT'
+           compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0-SNAPSHOT'
   //
   //
   //
@@ -554,26 +591,26 @@ dependencies {
   // =================================================================================
   //
   // IMPORTED TESTS FROM android-bootstrap
-  //       androidTestCompile 'junit:junit:4.11'
-  //       androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
-  //       androidTestCompile 'org.mockito:mockito-core:1.9.5'
+//           androidTestCompile 'junit:junit:4.11'
+//           androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+//           androidTestCompile 'org.mockito:mockito-core:1.9.5'
   //
   //
   // from AndroidTestingPlease
   // https://github.com/farmapromlab/AndroidTestingPlease
   // Espresso
-  //       androidTestCompile files('lib/espresso-1.1.jar', 'lib/testrunner-1.1.jar', 'lib/testrunner-runtime-1.1.jar')
-  //       androidTestCompile 'com.google.guava:guava:14.0.1'
-  //       androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
-  //       androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
-  //       androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
+//           androidTestCompile files('lib/espresso-1.1.jar', 'lib/testrunner-1.1.jar', 'lib/testrunner-runtime-1.1.jar')
+//           androidTestCompile 'com.google.guava:guava:14.0.1'
+//           androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
+//           androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
+//           androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
   //
   // Robolectric
-  //       testCompile('junit:junit:4.11') { exclude module: 'hamcrest-core' }
-  //       testCompile files('lib/robolectric-2.4-SNAPSHOT-jar-with-dependencies.jar')
-  //       testCompile 'org.mockito:mockito-all:1.9.5'
-  //       testCompile 'com.squareup:fest-android:1.0.+'
-  //       testCompile 'com.googlecode.catch-exception:catch-exception:1.2.0'
+//           testCompile('junit:junit:4.11') { exclude module: 'hamcrest-core' }
+//           testCompile files('lib/robolectric-2.4-SNAPSHOT-jar-with-dependencies.jar')
+//           testCompile 'org.mockito:mockito-all:1.9.5'
+//           testCompile 'com.squareup:fest-android:1.0.+'
+//           testCompile 'com.googlecode.catch-exception:catch-exception:1.2.0'
 }
 
 // from AndroidTestingPlease
