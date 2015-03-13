@@ -71,6 +71,8 @@ android {
     versionCode versionICode
     versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
     buildConfigField "String", "BUILD_TIME", "\"${buildTime()}\""
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
 
   packagingOptions {
@@ -109,9 +111,10 @@ android {
       // proguardFile '..\proguard.cfg'
       // signingConfig signingConfigs.release
       // zipAlign true // this is default for release
-      // testPackageName 'com.ameron32.root.BootstrapApp.tests'
+      // testPackageName 'com.ameron32.apps.tapnotes.tests'
       // testInstrumentationRunner 'android.test.InstrumentationTestRunner' // this is the default
       // testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
+      // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
 //    sourceSets {
@@ -342,6 +345,15 @@ dependencies {
   // LINK: https://github.com/ShogoMizumoto/ZDepthShadowLayout
   // ---------------------------------------------------------------------------------
   //         compile 'com.github.ShogoMizumoto:ZDepthShadowLayout:6c7ac80cbb'
+  //
+  //
+  // [CALENDAR IMPLEMENTATION]
+  //   IMPROVED CALENDAR INTERFACE
+  // ---------------------------------------------------------------------------------
+  // NAME: Material Calendar View
+  // LINK: https://github.com/prolificinteractive/material-calendarview
+  // ---------------------------------------------------------------------------------
+           compile 'com.prolificinteractive:material-calendarview:0.2.5'
   //
   //
   // [IMPROVED TOASTS]
@@ -620,10 +632,19 @@ dependencies {
   // https://github.com/farmapromlab/AndroidTestingPlease
   // Espresso
 //           androidTestCompile files('lib/espresso-1.1.jar', 'lib/testrunner-1.1.jar', 'lib/testrunner-runtime-1.1.jar')
-//           androidTestCompile 'com.google.guava:guava:14.0.1'
+//           androidTestCompile 'com.google.guava:guava:18.0'
+  //
+           androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
+           androidTestCompile 'com.android.support.test:testing-support-lib:0.1'
+//           androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.0'
+  //
 //           androidTestCompile 'org.hamcrest:hamcrest-integration:1.1'
 //           androidTestCompile 'org.hamcrest:hamcrest-core:1.1'
 //           androidTestCompile 'org.hamcrest:hamcrest-library:1.1'
+  //
+//           androidTestCompile 'org.hamcrest:hamcrest-integration:1.3'
+//           androidTestCompile 'org.hamcrest:hamcrest-core:1.3'
+//           androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
   //
   // Robolectric
 //           testCompile('junit:junit:4.11') { exclude module: 'hamcrest-core' }
