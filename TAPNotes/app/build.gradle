@@ -433,6 +433,15 @@ dependencies {
            compile 'com.github.johnkil.android-robototextview:robototextview:2.3.0'
   //
   //
+  // [ACTIVITY TRANSITIONS]
+  //   REFERENCE-ONLY ACTIVITY TRANSITIONS FOR LOLLIPOP 5.0+ [api21+]
+  // ---------------------------------------------------------------------------------
+  // NAME: Material Animations
+  // LINK: https://github.com/lgvalle/Material-Animations
+  // ---------------------------------------------------------------------------------
+  //       no library, reference only
+  //
+  //
   //
   //
   // =================================================================================
