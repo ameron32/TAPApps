@@ -75,7 +75,7 @@ public class LoginActivity extends ActionBarActivity implements
     OnLoginSuccessListener, OnLoadingListener {
 
 
-  public static final String LOG_TAG = "ParseLoginActivity";
+  public static final String LOG_TAG = "LoginActivity";
 
 
   // All login UI fragment transactions will happen within this parent layout element.
@@ -93,10 +93,10 @@ public class LoginActivity extends ActionBarActivity implements
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-
-
     this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
+    super.onCreate(savedInstanceState);
 
 
     // Combine options from incoming intent and the activity metadata

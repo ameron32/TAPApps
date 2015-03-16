@@ -1,6 +1,7 @@
 package com.ameron32.apps.tapnotes.parse.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -23,15 +24,24 @@ public abstract class
       AbsRecyclerQueryAdapter<T, AbsTableQueryAdapter.ViewHolder<U>>
 {
 
+  private static final String TAG = AbsTableQueryAdapter.class.getSimpleName();
+
   private T mHeaderObject;
 //  private List<V> mDataset;
 
+  private static final int ROW_LAYOUT_DEFAULT = R.layout.simple_table_row_layout;
   private int mRowLayoutResource;
   protected int getRowLayoutResource() {return mRowLayoutResource;}
+
+  private static final int CELL_LAYOUT_DEFAULT = R.layout.simple_table_cell_textview_container;
   private int mCellLayoutResource;
   protected int getCellLayoutResource() {return mCellLayoutResource;}
+
+  private static final int TEXTVIEW_RESOURCE_DEFAULT = R.id.textview;
   private int mTextViewResourceId;
   protected int getTextViewResourceId() {return mTextViewResourceId;}
+
+
 
   public static class ViewHolder<U extends TableRowLayout>
       extends RecyclerView.ViewHolder
@@ -44,29 +54,7 @@ public abstract class
     }
   }
 
-//  public TableAdapter(
-//      List<? extends Columnable<T>> myDataset,
-//      int rowLayoutResource,
-//      int cellLayoutResource,
-//      int textViewResourceId) {
-//    mDataset = myDataset.toArray(new Columnable[myDataset.size()]);
-//    mRowLayoutResource = rowLayoutResource;
-//    mCellLayoutResource = cellLayoutResource;
-//    mTextViewResourceId = textViewResourceId;
-//  }
-//
-//  public TableAdapter(
-//      List<? extends Columnable<T>> myDataset,
-//      int rowLayoutResource) {
-//    this(myDataset, rowLayoutResource, R.layout.simple_table_cell_textview_container, R.id.textview);
-//  }
-//
-//  public TableAdapter(
-//      List<? extends Columnable<T>> myDataset,
-//      int cellLayoutResource,
-//      int textViewResourceId) {
-//    this(myDataset, R.layout.simple_table_row_layout, cellLayoutResource, textViewResourceId);
-//  }
+
 
   public AbsTableQueryAdapter(
 //      List<V> myDataset,
@@ -90,8 +78,8 @@ public abstract class
       int rowLayoutResource) {
     this(factory, hasStableIds,
         rowLayoutResource,
-        R.layout.simple_table_cell_textview_container,
-        R.id.textview);
+        CELL_LAYOUT_DEFAULT,
+        TEXTVIEW_RESOURCE_DEFAULT);
   }
 
   public AbsTableQueryAdapter(
@@ -101,10 +89,12 @@ public abstract class
       int cellLayoutResource,
       int textViewResourceId) {
     this(factory, hasStableIds,
-        R.layout.simple_table_row_layout,
+        ROW_LAYOUT_DEFAULT,
         cellLayoutResource,
         textViewResourceId);
   }
+
+
 
   // Create new rows
   @Override public final ViewHolder<U> onCreateViewHolder(
@@ -120,7 +110,15 @@ public abstract class
   private U createRowView(
       ViewGroup parent, int viewType) {
     // inflate from template layout XML
-    U trl = (U) LayoutInflater.from(parent.getContext()).inflate(mRowLayoutResource, parent, false);
+    U trl;
+    try {
+      trl = (U) LayoutInflater.from(parent.getContext()).inflate(mRowLayoutResource, parent, false);
+    } catch (ClassCastException e) {
+      trl = (U) LayoutInflater.from(parent.getContext()).inflate(ROW_LAYOUT_DEFAULT, parent, false);
+      Log.e(TAG, "rowLayoutResource provided does not cast to "
+          + trl.getClass().getSimpleName() + " provided. "
+          + "Using ROW_LAYOUT_DEFAULT instead.");
+    }
 
     // set the view's size, margins, paddings and layout parameters
     onSetTableRowAttributes(trl, parent, viewType);

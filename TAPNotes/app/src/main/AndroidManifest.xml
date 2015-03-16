@@ -2,8 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ameron32.apps.tapnotes" >
 
+    <!-- [start] *** REQUIRED FOR PARSE PUSH NOTIFICATIONS *** -->
+    <!-- [start] *** CRASHLYTICS *** -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- [ end ] *** CRASHLYTICS *** -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name=".permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name=".permission.C2D_MESSAGE" />
+    <!-- [ end ] *** REQUIRED FOR PARSE PUSH NOTIFICATIONS *** -->
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:name=".CoreApplication"
@@ -12,26 +29,74 @@
         android:label="@string/app_name"
         android:theme="@style/CustomTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name=".parse.MyDispatchMainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+          <intent-filter>
+            <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER"/>
+          </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".welcome.WelcomeActivity"
+            android:label="@string/title_activity_welcome" />
 
+        <!-- [start] *** PARSE LOGIN UI *** -->
+        <activity
+            android:name=".parse.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:launchMode="singleTop" >
+            <meta-data
+                android:name=".parse.LoginActivity.PARSE_LOGIN_ENABLED"
+                android:value="true" />
+        </activity>
+        <!-- [ end ] *** PARSE LOGIN UI *** -->
+
+
+        <!-- [start] *** CRASHLYTICS *** -->
         <meta-data
             android:name="com.crashlytics.ApiKey"
             android:value="451a4e784d66f9e46edd52c2e4fe58e0ba5f1f4c" />
+        <!-- [ end ] *** CRASHLYTICS *** -->
+
+
+        <!-- [start] *** REQUIRED FOR PARSE PUSH NOTIFICATIONS *** -->
+        <service android:name="com.parse.PushService" />
+
+        <receiver android:name="com.parse.ParseBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.parse.ParsePushBroadcastReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.parse.push.intent.RECEIVE" />
+                <action android:name="com.parse.push.intent.DELETE" />
+                <action android:name="com.parse.push.intent.OPEN" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.parse.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.ameron32.apps.tapnotes" />
+            </intent-filter>
+        </receiver>
+        <!-- [ end ] *** REQUIRED FOR PARSE PUSH NOTIFICATIONS *** -->
 
         <activity
-            android:name=".parse.LoginActivity"
-            android:label="@string/title_activity_login" >
-        </activity>
-        <activity
-            android:name=".welcome.WelcomeActivity"
-            android:label="@string/title_activity_welcome" >
+            android:name=".parse.MyLoginParseActivity"
+            android:label="@string/title_activity_my_login"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
     </application>
 

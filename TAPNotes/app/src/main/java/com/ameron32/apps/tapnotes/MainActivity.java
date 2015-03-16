@@ -1,6 +1,7 @@
 package com.ameron32.apps.tapnotes;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
@@ -23,6 +24,7 @@ import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
 import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
+import com.ameron32.apps.tapnotes.parse.LoginBuilder;
 import com.crashlytics.android.Crashlytics;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -67,8 +69,32 @@ public class MainActivity
     super.onCreate(savedInstanceState);
     Fabric.with(this, new Crashlytics());
     setContentView(R.layout.activity_main);
+    onLoginComplete();
+  }
+
+  private void onLoginComplete() {
     loadToolbarFragment();
     ButterKnife.inject(this);
+  }
+
+  private static final int LOGIN_REQUEST_CODE = 4647;
+
+  private void login() {
+    LoginBuilder b = new LoginBuilder(MainActivity.this);
+    b.setAppLogo(R.drawable.ic_launcher);
+    startActivityForResult(b.build(), LOGIN_REQUEST_CODE);
+  }
+
+  @Override protected void onActivityResult(
+      int requestCode, int resultCode,
+      Intent arg2) {
+    // return from ParseLogin
+    if (requestCode == LOGIN_REQUEST_CODE) {
+      if (resultCode == RESULT_OK) {
+//        loadGame();
+        onLoginComplete();
+      }
+    }
   }
 
   private Drawer.Result mDrawer;
@@ -269,6 +295,7 @@ public class MainActivity
 
   public void onLogoutClick() {
 //    snackBarController.toast("Logout");
+    login();
   }
 }
 
