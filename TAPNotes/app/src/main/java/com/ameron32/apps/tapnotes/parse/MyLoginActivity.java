@@ -31,27 +31,36 @@ import java.util.List;
 
 import com.ameron32.apps.tapnotes.R;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 /**
  * A login screen that offers login via email/password.
  */
 public abstract class MyLoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
   // UI references.
-  private AutoCompleteTextView mEmailView;
-  private EditText mPasswordView;
-  private View mProgressView;
-  private View mLoginFormView;
+  @InjectView(R.id.email)
+  AutoCompleteTextView mEmailView;
+  @InjectView(R.id.password)
+  EditText mPasswordView;
+  @InjectView(R.id.login_progress)
+  View mProgressView;
+  @InjectView(R.id.login_form)
+  View mLoginFormView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_my_login);
+    ButterKnife.inject(this);
 
     // Set up the login form.
-    mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+//    mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
     populateAutoComplete();
 
-    mPasswordView = (EditText) findViewById(R.id.password);
+//    mPasswordView = (EditText) findViewById(R.id.password);
     mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
       @Override
       public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -63,16 +72,26 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
       }
     });
 
-    Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-    mEmailSignInButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        attemptLogin();
-      }
-    });
+//    Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+//    mEmailSignInButton.setOnClickListener(new OnClickListener() {
+//      @Override
+//      public void onClick(View view) {
+//        attemptLogin();
+//      }
+//    });
 
-    mLoginFormView = findViewById(R.id.login_form);
-    mProgressView = findViewById(R.id.login_progress);
+//    mLoginFormView = findViewById(R.id.login_form);
+//    mProgressView = findViewById(R.id.login_progress);
+  }
+
+  @OnClick(R.id.email_sign_in_button)
+  void clickSignIn() {
+    attemptLogin();
+  }
+
+  @OnClick(R.id.create_account_button)
+  void createAccount() {
+    attemptSignup();
   }
 
   private void populateAutoComplete() {
@@ -81,47 +100,17 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
 
 
   /**
-   * Attempts to sign in or register the account specified by the login form.
+   * Attempts to sign in to the account specified by the login form.
    * If there are form errors (invalid email, missing fields, etc.), the
    * errors are presented and no actual login attempt is made.
    */
   public void attemptLogin() {
 
-    // Reset errors.
-    mEmailView.setError(null);
-    mPasswordView.setError(null);
-
     // Store values at the time of the login attempt.
     String email = mEmailView.getText().toString();
     String password = mPasswordView.getText().toString();
 
-    boolean cancel = false;
-    View focusView = null;
-
-
-    // Check for a valid password, if the user entered one.
-    if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-      mPasswordView.setError(getString(R.string.error_invalid_password));
-      focusView = mPasswordView;
-      cancel = true;
-    }
-
-    // Check for a valid email address.
-    if (TextUtils.isEmpty(email)) {
-      mEmailView.setError(getString(R.string.error_field_required));
-      focusView = mEmailView;
-      cancel = true;
-    } else if (!isEmailValid(email)) {
-      mEmailView.setError(getString(R.string.error_invalid_email));
-      focusView = mEmailView;
-      cancel = true;
-    }
-
-    if (cancel) {
-      // There was an error; don't attempt login and focus the first
-      // form field with an error.
-      focusView.requestFocus();
-    } else {
+    if (!hasFormErrors()) {
       // Show a progress spinner, and kick off a background task to
       // perform the user login attempt.
       showProgress(true);
@@ -130,9 +119,89 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
     }
   }
 
+  /**
+   * Attempts to register the account specified by the login form.
+   * If there are form errors (invalid email, missing fields, etc.), the
+   * errors are presented and no actual registration attempt is made.
+   */
+  public void attemptSignup() {
+    // Store values at the time of the login attempt.
+    String email = mEmailView.getText().toString();
+    String password = mPasswordView.getText().toString();
+
+    if (!hasFormErrors()) {
+      // Show a progress spinner, and kick off a background task to
+      // perform the user login attempt.
+      showProgress(true);
+
+      performSignUp(email, password);
+    }
+  }
+
+  /**
+   * Attempts to report password lost for username specified by the login form.
+   * If there are form errors (invalid email, missing fields, etc.), the
+   * errors are presented and no actual registration attempt is made.
+   */
+  public void attemptForgotPassword() {
+    // Store values at the time of the login attempt.
+    String email = mEmailView.getText().toString();
+    String password = mPasswordView.getText().toString();
+
+    if (!hasFormErrors()) {
+      // Show a progress spinner, and kick off a background task to
+      // perform the user login attempt.
+      showProgress(true);
+
+      performForgotPassword(email);
+    }
+  }
+
+  private boolean hasFormErrors() {
+    // Reset errors.
+    mEmailView.setError(null);
+    mPasswordView.setError(null);
+
+    // Store values at the time of the login attempt.
+    String email = mEmailView.getText().toString();
+    String password = mPasswordView.getText().toString();
+
+    boolean hasFormErrors = false;
+    View focusView = null;
+
+
+    // Check for a valid password, if the user entered one.
+    if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+      mPasswordView.setError(getString(R.string.error_invalid_password));
+      focusView = mPasswordView;
+      hasFormErrors = true;
+    }
+
+    // Check for a valid email address.
+    if (TextUtils.isEmpty(email)) {
+      mEmailView.setError(getString(R.string.error_field_required));
+      focusView = mEmailView;
+      hasFormErrors = true;
+    } else if (!isEmailValid(email)) {
+      mEmailView.setError(getString(R.string.error_invalid_email));
+      focusView = mEmailView;
+      hasFormErrors = true;
+    }
+
+    if (hasFormErrors) {
+      // There was an error; don't attempt login and focus the first
+      // form field with an error.
+      focusView.requestFocus();
+    }
+
+    return hasFormErrors;
+  }
+
   protected abstract void performLogin(String email, String password);
 
   protected abstract void performSignUp(String email, String password);
+
+  protected abstract void performForgotPassword(String email);
 
   private boolean isEmailValid(String email) {
     //TODO: Replace this with your own logic
@@ -242,10 +311,21 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
 
   protected void onLoginError() {
     showProgress(false);
+    // TODO: notify user
   }
 
   protected void onLoginSuccess() {
+    setResult(RESULT_OK);
     finish();
+  }
+
+  protected void onResetError() {
+    showProgress(false);
+    // TODO: notify user
+  }
+
+  protected void onResetSuccess() {
+    // TODO: notify user
   }
 }
 

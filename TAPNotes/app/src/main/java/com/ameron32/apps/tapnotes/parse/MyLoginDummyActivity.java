@@ -31,6 +31,11 @@ public class MyLoginDummyActivity extends MyLoginActivity {
     // TODO
   }
 
+  @Override
+  protected void performForgotPassword(String email) {
+    // do nothing
+  }
+
 
   /**
    * Represents an asynchronous login/registration task used to authenticate

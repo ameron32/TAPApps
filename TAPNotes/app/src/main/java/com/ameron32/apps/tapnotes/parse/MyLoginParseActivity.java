@@ -3,6 +3,7 @@ package com.ameron32.apps.tapnotes.parse;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
 import com.parse.SignUpCallback;
 
 /**
@@ -48,8 +49,27 @@ public class MyLoginParseActivity extends MyLoginActivity {
         if (e == null) {
           onLoginSuccess();
         } else {
-          // e.printStackTrace();
+          e.printStackTrace();
           onLoginError();
+        }
+
+        // if (cancelled()) {
+        //   onLoginCancelled();
+        // }
+      }
+    });
+  }
+
+  @Override
+  protected void performForgotPassword(String email) {
+    ParseUser.requestPasswordResetInBackground(email, new RequestPasswordResetCallback() {
+      @Override
+      public void done(ParseException e) {
+        if (e == null) {
+          onResetSuccess();
+        } else {
+          // e.printStackTrace();
+          onResetError();
         }
 
         // if (cancelled()) {

@@ -25,6 +25,7 @@ import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
 import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
 import com.ameron32.apps.tapnotes.parse.LoginBuilder;
+import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.crashlytics.android.Crashlytics;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -32,6 +33,7 @@ import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.parse.ParseUser;
 
 import javax.inject.Inject;
 
@@ -78,12 +80,12 @@ public class MainActivity
   }
 
   private static final int LOGIN_REQUEST_CODE = 4647;
-
-  private void login() {
-    LoginBuilder b = new LoginBuilder(MainActivity.this);
-    b.setAppLogo(R.drawable.ic_launcher);
-    startActivityForResult(b.build(), LOGIN_REQUEST_CODE);
-  }
+//
+//  private void login() {
+//    LoginBuilder b = new LoginBuilder(MainActivity.this);
+//    b.setAppLogo(R.drawable.ic_launcher);
+//    startActivityForResult(b.build(), LOGIN_REQUEST_CODE);
+//  }
 
   @Override protected void onActivityResult(
       int requestCode, int resultCode,
@@ -295,7 +297,8 @@ public class MainActivity
 
   public void onLogoutClick() {
 //    snackBarController.toast("Logout");
-    login();
+    ParseUser.logOut();
+    finish();
+    startActivity(new Intent(this, MyDispatchMainActivity.class));
   }
 }
-
