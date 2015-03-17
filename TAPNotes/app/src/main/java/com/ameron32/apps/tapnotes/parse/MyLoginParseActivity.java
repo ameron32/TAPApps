@@ -1,15 +1,32 @@
 package com.ameron32.apps.tapnotes.parse;
 
+import android.view.View;
+
+import com.ameron32.apps.tapnotes.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.RequestPasswordResetCallback;
 import com.parse.SignUpCallback;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by klemeilleur on 3/16/2015.
  */
 public class MyLoginParseActivity extends MyLoginActivity {
+
+  @Override
+  protected int inflateActivityLayout() {
+    return R.layout.activity_my_login;
+  }
+
+  @Override
+  protected void onViewSet(View view) {
+    super.onViewSet(view);
+    ButterKnife.inject(this, view);
+  }
+
   @Override
   protected void performLogin(final String email, final String password) {
     ParseUser.logInInBackground(email, password, new LogInCallback() {

@@ -2,6 +2,8 @@ package com.ameron32.apps.tapnotes.parse;
 
 import android.os.AsyncTask;
 
+import com.ameron32.apps.tapnotes.R;
+
 /**
  * Created by klemeilleur on 3/16/2015.
  */
@@ -18,6 +20,11 @@ public class MyLoginDummyActivity extends MyLoginActivity {
    * Keep track of the login task to ensure we can cancel it if requested.
    */
   private UserLoginTask mAuthTask = null;
+
+  @Override
+  protected int inflateActivityLayout() {
+    return R.layout.activity_my_login;
+  }
 
   @Override
   protected void performLogin(String email, String password) {

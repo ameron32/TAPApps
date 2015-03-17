@@ -41,16 +41,51 @@
   <!--<color name="myNavigationColor">#000000</color>-->
   <!--<color name="selected_gray">#ffdbdbdb</color>-->
 
-  <color name="myPrimaryColor"               >#fff19c37</color>
-  <color name="myPrimaryDarkColor"           >#ff9c281f</color>
-  <color name="myAccentColor"                >#fffbe495</color>
-  <color name="myDrawerBackground"           >#ffa58f61</color>
-  <color name="myDrawerTransparentBackground">#dda58f61</color>
-  <color name="myWindowBackground"           >#ff494438</color>
-  <color name="myTextPrimaryColor"           >#ff261f11</color>
-  <color name="myTextPrimaryHintColor"       >#fffbe495</color>
-  <color name="myNavigationColor"            >#ff453920</color>
-  <color name="selected_gray"                >#ff494438</color>
+
+  <!-- SUNSET BEACH THEME -->
+  <!--<color name="myPrimaryColor"               >#fff19c37</color>-->
+  <!--<color name="myPrimaryDarkColor"           >#ff9c281f</color>-->
+  <!--<color name="myAccentColor"                >#fffbe495</color>-->
+  <!--<color name="myDrawerBackground"           >#ffa58f61</color>-->
+  <!--<color name="myDrawerTransparentBackground">#dda58f61</color>-->
+  <!--<color name="myWindowBackground"           >#ff494438</color>-->
+  <!--<color name="myTextPrimaryColor"           >#ff261f11</color>-->
+  <!--<color name="myTextPrimaryHintColor"       >#fffbe495</color>-->
+  <!--<color name="myNavigationColor"            >#ff453920</color>-->
+  <!--<color name="selected_gray"                >#ff494438</color>-->
+
+
+  <!-- CONVENTION NOTES: aka TAP Notes v1.0 Theme -->
+  <color name="myPrimaryColor">
+    @color/friday_talk_title
+  </color>
+  <color name="myPrimaryDarkColor">
+    @color/saturday_talk_title
+  </color>
+  <color name="myAccentColor">
+    @color/sunday_talk_title
+  </color>
+  <color name="myDrawerBackground">
+    @color/background_for_sidebar_and_note_taker
+  </color>
+  <color name="myDrawerTransparentBackground">
+    @color/main_body_background_transparent
+  </color>
+  <color name="myWindowBackground">
+    @color/main_body_background
+  </color>
+  <color name="myTextPrimaryColor">
+    @color/note_text_and_sidebar_text
+  </color>
+  <color name="myTextPrimaryHintColor">
+    @color/scripture_divider_lines
+  </color>
+  <color name="myNavigationColor">
+    @color/black
+  </color>
+  <color name="selected_gray">
+    @color/current_talk_sidebar_highlight
+  </color>
 
 
   <!-- Material DEFAULT colors -->

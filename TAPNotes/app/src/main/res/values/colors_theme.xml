@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--<color name="main_body_background"               >#fff19c37</color>-->
+  <!--<color name="myPrimaryDarkColor"           >#ff9c281f</color>-->
+  <!--<color name="myAccentColor"                >#fffbe495</color>-->
+  <!--<color name="myDrawerBackground"           >#ffa58f61</color>-->
+  <!--<color name="myDrawerTransparentBackground">#dda58f61</color>-->
+  <!--<color name="myWindowBackground"           >#ff494438</color>-->
+  <!--<color name="myTextPrimaryColor"           >#ff261f11</color>-->
+  <!--<color name="myTextPrimaryHintColor"       >#fffbe495</color>-->
+  <!--<color name="myNavigationColor"            >#ff453920</color>-->
+  <!--<color name="selected_gray"                >#ff494438</color>-->
+
+  <color name="main_body_background">#dfdfdf</color>
+  <color name="main_body_background_transparent">#dddfdfdf</color>
+  <color name="note_text_and_sidebar_text">#000000</color>
+  <color name="scripture_divider_lines">#929292</color>
+  <color name="current_talk_sidebar_highlight">#e2e2e2</color>
+  <color name="background_for_sidebar_and_note_taker">#efefef</color>
+  <color name="sidebar_divider_lines">#dadada</color>
+  <color name="previous_and_next_talk_arrows">#989898</color>
+  <color name="friday_sidebar_highlight">#cec9da</color>
+  <color name="friday_sidebar_text_scripture_and_sidebar_arrow">#34245d</color>
+  <color name="friday_talk_title">#492d8f</color>
+  <color name="saturday_sidebar_highlight">#c9d0da</color>
+  <color name="saturday_sidebar_text_scripture_and_sidebar_arrow">#242c5d</color>
+  <color name="saturday_talk_title">#2d3d8f</color>
+  <color name="sunday_sidebar_highlight">#c9dad7</color>
+  <color name="sunday_sidebar_text_scripture_and_sidebar_arrow">#1f4352</color>
+  <color name="sunday_talk_title">#2d7e8f</color>
+  <color name="song_sidebar">#b56b02</color>
+
+</resources>
