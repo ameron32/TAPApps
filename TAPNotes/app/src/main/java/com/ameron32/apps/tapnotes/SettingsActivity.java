@@ -1,6 +1,7 @@
 package com.ameron32.apps.tapnotes;
 
 import android.annotation.TargetApi;
+import android.app.Application;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.media.Ringtone;
@@ -20,6 +21,8 @@ import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 
 import java.util.List;
+
+import javax.inject.Inject;
 
 /**
  * A {@link PreferenceActivity} that presents a set of application settings. On

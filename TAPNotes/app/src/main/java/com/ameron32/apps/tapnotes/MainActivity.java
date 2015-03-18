@@ -74,6 +74,7 @@ public class MainActivity
       Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Fabric.with(this, new Crashlytics());
+    setThisTheme();
     setContentView(R.layout.activity_main);
     onLoginComplete();
   }
@@ -338,5 +339,10 @@ startDispatchActivity();
         .withActivityTheme(R.style.CustomTheme)
         .withActivityColor(c)
         .start(this);
+  }
+
+
+  private void setThisTheme() {
+    setTheme(R.style.CustomTheme);
   }
 }
