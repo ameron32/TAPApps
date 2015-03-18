@@ -10,9 +10,7 @@ import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.di.ActivityTitleController;
 import com.ameron32.apps.tapnotes.parse.adapter.SimpleTableQueryAdapter;
-import com.ameron32.apps.tapnotes.parse.adapter.TableRowLayout;
-import com.ameron32.apps.tapnotes.parse.adapter.TestObject;
-import com.parse.ParseObject;
+import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.parse.ParseQuery;
 import com.parse.ParseQueryAdapter;
 

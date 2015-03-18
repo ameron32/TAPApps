@@ -1,8 +1,7 @@
 package com.ameron32.apps.tapnotes.parse.adapter;
 
-import android.view.ViewGroup;
-
-import com.parse.ParseObject;
+import com.ameron32.apps.tapnotes._trial.ui.TableRowLayout;
+import com.ameron32.apps.tapnotes.parse.object.ColumnableParseObject;
 import com.parse.ParseQueryAdapter;
 
 /**

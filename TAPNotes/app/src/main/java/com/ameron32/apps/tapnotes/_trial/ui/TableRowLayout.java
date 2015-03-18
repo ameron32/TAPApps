@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.parse.adapter;
+package com.ameron32.apps.tapnotes._trial.ui;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutCompat;

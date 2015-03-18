@@ -2,6 +2,7 @@ package com.ameron32.apps.tapnotes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.location.LocationManager;
@@ -28,6 +29,8 @@ import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
 import com.ameron32.apps.tapnotes.parse.LoginBuilder;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.crashlytics.android.Crashlytics;
+import com.mikepenz.aboutlibraries.Libs;
+import com.mikepenz.aboutlibraries.util.Colors;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;
@@ -129,12 +132,13 @@ public class MainActivity
 
   private IDrawerItem[] getDrawerItems() {
     return new IDrawerItem[]{
-        new PrimaryDrawerItem().withName("TestFragment").withIcon(FontAwesome.Icon.faw_coffee),
-        new PrimaryDrawerItem().withName("TableTestFragment").withIcon(FontAwesome.Icon.faw_coffee),
-        new PrimaryDrawerItem().withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
-        new PrimaryDrawerItem().withName("MaterialImageViewTestFragment").withIcon(FontAwesome.Icon.faw_image),
+        new PrimaryDrawerItem().withIdentifier(1).withName("TestFragment").withIcon(FontAwesome.Icon.faw_coffee),
+        new PrimaryDrawerItem().withIdentifier(2).withName("TableTestFragment").withIcon(FontAwesome.Icon.faw_coffee),
+        new PrimaryDrawerItem().withIdentifier(3).withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
+        new PrimaryDrawerItem().withIdentifier(4).withName("MaterialImageViewTestFragment").withIcon(FontAwesome.Icon.faw_image),
         new DividerDrawerItem(),
-        new SecondaryDrawerItem().withName("Settings").withIcon(FontAwesome.Icon.faw_cog)
+        new SecondaryDrawerItem().withIdentifier(5).withName("Settings").withIcon(FontAwesome.Icon.faw_cog),
+        new SecondaryDrawerItem().withIdentifier(6).withName("About...").withIcon(FontAwesome.Icon.faw_cog)
     };
   }
 
@@ -142,7 +146,7 @@ public class MainActivity
     return new Drawer.OnDrawerItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem iDrawerItem) {
-        switch (position) {
+        switch (iDrawerItem.getIdentifier()) {
           case 1:
             changeFragment(new TestFragment());
             break;
@@ -154,6 +158,12 @@ public class MainActivity
             break;
           case 4:
             changeFragment(new MaterialImageViewTestFragment());
+            break;
+          case 5:
+            startSettingsActivity();
+            break;
+          case 6:
+            startAbout();
             break;
           default:
             changeFragment(new TestFragment());
@@ -288,6 +298,7 @@ public class MainActivity
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
     if (id == R.id.action_settings) {
+startSettingsActivity();
       return true;
     }
     return super.onOptionsItemSelected(item);
@@ -304,7 +315,28 @@ public class MainActivity
   public void onLogoutClick() {
 //    snackBarController.toast("Logout");
     ParseUser.logOut();
+startDispatchActivity();
     finish();
+  }
+
+  private void startDispatchActivity() {
     startActivity(new Intent(this, MyDispatchMainActivity.class));
+  }
+
+  private void startSettingsActivity() {
+    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
+  }
+
+  private void startAbout() {
+    Colors c = new Colors(R.color.myPrimaryColor, R.color.myPrimaryDarkColor);
+    new Libs.Builder()
+        .withFields(R.string.class.getFields())
+        .withVersionShown(true)
+        .withLicenseShown(true)
+        .withAnimations(false)
+        .withActivityTitle(this.getResources().getString(R.string.action_about))
+        .withActivityTheme(R.style.CustomTheme)
+        .withActivityColor(c)
+        .start(this);
   }
 }

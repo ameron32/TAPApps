@@ -4,7 +4,7 @@ import android.app.Application;
 import android.content.res.Resources;
 
 import com.ameron32.apps.tapnotes.R;
-import com.ameron32.apps.tapnotes.parse.adapter.TestObject;
+import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;

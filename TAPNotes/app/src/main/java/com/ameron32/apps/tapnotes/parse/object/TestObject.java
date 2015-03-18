@@ -1,8 +1,6 @@
-package com.ameron32.apps.tapnotes.parse.adapter;
+package com.ameron32.apps.tapnotes.parse.object;
 
 import com.parse.ParseClassName;
-
-import java.util.TreeSet;
 
 /**
  * Created by Kris on 3/17/2015.

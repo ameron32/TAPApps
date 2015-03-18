@@ -6,11 +6,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes._trial.ui.TableRowLayout;
+import com.ameron32.apps.tapnotes.parse.object.Columnable;
 import com.parse.ParseObject;
 import com.parse.ParseQueryAdapter.QueryFactory;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *  TODO: NEEDS TESTING

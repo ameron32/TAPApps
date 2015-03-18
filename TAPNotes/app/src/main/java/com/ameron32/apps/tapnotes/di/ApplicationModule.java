@@ -16,6 +16,7 @@ package com.ameron32.apps.tapnotes.di;
  * limitations under the License.
  */
 
+import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
 

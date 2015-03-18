@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<navigationModel
+  ns = "http://schemas.android.com?import=com.android.tools.idea.editors.navigation.model.*">
+  <locations  
+    class = "java.util.ArrayList">
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.ameron32.apps.tapnotes.MainActivity"/>
+      <point      
+        x = "2076"      
+        y = "1044"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.ameron32.apps.tapnotes.welcome.WelcomeActivity"/>
+      <point      
+        x = "500"      
+        y = "100"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.MenuState"      
+        className = "com.ameron32.apps.tapnotes.welcome.WelcomeActivity"/>
+      <point      
+        x = "2080"      
+        y = "100"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity"/>
+      <point      
+        x = "544"      
+        y = "2168"/>
+    </statePointEntry>
+    <statePointEntry>
+      <state      
+        class = "com.android.tools.idea.editors.navigation.model.ActivityState"      
+        className = "com.ameron32.apps.tapnotes.parse.MyLoginParseActivity"/>
+      <point      
+        x = "600"      
+        y = "2220"/>
+    </statePointEntry>
+  </locations>
+</navigationModel>
