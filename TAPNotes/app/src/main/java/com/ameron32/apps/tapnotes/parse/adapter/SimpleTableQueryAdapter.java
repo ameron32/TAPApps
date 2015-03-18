@@ -29,6 +29,11 @@ public class
     super(factory, hasStableIds, cellLayoutResource, textViewResourceId);
   }
 
+  public SimpleTableQueryAdapter(ParseQueryAdapter.QueryFactory<T> factory, boolean hasStableIds) {
+    super(factory, hasStableIds);
+  }
+
+
   @Override
   public void onBindTableRowHolder(TableRowLayout trl, T object) {
     populateRow(object, trl);
@@ -44,7 +49,7 @@ public class
 //      if (object.isHeaderView()) {
 //        columnString = object.getColumnHeader(columnPosition);
 //      } else {
-//        columnString = object.get(columnPosition).toString();
+        columnString = object.get(columnPosition).toString();
 //      }
       layout.populateColumnTextView(columnPosition, columnString, getTextViewResourceId());
     }

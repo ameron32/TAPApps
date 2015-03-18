@@ -94,6 +94,16 @@ public abstract class
         textViewResourceId);
   }
 
+  public AbsTableQueryAdapter(
+//      List<V> myDataset,
+      final QueryFactory<T> factory,
+      final boolean hasStableIds) {
+    this(factory, hasStableIds,
+        ROW_LAYOUT_DEFAULT,
+        CELL_LAYOUT_DEFAULT,
+        TEXTVIEW_RESOURCE_DEFAULT);
+  }
+
 
 
   // Create new rows

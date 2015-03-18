@@ -62,6 +62,9 @@
   <color name="myPrimaryDarkColor">
     @color/saturday_talk_title
   </color>
+  <color name="myPrimaryLightColor">
+    @color/saturday_sidebar_text_scripture_and_sidebar_arrow
+  </color>
   <color name="myAccentColor">
     @color/sunday_talk_title
   </color>
@@ -86,26 +89,30 @@
   <color name="selected_gray">
     @color/current_talk_sidebar_highlight
   </color>
+  <color name="divider_color">
+    @color/previous_and_next_talk_arrows
+  </color>
+
 
 
   <!-- Material DEFAULT colors -->
   <color name="material_drawer_primary">@color/myPrimaryColor</color>
   <color name="material_drawer_primary_dark">@color/myPrimaryDarkColor</color>
-  <color name="material_drawer_primary_light">#ffdec083</color>
+  <color name="material_drawer_primary_light">@color/myPrimaryLightColor</color>
   <color name="material_drawer_accent">@color/myAccentColor</color>
   <color name="material_drawer_window_background">@color/myWindowBackground</color>
   <color name="material_drawer_background">@color/myDrawerBackground</color>
   <color name="transparent_material_drawer_background">@color/myDrawerTransparentBackground</color>
   <!-- Material DEFAULT text / items colors -->
-  <color name="material_drawer_icons">#FFF</color>
+  <color name="material_drawer_icons">@color/myTextPrimaryColor</color>
   <color name="material_drawer_primary_text">@color/myTextPrimaryColor</color>
-  <color name="material_drawer_secondary_text">#ff494438</color>
+  <color name="material_drawer_secondary_text">@color/myTextPrimaryHintColor</color>
   <color name="material_drawer_hint_text">@color/myTextPrimaryHintColor</color>
-  <color name="material_drawer_divider">#ffceaa67</color>
+  <color name="material_drawer_divider">@color/divider_color</color>
   <!-- Material DEFAULT drawer colors -->
-  <color name="material_drawer_selected">#fffbe495</color>
-  <color name="material_drawer_selected_text">#ff453920</color>
-  <color name="material_drawer_background_overlay">#ccffffff</color>
+  <color name="material_drawer_selected">@color/selected_gray</color>
+  <color name="material_drawer_selected_text">@color/myTextPrimaryColor</color>
+  <color name="material_drawer_background_overlay">@color/myDrawerTransparentBackground</color>
 
 
 

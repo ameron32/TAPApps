@@ -4,9 +4,11 @@ import android.app.Application;
 import android.content.res.Resources;
 
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.parse.adapter.TestObject;
 import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
+import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
 /**
@@ -17,6 +19,8 @@ public class ParseUtil {
   public static void initializeParse(Application app) {
 
     final Resources r = app.getResources();
+
+    ParseObject.registerSubclass(TestObject.class);
 
     Parse.enableLocalDatastore(app);
     Parse.initialize(app, r.getString(R.string.APPLICATION_ID), r.getString(R.string.CLIENT_KEY));

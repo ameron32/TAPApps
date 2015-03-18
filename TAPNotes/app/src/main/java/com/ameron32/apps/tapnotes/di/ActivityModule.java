@@ -22,6 +22,7 @@ import android.app.Activity;
 import com.ameron32.apps.tapnotes.MainActivity;
 import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
 
 import javax.inject.Singleton;
@@ -38,6 +39,7 @@ import dagger.Provides;
     injects = {
         MainActivity.class,
         TestFragment.class,
+        TableTestFragment.class,
         MaterialImageViewTestFragment.class,
         PhotoViewerTestFragment.class
     },

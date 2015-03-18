@@ -21,6 +21,7 @@ import android.widget.ImageButton;
 
 import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
 import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
@@ -112,6 +113,7 @@ public class MainActivity
         .withTranslucentStatusBar(true).withToolbar(toolbar)
         .withHeader(getHeaderView(R.layout.trial_header_only))
         .withActionBarDrawerToggle(true)
+        .withDrawerWidthRes(R.dimen.navigation_drawer_width)
         .addDrawerItems(getDrawerItems())
         .withOnDrawerItemClickListener(getDrawerOnItemClickListener())
         .build();
@@ -128,6 +130,7 @@ public class MainActivity
   private IDrawerItem[] getDrawerItems() {
     return new IDrawerItem[]{
         new PrimaryDrawerItem().withName("TestFragment").withIcon(FontAwesome.Icon.faw_coffee),
+        new PrimaryDrawerItem().withName("TableTestFragment").withIcon(FontAwesome.Icon.faw_coffee),
         new PrimaryDrawerItem().withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
         new PrimaryDrawerItem().withName("MaterialImageViewTestFragment").withIcon(FontAwesome.Icon.faw_image),
         new DividerDrawerItem(),
@@ -144,9 +147,12 @@ public class MainActivity
             changeFragment(new TestFragment());
             break;
           case 2:
-            changeFragment(new PhotoViewerTestFragment());
+            changeFragment(new TableTestFragment());
             break;
           case 3:
+            changeFragment(new PhotoViewerTestFragment());
+            break;
+          case 4:
             changeFragment(new MaterialImageViewTestFragment());
             break;
           default:
