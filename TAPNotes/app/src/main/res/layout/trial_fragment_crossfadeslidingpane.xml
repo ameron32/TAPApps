@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.ameron32.apps.tapnotes._trial.ui.CrossFadeSlidingPaneLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/sliding_pane_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -16,7 +16,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        android:text="FULL"/>
+        tools:text="FULL"/>
     <TextView
         android:layout_width="@dimen/partial_pane_width"
         android:layout_height="match_parent"
@@ -25,7 +25,7 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
         android:background="@color/blue"
-        android:text="PARTIAL"/>
+        tools:text="PARTIAL"/>
   </FrameLayout>
   <TextView
       android:layout_width="@dimen/main_pane_width"
@@ -37,6 +37,6 @@
       android:layout_weight="1"
       android:layout_marginLeft="@dimen/partial_pane_width"
       android:background="@color/LightSkyBlue"
-      android:text="PANE 2"/>
+      tools:text="PANE 2"/>
 
 </com.ameron32.apps.tapnotes._trial.ui.CrossFadeSlidingPaneLayout>

@@ -39,6 +39,8 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.parse.ParseUser;
 
+import java.util.Random;
+
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
@@ -85,12 +87,6 @@ public class MainActivity
   }
 
   private static final int LOGIN_REQUEST_CODE = 4647;
-//
-//  private void login() {
-//    LoginBuilder b = new LoginBuilder(MainActivity.this);
-//    b.setAppLogo(R.drawable.ic_launcher);
-//    startActivityForResult(b.build(), LOGIN_REQUEST_CODE);
-//  }
 
   @Override protected void onActivityResult(
       int requestCode, int resultCode,
@@ -186,7 +182,6 @@ public class MainActivity
     return view;
   }
 
-
   private void tintDrawerArrow(View view) {
     ImageButton upButton = (ImageButton) view.findViewById(R.id.imagebutton_navigation_drawer_up_arrow);
     final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
@@ -230,38 +225,12 @@ public class MainActivity
     ButterKnife.reset(this);
   }
 
-  @Override
-  protected void onResume() {
-    super.onResume();
-//    mContentManager.addOnContentChangeListener(this);
-//    mContentManager.addFragmentChangeListener(this);
-  }
-
-  @Override
-  protected void onPause() {
-    super.onPause();
-//    mContentManager.removeOnContentChangeListener(this);
-//    mContentManager.removeFragmentChangeListener(this);
-  }
-
-//  @Override public void onContentChange(
-//      final ContentManager manager,
-//      final int position) {
-  // update the main content by replacing fragments
-  // changeFragment(mContentManager.getFragment(position));
-//  }
-
   private void changeFragment(Fragment fragment) {
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction transaction = fragmentManager.beginTransaction();
     transaction.replace(R.id.container, fragment);
     transaction.commit();
   }
-
-//  @Override
-//  public void onFragmentChange(int position) {
-//    onContentChange(null, position);
-//  }
 
   public void onSectionAttached(
       int number) {
@@ -279,17 +248,12 @@ public class MainActivity
       return true;
     }
     inflateCoreMenu(menu);
-//    inflateGlobalMenu(menu);
     return super.onCreateOptionsMenu(menu);
   }
 
   private void inflateCoreMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.main, menu);
   }
-
-//  private void inflateGlobalMenu(Menu menu) {
-//    getMenuInflater().inflate(R.menu.global, menu);
-//  }
 
   @Override
   public boolean onOptionsItemSelected(
@@ -299,7 +263,7 @@ public class MainActivity
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
     if (id == R.id.action_settings) {
-startSettingsActivity();
+      startSettingsActivity();
       return true;
     }
     return super.onOptionsItemSelected(item);
@@ -316,7 +280,7 @@ startSettingsActivity();
   public void onLogoutClick() {
 //    snackBarController.toast("Logout");
     ParseUser.logOut();
-startDispatchActivity();
+    startDispatchActivity();
     finish();
   }
 
@@ -343,6 +307,12 @@ startDispatchActivity();
 
 
   private void setThisTheme() {
-    setTheme(R.style.CustomTheme);
+//    final Random r = new Random();
+//    final boolean custom = r.nextBoolean();
+//    if (custom) {
+      setTheme(R.style.Theme_AppCompat);
+//    } else {
+//      setTheme(R.style.CustomTheme);
+//    }
   }
 }

@@ -49,12 +49,12 @@ repositories {
 
 
 
-def versionICode = 3
+def versionICode = 4
 
 def versionMajor = 0
-def versionMinor = 0
+def versionMinor = 1
 def versionPatch = 1
-def versionBuild = 2 // bump for dogfood builds, public betas, etc.
+def versionBuild = 3 // bump for dogfood builds, public betas, etc.
 
 def buildTime() {
   return new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))
@@ -240,6 +240,7 @@ dependencies {
   // ---------------------------------------------------------------------------------
   compile 'io.reactivex:rxjava:1.0.8'
   compile 'io.reactivex:rxandroid:0.24.0'
+  compile 'io.reactivex:rxandroid-framework:0.24.0'
   //
   //
   // Google JSON Deserialization Library
@@ -431,6 +432,24 @@ dependencies {
   // LINK: https://github.com/johnkil/Android-RobotoTextView
   // ---------------------------------------------------------------------------------
   compile 'com.github.johnkil.android-robototextview:robototextview:2.3.0'
+  //
+  //
+  // [DIVERSE FONTS IN TEXTVIEWS]
+  //   CUSTOM FONTS IN ANDROID TEXTVIEWS
+  // ---------------------------------------------------------------------------------
+  // NAME: Calligraphy
+  // LINK: https://github.com/chrisjenx/Calligraphy
+  // ---------------------------------------------------------------------------------
+  compile 'uk.co.chrisjenx:calligraphy:2.0.2'
+  //
+  //
+  // [HIDING TALK/SCRIPTURE HEADER]
+  //   DRAWER-LIKE VIEWGROUP
+  // ---------------------------------------------------------------------------------
+  // NAME: DragTopLayout
+  // LINK: https://github.com/chenupt/DragTopLayout
+  // ---------------------------------------------------------------------------------
+  compile 'com.github.chenupt.android:dragtoplayout:1.2.1@aar'
   //
   //
   // [ACTIVITY TRANSITIONS]

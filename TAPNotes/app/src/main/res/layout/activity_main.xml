@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                tools:context=".MainActivity">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.ameron32.apps.tapnotes.MainActivity">
 
   <!--<android.support.v4.widget.DrawerLayout-->
       <!--android:id="@+id/drawer_layout"-->
@@ -40,12 +41,12 @@
           <TextView
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:text="FULL"/>
+              tools:text="FULL"/>
           <TextView
               android:layout_width="@dimen/partial_pane_width"
               android:layout_height="match_parent"
               android:background="@color/myTextPrimaryHintColor"
-              android:text="PARTIAL"/>
+              tools:text="PARTIAL"/>
         </FrameLayout>
 
         <!-- MAIN CONTENT PANE -->
