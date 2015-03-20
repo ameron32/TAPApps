@@ -33,6 +33,7 @@ import com.ameron32.apps.tapnotes.R;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import butterknife.Optional;
 
 /**
  * A login screen that offers login via email/password.
@@ -48,6 +49,9 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
   View mProgressView;
   @InjectView(R.id.login_form)
   View mLoginFormView;
+  @Optional
+  @InjectView(R.id.login_form_column2)
+  View mLoginFormView_Column2;
 
   protected abstract @LayoutRes int inflateActivityLayout();
 
@@ -240,6 +244,15 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
         }
       });
 
+      mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
+      mLoginFormView_Column2.animate().setDuration(shortAnimTime).alpha(
+          show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+        @Override
+        public void onAnimationEnd(Animator animation) {
+          mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
+        }
+      });
+
       mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
       mProgressView.animate().setDuration(shortAnimTime).alpha(
           show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
@@ -253,6 +266,7 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
       // and hide the relevant UI components.
       mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
       mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+      mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
     }
   }
 

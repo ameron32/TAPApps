@@ -1,6 +1,7 @@
 package com.ameron32.apps.tapnotes;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -21,7 +22,6 @@ import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
-import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.crashlytics.android.Crashlytics;
@@ -38,6 +38,7 @@ import com.parse.ParseUser;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import de.psdev.stabbedandroid.ForApplication;
 import io.fabric.sdk.android.Fabric;
 
 
@@ -46,22 +47,7 @@ public class MainActivity
       AbsActionBarActivity
     implements
       ToolbarFragment.OnToolbarFragmentCallbacks
-//      ,ContentManager.OnContentChangeListener
-//      ,FragmentProvider.OnFragmentChangeListener
-//      , NavigationDrawerFragment.NavigationDrawerCallbacks
 {
-//
-//  @Inject
-//  FragmentProvider mContentManager;
-
-//  @Inject
-//  LocationManager mLocation;
-
-  /**
-   * Fragment managing the behaviors, interactions and presentation of the
-   * navigation drawer.
-   */
-//  private NavigationDrawerFragment mNavigationDrawerFragment;
 
   private ToolbarFragment mToolbarFragment;
 
@@ -80,6 +66,10 @@ public class MainActivity
     ButterKnife.inject(this);
   }
 
+    /*
+   * RETURN from LoginActivity
+   */
+
   private static final int LOGIN_REQUEST_CODE = 4647;
 
   @Override protected void onActivityResult(
@@ -88,11 +78,20 @@ public class MainActivity
     // return from ParseLogin
     if (requestCode == LOGIN_REQUEST_CODE) {
       if (resultCode == RESULT_OK) {
-//        loadGame();
         onLoginComplete();
       }
     }
   }
+
+  /*
+   * TEACH DRAWER then never open automatically again
+   */
+
+  @Inject
+  @ForApplication
+  SharedPreferences sharedPreferences;
+
+  private static final String TEACH_DRAWER_PREF_KEY = "TeachDrawer";
 
   private Drawer.Result mDrawer;
 
@@ -112,7 +111,25 @@ public class MainActivity
         .withOnDrawerItemClickListener(getDrawerOnItemClickListener())
         .build();
 
-    mDrawer.openDrawer();
+    final PreparingRunner oneTimeRunner
+        = new PreparingRunner(new PreparingRunner.PreparingRunnable() {
+      public boolean hasRun() {
+        return sharedPreferences.getBoolean(TEACH_DRAWER_PREF_KEY, false);
+      }
+
+      public boolean runWithResult() {
+        mDrawer.openDrawer();
+        return mDrawer.isDrawerOpen();
+      }
+
+      @Override
+      public void onRunComplete(boolean runFinishedSuccessfully) {
+        if (runFinishedSuccessfully) {
+          sharedPreferences.edit().putBoolean(TEACH_DRAWER_PREF_KEY, true).commit();
+        }
+      }
+    });
+    oneTimeRunner.run();
 
 //    mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 

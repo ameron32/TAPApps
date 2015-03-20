@@ -15,6 +15,7 @@
   <ScrollView
       android:id="@+id/login_form"
       android:layout_width="match_parent"
+      android:layout_toLeftOf="@+id/login_form_column2"
       android:layout_height="match_parent">
 
     <LinearLayout
@@ -63,31 +64,45 @@
           android:layout_height="wrap_content"
           android:text="@string/forgot_password"
           android:textStyle="bold"
+          android:nextFocusDown="@+id/email_sign_in_button"
+          android:nextFocusRight="@+id/email_sign_in_button"
+          android:nextFocusForward="@+id/email_sign_in_button"
           android:gravity="top|center_horizontal"/>
-
-      <Button
-          android:id="@+id/email_sign_in_button"
-          style="?android:textAppearanceLarge"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="48dp"
-          android:text="@string/action_sign_in"
-          android:textStyle="bold"/>
-
-      <Button
-          android:id="@+id/create_account_button"
-          style="?android:attr/borderlessButtonStyle"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="16dp"
-          android:text="@string/create_account"
-          android:nextFocusDown="@+id/email"
-          android:nextFocusRight="@+id/email"
-          android:nextFocusForward="@+id/email"
-          android:textStyle="bold"/>
 
     </LinearLayout>
   </ScrollView>
+
+  <LinearLayout
+      android:id="@+id/login_form_column2"
+      android:layout_width="@dimen/login_column2_width"
+      android:layout_height="match_parent"
+      android:layout_alignParentRight="true"
+      android:layout_marginLeft="64dp"
+      android:orientation="vertical">
+
+    <Button
+        android:id="@+id/email_sign_in_button"
+        style="?android:textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="48dp"
+        android:text="@string/action_sign_in"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/create_account_button"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:nextFocusDown="@+id/email"
+        android:nextFocusRight="@+id/email"
+        android:nextFocusForward="@+id/email"
+        android:text="@string/create_account"
+        android:textStyle="bold"/>
+  </LinearLayout>
 
   <LinearLayout
       android:layout_width="match_parent"
