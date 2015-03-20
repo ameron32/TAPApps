@@ -1,11 +1,8 @@
 package com.ameron32.apps.tapnotes;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
@@ -26,7 +23,6 @@ import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
 import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
-import com.ameron32.apps.tapnotes.parse.LoginBuilder;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.crashlytics.android.Crashlytics;
 import com.mikepenz.aboutlibraries.Libs;
@@ -38,8 +34,6 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.parse.ParseUser;
-
-import java.util.Random;
 
 import javax.inject.Inject;
 
@@ -310,9 +304,9 @@ public class MainActivity
 //    final Random r = new Random();
 //    final boolean custom = r.nextBoolean();
 //    if (custom) {
-      setTheme(R.style.Theme_AppCompat);
+//      setTheme(R.style.Theme_AppCompat);
 //    } else {
-//      setTheme(R.style.CustomTheme);
+      setTheme(R.style.CustomTheme);
 //    }
   }
 }

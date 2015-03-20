@@ -7,6 +7,7 @@ import android.view.View;
 import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.MaterialImageView;
+import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.ActivityTitleController;
 
 import javax.inject.Inject;
@@ -23,6 +24,9 @@ public class MaterialImageViewTestFragment
 
   @Inject
   ActivityTitleController titleController;
+
+  @Inject
+  ActivitySnackBarController snackBarController;
 
   @Override
   protected int getCustomLayoutResource() {
@@ -44,5 +48,6 @@ public class MaterialImageViewTestFragment
   public void onResume() {
     super.onResume();
     titleController.setTitle("MaterialImageViewTestFragment");
+    snackBarController.toast("onResume");
   }
 }
