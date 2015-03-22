@@ -642,6 +642,14 @@ dependencies {
 //  compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0-SNAPSHOT'
   //
   //
+  // ProgressBar in Material Design
+  // ---------------------------------------------------------------------------------
+  // NAME: CircularProgressView
+  // LINK: https://github.com/rahatarmanahmed/CircularProgressView
+  // ---------------------------------------------------------------------------------
+  compile 'com.github.rahatarmanahmed:circularprogressview:2.0.0'
+  //
+  //
   // Blurring View
   // ---------------------------------------------------------------------------------
   // NAME: 500px Android Blur View
