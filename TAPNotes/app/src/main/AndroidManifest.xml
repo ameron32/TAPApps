@@ -32,7 +32,8 @@
         tools:replace="android:icon" >
         <activity
             android:name=".parse.MyDispatchMainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:launchMode="singleTop" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -41,21 +42,12 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" />
+            android:label="@string/app_name"
+            android:launchMode="singleTop" />
         <activity
             android:name=".welcome.WelcomeActivity"
-            android:label="@string/title_activity_welcome" />
-
-        <!-- [start] *** PARSE LOGIN UI *** -->
-        <activity
-            android:name=".parse.LoginActivity"
-            android:label="@string/title_activity_login"
-            android:launchMode="singleTop" >
-            <meta-data
-                android:name=".parse.LoginActivity.PARSE_LOGIN_ENABLED"
-                android:value="true" />
-        </activity>
-        <!-- [ end ] *** PARSE LOGIN UI *** -->
+            android:label="@string/title_activity_welcome"
+            android:launchMode="singleTop" />
 
 
         <!-- [start] *** CRASHLYTICS *** -->
@@ -95,15 +87,25 @@
         </receiver>
         <!-- [ end ] *** REQUIRED FOR PARSE PUSH NOTIFICATIONS *** -->
 
+
+        <!-- [start] *** PARSE CUSTOM LOGIN *** -->
         <activity
-            android:name=".parse.MyLoginParseActivity"
-            android:label="@string/title_activity_my_login"
-            android:windowSoftInputMode="adjustResize|stateVisible" >
+              android:name=".parse.MyLoginParseActivity"
+              android:label="@string/title_activity_my_login"
+              android:windowSoftInputMode="adjustResize|stateVisible"
+              android:launchMode="singleTop" >
+            <meta-data
+                android:name=".parse.LoginActivity.PARSE_LOGIN_ENABLED"
+                android:value="true" />
         </activity>
+        <!-- [ end ] *** PARSE CUSTOM LOGIN *** -->
+
+
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".parse.MyDispatchMainActivity" >
+            android:parentActivityName=".parse.MyDispatchMainActivity"
+            android:launchMode="singleTop" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity" />

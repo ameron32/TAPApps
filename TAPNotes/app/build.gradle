@@ -485,13 +485,22 @@ dependencies {
   compile 'com.github.johnkil.android-robototextview:robototextview:2.3.0'
   //
   //
-  // [DIVERSE FONTS IN TEXTVIEWS]
+  // [FONTS IN TEXTVIEWS]
   //   CUSTOM FONTS IN ANDROID TEXTVIEWS
   // ---------------------------------------------------------------------------------
   // NAME: Calligraphy
   // LINK: https://github.com/chrisjenx/Calligraphy
   // ---------------------------------------------------------------------------------
   compile 'uk.co.chrisjenx:calligraphy:2.0.2'
+  //
+  //
+  // [FONTS IN TEXTVIEWS]
+  //   CUSTOM FONTS IN ANDROID TEXTVIEWS
+  // ---------------------------------------------------------------------------------
+  // NAME: android-fontloading-textview
+  // LINK: https://github.com/Kianoni/android-fontloading-textview
+  // ---------------------------------------------------------------------------------
+//  compile 'net.kianoni:fontloader:0.3.0'
   //
   //
   // [HIDING TALK/SCRIPTURE HEADER]

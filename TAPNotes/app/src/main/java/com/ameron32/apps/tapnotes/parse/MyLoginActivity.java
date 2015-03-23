@@ -30,6 +30,8 @@ import java.util.List;
 
 import com.ameron32.apps.tapnotes.R;
 
+import org.jetbrains.annotations.Nullable;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -68,31 +70,18 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
     ButterKnife.inject(this);
 
     // Set up the login form.
-//    mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
     populateAutoComplete();
 
-//    mPasswordView = (EditText) findViewById(R.id.password);
     mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
       @Override
       public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
         if (id == R.id.login || id == EditorInfo.IME_NULL) {
-          attemptLogin();
+          softKeyboardAction(id);
           return true;
         }
         return false;
       }
     });
-
-//    Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-//    mEmailSignInButton.setOnClickListener(new OnClickListener() {
-//      @Override
-//      public void onClick(View view) {
-//        attemptLogin();
-//      }
-//    });
-
-//    mLoginFormView = findViewById(R.id.login_form);
-//    mProgressView = findViewById(R.id.login_progress);
   }
 
   @OnClick(R.id.email_sign_in_button)
@@ -103,6 +92,10 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
   @OnClick(R.id.create_account_button)
   void createAccount() {
     attemptSignup();
+  }
+
+  void softKeyboardAction(int id) {
+    attemptLogin();
   }
 
   private void populateAutoComplete() {
@@ -244,14 +237,16 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
         }
       });
 
-      mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
-      mLoginFormView_Column2.animate().setDuration(shortAnimTime).alpha(
-          show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-        @Override
-        public void onAnimationEnd(Animator animation) {
-          mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
-      });
+      if (mLoginFormView_Column2 != null) {
+        mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
+        mLoginFormView_Column2.animate().setDuration(shortAnimTime).alpha(
+            show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+          @Override
+          public void onAnimationEnd(Animator animation) {
+            mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
+          }
+        });
+      }
 
       mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
       mProgressView.animate().setDuration(shortAnimTime).alpha(
@@ -266,7 +261,9 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
       // and hide the relevant UI components.
       mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
       mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-      mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
+      if (mLoginFormView_Column2 != null) {
+        mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
+      }
     }
   }
 
