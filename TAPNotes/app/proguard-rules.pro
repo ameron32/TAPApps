@@ -37,3 +37,9 @@
 -keepnames class * implements android.os.Parcelable {
     public static final ** CREATOR;
 }
+
+#REQUIRED BY: Realm
+-keepnames public class * extends io.realm.RealmObject
+-keep class io.realm.** { *; }
+-dontwarn javax.**
+-dontwarn io.realm.**

@@ -19,7 +19,7 @@
  *
  */
 
-package com.ameron32.apps.tapnotes.parse;
+package com.ameron32.apps.tapnotes.parse.original;
 
 import android.app.Activity;
 import android.content.Intent;

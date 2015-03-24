@@ -160,6 +160,15 @@ dependencies {
   compile files('libs/ParseCrashReporting-1.8.2.jar')
   //
   //
+  // Mobile Database (replacement for SQLite & Core Data)
+  // ---------------------------------------------------------------------------------
+  // NAME: Realm
+  // LINK: https://github.com/realm/realm-java
+  //       http://realm.io/
+  // ---------------------------------------------------------------------------------
+//  compile 'io.realm:realm-android:0.80.0'
+  //
+  //
   // Base Classes for Dagger (Square)
   // ---------------------------------------------------------------------------------
   // NAME: Stabbed Android
