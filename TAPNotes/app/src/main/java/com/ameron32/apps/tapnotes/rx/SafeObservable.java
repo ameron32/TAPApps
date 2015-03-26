@@ -1,7 +1,5 @@
 package com.ameron32.apps.tapnotes.rx;
 
-import java.lang.ref.WeakReference;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -29,7 +27,7 @@ public class SafeObservable<T> extends Observable<T> {
 
   public Subscription safeSubscribe(Subscriber<T> subscriber) {
 
-    WeakSubscriberDecorator<T> weakSubscriberDecorator = new WeakSubscriberDecorator<>(new WeakReference(subscriber));
+    WeakSubscriberDecorator<T> weakSubscriberDecorator = new WeakSubscriberDecorator<>(subscriber);
 
     return subscribe(weakSubscriberDecorator);
   }

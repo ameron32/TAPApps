@@ -15,9 +15,9 @@ public class WeakSubscriberDecorator<T> extends Subscriber<T> {
 
   private final WeakReference<Subscriber<T>> mWeakSubscriber;
 
-  public WeakSubscriberDecorator(WeakReference<Subscriber<T>> subscriber) {
+  public WeakSubscriberDecorator(Subscriber<T> subscriber) {
 
-    this.mWeakSubscriber = subscriber;
+    this.mWeakSubscriber = new WeakReference<Subscriber<T>>(subscriber);
   }
 
 

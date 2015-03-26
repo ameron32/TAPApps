@@ -54,6 +54,9 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
   @Optional
   @InjectView(R.id.login_form_column2)
   View mLoginFormView_Column2;
+  @Optional
+  @InjectView(R.id.login_form_column3)
+  View mLoginFormView_Column3;
 
   protected abstract @LayoutRes int inflateActivityLayout();
 
@@ -248,6 +251,17 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
         });
       }
 
+      if (mLoginFormView_Column3 != null) {
+        mLoginFormView_Column3.setVisibility(show ? View.GONE : View.VISIBLE);
+        mLoginFormView_Column3.animate().setDuration(shortAnimTime).alpha(
+            show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+          @Override
+          public void onAnimationEnd(Animator animation) {
+            mLoginFormView_Column3.setVisibility(show ? View.GONE : View.VISIBLE);
+          }
+        });
+      }
+
       mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
       mProgressView.animate().setDuration(shortAnimTime).alpha(
           show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
@@ -263,6 +277,9 @@ public abstract class MyLoginActivity extends Activity implements LoaderCallback
       mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
       if (mLoginFormView_Column2 != null) {
         mLoginFormView_Column2.setVisibility(show ? View.GONE : View.VISIBLE);
+      }
+      if (mLoginFormView_Column3 != null) {
+        mLoginFormView_Column3.setVisibility(show ? View.GONE : View.VISIBLE);
       }
     }
   }
