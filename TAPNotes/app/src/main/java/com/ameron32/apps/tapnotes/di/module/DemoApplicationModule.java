@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.di;
+package com.ameron32.apps.tapnotes.di.module;
 
 /*
  * Copyright (C) 2013 Square, Inc.
@@ -24,6 +24,6 @@ import dagger.Module;
     injects = MainActivity.class,
     complete = false
 )
-public class ApplicationDemoModule {
+public class DemoApplicationModule {
   // TODO put your application-specific providers here!
 }

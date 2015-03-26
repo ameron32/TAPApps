@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.di;
+package com.ameron32.apps.tapnotes.di.module;
 
 /*
  * Copyright (C) 2013 Square, Inc.
@@ -16,13 +16,11 @@ package com.ameron32.apps.tapnotes.di;
  * limitations under the License.
  */
 
-import android.app.Application;
 import android.content.Context;
 import android.view.LayoutInflater;
 
 import com.ameron32.apps.tapnotes.CoreApplication;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsApplication;
-import com.ameron32.apps.tapnotes.di.stabbed.DefaultAndroidApplicationModule;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 

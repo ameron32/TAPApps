@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.ameron32.apps.tapnotes.di.stabbed.AbsSupportFragment;
+import com.ameron32.apps.tapnotes.di.stabbed.AbsRxSupportFragment;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -15,7 +15,7 @@ import butterknife.Optional;
 
 
 public abstract class AbsContentFragment
-    extends AbsSupportFragment
+    extends AbsRxSupportFragment
 {
 
   public AbsContentFragment() {}

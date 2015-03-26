@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.di.stabbed;
+package com.ameron32.apps.tapnotes.di.module;
 
 /*
  * Copyright 2013 Philip Schiffer

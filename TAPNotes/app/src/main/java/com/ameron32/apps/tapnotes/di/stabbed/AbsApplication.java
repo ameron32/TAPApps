@@ -1,7 +1,8 @@
 package com.ameron32.apps.tapnotes.di.stabbed;
 
-import com.ameron32.apps.tapnotes.di.ApplicationDemoModule;
-import com.ameron32.apps.tapnotes.di.ApplicationModule;
+import com.ameron32.apps.tapnotes.di.module.DemoApplicationModule;
+import com.ameron32.apps.tapnotes.di.module.ApplicationModule;
+import com.ameron32.apps.tapnotes.di.module.DefaultAndroidApplicationModule;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ public abstract class AbsApplication extends StabbedApplication {
     return Arrays.<Object>asList(
         new DefaultAndroidApplicationModule(this),
         new ApplicationModule(this),
-        new ApplicationDemoModule()
+        new DemoApplicationModule()
     );
   }
 }

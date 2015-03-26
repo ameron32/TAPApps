@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.di;
+package com.ameron32.apps.tapnotes.di.controller;
 
 
 import android.app.Activity;

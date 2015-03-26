@@ -22,7 +22,7 @@ import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
-import com.ameron32.apps.tapnotes.di.stabbed.AbsActionBarActivity;
+import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.crashlytics.android.Crashlytics;
 import com.mikepenz.aboutlibraries.Libs;
@@ -44,7 +44,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class MainActivity
     extends
-      AbsActionBarActivity
+    AbsRxActionBarActivity
     implements
       ToolbarFragment.OnToolbarFragmentCallbacks
 {

@@ -5,9 +5,9 @@ import android.location.LocationManager;
 
 import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
-import com.ameron32.apps.tapnotes.di.ActivitySharedPreferencesController;
-import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
-import com.ameron32.apps.tapnotes.di.ActivityTitleController;
+import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
+import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
+import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
 
 import java.util.List;
 

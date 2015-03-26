@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
-import com.ameron32.apps.tapnotes.di.ActivityTitleController;
+import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
 import com.ameron32.apps.tapnotes.parse.adapter.SimpleTableQueryAdapter;
 import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.parse.ParseQuery;

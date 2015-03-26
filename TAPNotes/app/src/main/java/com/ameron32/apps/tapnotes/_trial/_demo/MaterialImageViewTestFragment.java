@@ -7,8 +7,8 @@ import android.view.View;
 import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.MaterialImageView;
-import com.ameron32.apps.tapnotes.di.ActivitySnackBarController;
-import com.ameron32.apps.tapnotes.di.ActivityTitleController;
+import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
+import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.di;
+package com.ameron32.apps.tapnotes.di.module;
 
 /*
  * Copyright (C) 2013 Square, Inc.
@@ -25,6 +25,9 @@ import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
+import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
+import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
+import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
 
 import javax.inject.Singleton;
 
