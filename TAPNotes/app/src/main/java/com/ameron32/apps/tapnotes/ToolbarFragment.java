@@ -79,6 +79,10 @@ public class ToolbarFragment
 
   protected void onCustomViewCreated() {}
 
+  protected Toolbar getToolbar() {
+    return mToolbar;
+  }
+
   @Override public void onAttach(
       Activity activity) {
     super.onAttach(activity);

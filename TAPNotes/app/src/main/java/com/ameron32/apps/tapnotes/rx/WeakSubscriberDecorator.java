@@ -10,6 +10,8 @@ import rx.Subscriber;
  * LINK: http://philosophicalhacker.com/2015/03/24/how-to-keep-your-rxjava-subscribers-from-leaking
  * NOTE: Prevents common Activity leaks from subscriber.
  *       Used with @link rx.SafeObservable
+ *
+ * WARNING: May have negative effects.
  */
 public class WeakSubscriberDecorator<T> extends Subscriber<T> {
 

@@ -30,7 +30,6 @@ apply plugin: 'com.android.application'
 // required for Fabric/Crashlytics
 apply plugin: 'io.fabric'
 
-
 repositories {
   // from android-bootstrap
   maven { url 'https://github.com/donnfelker/mvn-repo/raw/master/' }
@@ -46,7 +45,6 @@ repositories {
 
   mavenCentral()
 }
-
 
 
 def versionICode = 4
@@ -797,6 +795,16 @@ dependencies {
   // ERROR:  Gradle build fails for some reason related to pom.xml
   // STATUS: error
 //  compile 'com.github.radzio:AndroidOggStreamPlayer:1.0.1'
+  //
+  //
+  // Multiple MapViews
+  // ---------------------------------------------------------------------------------
+  // NAME: AirMapView
+  // LINK: https://github.com/airbnb/AirMapView
+  // ---------------------------------------------------------------------------------
+  // NOTE:   Google Maps v2 SDK configuration still required (see github readme)
+  // STATUS: untested
+//  compile 'com.airbnb.android:airmapview:1.1.2'
   //
   //
   //

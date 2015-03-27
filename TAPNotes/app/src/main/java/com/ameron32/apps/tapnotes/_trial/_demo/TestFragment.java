@@ -37,7 +37,7 @@ public class TestFragment extends AbsContentFragment
   public void onResume() {
     super.onResume();
 
-    final String time = sharedPreferencesController.restorePreference("time", "none");
+    final String time = sharedPreferencesController.restoreStringPreference("time", "none");
     titleController.setTitle(time);
 
     final List<String> allProviders = locationManager.getAllProviders();
@@ -49,6 +49,6 @@ public class TestFragment extends AbsContentFragment
     super.onPause();
 
     final String value = String.valueOf(System.currentTimeMillis());
-    sharedPreferencesController.savePreference("time", value);
+    sharedPreferencesController.saveStringPreference("time", value);
   }
 }

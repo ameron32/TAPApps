@@ -22,6 +22,7 @@ import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
+import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.crashlytics.android.Crashlytics;
@@ -38,6 +39,7 @@ import com.parse.ParseUser;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import de.psdev.stabbedandroid.ForActivity;
 import de.psdev.stabbedandroid.ForApplication;
 import io.fabric.sdk.android.Fabric;
 
@@ -91,10 +93,6 @@ public class MainActivity
   @ForApplication
   SharedPreferences sharedPreferences;
 
-  private static final String TEACH_DRAWER_PREF_KEY = "TeachDrawer";
-
-  private Drawer.Result mDrawer;
-
   @Override
   public void onToolbarCreated(
       Toolbar toolbar) {
@@ -102,34 +100,34 @@ public class MainActivity
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-    mDrawer = new Drawer().withActivity(this)
-        .withTranslucentStatusBar(true).withToolbar(toolbar)
-        .withHeader(getHeaderView(R.layout.trial_header_only))
-        .withActionBarDrawerToggle(true)
-        .withDrawerWidthRes(R.dimen.navigation_drawer_width)
-        .addDrawerItems(getDrawerItems())
-        .withOnDrawerItemClickListener(getDrawerOnItemClickListener())
-        .build();
 
-    final PreparingRunner oneTimeRunner
-        = new PreparingRunner(new PreparingRunner.PreparingRunnable() {
-      public boolean hasRun() {
-        return sharedPreferences.getBoolean(TEACH_DRAWER_PREF_KEY, false);
-      }
+//    final PreparingRunner oneTimeRunner
+//        = new PreparingRunner(new PreparingRunner.PreparingRunnable() {
+//      public boolean hasRun() {
+//        return sharedPreferences.getBoolean(TEACH_DRAWER_PREF_KEY, false);
+//      }
+//
+//      public boolean runWithResult() {
+//        mDrawer.openDrawer();
+//        return mDrawer.isDrawerOpen();
+//      }
+//
+//      @Override
+//      public void onRunComplete(boolean runFinishedSuccessfully) {
+//        if (runFinishedSuccessfully) {
+//          sharedPreferences.edit().putBoolean(TEACH_DRAWER_PREF_KEY, true).commit();
+//        }
+//      }
+//    });
+//    oneTimeRunner.run();
 
-      public boolean runWithResult() {
-        mDrawer.openDrawer();
-        return mDrawer.isDrawerOpen();
-      }
-
-      @Override
-      public void onRunComplete(boolean runFinishedSuccessfully) {
-        if (runFinishedSuccessfully) {
-          sharedPreferences.edit().putBoolean(TEACH_DRAWER_PREF_KEY, true).commit();
-        }
-      }
-    });
-    oneTimeRunner.run();
+//    prefController.runOnce(TEACH_DRAWER_PREF_KEY, new SuccessfulRunnable() {
+//      @Override
+//      public boolean run() {
+//        mDrawer.openDrawer();
+//        return mDrawer.isDrawerOpen();
+//      }
+//    });
 
 //    mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
@@ -138,95 +136,9 @@ public class MainActivity
 //    mNavigationDrawerFragment.setup(R.id.navigation_drawer, mDrawerLayout, mToolbar);
   }
 
-  private IDrawerItem[] getDrawerItems() {
-    return new IDrawerItem[]{
-        new PrimaryDrawerItem().withIdentifier(1).withName("TestFragment").withIcon(FontAwesome.Icon.faw_coffee),
-        new PrimaryDrawerItem().withIdentifier(2).withName("TableTestFragment").withIcon(FontAwesome.Icon.faw_coffee),
-        new PrimaryDrawerItem().withIdentifier(3).withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
-        new PrimaryDrawerItem().withIdentifier(4).withName("MaterialImageViewTestFragment").withIcon(FontAwesome.Icon.faw_image),
-        new DividerDrawerItem(),
-        new SecondaryDrawerItem().withIdentifier(5).withName("Settings").withIcon(FontAwesome.Icon.faw_cog),
-        new SecondaryDrawerItem().withIdentifier(6).withName("About...").withIcon(FontAwesome.Icon.faw_cog)
-    };
-  }
-
-  private Drawer.OnDrawerItemClickListener getDrawerOnItemClickListener() {
-    return new Drawer.OnDrawerItemClickListener() {
-      @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem iDrawerItem) {
-        switch (iDrawerItem.getIdentifier()) {
-          case 1:
-            changeFragment(new TestFragment());
-            break;
-          case 2:
-            changeFragment(new TableTestFragment());
-            break;
-          case 3:
-            changeFragment(new PhotoViewerTestFragment());
-            break;
-          case 4:
-            changeFragment(new MaterialImageViewTestFragment());
-            break;
-          case 5:
-            startSettingsActivity();
-            break;
-          case 6:
-            startAbout();
-            break;
-          default:
-            changeFragment(new TestFragment());
-        }
-      }
-    };
-  }
-
-  @Inject
-  LayoutInflater mInflater;
-
-  private View getHeaderView(@LayoutRes int inflateLayout) {
-    final ViewGroup rootView = (ViewGroup) getWindow().getDecorView().getRootView();
-
-    final View view = mInflater.inflate(inflateLayout, rootView, false);
-    tintDrawerArrow(view);
-    setDrawerButtonListeners(view);
-
-    return view;
-  }
-
-  private void tintDrawerArrow(View view) {
-    ImageButton upButton = (ImageButton) view.findViewById(R.id.imagebutton_navigation_drawer_up_arrow);
-    final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-    upArrow.setColorFilter(getResources().getColor(android.R.color.black), PorterDuff.Mode.SRC_ATOP);
-    upButton.setImageDrawable(upArrow);
-  }
-
-  private void setDrawerButtonListeners(View view) {
-    ImageButton upButton = (ImageButton) view.findViewById(R.id.imagebutton_navigation_drawer_up_arrow);
-    upButton.setOnClickListener(new View.OnClickListener() {
-
-      @Override public void onClick(
-          View v) {
-        closeDrawer();
-      }
-    });
-
-    ImageButton logoutButton = (ImageButton) view.findViewById(R.id.imagebutton_navigation_drawer_logout);
-    logoutButton.setOnClickListener(new View.OnClickListener() {
-
-      @Override public void onClick(
-          View v) {
-        onLogoutClick();
-      }
-    });
-  }
-
-  private void closeDrawer() {
-    mDrawer.closeDrawer();
-  }
-
   private void loadToolbarFragment() {
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    transaction.replace(R.id.toolbar_actionbar_container, ToolbarFragment.newInstance());
+    transaction.replace(R.id.toolbar_actionbar_container, MainToolbarFragment.newInstance());
     transaction.commit();
   }
 
@@ -236,7 +148,7 @@ public class MainActivity
     ButterKnife.reset(this);
   }
 
-  private void changeFragment(Fragment fragment) {
+  public void changeFragment(Fragment fragment) {
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction transaction = fragmentManager.beginTransaction();
     transaction.replace(R.id.container, fragment);
@@ -251,13 +163,13 @@ public class MainActivity
   @Override
   public boolean onCreateOptionsMenu(
       Menu menu) {
-    if (!mDrawer.isDrawerOpen()) {
+//    if (!mDrawer.isDrawerOpen()) {
       // Only show items in the action bar relevant to this screen
       // if the drawer is not showing. Otherwise, let the drawer
       // decide what to show in the action bar.
 
-      return true;
-    }
+//      return true;
+//    }
     inflateCoreMenu(menu);
     return super.onCreateOptionsMenu(menu);
   }
@@ -295,15 +207,15 @@ public class MainActivity
     finish();
   }
 
-  private void startDispatchActivity() {
+  public void startDispatchActivity() {
     startActivity(new Intent(this, MyDispatchMainActivity.class));
   }
 
-  private void startSettingsActivity() {
+  public void startSettingsActivity() {
     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
   }
 
-  private void startAbout() {
+  public void startAbout() {
     Colors c = new Colors(R.color.myPrimaryColor, R.color.myPrimaryDarkColor);
     new Libs.Builder()
         .withFields(R.string.class.getFields())
