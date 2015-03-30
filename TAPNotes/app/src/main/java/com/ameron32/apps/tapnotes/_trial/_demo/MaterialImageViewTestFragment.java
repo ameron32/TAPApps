@@ -7,6 +7,7 @@ import android.view.View;
 import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.MaterialImageView;
+import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
 import com.ameron32.apps.tapnotes.rx.WeakSubscriberDecorator;
@@ -30,11 +31,16 @@ public class MaterialImageViewTestFragment
     extends AbsContentFragment
 {
 
+  private static final String ROTATION_PREF_KEY = "TRIAL ROTATION PREFERENCE KEY";
+
   @Inject
   ActivityTitleController titleController;
 
   @Inject
   ActivitySnackBarController snackBarController;
+
+  @Inject
+  ActivitySharedPreferencesController prefController;
 
   private Subscription subscription;
 
@@ -44,7 +50,7 @@ public class MaterialImageViewTestFragment
   }
 
   @InjectView(R.id.pic1) MaterialImageView materialImageView1;
-  int mRotation1 = -30;
+  int mRotation1;
   @InjectView(R.id.pic2) MaterialImageView materialImageView2;
   int mRotation2 = 15;
 
@@ -52,8 +58,6 @@ public class MaterialImageViewTestFragment
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     ButterKnife.inject(this, view);
-    materialImageView1.setRotation(mRotation1);
-    materialImageView2.setRotation(mRotation2);
   }
 
   @Override
@@ -69,6 +73,7 @@ public class MaterialImageViewTestFragment
                 mRotation1 = mRotation1 + 5;
                 v.setRotation(mRotation1);
                 snackBarController.toast("Clicked button!");
+                prefController.saveIntPreference(ROTATION_PREF_KEY, mRotation1);
               }
             });
   }
@@ -77,6 +82,10 @@ public class MaterialImageViewTestFragment
   public void onResume() {
     super.onResume();
     titleController.setTitle("MaterialImageViewTestFragment");
+
+    mRotation1 = prefController.restoreIntPreference(ROTATION_PREF_KEY, -30);
+    materialImageView1.setRotation(mRotation1);
+    materialImageView2.setRotation(mRotation2);
   }
 
   @Override

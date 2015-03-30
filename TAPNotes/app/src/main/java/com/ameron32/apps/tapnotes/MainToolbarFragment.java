@@ -29,6 +29,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,19 +66,17 @@ public class MainToolbarFragment extends ToolbarFragment {
   @Inject
   ActivitySharedPreferencesController prefController;
 
-  @Inject
-  LayoutInflater mInflater;
-
-  private MainActivity mMainActivity;
+  private ActivityCallbacks mMainActivity;
   private Drawer.Result mDrawer;
 
   @Override
   public void onAttach(Activity activity) {
     super.onAttach(activity);
-    if (activity instanceof MainActivity) {
-      this.mMainActivity = (MainActivity) activity;
+    // TODO: replace with interface rather than explicit Activity reference
+    if (activity instanceof ActivityCallbacks) {
+      this.mMainActivity = (ActivityCallbacks) activity;
     } else {
-      throw new IllegalStateException("activity should be MainActivity");
+      throw new IllegalStateException("activity should inherit ActivityCallbacks");
     }
   }
 
@@ -99,8 +98,14 @@ public class MainToolbarFragment extends ToolbarFragment {
         .addDrawerItems(getDrawerItems())
         .withOnDrawerItemClickListener(getDrawerOnItemClickListener())
         .build();
+  }
 
-    prefController.runOnce(TEACH_DRAWER_PREF_KEY, new SuccessfulRunnable() {
+  @Override
+  public void onResume() {
+    super.onResume();
+
+    prefController.runOnce(TEACH_DRAWER_PREF_KEY,
+        new SuccessfulRunnable() {
       @Override
       public boolean run() {
         mDrawer.openDrawer();
@@ -154,7 +159,9 @@ public class MainToolbarFragment extends ToolbarFragment {
   private View getHeaderView(@LayoutRes int inflateLayout) {
     final ViewGroup rootView = (ViewGroup) getView();
 
-    final View view = mInflater.inflate(inflateLayout, rootView, false);
+    final View view = LayoutInflater
+        .from(rootView.getContext())
+        .inflate(inflateLayout, rootView, false);
     tintDrawerArrow(view);
     setDrawerButtonListeners(view);
 
@@ -190,5 +197,12 @@ public class MainToolbarFragment extends ToolbarFragment {
 
   private void closeDrawer() {
     mDrawer.closeDrawer();
+  }
+
+  public interface ActivityCallbacks {
+    public void changeFragment(Fragment f);
+    public void startAbout();
+    public void startSettingsActivity();
+    public void onLogoutClick();
   }
 }

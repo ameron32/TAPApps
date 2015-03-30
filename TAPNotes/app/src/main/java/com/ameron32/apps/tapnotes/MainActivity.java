@@ -48,7 +48,8 @@ public class MainActivity
     extends
     AbsRxActionBarActivity
     implements
-      ToolbarFragment.OnToolbarFragmentCallbacks
+      ToolbarFragment.OnToolbarFragmentCallbacks,
+      MainToolbarFragment.ActivityCallbacks
 {
 
   private ToolbarFragment mToolbarFragment;

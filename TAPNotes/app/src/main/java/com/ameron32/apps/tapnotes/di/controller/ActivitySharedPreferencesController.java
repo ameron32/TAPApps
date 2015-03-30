@@ -29,6 +29,13 @@ public class ActivitySharedPreferencesController extends AbsController {
     editor.commit();
   }
 
+  public void saveIntPreference(String key, int value) {
+    final SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
+    final SharedPreferences.Editor editor = prefs.edit();
+    editor.putInt(key, value);
+    editor.commit();
+  }
+
   public String restoreStringPreference(String key, String defaultValue) {
     final SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
     return prefs.getString(key, defaultValue);
@@ -37,6 +44,11 @@ public class ActivitySharedPreferencesController extends AbsController {
   public boolean restoreBooleanPreference(String key, boolean defaultValue) {
     final SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
     return prefs.getBoolean(key, defaultValue);
+  }
+
+  public int restoreIntPreference(String key, int defaultValue) {
+    final SharedPreferences prefs = getActivity().getSharedPreferences(SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE);
+    return prefs.getInt(key, defaultValue);
   }
 
   /**
