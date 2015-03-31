@@ -20,6 +20,9 @@ buildscript {
     // required for Fabric/Crashlytics
     classpath 'io.fabric.tools:gradle:1.15.2'
 
+    // required for RxParse
+    classpath 'me.tatarka:gradle-retrolambda:3.0.0'
+
     // suggested in AndroidTestingPlease
     // https://github.com/farmapromlab/AndroidTestingPlease
 //    classpath 'com.github.jcandksolutions.gradle:android-unit-test:1.6.3'
@@ -27,6 +30,7 @@ buildscript {
 }
 
 apply plugin: 'com.android.application'
+
 // required for Fabric/Crashlytics
 apply plugin: 'io.fabric'
 
@@ -46,6 +50,9 @@ repositories {
   mavenCentral()
 }
 
+// required for RxParse
+apply plugin: 'me.tatarka.retrolambda'
+
 
 def versionICode = 4
 
@@ -61,6 +68,11 @@ def buildTime() {
 android {
   compileSdkVersion 21
   buildToolsVersion "21.1.2"
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
 
   defaultConfig {
     applicationId "com.ameron32.apps.tapnotes"
@@ -142,10 +154,22 @@ dependencies {
   // NAME: Stetho
   // LINK: https://github.com/facebook/stetho
   // ---------------------------------------------------------------------------------
-  // STATUS: untested
+  // STATUS: fails to compile
 //  compile 'com.facebook.stetho:stetho:1.0.1'
+  // STATUS: untested
 //  compile 'com.facebook.stetho:stetho-okhttp:1.0.1'
+  // STATUS: untested
 //  compile 'com.facebook.stetho:stetho-urlconnection:1.0.1'
+//
+  //
+  // Java 8 Lambdas in Android
+  // ---------------------------------------------------------------------------------
+  // NAME: RetroLambda
+  // LINK: https://github.com/evant/gradle-retrolambda
+  // ---------------------------------------------------------------------------------
+  // NOTE:   RetroLambda is not compatible with appcompat_v7:21+
+  // STATUS: compiles
+  retrolambdaConfig 'net.orfjackal.retrolambda:retrolambda:1.+'
   //
   //
   // Cloud MBaaS (Mobile Backend as a Service)
@@ -158,6 +182,16 @@ dependencies {
   compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
   compile files('libs/Parse-1.8.2.jar')
   compile files('libs/ParseCrashReporting-1.8.2.jar')
+  //
+  //
+  // Parse calls for RxJava
+  // ---------------------------------------------------------------------------------
+  // NAME: RxParse
+  // LINK: https://github.com/yongjhih/RxParse
+  // ---------------------------------------------------------------------------------
+  // ERROR:  requires Parse 1.8.1. have 1.8.2
+  // STATUS: failed
+//  compile 'com.infstory:rxparse:1.0.1'
   //
   //
   // Mobile Database (replacement for SQLite & Core Data)

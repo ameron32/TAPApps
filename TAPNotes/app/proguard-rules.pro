@@ -43,3 +43,6 @@
 -keep class io.realm.** { *; }
 -dontwarn javax.**
 -dontwarn io.realm.**
+
+#REQUIRED BY: RetroLambda/RxParse
+-dontwarn java.lang.invoke.*
