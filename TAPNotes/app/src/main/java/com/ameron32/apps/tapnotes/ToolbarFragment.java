@@ -36,8 +36,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ameron32.apps.tapnotes.di.stabbed.AbsRxSupportFragment;
+
 public class ToolbarFragment
-    extends Fragment
+    extends AbsRxSupportFragment
 {
 
   private Toolbar mToolbar;
@@ -78,6 +80,10 @@ public class ToolbarFragment
   protected void inflateCustomViews(final View customLayoutView) {}
 
   protected void onCustomViewCreated() {}
+
+  protected Toolbar getToolbar() {
+    return mToolbar;
+  }
 
   @Override public void onAttach(
       Activity activity) {

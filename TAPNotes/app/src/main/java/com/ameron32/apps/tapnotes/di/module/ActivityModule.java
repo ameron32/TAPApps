@@ -20,6 +20,7 @@ package com.ameron32.apps.tapnotes.di.module;
 import android.app.Activity;
 
 import com.ameron32.apps.tapnotes.MainActivity;
+import com.ameron32.apps.tapnotes.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.SettingsActivity;
 import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
@@ -43,6 +44,7 @@ import dagger.Provides;
     injects = {
         MainActivity.class,
         SettingsActivity.class,
+        MainToolbarFragment.class,
         TestFragment.class,
         TableTestFragment.class,
         MaterialImageViewTestFragment.class,
