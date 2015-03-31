@@ -10,8 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
 
-public class WelcomeActivity extends ActionBarActivity {
+public class WelcomeActivity extends AbsRxActionBarActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

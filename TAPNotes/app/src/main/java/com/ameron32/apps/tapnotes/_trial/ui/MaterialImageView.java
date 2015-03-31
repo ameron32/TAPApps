@@ -70,7 +70,7 @@ public class MaterialImageView extends ImageView {
         defStyleAttr, 0);
 
     int shadowSize = a.getInt(R.styleable.MaterialImageView_shadow_size, 8);
-    radius = a.getInt(R.styleable.MaterialImageView_radius_size, 15); //radius size
+    radius = a.getInt(R.styleable.MaterialImageView_radius_size, 15); // radius size
 
     a.recycle();
 
@@ -78,7 +78,7 @@ public class MaterialImageView extends ImageView {
   }
 
   public void init(Context context, Resources resources, int shadowSize){
-    //遮罩  用于画出圆角图片
+    // Mask is used to draw a rounded picture
     mMaskDrawable = new GradientDrawable();
     mMaskDrawable.setShape(GradientDrawable.RECTANGLE);
     mMaskDrawable.setColor(0xff000000);
@@ -91,7 +91,7 @@ public class MaterialImageView extends ImageView {
     mCacheBitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
 
     mPaint = new Paint(Paint.DITHER_FLAG | Paint.HINTING_ON );
-    mPaint.setColor(0xffffffff);//卡片背景色
+    mPaint.setColor(0xffffffff); // Card background color
 
     mShadowStartColor = resources.getColor(R.color.shadow_start_color);
     mShadowEndColor = resources.getColor(R.color.shadow_end_color);
@@ -159,7 +159,7 @@ public class MaterialImageView extends ImageView {
       mCornerShadowPath.reset();
     }
 
-    //画出一个扇形
+    // Draw a fan
     mCornerShadowPath.setFillType(Path.FillType.EVEN_ODD);
     mCornerShadowPath.moveTo(-mCornerRadius, 0.0F);
     mCornerShadowPath.rLineTo(-mShadowSize, 0.0F);
@@ -169,9 +169,9 @@ public class MaterialImageView extends ImageView {
 
     float startRatio = mCornerRadius / (mCornerRadius + mShadowSize);
     mCornerShadowPaint.setShader(
-        new RadialGradient(0.0F, 0.0F, mCornerRadius + mShadowSize,//阴影半径
+        new RadialGradient(0.0F, 0.0F, mCornerRadius + mShadowSize, // Shadow Radius
             new int[]{mShadowStartColor, mShadowStartColor, mShadowEndColor},
-            new float[]{0.0F, startRatio, 1.0F}, //画各种颜色的范围
+            new float[]{0.0F, startRatio, 1.0F}, // Range painted various colors
             Shader.TileMode.CLAMP));
 
     mEdgeShadowPaint.setShader(
@@ -188,7 +188,7 @@ public class MaterialImageView extends ImageView {
 
     canvas.translate(0.0F, mRawShadowSize / 2.0F);
     drawShadow(canvas);
-    //白色背景
+    // White background
  /*       canvas.translate(0.0F, -mRawShadowSize / 2.0F);
         canvas.drawRoundRect(
                 new RectF(mCardBounds.left, mCardBounds.top, mCardBounds.right, mCardBounds.bottom),
@@ -210,7 +210,7 @@ public class MaterialImageView extends ImageView {
       if(width == mCachedWidth && height == mCachedHeight){
         mCacheBitmap.eraseColor(0);
       }else{
-        //分配内存
+        // Allocate memory
         mCacheBitmap.recycle();
         mCacheBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         mCachedWidth = width;
@@ -244,7 +244,8 @@ public class MaterialImageView extends ImageView {
     if (drawHorizontalEdges) {
       canvas.drawRect(0.0F, edgeShadowTop, mCardBounds.width() - 2.0F * inset, -mCornerRadius, mEdgeShadowPaint);
     }
-    canvas.drawPath(mCornerShadowPath, mCornerShadowPaint);//和下面不同  这句放在这里 才不会出现旋转后阴影缺角
+    // And the following sentence on different it will not appear here after rotation chipping shadow
+    canvas.drawPath(mCornerShadowPath, mCornerShadowPaint);
     canvas.restoreToCount(saved);
 
     saved = canvas.save();

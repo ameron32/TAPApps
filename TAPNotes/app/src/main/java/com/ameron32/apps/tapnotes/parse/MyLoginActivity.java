@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
+import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActivity;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +42,7 @@ import butterknife.Optional;
 /**
  * A login screen that offers login via email/password.
  */
-public abstract class MyLoginActivity extends Activity implements LoaderCallbacks<Cursor> {
+public abstract class MyLoginActivity extends AbsRxActionBarActivity implements LoaderCallbacks<Cursor> {
 
   // UI references.
   @InjectView(R.id.email)

@@ -29,6 +29,8 @@ import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
+import com.ameron32.apps.tapnotes.parse.MyLoginParseActivity;
+import com.ameron32.apps.tapnotes.welcome.WelcomeActivity;
 
 import javax.inject.Singleton;
 
@@ -43,6 +45,8 @@ import dagger.Provides;
 @Module(
     injects = {
         MainActivity.class,
+        MyLoginParseActivity.class,
+        WelcomeActivity.class,
         SettingsActivity.class,
         MainToolbarFragment.class,
         TestFragment.class,
