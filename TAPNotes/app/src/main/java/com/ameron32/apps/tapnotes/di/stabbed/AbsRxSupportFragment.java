@@ -5,7 +5,9 @@ import android.view.View;
 
 import de.psdev.stabbedandroid.StabbedSupportFragment;
 import rx.Observable;
+import rx.android.app.AppObservable;
 import rx.android.lifecycle.LifecycleEvent;
+import rx.android.lifecycle.LifecycleObservable;
 import rx.subjects.BehaviorSubject;
 
 /**
@@ -79,5 +81,19 @@ public abstract class AbsRxSupportFragment extends StabbedSupportFragment {
   public void onDetach() {
     lifecycleSubject.onNext(LifecycleEvent.DETACH);
     super.onDetach();
+  }
+
+
+
+  //TODO: PR this to RxAndroid Framework
+  protected <T> Observable<T> bindLifecycle(Observable<T> observable, LifecycleEvent lifecycleEvent) {
+    Observable<T> boundObservable = AppObservable.bindFragment(this, observable);
+    return LifecycleObservable.bindUntilLifecycleEvent(lifecycle(), boundObservable, lifecycleEvent);
+  }
+
+  //TODO: PR this to RxAndroid Framework
+  protected <T> Observable<T> bindLifecycle(Observable<T> observable) {
+    Observable<T> boundObservable = AppObservable.bindFragment(this, observable);
+    return LifecycleObservable.bindFragmentLifecycle(lifecycle(), boundObservable);
   }
 }
