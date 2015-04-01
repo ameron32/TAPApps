@@ -38,6 +38,7 @@ import android.widget.ImageButton;
 import android.widget.Toolbar;
 
 import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.ParseTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
@@ -120,6 +121,7 @@ public class MainToolbarFragment extends ToolbarFragment {
         new PrimaryDrawerItem().withIdentifier(2).withName("TableTestFragment").withIcon(FontAwesome.Icon.faw_coffee),
         new PrimaryDrawerItem().withIdentifier(3).withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
         new PrimaryDrawerItem().withIdentifier(4).withName("MaterialImageViewTestFragment").withIcon(FontAwesome.Icon.faw_image),
+        new PrimaryDrawerItem().withIdentifier(7).withName("RxParseTestFragment").withIcon(FontAwesome.Icon.faw_image),
         new DividerDrawerItem(),
         new SecondaryDrawerItem().withIdentifier(5).withName("Settings").withIcon(FontAwesome.Icon.faw_cog),
         new SecondaryDrawerItem().withIdentifier(6).withName("About...").withIcon(FontAwesome.Icon.faw_cog)
@@ -142,6 +144,9 @@ public class MainToolbarFragment extends ToolbarFragment {
             break;
           case 4:
             mMainActivity.changeFragment(new MaterialImageViewTestFragment());
+            break;
+          case 7:
+            mMainActivity.changeFragment(new ParseTestFragment());
             break;
           case 5:
             mMainActivity.startSettingsActivity();

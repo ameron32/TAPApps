@@ -27,6 +27,12 @@ public class MyLoginParseActivity extends MyLoginActivity {
     ButterKnife.inject(this, view);
   }
 
+
+  /**
+   * TODO: CURRENTLY UNUSED, PLEASE INCLUDE IN MyLoginActivity PROCESS FLOW
+   * @param email
+   * @param password
+   */
   @Override
   protected void performLogin(final String email, final String password) {
     ParseUser.logInInBackground(email, password, new LogInCallback() {
@@ -77,6 +83,10 @@ public class MyLoginParseActivity extends MyLoginActivity {
     });
   }
 
+  /**
+   * TODO: CURRENTLY UNUSED, PLEASE INCLUDE IN MyLoginActivity PROCESS FLOW
+   * @param email
+   */
   @Override
   protected void performForgotPassword(String email) {
     ParseUser.requestPasswordResetInBackground(email, new RequestPasswordResetCallback() {

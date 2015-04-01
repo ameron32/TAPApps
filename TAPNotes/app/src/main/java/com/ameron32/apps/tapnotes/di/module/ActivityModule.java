@@ -23,6 +23,7 @@ import com.ameron32.apps.tapnotes.MainActivity;
 import com.ameron32.apps.tapnotes.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.SettingsActivity;
 import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.ParseTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
@@ -49,6 +50,7 @@ import dagger.Provides;
         WelcomeActivity.class,
         SettingsActivity.class,
         MainToolbarFragment.class,
+        ParseTestFragment.class,
         TestFragment.class,
         TableTestFragment.class,
         MaterialImageViewTestFragment.class,
