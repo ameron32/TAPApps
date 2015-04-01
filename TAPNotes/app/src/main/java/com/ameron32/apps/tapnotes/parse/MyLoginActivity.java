@@ -30,7 +30,6 @@ import java.util.List;
 
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
-import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActivity;
 
 import org.jetbrains.annotations.Nullable;
 
