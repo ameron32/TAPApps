@@ -43,8 +43,8 @@ public class ParseTestFragment extends AbsContentFragment {
   int count;
   private void performTest() {
     count = -1;
-    ParseObservable.find(ParseQuery.getQuery(TestObject.class))
-        .take(4)
+    ParseObservable.find(ParseQuery.getQuery(TestObject.class).orderByDescending("updatedAt"))
+        .take(textViews.size())
         .doOnNext(testObject -> count++)
         .subscribe(testObject -> textViews.get(count).setText(testObject.getString("key")));
   }
