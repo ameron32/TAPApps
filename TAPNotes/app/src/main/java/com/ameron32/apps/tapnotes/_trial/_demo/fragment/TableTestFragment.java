@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes._trial._demo;
+package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -24,6 +24,12 @@ import butterknife.InjectView;
 public class TableTestFragment
   extends AbsContentFragment
 {
+
+  public static TableTestFragment create() {
+    final TableTestFragment t = new TableTestFragment();
+    t.setArguments(new Bundle());
+    return t;
+  }
 
   @Inject
   ActivityTitleController mTitleController;

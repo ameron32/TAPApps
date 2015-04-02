@@ -24,7 +24,7 @@ import de.psdev.stabbedandroid.StabbedContext;
 
 import java.util.List;
 
-public abstract class StabbedActionBarActivity extends ActionBarActivity implements StabbedContext {
+public abstract class AbsStabbedActionBarActivity extends ActionBarActivity implements StabbedContext {
 
   private final ExtendedGraphHelper mExtendedGraphHelper = new ExtendedGraphHelper();
 

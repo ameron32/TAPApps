@@ -35,13 +35,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.Toolbar;
 
-import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.ParseTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialImageViewTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.ParseTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.PhotoViewerTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.TableTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.TestFragment;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -57,8 +56,9 @@ import javax.inject.Inject;
  */
 public class MainToolbarFragment extends ToolbarFragment {
 
-  public static MainToolbarFragment newInstance() {
+  public static MainToolbarFragment create() {
     MainToolbarFragment f = new MainToolbarFragment();
+    f.setArguments(new Bundle());
     return f;
   }
 
@@ -134,19 +134,19 @@ public class MainToolbarFragment extends ToolbarFragment {
       public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem iDrawerItem) {
         switch (iDrawerItem.getIdentifier()) {
           case 1:
-            mMainActivity.changeFragment(new TestFragment());
+            mMainActivity.changeFragment(TestFragment.create());
             break;
           case 2:
-            mMainActivity.changeFragment(new TableTestFragment());
+            mMainActivity.changeFragment(TableTestFragment.create());
             break;
           case 3:
-            mMainActivity.changeFragment(new PhotoViewerTestFragment());
+            mMainActivity.changeFragment(PhotoViewerTestFragment.create());
             break;
           case 4:
-            mMainActivity.changeFragment(new MaterialImageViewTestFragment());
+            mMainActivity.changeFragment(MaterialImageViewTestFragment.create());
             break;
           case 7:
-            mMainActivity.changeFragment(new ParseTestFragment());
+            mMainActivity.changeFragment(ParseTestFragment.create());
             break;
           case 5:
             mMainActivity.startSettingsActivity();
@@ -155,7 +155,7 @@ public class MainToolbarFragment extends ToolbarFragment {
             mMainActivity.startAbout();
             break;
           default:
-            mMainActivity.changeFragment(new TestFragment());
+            mMainActivity.changeFragment(TestFragment.create());
         }
       }
     };

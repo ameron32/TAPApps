@@ -2,51 +2,32 @@ package com.ameron32.apps.tapnotes;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
 
-import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
-import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.crashlytics.android.Crashlytics;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.util.Colors;
-import com.mikepenz.iconics.typeface.FontAwesome;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.parse.ParseUser;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import de.psdev.stabbedandroid.ForActivity;
 import de.psdev.stabbedandroid.ForApplication;
 import io.fabric.sdk.android.Fabric;
 
 
 public class MainActivity
     extends
-    AbsRxActionBarActivity
+      AbsRxActionBarActivity
     implements
       ToolbarFragment.OnToolbarFragmentCallbacks,
       MainToolbarFragment.ActivityCallbacks
@@ -69,7 +50,7 @@ public class MainActivity
     ButterKnife.inject(this);
   }
 
-    /*
+  /*
    * RETURN from LoginActivity
    */
 
@@ -85,10 +66,6 @@ public class MainActivity
       }
     }
   }
-
-  /*
-   * TEACH DRAWER then never open automatically again
-   */
 
   @Inject
   @ForApplication
@@ -139,7 +116,7 @@ public class MainActivity
 
   private void loadToolbarFragment() {
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    transaction.replace(R.id.toolbar_actionbar_container, MainToolbarFragment.newInstance());
+    transaction.replace(R.id.toolbar_actionbar_container, MainToolbarFragment.create());
     transaction.commit();
   }
 
@@ -150,10 +127,18 @@ public class MainActivity
   }
 
   public void changeFragment(Fragment fragment) {
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction transaction = fragmentManager.beginTransaction();
-    transaction.replace(R.id.container, fragment);
-    transaction.commit();
+    final int container = R.id.container;
+    final FragmentManager fm = getSupportFragmentManager();
+
+    final Fragment currentFragment = fm.findFragmentById(container);
+    if (currentFragment == null ||
+        !currentFragment.getClass().getSimpleName()
+          .equals(fragment.getClass().getSimpleName())) {
+      final FragmentTransaction transaction = fm.beginTransaction();
+      transaction.replace(container, fragment);
+      transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+      transaction.commit();
+    }
   }
 
   public void onSectionAttached(

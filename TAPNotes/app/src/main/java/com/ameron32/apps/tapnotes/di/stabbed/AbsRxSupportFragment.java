@@ -3,7 +3,6 @@ package com.ameron32.apps.tapnotes.di.stabbed;
 import android.os.Bundle;
 import android.view.View;
 
-import de.psdev.stabbedandroid.StabbedSupportFragment;
 import rx.Observable;
 import rx.android.app.AppObservable;
 import rx.android.lifecycle.LifecycleEvent;
@@ -15,7 +14,7 @@ import rx.subjects.BehaviorSubject;
  *
  * Dagger and RxAndroid SupportFragment
  */
-public abstract class AbsRxSupportFragment extends StabbedSupportFragment {
+public abstract class AbsRxSupportFragment extends AbsStatedSupportFragment {
 
   private final BehaviorSubject<LifecycleEvent> lifecycleSubject = BehaviorSubject.create();
 

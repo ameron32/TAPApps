@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes._trial._demo;
+package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -21,6 +21,13 @@ import butterknife.OnClick;
  * Created by Kris on 3/31/2015.
  */
 public class ParseTestFragment extends AbsContentFragment {
+
+  public static ParseTestFragment create() {
+    final ParseTestFragment t = new ParseTestFragment();
+    t.setArguments(new Bundle());
+    return t;
+  }
+
   @Override
   protected @LayoutRes int getCustomLayoutResource() {
     return R.layout.fragment_parse_test;
@@ -48,4 +55,17 @@ public class ParseTestFragment extends AbsContentFragment {
         .doOnNext(testObject -> count++)
         .subscribe(testObject -> textViews.get(count).setText(testObject.getString("key")));
   }
+//
+//  @Override
+//  protected void onSaveState(Bundle outState) {
+//    super.onSaveState(outState);
+//    final Parcelable parcelable = textViews.get(0).onSaveInstanceState();
+//
+//  }
+//
+//  @Override
+//  protected void onRestoreState(Bundle savedInstanceState) {
+//    super.onRestoreState(savedInstanceState);
+//    textViews.get(0).onRestoreInstanceState(parcelable);
+//  }
 }

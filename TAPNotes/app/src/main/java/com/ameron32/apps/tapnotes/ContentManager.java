@@ -14,8 +14,8 @@ package com.ameron32.apps.tapnotes;
 import android.support.v4.app.Fragment;
 
 import com.ameron32.apps.tapnotes._trial._demo.FragmentProvider;
-import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialImageViewTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.TestFragment;
 
 import java.util.ArrayList;
 import java.util.List;
