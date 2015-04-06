@@ -99,6 +99,7 @@ android {
     buildConfigField "String", "BUILD_TIME", "\"${buildTime()}\""
 
     testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    multiDexEnabled true
   }
 
   packagingOptions {
@@ -106,6 +107,8 @@ android {
     // Error: Duplicate files during packaging of APK
     // when using (ButterKnife, Dagger, Otto: javax.inject.*)
     exclude 'META-INF/services/javax.annotation.processing.Processor'
+    exclude 'META-INF/LICENSE.txt'
+    exclude 'META-INF/NOTICE.txt'
   }
 
   // signingConfigs {
@@ -173,11 +176,11 @@ dependencies {
   // LINK: https://github.com/facebook/stetho
   // ---------------------------------------------------------------------------------
   // STATUS: fails to compile
-  //  compile 'com.facebook.stetho:stetho:1.0.1'
+    compile 'com.facebook.stetho:stetho:1.1.0'
   // STATUS: untested
-  //  compile 'com.facebook.stetho:stetho-okhttp:1.0.1'
+  //  compile 'com.facebook.stetho:stetho-okhttp:1.1.0'
   // STATUS: untested
-  //  compile 'com.facebook.stetho:stetho-urlconnection:1.0.1'
+  //  compile 'com.facebook.stetho:stetho-urlconnection:1.1.0'
   //
   //
   // Java 8 Lambdas in Android
@@ -324,7 +327,7 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // NOTE: More configuration needed. See associated link.
   // STATUS: error
-  //  compile 'com.android.support:multidex:1.0.0'
+  compile 'com.android.support:multidex:1.0.0'
   //
   //
   // View injection
@@ -427,7 +430,7 @@ dependencies {
   // LINK: https://github.com/levelup/Expandable-RecyclerView
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  //  compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
+    compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
   //
   //
   // [CURRENT PROGRAM]
@@ -459,7 +462,7 @@ dependencies {
   // LINK: https://github.com/JMPergar/AwesomeText
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  //  compile 'com.jmpergar:AwesomeText:1.0.0'
+    compile 'com.jmpergar:AwesomeText:1.0.0'
   //
   //
   // [NOTE CONTEXTUAL MENU]
@@ -469,7 +472,7 @@ dependencies {
   // LINK: https://github.com/soarcn/BottomSheet
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  //  compile 'com.cocosw:bottomsheet:0.6@aar'
+    compile 'com.cocosw:bottomsheet:0.6@aar'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -479,7 +482,7 @@ dependencies {
   // LINK: https://github.com/h6ah4i/android-materialshadowninepatch
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  //  compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
+    compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -499,7 +502,7 @@ dependencies {
   // LINK: https://github.com/prolificinteractive/material-calendarview
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  //  compile 'com.prolificinteractive:material-calendarview:0.2.5'
+    compile 'com.prolificinteractive:material-calendarview:0.2.5'
   //
   //
   // [IMPROVED TOASTS]
@@ -508,11 +511,11 @@ dependencies {
   // NAME: SnackBar
   // LINK: https://github.com/Kennyc1012/SnackBar
   // ---------------------------------------------------------------------------------
-  // STATUS: functional
+  // STATUS: fails
   // For api11+
-  compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api11Release@aar'
+//  compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api11Release@aar'
   // For api8+
-  //  compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api8Release@aar'
+//  compile 'com.github.kennyc1012:snackbar:1.1-SNAPSHOT:api8Release@aar'
   //
   //
   // ["ADD NEW PROGRAM" BUTTON on PROGRAM SELECTION SCREEN]
@@ -564,6 +567,16 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
   compile 'com.github.navasmdc:MaterialDesign:1.3@aar'
+  //
+  //
+  // [IMPROVED TOASTS]
+  //   MATERIAL DESIGN INSPIRED TOASTS INCLUDING ACTIONS (UNDO)
+  // ---------------------------------------------------------------------------------
+  // NAME: Material
+  // LINK: https://github.com/rey5137/Material
+  // ---------------------------------------------------------------------------------
+  // STATUS: compiles
+//  compile 'com.github.rey5137:material:1.0.0'
   //
   //
   // [RECORD AUDIO]
