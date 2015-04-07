@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes;
+package com.ameron32.apps.tapnotes.unused;
 
 /*********************************************************************
  * *******************************************************************
@@ -15,12 +15,13 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.ameron32.apps.tapnotes.R;
 
 import java.util.List;
 

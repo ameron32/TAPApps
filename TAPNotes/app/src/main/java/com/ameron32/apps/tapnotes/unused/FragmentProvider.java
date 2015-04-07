@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes;
+package com.ameron32.apps.tapnotes.unused;
 
 /*********************************************************************
  * *******************************************************************
@@ -11,9 +11,15 @@ package com.ameron32.apps.tapnotes;
  * *******************************************************************
  */
 
-public interface IManager {
+import android.support.v4.app.Fragment;
 
-  public boolean isInitialized();
+public interface FragmentProvider {
+  public Fragment getFragment(int position);
+  public void setSelectedFragment(int position);
+  public void addFragmentChangeListener(OnFragmentChangeListener listener);
+  public void removeFragmentChangeListener(OnFragmentChangeListener listener);
 
-  public void initialize();
+  public interface OnFragmentChangeListener {
+    public void onFragmentChange(int position);
+  }
 }

@@ -1,5 +1,8 @@
 package com.ameron32.apps.tapnotes.di.stabbed;
 
+import android.content.Context;
+import android.support.multidex.MultiDex;
+
 import com.ameron32.apps.tapnotes.di.module.DemoApplicationModule;
 import com.ameron32.apps.tapnotes.di.module.ApplicationModule;
 import com.ameron32.apps.tapnotes.di.module.DefaultAndroidApplicationModule;
@@ -20,5 +23,11 @@ public abstract class AbsApplication extends StabbedApplication {
         new ApplicationModule(this),
         new DemoApplicationModule()
     );
+  }
+
+  @Override
+  protected void attachBaseContext(Context base) {
+    super.attachBaseContext(base);
+    MultiDex.install(this);
   }
 }

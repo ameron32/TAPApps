@@ -46,3 +46,8 @@
 
 #REQUIRED BY: RetroLambda/RxParse
 -dontwarn java.lang.invoke.*
+
+#REQUIRED BY: Icepick
+-dontwarn icepick.**
+-keep class **$$Icicle { *; }
+-keepnames class * { @icepick.Icicle *;}

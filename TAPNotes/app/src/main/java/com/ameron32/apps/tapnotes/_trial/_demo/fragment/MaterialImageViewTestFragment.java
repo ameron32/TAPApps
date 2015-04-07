@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes._trial._demo;
+package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,9 +10,6 @@ import com.ameron32.apps.tapnotes._trial.ui.MaterialImageView;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
-import com.ameron32.apps.tapnotes.rx.WeakSubscriberDecorator;
-
-import java.lang.ref.WeakReference;
 
 import javax.inject.Inject;
 
@@ -30,6 +27,12 @@ import rx.functions.Action1;
 public class MaterialImageViewTestFragment
     extends AbsContentFragment
 {
+
+  public static MaterialImageViewTestFragment create() {
+    final MaterialImageViewTestFragment t = new MaterialImageViewTestFragment();
+    t.setArguments(new Bundle());
+    return t;
+  }
 
   private static final String ROTATION_PREF_KEY = "TRIAL ROTATION PREFERENCE KEY";
 
@@ -70,12 +73,33 @@ public class MaterialImageViewTestFragment
               @Override
               public void call(OnClickEvent onClickEvent) {
                 MaterialImageView v = (MaterialImageView) onClickEvent.view();
-                mRotation1 = mRotation1 + 5;
+                mRotation1 = mRotation1 + 5 * getDirection(v);
+                mRotation2 = mRotation2 - 5 * getDirection(v);
                 v.setRotation(mRotation1);
-                snackBarController.toast("Clicked button!");
+                otherView(v).setRotation(mRotation2);
+//                snackBarController.toast("Clicked button!");
                 prefController.saveIntPreference(ROTATION_PREF_KEY, mRotation1);
               }
             });
+  }
+
+  public int getDirection(MaterialImageView view) {
+    switch(view.getId()) {
+      case R.id.pic1:
+        return 1;
+
+      case R.id.pic2:
+      default:
+        return -1;
+    }
+  }
+
+  public MaterialImageView otherView(MaterialImageView view) {
+    if (getDirection(view) == -1) {
+      return materialImageView1;
+    } else {
+      return materialImageView2;
+    }
   }
 
   @Override
@@ -92,5 +116,17 @@ public class MaterialImageViewTestFragment
   public void onDestroy() {
     subscription = null;
     super.onDestroy();
+  }
+
+  @Override
+  protected void onSaveState(Bundle outState) {
+    super.onSaveState(outState);
+    outState.putInt("mRotation2", mRotation2);
+  }
+
+  @Override
+  protected void onRestoreState(Bundle savedInstanceState) {
+    super.onRestoreState(savedInstanceState);
+    mRotation2 = savedInstanceState.getInt("mRotation2");
   }
 }

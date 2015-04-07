@@ -1,7 +1,8 @@
-package com.ameron32.apps.tapnotes._trial._demo;
+package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 
 import android.location.LocationManager;
+import android.os.Bundle;
 
 import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
@@ -15,6 +16,12 @@ import javax.inject.Inject;
 
 public class TestFragment extends AbsContentFragment
 {
+
+  public static TestFragment create() {
+    final TestFragment t = new TestFragment();
+    t.setArguments(new Bundle());
+    return t;
+  }
 
   @Inject
   ActivityTitleController titleController;

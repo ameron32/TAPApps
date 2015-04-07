@@ -18,8 +18,8 @@
     <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
     <item name="android:windowBackground">@color/myWindowBackground</item>
 
-    <item name="snack_bar_text_color">@color/myTextPrimaryHintColor</item>
-    <item name="snack_bar_duration">5000</item>
+    <!--<item name="snack_bar_text_color">@color/myTextPrimaryHintColor</item>-->
+    <!--<item name="snack_bar_duration">5000</item>-->
 
     <item name="android:windowNoTitle">true</item>
     <!-- For 2.x version -->

@@ -2,51 +2,32 @@ package com.ameron32.apps.tapnotes;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
+import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ImageButton;
 
-import com.ameron32.apps.tapnotes._trial._demo.MaterialImageViewTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.PhotoViewerTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.TableTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.TestFragment;
-import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.crashlytics.android.Crashlytics;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.util.Colors;
-import com.mikepenz.iconics.typeface.FontAwesome;
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.parse.ParseUser;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import de.psdev.stabbedandroid.ForActivity;
 import de.psdev.stabbedandroid.ForApplication;
 import io.fabric.sdk.android.Fabric;
 
 
 public class MainActivity
     extends
-    AbsRxActionBarActivity
+      AbsRxActionBarActivity
     implements
       ToolbarFragment.OnToolbarFragmentCallbacks,
       MainToolbarFragment.ActivityCallbacks
@@ -69,7 +50,7 @@ public class MainActivity
     ButterKnife.inject(this);
   }
 
-    /*
+  /*
    * RETURN from LoginActivity
    */
 
@@ -86,10 +67,6 @@ public class MainActivity
     }
   }
 
-  /*
-   * TEACH DRAWER then never open automatically again
-   */
-
   @Inject
   @ForApplication
   SharedPreferences sharedPreferences;
@@ -100,46 +77,11 @@ public class MainActivity
 
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-//    final PreparingRunner oneTimeRunner
-//        = new PreparingRunner(new PreparingRunner.PreparingRunnable() {
-//      public boolean hasRun() {
-//        return sharedPreferences.getBoolean(TEACH_DRAWER_PREF_KEY, false);
-//      }
-//
-//      public boolean runWithResult() {
-//        mDrawer.openDrawer();
-//        return mDrawer.isDrawerOpen();
-//      }
-//
-//      @Override
-//      public void onRunComplete(boolean runFinishedSuccessfully) {
-//        if (runFinishedSuccessfully) {
-//          sharedPreferences.edit().putBoolean(TEACH_DRAWER_PREF_KEY, true).commit();
-//        }
-//      }
-//    });
-//    oneTimeRunner.run();
-
-//    prefController.runOnce(TEACH_DRAWER_PREF_KEY, new SuccessfulRunnable() {
-//      @Override
-//      public boolean run() {
-//        mDrawer.openDrawer();
-//        return mDrawer.isDrawerOpen();
-//      }
-//    });
-
-//    mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-
-//    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-    // drawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.colorPrimary));
-//    mNavigationDrawerFragment.setup(R.id.navigation_drawer, mDrawerLayout, mToolbar);
   }
 
   private void loadToolbarFragment() {
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-    transaction.replace(R.id.toolbar_actionbar_container, MainToolbarFragment.newInstance());
+    transaction.replace(R.id.toolbar_actionbar_container, MainToolbarFragment.create());
     transaction.commit();
   }
 
@@ -149,10 +91,20 @@ public class MainActivity
     ButterKnife.reset(this);
   }
 
-  public void changeFragment(Fragment fragment) {
-    FragmentManager fragmentManager = getSupportFragmentManager();
-    FragmentTransaction transaction = fragmentManager.beginTransaction();
-    transaction.replace(R.id.container, fragment);
+  public void changeFragment(Fragment newFragment) {
+    final int container = R.id.container;
+    final FragmentManager fm = getSupportFragmentManager();
+    final FragmentTransaction transaction = fm.beginTransaction();
+    final String newTag = newFragment.getClass().getName();
+
+    Fragment fragment = fm.findFragmentByTag(newTag);
+    if (fragment == null) {
+      fragment = newFragment;
+    }
+
+    transaction.replace(container, fragment, newTag);
+    transaction.addToBackStack(newTag);
+    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
     transaction.commit();
   }
 
@@ -192,14 +144,6 @@ public class MainActivity
     }
     return super.onOptionsItemSelected(item);
   }
-
-//  @Inject
-//  @ForApplication
-//  Context mContext;
-
-//  TODO: fails to @Inject. likely module hasn't loaded at the time @Inject calls
-//  @Inject
-//  ActivitySnackBarController snackBarController;
 
   public void onLogoutClick() {
 //    snackBarController.toast("Logout");

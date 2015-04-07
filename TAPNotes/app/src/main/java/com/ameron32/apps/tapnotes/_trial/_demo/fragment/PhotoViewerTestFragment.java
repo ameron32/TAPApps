@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes._trial._demo;
+package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,8 +7,6 @@ import android.view.View;
 import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.squareup.picasso.Picasso;
-
-import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -21,6 +19,12 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class PhotoViewerTestFragment
     extends AbsContentFragment
 {
+
+  public static PhotoViewerTestFragment create() {
+    final PhotoViewerTestFragment t = new PhotoViewerTestFragment();
+    t.setArguments(new Bundle());
+    return t;
+  }
 
   @Override
   protected int getCustomLayoutResource() {

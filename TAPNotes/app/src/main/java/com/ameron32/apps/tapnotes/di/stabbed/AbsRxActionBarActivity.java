@@ -19,7 +19,7 @@ import rx.subjects.BehaviorSubject;
  *
  * Dagger and RxAndroid ActionBarActivity
  */
-public abstract class AbsRxActionBarActivity extends StabbedActionBarActivity {
+public abstract class AbsRxActionBarActivity extends AbsStabbedActionBarActivity {
 
   @Override
   protected List<Object> getModules() {

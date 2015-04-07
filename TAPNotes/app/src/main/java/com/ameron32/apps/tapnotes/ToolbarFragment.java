@@ -45,8 +45,9 @@ public class ToolbarFragment
   private Toolbar mToolbar;
   private OnToolbarFragmentCallbacks mCallbacks;
 
-  public static ToolbarFragment newInstance() {
+  public static ToolbarFragment create() {
     ToolbarFragment f = new ToolbarFragment();
+    f.setArguments(new Bundle());
     return f;
   }
 

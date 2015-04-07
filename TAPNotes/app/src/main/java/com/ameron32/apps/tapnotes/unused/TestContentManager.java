@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes._trial._demo;
+package com.ameron32.apps.tapnotes.unused;
 
 /*********************************************************************
  * *******************************************************************
@@ -12,6 +12,8 @@ package com.ameron32.apps.tapnotes._trial._demo;
  */
 
 import android.support.v4.app.Fragment;
+
+import com.ameron32.apps.tapnotes._trial._demo.fragment.TestFragment;
 
 import java.util.ArrayList;
 import java.util.List;
