@@ -976,7 +976,6 @@ dependencies {
 
 
 
-//
 // from AndroidTestingPlease
 // https://github.com/farmapromlab/AndroidTestingPlease
 //tasks.findByName("assembleDebug").dependsOn("testDebugClasses")
