@@ -77,41 +77,6 @@ public class MainActivity
 
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-//    final PreparingRunner oneTimeRunner
-//        = new PreparingRunner(new PreparingRunner.PreparingRunnable() {
-//      public boolean hasRun() {
-//        return sharedPreferences.getBoolean(TEACH_DRAWER_PREF_KEY, false);
-//      }
-//
-//      public boolean runWithResult() {
-//        mDrawer.openDrawer();
-//        return mDrawer.isDrawerOpen();
-//      }
-//
-//      @Override
-//      public void onRunComplete(boolean runFinishedSuccessfully) {
-//        if (runFinishedSuccessfully) {
-//          sharedPreferences.edit().putBoolean(TEACH_DRAWER_PREF_KEY, true).commit();
-//        }
-//      }
-//    });
-//    oneTimeRunner.run();
-
-//    prefController.runOnce(TEACH_DRAWER_PREF_KEY, new SuccessfulRunnable() {
-//      @Override
-//      public boolean run() {
-//        mDrawer.openDrawer();
-//        return mDrawer.isDrawerOpen();
-//      }
-//    });
-
-//    mNavigationDrawerFragment = (NavigationDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-
-//    mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-    // drawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.colorPrimary));
-//    mNavigationDrawerFragment.setup(R.id.navigation_drawer, mDrawerLayout, mToolbar);
   }
 
   private void loadToolbarFragment() {
@@ -126,19 +91,21 @@ public class MainActivity
     ButterKnife.reset(this);
   }
 
-  public void changeFragment(Fragment fragment) {
+  public void changeFragment(Fragment newFragment) {
     final int container = R.id.container;
     final FragmentManager fm = getSupportFragmentManager();
+    final FragmentTransaction transaction = fm.beginTransaction();
+    final String newTag = newFragment.getClass().getName();
 
-    final Fragment currentFragment = fm.findFragmentById(container);
-    if (currentFragment == null ||
-        !currentFragment.getClass().getSimpleName()
-          .equals(fragment.getClass().getSimpleName())) {
-      final FragmentTransaction transaction = fm.beginTransaction();
-      transaction.replace(container, fragment);
-      transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
-      transaction.commit();
+    Fragment fragment = fm.findFragmentByTag(newTag);
+    if (fragment == null) {
+      fragment = newFragment;
     }
+
+    transaction.replace(container, fragment, newTag);
+    transaction.addToBackStack(newTag);
+    transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+    transaction.commit();
   }
 
   public void onSectionAttached(
@@ -177,14 +144,6 @@ public class MainActivity
     }
     return super.onOptionsItemSelected(item);
   }
-
-//  @Inject
-//  @ForApplication
-//  Context mContext;
-
-//  TODO: fails to @Inject. likely module hasn't loaded at the time @Inject calls
-//  @Inject
-//  ActivitySnackBarController snackBarController;
 
   public void onLogoutClick() {
 //    snackBarController.toast("Logout");

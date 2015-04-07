@@ -38,15 +38,15 @@ public class ParseObservable<T extends ParseObject> {
     mSubClass = subclass;
   }
 
-  @Deprecated
-  public static <T extends ParseObject> ParseObservable<T> from(Class<T> subclass) {
-    return of(subclass);
-  }
-
-  @Deprecated
-  public static <T extends ParseObject> ParseObservable<T> of(Class<T> subclass) {
-    return new ParseObservable<T>(subclass);
-  }
+//  @Deprecated
+//  public static <T extends ParseObject> ParseObservable<T> from(Class<T> subclass) {
+//    return of(subclass);
+//  }
+//
+//  @Deprecated
+//  public static <T extends ParseObject> ParseObservable<T> of(Class<T> subclass) {
+//    return new ParseObservable<T>(subclass);
+//  }
 
   @Deprecated
   public ParseQuery<T> getQuery() {
@@ -59,10 +59,10 @@ public class ParseObservable<T extends ParseObject> {
     return ParseQuery.getQuery(mSubClass);
   }
 
-  @Deprecated
-  public Observable<T> find() {
-    return find(getQuery());
-  }
+//  @Deprecated
+//  public Observable<T> find() {
+//    return find(getQuery());
+//  }
 
   public static <R extends ParseObject> Observable<R> find(ParseQuery<R> query) {
     Observable<List<R>> list = Observable.create(sub -> {

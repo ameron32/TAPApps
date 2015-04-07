@@ -42,6 +42,9 @@ repositories {
   // for SnackBar
   maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 
+  // for Icepick
+  maven { url "https://clojars.org/repo/" }
+
   mavenCentral()
 }
 
@@ -176,7 +179,7 @@ dependencies {
   // LINK: https://github.com/facebook/stetho
   // ---------------------------------------------------------------------------------
   // STATUS: fails to compile
-    compile 'com.facebook.stetho:stetho:1.1.0'
+  compile 'com.facebook.stetho:stetho:1.1.0'
   // STATUS: untested
   //  compile 'com.facebook.stetho:stetho-okhttp:1.1.0'
   // STATUS: untested
@@ -417,6 +420,16 @@ dependencies {
   compile 'com.google.guava:guava:18.0'
   //
   //
+  // Save/Restore Instance Annotation Processing
+  // ---------------------------------------------------------------------------------
+  // NAME: Icepick
+  // LINK: https://github.com/frankiesardo/icepick
+  // ---------------------------------------------------------------------------------
+  // STATUS: compiles
+  compile 'frankiesardo:icepick:3.0.2'
+  provided 'frankiesardo:icepick-processor:3.0.2'
+  //
+  //
   //
   //
   // =================================================================================
@@ -430,7 +443,7 @@ dependencies {
   // LINK: https://github.com/levelup/Expandable-RecyclerView
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-    compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
+  compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
   //
   //
   // [CURRENT PROGRAM]
@@ -462,7 +475,7 @@ dependencies {
   // LINK: https://github.com/JMPergar/AwesomeText
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-    compile 'com.jmpergar:AwesomeText:1.0.0'
+  compile 'com.jmpergar:AwesomeText:1.0.0'
   //
   //
   // [NOTE CONTEXTUAL MENU]
@@ -472,7 +485,7 @@ dependencies {
   // LINK: https://github.com/soarcn/BottomSheet
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-    compile 'com.cocosw:bottomsheet:0.6@aar'
+  compile 'com.cocosw:bottomsheet:0.6@aar'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -482,7 +495,7 @@ dependencies {
   // LINK: https://github.com/h6ah4i/android-materialshadowninepatch
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-    compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
+  compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -502,7 +515,7 @@ dependencies {
   // LINK: https://github.com/prolificinteractive/material-calendarview
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-    compile 'com.prolificinteractive:material-calendarview:0.2.5'
+  compile 'com.prolificinteractive:material-calendarview:0.2.5'
   //
   //
   // [IMPROVED TOASTS]
@@ -628,6 +641,16 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
   //  compile 'com.github.chenupt.android:dragtoplayout:1.2.1@aar'
+  //
+  //
+  // [TALK/SCRIPTURE HEADER]
+  //   EXPANDING/COLLAPSING TOOLBAR
+  // ---------------------------------------------------------------------------------
+  // NAME: Android-ObservableScrollView
+  // LINK: https://github.com/ksoichiro/Android-ObservableScrollView
+  // ---------------------------------------------------------------------------------
+  // STATUS: compiles
+  compile 'com.github.ksoichiro:android-observablescrollview:1.5.0'
   //
   //
   // [ACTIVITY TRANSITIONS]
@@ -953,7 +976,7 @@ dependencies {
 
 
 
-
+//
 // from AndroidTestingPlease
 // https://github.com/farmapromlab/AndroidTestingPlease
 //tasks.findByName("assembleDebug").dependsOn("testDebugClasses")

@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.rx;
+package com.ameron32.apps.tapnotes.unused.rx;
 
 import rx.Observable;
 import rx.Subscriber;
