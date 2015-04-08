@@ -53,7 +53,7 @@ public class TableTestFragment
         = new ParseQueryAdapter.QueryFactory<TestObject>() {
       @Override
       public ParseQuery create() {
-        final ParseQuery<TestObject> query = ParseQuery.getQuery("TestObject");
+        final ParseQuery<TestObject> query = ParseQuery.getQuery(TestObject.class);
         query.orderByDescending("createdAt");
         return query;
       }
