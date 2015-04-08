@@ -20,7 +20,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
 import dagger.ObjectGraph;
-import de.psdev.stabbedandroid.StabbedContext;
+import com.ameron32.apps.tapnotes.di.stabbed.mport.StabbedContext;
 
 import java.util.List;
 

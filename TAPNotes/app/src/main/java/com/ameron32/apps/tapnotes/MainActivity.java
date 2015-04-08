@@ -21,7 +21,7 @@ import com.parse.ParseUser;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import de.psdev.stabbedandroid.ForApplication;
+import com.ameron32.apps.tapnotes.di.stabbed.mport.ForApplication;
 import io.fabric.sdk.android.Fabric;
 
 
@@ -39,7 +39,6 @@ public class MainActivity
   protected void onCreate(
       Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    Fabric.with(this, new Crashlytics());
     setThisTheme();
     setContentView(R.layout.activity_main);
     onLoginComplete();

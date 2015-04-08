@@ -20,7 +20,8 @@ import android.content.Context;
 import android.util.Log;
 
 import dagger.ObjectGraph;
-import de.psdev.stabbedandroid.StabbedContext;
+import com.ameron32.apps.tapnotes.di.stabbed.mport.StabbedContext;
+import timber.log.Timber;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public final class ExtendedGraphHelper {
 
   private ObjectGraph mExtendedGraph;
 
-  void onCreate(final Context context, final List<Object> modules, final Object target) {
+  public void onCreate(final Context context, final List<Object> modules, final Object target) {
     // Create the activity graph by .plus-ing our modules onto the application graph.
     final StabbedContext application = (StabbedContext) context.getApplicationContext();
     mExtendedGraph = application.getObjectGraph().plus(modules.toArray());
@@ -37,7 +38,7 @@ public final class ExtendedGraphHelper {
     mExtendedGraph.inject(target);
   }
 
-  void onDestroy() {
+  public void onDestroy() {
     // Eagerly clear the reference to the activity graph to allow it to be garbage collected as
     // soon as possible.
     mExtendedGraph = null;
@@ -46,12 +47,12 @@ public final class ExtendedGraphHelper {
   /**
    * Inject the supplied {@code object} using the activity-specific graph.
    */
-  void inject(final Object object) {
+  public void inject(final Object object) {
     if (mExtendedGraph != null) {
       mExtendedGraph.inject(object);
     } else {
-      Log.e("ExtendedGraphHelper",
-          "Used inject outside of activity lifecycle, or call to onCreate missing.");
+      Timber.tag("ExtendedGraphHelper");
+      Timber.e("Used inject outside of activity lifecycle, or call to onCreate missing.");
     }
   }
 

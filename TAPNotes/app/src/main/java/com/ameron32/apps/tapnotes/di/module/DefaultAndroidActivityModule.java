@@ -23,7 +23,7 @@ import android.content.res.Resources;
 
 import dagger.Module;
 import dagger.Provides;
-import de.psdev.stabbedandroid.ForActivity;
+import com.ameron32.apps.tapnotes.di.stabbed.mport.ForActivity;
 
 import javax.inject.Singleton;
 

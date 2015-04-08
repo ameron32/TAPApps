@@ -26,7 +26,7 @@ package com.ameron32.apps.tapnotes.di.stabbed;
 
 import android.os.Bundle;
 
-import de.psdev.stabbedandroid.StabbedSupportFragment;
+import com.ameron32.apps.tapnotes.di.stabbed.mport.StabbedSupportFragment;
 
 /**
  * Created by klemeilleur on 4/2/2015.

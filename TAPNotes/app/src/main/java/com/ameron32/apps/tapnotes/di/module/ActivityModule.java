@@ -27,6 +27,7 @@ import com.ameron32.apps.tapnotes._trial._demo.fragment.ParseTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.TestFragment;
+import com.ameron32.apps.tapnotes.di.controller.ActivityLoggingController;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
@@ -93,5 +94,11 @@ public class ActivityModule {
   @Singleton
   ActivitySnackBarController provideSnackBarController() {
     return new ActivitySnackBarController(activity);
+  }
+
+  @Provides
+  @Singleton
+  ActivityLoggingController provideLoggingController() {
+    return new ActivityLoggingController(activity);
   }
 }

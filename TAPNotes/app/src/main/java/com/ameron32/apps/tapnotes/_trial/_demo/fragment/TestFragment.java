@@ -1,11 +1,13 @@
 package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 
+import android.app.Activity;
 import android.location.LocationManager;
 import android.os.Bundle;
 
 import com.ameron32.apps.tapnotes.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.di.controller.ActivityLoggingController;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
@@ -35,9 +37,18 @@ public class TestFragment extends AbsContentFragment
   @Inject
   ActivitySnackBarController snackBarController;
 
+  @Inject
+  ActivityLoggingController logController;
+
   @Override
   protected int getCustomLayoutResource() {
     return R.layout.view_spacer;
+  }
+
+  @Override
+  public void onActivityCreated(Bundle savedInstanceState) {
+    super.onActivityCreated(savedInstanceState);
+    logController.tag(TestFragment.class.getSimpleName());
   }
 
   @Override
@@ -46,6 +57,7 @@ public class TestFragment extends AbsContentFragment
 
     final String time = sharedPreferencesController.restoreStringPreference("time", "none");
     titleController.setTitle(time);
+    logController.log(time);
 
     final List<String> allProviders = locationManager.getAllProviders();
     snackBarController.toast(allProviders.toString());

@@ -31,6 +31,9 @@ com_crashlytics*.xml
 crashlytics.properties
 crashlytics-build.properties
 
+# Parse Cloud
+parse/
+
 # Android Studio
 .gradle
 /local.properties

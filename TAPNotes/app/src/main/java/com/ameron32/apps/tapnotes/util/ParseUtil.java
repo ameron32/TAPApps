@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.parse.Parse;
+import com.parse.ParseCrashReporting;
 import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
@@ -23,6 +24,10 @@ public class ParseUtil {
     ParseObject.registerSubclass(TestObject.class);
 
     Parse.enableLocalDatastore(app);
+
+    // Enable Crash Reporting
+    ParseCrashReporting.enable(app);
+
     Parse.initialize(app, r.getString(R.string.APPLICATION_ID), r.getString(R.string.CLIENT_KEY));
 
     // Save the current Installation to Parse.

@@ -6,16 +6,29 @@ import android.support.multidex.MultiDex;
 import com.ameron32.apps.tapnotes.di.module.DemoApplicationModule;
 import com.ameron32.apps.tapnotes.di.module.ApplicationModule;
 import com.ameron32.apps.tapnotes.di.module.DefaultAndroidApplicationModule;
+import com.crashlytics.android.Crashlytics;
 
 import java.util.Arrays;
 import java.util.List;
 
-import de.psdev.stabbedandroid.StabbedApplication;
+import com.ameron32.apps.tapnotes.di.stabbed.mport.StabbedApplication;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by klemeilleur on 3/3/2015.
  */
 public abstract class AbsApplication extends StabbedApplication {
+
+  @Override
+  public void onCreate() {
+    super.onCreate();
+
+    // example of complex initialization
+//    TwitterAuthConfig authConfig = new TwitterAuthConfig(BuildConfig.CONSUMER_KEY, BuildConfig.CONSUMER_SECRET);
+//    Fabric.with(this, new Crashlytics(), new Twitter(authConfig), new MoPub());
+    Fabric.with(this, new Crashlytics());
+  }
+
   @Override
   protected List<Object> getModules() {
     return Arrays.<Object>asList(

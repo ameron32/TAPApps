@@ -46,7 +46,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import de.psdev.stabbedandroid.ForApplication;
+import com.ameron32.apps.tapnotes.di.stabbed.mport.ForApplication;
 
 /**
  * Default application module which provides standard android classes.

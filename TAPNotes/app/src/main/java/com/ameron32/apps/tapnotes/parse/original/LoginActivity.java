@@ -69,10 +69,13 @@ import com.parse.ParseFacebookUtils;
  * to start this activity with your customizations.</li>
  * </ul>
  */
-public abstract class LoginActivity extends ActionBarActivity implements
-    LoginFragment.ParseLoginFragmentListener,
-    LoginHelpFragment.ParseOnLoginHelpSuccessListener,
-    OnLoginSuccessListener, OnLoadingListener {
+public abstract class LoginActivity
+    extends
+      ActionBarActivity
+    implements
+      LoginFragment.ParseLoginFragmentListener,
+      LoginHelpFragment.ParseOnLoginHelpSuccessListener,
+      OnLoginSuccessListener, OnLoadingListener {
 
 
   public static final String LOG_TAG = "LoginActivity";
