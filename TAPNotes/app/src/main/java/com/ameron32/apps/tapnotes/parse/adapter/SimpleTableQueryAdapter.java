@@ -41,7 +41,10 @@ public class
 
   private void populateRow(T object, TableRowLayout layout) {
     // loop through all cells, populating them with the appropriate data
-    int columnCount = object.getColumnCount();
+    int objectColumnCount = object.getColumnCount();
+    // never attempt more columns than the first row had. less is acceptable, more is impossible.
+    int columnCount = (objectColumnCount < getFirstRowColumnCount()) ? objectColumnCount : getFirstRowColumnCount();
+
     for (int i = 0; i < columnCount; i++) {
       final int columnPosition = i;
       String columnString = null;

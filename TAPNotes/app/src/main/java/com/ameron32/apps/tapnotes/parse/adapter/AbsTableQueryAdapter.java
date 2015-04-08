@@ -26,6 +26,8 @@ public abstract class
   private static final String TAG = AbsTableQueryAdapter.class.getSimpleName();
 
   private T mHeaderObject;
+  private int mFirstRowColumnCount;
+  protected int getFirstRowColumnCount() {return mFirstRowColumnCount;}
 //  private List<V> mDataset;
 
   private static final int ROW_LAYOUT_DEFAULT = R.layout.simple_table_row_layout;
@@ -133,8 +135,8 @@ public abstract class
     onSetTableRowAttributes(trl, parent, viewType);
 
     // inflate cells into row
-    int firstRowColumnCount = getRow(0).getColumnCount();
-    trl.inflateColumns(firstRowColumnCount, mCellLayoutResource, parent);
+    mFirstRowColumnCount = getRow(0).getColumnCount();
+    trl.inflateColumns(mFirstRowColumnCount, mCellLayoutResource, parent);
     return trl;
   }
 
