@@ -145,7 +145,7 @@ android {
       // proguardFile '..\proguard.cfg'
       // signingConfig signingConfigs.release
       // zipAlign true // this is default for release
-      testPackageName 'com.ameron32.apps.tapnotes.tests'
+      // testPackageName 'com.ameron32.apps.tapnotes.tests'
       // testInstrumentationRunner 'android.test.InstrumentationTestRunner' // this is the default
       // testInstrumentationRunner "com.google.android.apps.common.testing.testrunner.GoogleInstrumentationTestRunner"
       // testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
