@@ -22,7 +22,6 @@ import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import com.ameron32.apps.tapnotes.di.stabbed.mport.ForApplication;
-import io.fabric.sdk.android.Fabric;
 
 
 public class MainActivity

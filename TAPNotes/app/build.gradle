@@ -160,9 +160,13 @@ android {
   }
 }
 
-// suggested in AndroidTestingPlease
-// https://github.com/farmapromlab/AndroidTestingPlease
+// suggested
+// https://www.bignerdranch.com/blog/all-in-together-android-studio-gradle-and-robolectric/
 //apply plugin: 'android-unit-test'
+
+//afterEvaluate {
+//  tasks.findByName("assembleDebug").dependsOn("testDebugClasses")
+//}
 
 dependencies {
   //
@@ -995,8 +999,8 @@ dependencies {
   //
   // NAME: Robolectric-suggested Deckard-Gradle Sample
   // LINK: https://github.com/robolectric/deckard-gradle/blob/master/build.gradle
-  // Espresso
-  androidTestCompile('com.android.support.test.espresso:espresso-core:2.0')
+  // Espresso 2.0
+  androidTestCompile('com.android.support.test.espresso:espresso-core:2.0') { exclude group: 'javax.inject' }
   androidTestCompile('com.android.support.test:testing-support-lib:0.1')
   //
   // Robolectric
@@ -1025,9 +1029,3 @@ dependencies {
     exclude module: 'wagon-provider-api'
   }
 }
-
-
-
-// from AndroidTestingPlease
-// https://github.com/farmapromlab/AndroidTestingPlease
-//tasks.findByName("assembleDebug").dependsOn("testDebugClasses")
