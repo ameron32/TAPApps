@@ -126,10 +126,10 @@ public class DrawerImpl {
   }
 
   private IDrawerItem[] getDrawerItems() {
-    return new IDrawerItem[]{
+    return new IDrawerItem[] {
         new PrimaryDrawerItem().withIdentifier(1).withName("TestFragment").withIcon(FontAwesome.Icon.faw_coffee),
         new PrimaryDrawerItem().withIdentifier(2).withName("TableTestFragment").withIcon(FontAwesome.Icon.faw_coffee),
-        new PrimaryDrawerItem().withIdentifier(3).withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
+//        new PrimaryDrawerItem().withIdentifier(3).withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
         new PrimaryDrawerItem().withIdentifier(4).withName("MaterialImageViewTestFragment").withIcon(FontAwesome.Icon.faw_image),
         new PrimaryDrawerItem().withIdentifier(7).withName("RxParseTestFragment").withIcon(FontAwesome.Icon.faw_image),
         new DividerDrawerItem(),

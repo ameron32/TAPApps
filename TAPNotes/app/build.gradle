@@ -244,6 +244,7 @@ dependencies {
   // LINK: https://github.com/yongjhih/RxParse
   // ---------------------------------------------------------------------------------
   // ERROR:  requires Parse 1.8.1. have 1.8.2
+  // NOTE:   classes adopted for use in this project. library no longer needed.
   // STATUS: failed
   //  compile 'com.infstory:rxparse:1.0.1'
   //
@@ -254,6 +255,7 @@ dependencies {
   // LINK: https://github.com/realm/realm-java
   //       http://realm.io/
   // ---------------------------------------------------------------------------------
+  // NOTE:   database not needed at this time.
   // STATUS: untested
   //  compile 'io.realm:realm-android:0.80.0'
   //
@@ -492,9 +494,9 @@ dependencies {
   // NAME: MaterialEditText
   // LINK: https://github.com/rengwuxian/MaterialEditText
   // ---------------------------------------------------------------------------------
-  // ERROR:  typeface in colors.xml
-  // STATUS: error
-  //  compile 'com.rengwuxian.materialedittext:library:1.8.3'
+  // ERROR:  TODO: possibly fixed. typeface in colors.xml
+  // STATUS: compiles
+  compile 'com.rengwuxian.materialedittext:library:2.0.3'
   //
   //
   // [NOTE EDITOR]
@@ -533,8 +535,8 @@ dependencies {
   // NAME: ZDepthShadowLayout
   // LINK: https://github.com/ShogoMizumoto/ZDepthShadowLayout
   // ---------------------------------------------------------------------------------
-  // STATUS: untested
-  //  compile 'com.github.ShogoMizumoto:ZDepthShadowLayout:6c7ac80cbb'
+  // STATUS: compiles
+  compile 'com.github.ShogoMizumoto:ZDepthShadowLayout:1.0.4'
   //
   //
   // [CALENDAR IMPLEMENTATION]
@@ -587,7 +589,7 @@ dependencies {
   // LINK: https://github.com/spacecowboy/NoNonsense-FilePicker
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  //  compile 'com.nononsenseapps:filepicker:1.1.3'
+  compile 'com.nononsenseapps:filepicker:1.1.3'
   //
   //
   // [APP WALKTHROUGH]
@@ -597,8 +599,8 @@ dependencies {
   // LINK: https://github.com/fredericojssilva/ShowTipsView
   // ---------------------------------------------------------------------------------
   //       [jitpack.io]
-  // STATUS: untested
-  //  compile 'com.github.fredericojssilva:ShowTipsView:e7a2584a86f670414c1f9605e3af49cfde3480c7'
+  // STATUS: fails
+//    compile 'net.fredericosilva:showTipsView:1.0.1'
   //
   //
   // [ASSORTED ICONS]
@@ -748,7 +750,7 @@ dependencies {
   // LINK: https://github.com/JakeWharton/NineOldAndroids
   // ---------------------------------------------------------------------------------
   //       WARNING: Use only as a last resort
-  // STATUS: untested
+  // STATUS: compiles
   compile 'com.nineoldandroids:library:2.4.0'
   //
   //
