@@ -1,8 +1,6 @@
 package com.ameron32.apps.tapnotes;
 
-import android.content.Context;
-
-import com.ameron32.apps.tapnotes.di.stabbed.AbsApplication;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsApplication;
 import com.ameron32.apps.tapnotes.util.ParseUtil;
 import com.ameron32.apps.tapnotes.util.TimberUtil;
 

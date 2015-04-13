@@ -35,6 +35,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 
+import com.ameron32.apps.tapnotes._trial._demo.fragment.ExpandableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.ParseTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.PhotoViewerTestFragment;
@@ -127,11 +128,12 @@ public class DrawerImpl {
 
   private IDrawerItem[] getDrawerItems() {
     return new IDrawerItem[] {
-        new PrimaryDrawerItem().withIdentifier(1).withName("TestFragment").withIcon(FontAwesome.Icon.faw_coffee),
-        new PrimaryDrawerItem().withIdentifier(2).withName("TableTestFragment").withIcon(FontAwesome.Icon.faw_coffee),
+        new PrimaryDrawerItem().withIdentifier(1).withName(TestFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_coffee),
+        new PrimaryDrawerItem().withIdentifier(2).withName(TableTestFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_coffee),
 //        new PrimaryDrawerItem().withIdentifier(3).withName("PhotoViewerTestFragment").withIcon(FontAwesome.Icon.faw_photo),
-        new PrimaryDrawerItem().withIdentifier(4).withName("MaterialImageViewTestFragment").withIcon(FontAwesome.Icon.faw_image),
-        new PrimaryDrawerItem().withIdentifier(7).withName("RxParseTestFragment").withIcon(FontAwesome.Icon.faw_image),
+        new PrimaryDrawerItem().withIdentifier(4).withName(MaterialImageViewTestFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_image),
+        new PrimaryDrawerItem().withIdentifier(7).withName(ParseTestFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_image),
+        new PrimaryDrawerItem().withIdentifier(8).withName(ExpandableTestFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_image),
         new DividerDrawerItem(),
         new SecondaryDrawerItem().withIdentifier(5).withName("Settings").withIcon(FontAwesome.Icon.faw_cog),
         new SecondaryDrawerItem().withIdentifier(6).withName("About...").withIcon(FontAwesome.Icon.faw_cog)
@@ -157,6 +159,9 @@ public class DrawerImpl {
             break;
           case 7:
             mActivityCallbacks.changeFragment(ParseTestFragment.create());
+            break;
+          case 8:
+            mActivityCallbacks.changeFragment(ExpandableTestFragment.create());
             break;
           case 5:
             mActivityCallbacks.startSettingsActivity();

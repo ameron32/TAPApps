@@ -15,7 +15,7 @@ public class TimberUtil {
       Timber.plant(new Timber.DebugTree());
     } else {
       // TODO Crashlytics.start(this);
-      Timber.plant(new CrashlyticsTree());
+//      Timber.plant(new CrashlyticsTree());
     }
   }
 }

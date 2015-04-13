@@ -6,9 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.ameron32.apps.tapnotes.AbsContentFragment;
+import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
-import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityTitleController;
 import com.ameron32.apps.tapnotes.parse.adapter.SimpleTableQueryAdapter;
 import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.parse.ParseQuery;

@@ -3,7 +3,6 @@ package com.ameron32.apps.tapnotes.parse;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Loader;
@@ -29,9 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ameron32.apps.tapnotes.R;
-import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
-
-import org.jetbrains.annotations.Nullable;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

@@ -29,17 +29,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ameron32.apps.tapnotes.di.stabbed.AbsRxSupportFragment;
+import com.ameron32.apps.tapnotes.frmk.fragment.AbsTapSupportFragment;
 
 public class ToolbarFragment
-    extends AbsRxSupportFragment
+    extends AbsTapSupportFragment
 {
 
   private Toolbar mToolbar;

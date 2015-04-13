@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.ameron32.apps.tapnotes.AbsContentFragment;
+import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.squareup.picasso.Picasso;
 

@@ -56,7 +56,7 @@
           android:maxLines="1"
           android:singleLine="true"/>
 
-      <com.ameron32.apps.tapnotes.views.TAPButton
+      <com.ameron32.apps.tapnotes._trial.views.TAPButton
           android:id="@+id/forgot_password_button"
           style="?android:attr/borderlessButtonStyle"
           android:layout_width="match_parent"
@@ -65,7 +65,7 @@
           android:textStyle="bold"
           android:gravity="top|center_horizontal"/>
 
-      <com.ameron32.apps.tapnotes.views.TAPButton
+      <com.ameron32.apps.tapnotes._trial.views.TAPButton
           android:id="@+id/email_sign_in_button"
           style="?android:textAppearanceLarge"
           android:layout_width="match_parent"
@@ -74,7 +74,7 @@
           android:text="@string/action_sign_in"
           android:textStyle="bold"/>
 
-      <com.ameron32.apps.tapnotes.views.TAPButton
+      <com.ameron32.apps.tapnotes._trial.views.TAPButton
           android:id="@+id/create_account_button"
           style="?android:attr/borderlessButtonStyle"
           android:layout_width="match_parent"

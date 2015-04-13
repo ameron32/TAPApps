@@ -1,20 +1,22 @@
 package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.widget.TextView;
 
-import com.ameron32.apps.tapnotes.AbsContentFragment;
+import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.ameron32.apps.tapnotes.parse.rx.ParseObservable;
 import com.parse.ParseQuery;
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectViews;
@@ -33,6 +35,9 @@ public class ParseTestFragment extends AbsContentFragment {
     return t;
   }
 
+  @Inject
+  ActivitySnackBarController snackBarController;
+
   @Override
   protected @LayoutRes int getCustomLayoutResource() {
     return R.layout.fragment_parse_test;
@@ -47,6 +52,11 @@ public class ParseTestFragment extends AbsContentFragment {
     ButterKnife.inject(this, view);
   }
 
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+  }
+
   @OnClick(R.id.button_start_parse_test)
   void onStartParseTest() {
     performTest();
@@ -54,6 +64,7 @@ public class ParseTestFragment extends AbsContentFragment {
 
   int count;
   private void performTest() {
+//    getBus().post("Event start.");
     count = -1;
     ParseObservable.find(ParseQuery.getQuery(TestObject.class).orderByDescending("updatedAt"))
         .take(textViews.size())
@@ -108,4 +119,9 @@ public class ParseTestFragment extends AbsContentFragment {
 //      t.onRestoreInstanceState(textViewContent);
 //    }
   }
+
+//  @Subscribe
+//  public void hearMessage(String message) {
+//    snackBarController.toast("Otto message: " + message);
+//  }
 }

@@ -30,7 +30,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
 
 import javax.inject.Inject;
 

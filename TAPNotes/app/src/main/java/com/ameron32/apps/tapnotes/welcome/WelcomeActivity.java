@@ -1,6 +1,5 @@
 package com.ameron32.apps.tapnotes.welcome;
 
-import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ameron32.apps.tapnotes.R;
-import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
 
 public class WelcomeActivity extends AbsRxActionBarActivity {
 

@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.ameron32.apps.tapnotes.AbsContentFragment;
+import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.MaterialImageView;
-import com.ameron32.apps.tapnotes.di.controller.ActivitySharedPreferencesController;
-import com.ameron32.apps.tapnotes.di.controller.ActivitySnackBarController;
-import com.ameron32.apps.tapnotes.di.controller.ActivityTitleController;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityTitleController;
 
 import javax.inject.Inject;
 

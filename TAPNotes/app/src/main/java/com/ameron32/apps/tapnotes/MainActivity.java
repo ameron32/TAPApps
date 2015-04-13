@@ -3,7 +3,6 @@ package com.ameron32.apps.tapnotes;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -11,9 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ameron32.apps.tapnotes.di.stabbed.AbsRxActionBarActivity;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityLoggingController;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
-import com.crashlytics.android.Crashlytics;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.util.Colors;
 import com.parse.ParseUser;
@@ -21,7 +20,9 @@ import com.parse.ParseUser;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
-import com.ameron32.apps.tapnotes.di.stabbed.mport.ForApplication;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.ForApplication;
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
 
 
 public class MainActivity
@@ -41,6 +42,12 @@ public class MainActivity
     setThisTheme();
     setContentView(R.layout.activity_main);
     onLoginComplete();
+  }
+
+  @Override
+  protected void onInject() {
+    super.onInject();
+    bus.register(this);
   }
 
   private void onLoginComplete() {
@@ -69,6 +76,14 @@ public class MainActivity
   @ForApplication
   SharedPreferences sharedPreferences;
 
+  @Inject
+  Bus bus;
+
+  @Subscribe
+  public void hearMessage(String message) {
+    // TODO: event receipt
+  }
+
   @Override
   public void onToolbarCreated(
       Toolbar toolbar) {
@@ -85,8 +100,9 @@ public class MainActivity
 
   @Override
   protected void onDestroy() {
-    super.onDestroy();
+    bus.unregister(this);
     ButterKnife.reset(this);
+    super.onDestroy();
   }
 
   public void changeFragment(Fragment newFragment) {
