@@ -40,4 +40,7 @@
   <dimen name="main_pane_width">1000dp</dimen>
   <dimen name="partial_pane_width">64dp</dimen>
 
+  <!-- COLLAPSING TOOLBAR FRAGMENT -->
+  <dimen name="expanded_toolbar_height">120dp</dimen>
+
 </resources>

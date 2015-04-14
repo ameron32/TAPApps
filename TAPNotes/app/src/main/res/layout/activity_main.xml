@@ -34,20 +34,7 @@
 
         <!-- LEFT PANE -->
 
-        <FrameLayout
-            android:layout_width="@dimen/side_pane_width"
-            android:layout_height="match_parent"
-            android:background="@color/myDrawerBackground">
-          <TextView
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              tools:text="FULL"/>
-          <TextView
-              android:layout_width="@dimen/partial_pane_width"
-              android:layout_height="match_parent"
-              android:background="@color/myTextPrimaryHintColor"
-              tools:text="PARTIAL"/>
-        </FrameLayout>
+        <include layout="@layout/pane_left" />
 
         <!-- MAIN CONTENT PANE -->
 

@@ -22,6 +22,7 @@ import android.app.Activity;
 import com.ameron32.apps.tapnotes.MainActivity;
 import com.ameron32.apps.tapnotes.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.SettingsActivity;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.CollapsingToolbarFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.ExpandableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialImageViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.ParseTestFragment;
@@ -49,6 +50,7 @@ import dagger.Provides;
 @Module(
     injects = {
         ExpandableTestFragment.class,
+        CollapsingToolbarFragment.class,
         MainActivity.class,
         MyLoginParseActivity.class,
         WelcomeActivity.class,
