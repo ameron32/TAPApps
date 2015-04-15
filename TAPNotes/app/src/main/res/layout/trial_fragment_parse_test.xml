@@ -24,26 +24,34 @@
         android:id="@+id/progressBar"/>
 
     <TextView
+        tools:ignore="MissingPrefix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        fontPath="LiberationSans-Regular.ttf"
         tools:text="New Text"
         android:id="@+id/textView1"/>
 
     <TextView
+        tools:ignore="MissingPrefix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        fontPath="LiberationSans-Regular.ttf"
         tools:text="New Text"
         android:id="@+id/textView2"/>
 
     <TextView
+        tools:ignore="MissingPrefix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        fontPath="LiberationSerif-Regular.ttf"
         tools:text="New Text"
         android:id="@+id/textView3"/>
 
     <TextView
+        tools:ignore="MissingPrefix"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        fontPath="LiberationSerif-Regular.ttf"
         tools:text="New Text"
         android:id="@+id/textView4"/>
 

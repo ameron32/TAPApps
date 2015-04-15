@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes;
+package com.ameron32.apps.tapnotes.impl.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -30,6 +30,8 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ameron32.apps.tapnotes.impl.DrawerImpl;
+import com.ameron32.apps.tapnotes.frmk.SuccessfulRunnable;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
 
 import javax.inject.Inject;

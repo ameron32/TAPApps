@@ -329,7 +329,7 @@ public class NavigationDrawerFragment
   }
 
   protected int getFragmentLayoutResourceId() {
-    return R.layout.fragment_navigation_drawer_recycler;
+    return R.layout.unused_fragment_navigation_drawer_recycler;
   }
 
   protected RecyclerView findRecyclerViewWithin(

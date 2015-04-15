@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes;
+package com.ameron32.apps.tapnotes.impl.fragment;
 
 import android.app.Activity;
 import android.content.Context;
@@ -34,6 +34,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsTapSupportFragment;
 
 public class ToolbarFragment

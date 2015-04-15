@@ -1,5 +1,6 @@
 package com.ameron32.apps.tapnotes;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,7 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
-import com.ameron32.apps.tapnotes.impl.di.controller.ActivityLoggingController;
+import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
+import com.ameron32.apps.tapnotes.impl.fragment.ToolbarFragment;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.util.Colors;
@@ -20,6 +22,8 @@ import com.parse.ParseUser;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
+
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.ForApplication;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
@@ -42,6 +46,11 @@ public class MainActivity
     setThisTheme();
     setContentView(R.layout.activity_main);
     onLoginComplete();
+  }
+
+  @Override
+  protected void attachBaseContext(Context newBase) {
+    super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
   }
 
   @Override

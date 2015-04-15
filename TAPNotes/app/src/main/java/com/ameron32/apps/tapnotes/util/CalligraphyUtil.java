@@ -22,9 +22,23 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes;
+package com.ameron32.apps.tapnotes.util;
 
+import android.app.Application;
 
-public interface SuccessfulRunnable {
-  public boolean run();
+import com.ameron32.apps.tapnotes.R;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
+
+/**
+ * Created by klemeilleur on 4/15/2015.
+ */
+public class CalligraphyUtil {
+  public static void initializeCalligraphy(Application application) {
+    CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+            .setDefaultFontPath("fonts/Roboto-RobotoRegular.ttf")
+            .setFontAttrId(R.attr.fontPath)
+            .build()
+    );
+  }
 }

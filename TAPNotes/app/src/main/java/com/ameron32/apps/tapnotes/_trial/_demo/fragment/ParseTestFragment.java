@@ -11,8 +11,6 @@ import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.ameron32.apps.tapnotes.parse.rx.ParseObservable;
 import com.parse.ParseQuery;
-import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
@@ -40,7 +38,7 @@ public class ParseTestFragment extends AbsContentFragment {
 
   @Override
   protected @LayoutRes int getCustomLayoutResource() {
-    return R.layout.fragment_parse_test;
+    return R.layout.trial_fragment_parse_test;
   }
 
   @InjectViews({ R.id.textView1, R.id.textView2, R.id.textView3, R.id.textView4 })
@@ -81,7 +79,7 @@ public class ParseTestFragment extends AbsContentFragment {
   String text3;
   @Icicle
   String text4;
-  
+
   @Override
   protected void onSaveState(Bundle outState) {
     super.onSaveState(outState);

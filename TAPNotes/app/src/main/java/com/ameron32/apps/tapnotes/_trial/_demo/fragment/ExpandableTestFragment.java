@@ -27,13 +27,11 @@ package com.ameron32.apps.tapnotes._trial._demo.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
@@ -78,7 +76,7 @@ public class ExpandableTestFragment extends AbsContentFragment {
 
   @Override
   protected int getCustomLayoutResource() {
-    return R.layout.fragment_expandable;
+    return R.layout.trial_fragment_expandable;
   }
 
   @InjectView(R.id.expandable_recycler_view)

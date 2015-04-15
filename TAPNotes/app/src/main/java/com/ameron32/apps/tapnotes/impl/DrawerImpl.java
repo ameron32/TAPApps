@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes;
+package com.ameron32.apps.tapnotes.impl;
 
 import android.app.Activity;
 import android.graphics.PorterDuff;
@@ -35,6 +35,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 
+import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.CollapsingToolbarFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.ExpandableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialImageViewTestFragment;
@@ -42,6 +43,7 @@ import com.ameron32.apps.tapnotes._trial._demo.fragment.ParseTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.TestFragment;
+import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.model.DividerDrawerItem;

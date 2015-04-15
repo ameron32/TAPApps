@@ -37,8 +37,6 @@ import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.CollapsingTitleLayout;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 
-import net.qiujuer.genius.GeniusUI;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
@@ -57,7 +55,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
 
   @InjectView(R.id.backdrop_toolbar)
   CollapsingTitleLayout mCollapsingTitleLayout;
-  
+
   @InjectView(R.id.recycler_view)
   RecyclerView mRecyclerView;
 
@@ -66,7 +64,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
 
   @Override
   protected int getCustomLayoutResource() {
-    return R.layout.fragment_collapsing_title_layout_with_toolbar;
+    return R.layout.trial_fragment_collapsing_title_layout_with_toolbar;
   }
 
   @Override
@@ -75,7 +73,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
     ButterKnife.inject(this, view);
 
     mCollapsingTitleLayout.setTitle(CollapsingToolbarFragment.class.getSimpleName());
-    
+
     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     mRecyclerView.setAdapter(new QuickAdapter());
     mRecyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -112,7 +110,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
     ButterKnife.reset(this);
     super.onDestroyView();
   }
-  
+
   public static class QuickAdapter extends RecyclerView.Adapter<QuickAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

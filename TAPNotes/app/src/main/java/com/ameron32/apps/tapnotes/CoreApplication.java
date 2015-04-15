@@ -1,6 +1,7 @@
 package com.ameron32.apps.tapnotes;
 
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsApplication;
+import com.ameron32.apps.tapnotes.util.CalligraphyUtil;
 import com.ameron32.apps.tapnotes.util.ParseUtil;
 import com.ameron32.apps.tapnotes.util.TimberUtil;
 import com.crashlytics.android.Crashlytics;
@@ -15,5 +16,6 @@ public class CoreApplication extends AbsApplication {
 
     ParseUtil.initializeParse(this);
     TimberUtil.initializeTimber(this);
+    CalligraphyUtil.initializeCalligraphy(this);
   }
 }

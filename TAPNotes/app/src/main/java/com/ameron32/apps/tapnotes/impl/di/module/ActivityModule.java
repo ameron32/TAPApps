@@ -20,7 +20,7 @@ package com.ameron32.apps.tapnotes.impl.di.module;
 import android.app.Activity;
 
 import com.ameron32.apps.tapnotes.MainActivity;
-import com.ameron32.apps.tapnotes.MainToolbarFragment;
+import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.SettingsActivity;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.CollapsingToolbarFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.ExpandableTestFragment;
@@ -29,7 +29,6 @@ import com.ameron32.apps.tapnotes._trial._demo.fragment.ParseTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.TestFragment;
-import com.ameron32.apps.tapnotes.frmk.fragment.AbsTapSupportFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityLoggingController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;

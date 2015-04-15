@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.ameron32.apps.tapnotes._trial.ui.BlurringView;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.MaterialImageView;
@@ -56,11 +57,15 @@ public class MaterialImageViewTestFragment
   int mRotation1;
   @InjectView(R.id.pic2) MaterialImageView materialImageView2;
   int mRotation2 = 15;
+  @InjectView(R.id.blurring_view) BlurringView blurringView;
+
 
   @Override
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
     ButterKnife.inject(this, view);
+
+    blurringView.setBlurredView(materialImageView2);
   }
 
   @Override
@@ -79,6 +84,7 @@ public class MaterialImageViewTestFragment
                 otherView(v).setRotation(mRotation2);
 //                snackBarController.toast("Clicked button!");
                 prefController.saveIntPreference(ROTATION_PREF_KEY, mRotation1);
+                blurringView.invalidate();
               }
             });
   }
