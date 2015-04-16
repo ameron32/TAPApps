@@ -54,8 +54,8 @@ public class MainActivity
   }
 
   @Override
-  protected void onInject() {
-    super.onInject();
+  protected void onFinishInject() {
+    super.onFinishInject();
     bus.register(this);
   }
 

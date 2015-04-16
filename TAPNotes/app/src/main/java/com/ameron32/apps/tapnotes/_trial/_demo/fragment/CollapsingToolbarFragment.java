@@ -36,9 +36,14 @@ import android.widget.TextView;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.CollapsingTitleLayout;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
+import com.github.alexkolpa.fabtoolbar.FabToolbar;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by klemeilleur on 4/14/2015.
@@ -51,6 +56,9 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
     return t;
   }
 
+  @Inject
+  ActivitySnackBarController snackBarController;
+
   private static final int DUMMY_DATA_LENGTH = 100;
 
   @InjectView(R.id.backdrop_toolbar)
@@ -61,6 +69,15 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
 
   @InjectView(R.id.toolbar)
   Toolbar mToolbar;
+
+  @InjectView(R.id.fab_toolbar)
+  FabToolbar mFabToolbar;
+
+  @OnClick(R.id.attach)
+  void onClick(View v) {
+    mFabToolbar.hide();
+    snackBarController.toast("FabToolbar hidden.");
+  }
 
   @Override
   protected int getCustomLayoutResource() {

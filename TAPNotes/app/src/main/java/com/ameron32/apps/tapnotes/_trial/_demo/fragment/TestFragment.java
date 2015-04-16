@@ -3,6 +3,8 @@ package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
@@ -10,10 +12,15 @@ import com.ameron32.apps.tapnotes.impl.di.controller.ActivityLoggingController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityTitleController;
+import com.joanzapata.pdfview.PDFView;
+import com.joanzapata.pdfview.listener.OnLoadCompleteListener;
 
 import java.util.List;
 
 import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 
 public class TestFragment extends AbsContentFragment
 {
@@ -41,13 +48,47 @@ public class TestFragment extends AbsContentFragment
 
   @Override
   protected int getCustomLayoutResource() {
-    return R.layout.view_spacer;
+    return R.layout.trial_fragment_test_basic;
   }
 
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
     logController.tag(TestFragment.class.getSimpleName());
+  }
+
+  @InjectView(R.id.pdfview)
+  PDFView pdfView;
+
+  @InjectView(R.id.textview)
+  TextView textView;
+
+  @Override
+  public void onViewCreated(View view, Bundle savedInstanceState) {
+    super.onViewCreated(view, savedInstanceState);
+    ButterKnife.inject(this, view);
+
+    textView.setText("Loading...");
+
+    // assets/2015ProgramConventionOptimized.pdf excluded from source control. see gitignore.
+    final String pdfPath = "2015ProgramConventionOptimized.pdf";
+
+    pdfView.fromAsset(pdfPath)
+        .onLoad(new OnLoadCompleteListener() {
+          @Override
+          public void loadComplete(int i) {
+            if (textView != null) {
+              textView.setText("Loaded " + i + ".");
+            }
+          }
+        })
+        .load();
+  }
+
+  @Override
+  public void onDestroyView() {
+    super.onDestroyView();
+    ButterKnife.reset(this);
   }
 
   @Override

@@ -51,4 +51,24 @@
         style="@style/Widget.Philm.Toolbar.Transparent" />
 
   </com.ameron32.apps.tapnotes._trial.ui.CollapsingTitleLayout>
+
+  <!-- avoid custom XML attribute "tb_anim_duration". causes crashes when used properly. -->
+  <com.github.alexkolpa.fabtoolbar.FabToolbar
+      xmlns:tb="http://schemas.android.com/apk/res-auto"
+      android:id="@+id/fab_toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="bottom"
+      tb:tb_button_gravity="end"
+      tb:tb_container_gravity="center">
+
+    <ImageView
+        android:id="@+id/attach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_logout" />
+
+    <!-- More buttons can be added here -->
+
+  </com.github.alexkolpa.fabtoolbar.FabToolbar>
 </FrameLayout>

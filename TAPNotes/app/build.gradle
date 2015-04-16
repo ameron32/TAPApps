@@ -7,12 +7,6 @@ buildscript {
     // required for Fabric/Crashlytics
     maven { url 'https://maven.fabric.io/public' }
 
-    // for SlidingMenu, AndroidRecording, ShowTipsView, Stabbed-Android
-//    maven { url "https://jitpack.io" }
-
-    // for SnackBar
-//    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
-
     mavenCentral()
   }
 
@@ -322,6 +316,7 @@ dependencies {
   // NAME: Google Play Services
   // LINK: https://developer.android.com/google/play-services/setup.html
   // ---------------------------------------------------------------------------------
+  // NOTE:   RetroLambda is not recommended with GPS version 5.0.77
   // STATUS: untested
   ////  Google+
   //  compile 'com.google.android.gms:play-services-plus:7.0.0'
@@ -445,7 +440,7 @@ dependencies {
   // LINK: https://github.com/square/otto
   //       https://square.github.io/otto/
   // ---------------------------------------------------------------------------------
-  // STATUS: compiles
+  // STATUS: functional
   compile 'com.squareup:otto:1.3.6'
   //
   //
@@ -489,7 +484,7 @@ dependencies {
   // NAME: Expandable-RecyclerView
   // LINK: https://github.com/levelup/Expandable-RecyclerView
   // ---------------------------------------------------------------------------------
-  // STATUS: compiles
+  // STATUS: functional
   compile 'com.levelupstudio:expandable-recyclerview:1.0.1'
   //
   //
@@ -571,7 +566,7 @@ dependencies {
   // NAME: Snackbar
   // LINK: https://github.com/nispok/snackbar
   // ---------------------------------------------------------------------------------
-  // STATUS: compiles
+  // STATUS: functional
   compile 'com.nispok:snackbar:2.10.6'
   //
   //
@@ -589,13 +584,26 @@ dependencies {
   //
   //
   // ["ADD NEW PROGRAM" BUTTON on PROGRAM SELECTION SCREEN]
-  //   "NEW PROGRAM" FLOATING ACTION BUTTON
+  //   "NEW PROGRAM" FLOATING ACTION BUTTON WITH TOOLBAR (Material Design)
   // ---------------------------------------------------------------------------------
+  // NAME: Floating Action Button Toolbar
+  // LINK: https://github.com/AlexKolpa/fab-toolbar
+  // ---------------------------------------------------------------------------------
+  // NOTE:   contains Floating Action Button & CircularReveal
+  // ERROR:  using XML custom attribute "tb_anim_duration" causes crashes. avoid.
+  // STATUS: functional
+  compile 'com.github.alexkolpa:floating-action-button-toolbar:0.5.0'
   // NAME: Floating Action Button
   // LINK: https://github.com/makovkastar/FloatingActionButton
   // ---------------------------------------------------------------------------------
-  // STATUS: compiles
-  //  compile 'com.melnykov:floatingactionbutton:1.2.0'
+  // STATUS: functional
+//    compile 'com.melnykov:floatingactionbutton:1.3.0'
+  // ---------------------------------------------------------------------------------
+  // NAME: CircularReveal
+  // LINK: https://github.com/ozodrukh/CircularReveal/
+  // ---------------------------------------------------------------------------------
+  // STATUS: functional
+//  compile 'com.github.ozodrukh:CircularReveal:1.0.5'
   //
   //
   // [EPUB FILE-SELECTOR]
@@ -656,6 +664,7 @@ dependencies {
   // LINK: https://github.com/steelkiwi/AndroidRecording
   // ---------------------------------------------------------------------------------
   //       [jitpack.io]
+  // NOTE:   not compatible with Gradle
   // STATUS: untested
   //  compile 'com.github.steelkiwi:AndroidRecording:4d7956c30dbd6b12e8477a1070773730fa31ed50'
   //
@@ -796,9 +805,8 @@ dependencies {
   // NAME: Awesome Validation
   // LINK: https://github.com/thyrlian/AwesomeValidation
   // ---------------------------------------------------------------------------------
-  //       [jitpack.io]
-  // STATUS: untested
-  //  compile 'com.github.thyrlian:AwesomeValidation:c768fed54d'
+  // STATUS: compiles
+  compile 'com.basgeekball:awesome-validation:1.0'
   //
   //
   // Fast Implementation Navigation Drawer in Material Design
@@ -825,7 +833,7 @@ dependencies {
   // LINK: https://github.com/davityle/ngAndroid
   // ---------------------------------------------------------------------------------
   // STATUS: untested
-  //  compile 'com.github.davityle:ngandroid:0.0.1'
+  //  compile 'com.github.davityle:ngandroid:0.0.4'
   //
   //
   // Android Utilities and Collections Library
@@ -863,7 +871,7 @@ dependencies {
   // LINK: https://github.com/cymcsg/UltimateRecyclerView
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  //  compile 'com.marshalchen.ultimaterecyclerview:library:0.2.1'
+  //  compile 'com.marshalchen.ultimaterecyclerview:library:0.3.0'
   //
   //
   // Activities/Fragments for Parse
@@ -897,7 +905,7 @@ dependencies {
   // LINK: https://github.com/lsjwzh/RecyclerViewPager
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  //  compile 'com.lsjwzh:recyclerviewpager:0.5.0'
+  compile 'com.lsjwzh:recyclerviewpager:0.5.0'
   //
   //
   // ImageView with Zoom/Pan
@@ -914,11 +922,11 @@ dependencies {
   // NAME: SmoothProgressBar
   // LINK: https://github.com/castorflex/SmoothProgressBar
   // ---------------------------------------------------------------------------------
-  // STATUS: untested
-  //  compile 'com.github.castorflex.smoothprogressbar:library:1.1.0-SNAPSHOT'
+  // STATUS: compiles
+  compile 'com.github.castorflex.smoothprogressbar:library:1.1.0'
   //         OR
-  // STATUS: untested
-  //  compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0-SNAPSHOT'
+  // STATUS: compiles
+  compile 'com.github.castorflex.smoothprogressbar:library-circular:1.1.0'
   //
   //
   // ProgressBar in Material Design
@@ -960,6 +968,15 @@ dependencies {
   // NOTE:   Google Maps v2 SDK configuration still required (see github readme)
   // STATUS: untested
   //  compile 'com.airbnb.android:airmapview:1.1.2'
+  //
+  //
+  // PDF Viewer based on VuDroid
+  // ---------------------------------------------------------------------------------
+  // NAME: PDFView
+  // LINK: https://github.com/JoanZapata/android-pdfview
+  // ---------------------------------------------------------------------------------
+  // STATUS: functional
+  compile 'com.joanzapata.pdfview:android-pdfview:1.0.+@aar'
   //
   //
   //

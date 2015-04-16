@@ -32,10 +32,10 @@ public abstract class AbsStabbedActionBarActivity extends ActionBarActivity impl
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     mExtendedGraphHelper.onCreate(this, getModules(), this);
-    onInject();
+    onFinishInject();
   }
 
-  protected void onInject() {}
+  protected void onFinishInject() {}
 
   @Override
   protected void onDestroy() {

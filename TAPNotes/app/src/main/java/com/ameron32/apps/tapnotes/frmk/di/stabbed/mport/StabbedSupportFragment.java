@@ -16,7 +16,7 @@ package com.ameron32.apps.tapnotes.frmk.di.stabbed.mport;
  */
 /**
  * MODIFIED BY ameron32 @ 4/13/2015
- * added onInject method
+ * added onFinishInject() method
  */
 
 import android.os.Bundle;
@@ -34,9 +34,9 @@ public abstract class StabbedSupportFragment extends Fragment {
         if (mInjected.compareAndSet(false, true)) {
             ((StabbedContext) getActivity()).inject(this);
         }
-        onInject();
+        onFinishInject();
     }
 
-    protected void onInject() {}
+    protected void onFinishInject() {}
 
 }
