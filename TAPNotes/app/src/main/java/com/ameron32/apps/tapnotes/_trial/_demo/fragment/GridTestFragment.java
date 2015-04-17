@@ -100,15 +100,20 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
     return Observable.create(new Observable.OnSubscribe<ImageResult>() {
       @Override
       public void call(Subscriber<? super ImageResult> subscriber) {
+        if (mResults == null) {
+          mResults = new ArrayList<>();
+        }
+        mResults.clear();
         try {
           Thread.sleep(1000);
           final AssetManager assetManager = getActivity().getAssets();
-          final Bitmap bitmap = getBitmapFromAsset(assetManager, strings[0]);
-          final Palette colors = Palette.generate(bitmap);
-          Palette.Swatch selected = colors.getVibrantSwatch();
-          Palette.Swatch standard = colors.getMutedSwatch();
-          if (bitmap != null) {
-            subscriber.onNext(new ImageResult(-1, bitmap, selected, standard));
+          for (int i = 0; i < strings.length; i++) {
+            final String s = strings[i];
+            final Bitmap bitmap = getBitmapFromAsset(assetManager, s);
+            final Palette colors = Palette.generate(bitmap);
+            if (bitmap != null) {
+              subscriber.onNext(new ImageResult(i, bitmap, colors));
+            }
           }
           subscriber.onCompleted();
         } catch (InterruptedException e) {
@@ -118,12 +123,11 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
     }).subscribeOn(Schedulers.io());
   }
 
+  List<ImageResult> mResults;
+
   @Override
   public void onNext(ImageResult result) {
-    // TODO: gather and combine results instead of running first result alone
-    final List<ImageResult> results = new ArrayList<>();
-    results.add(result);
-    mRecyclerView.setAdapter(new ColorfulAdapter(results));
+    mResults.add(result);
   }
 
   @Override
@@ -133,11 +137,13 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
 
   @Override
   public void onCompleted() {
-    // nothing
+    mRecyclerView.setAdapter(new ColorfulAdapter(mResults));
     snackBarController.toast("Observable complete!");
   }
 
-  private static final String[] strings = { "2015ProgramConventionOptimized_1.png" };
+  // png files excluded from source control
+  private static final String[] strings = { "2015ProgramConventionOptimized_1.png",
+      "2015ProgramConventionOptimized_2.png", "2015ProgramConventionOptimized_3.png" };
 
   private Bitmap getBitmapFromAsset(AssetManager assetManager, String pathName) {
     try {
@@ -149,6 +155,8 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
     }
     return null;
   }
+
+
 
   public static class ColorfulAdapter extends RecyclerView.Adapter<ColorfulAdapter.ViewHolder> {
 
