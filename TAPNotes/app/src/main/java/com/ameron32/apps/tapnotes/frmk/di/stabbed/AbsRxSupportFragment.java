@@ -28,10 +28,12 @@ import android.os.Bundle;
 import android.view.View;
 
 import rx.Observable;
+import rx.Subscription;
 import rx.android.app.AppObservable;
 import rx.android.lifecycle.LifecycleEvent;
 import rx.android.lifecycle.LifecycleObservable;
 import rx.subjects.BehaviorSubject;
+import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by klemeilleur on 4/13/2015.
@@ -116,5 +118,20 @@ public class AbsRxSupportFragment extends AbsStatedSupportFragment {
   protected <T> Observable<T> bindLifecycle(Observable<T> observable) {
     Observable<T> boundObservable = AppObservable.bindFragment(this, observable);
     return LifecycleObservable.bindFragmentLifecycle(lifecycle(), boundObservable);
+  }
+
+
+
+  private CompositeSubscription mCompositeSubscription;
+
+  public void addToCompositeSubscription(Subscription s) {
+    if (mCompositeSubscription == null || mCompositeSubscription.isUnsubscribed()) {
+      mCompositeSubscription = new CompositeSubscription();
+    }
+    mCompositeSubscription.add(s);
+  }
+
+  public void unsubscribeAll() {
+    mCompositeSubscription.unsubscribe();
   }
 }
