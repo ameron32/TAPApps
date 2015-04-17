@@ -138,18 +138,6 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
   }
 
   private static final String[] strings = { "2015ProgramConventionOptimized_1.png" };
-//
-//  private List<Bitmap> getImages() {
-//    final AssetManager assetManager = getActivity().getAssets();
-//    final List<Bitmap> bitmaps = new ArrayList<>();
-//    for (int i = 0; i < strings.length; i++) {
-//      final Bitmap bitmap = getBitmapFromAsset(assetManager, strings[i]);
-//      if (bitmap != null) {
-//        bitmaps.add(bitmap);
-//      }
-//    }
-//    return bitmaps;
-//  }
 
   private Bitmap getBitmapFromAsset(AssetManager assetManager, String pathName) {
     try {
@@ -185,13 +173,10 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
       final ImageResult item = getItem(position);
-      Palette.Swatch colors = item.selected;
-      if (colors == null) {
-        colors = item.standard;
-      }
+      final Palette.Swatch mutedSwatch = item.palette.getMutedSwatch();
 
-      holder.textView.setBackgroundColor(colors.getRgb());
-      holder.textView.setTextColor(colors.getTitleTextColor());
+      holder.textView.setBackgroundColor(mutedSwatch.getRgb());
+      holder.textView.setTextColor(mutedSwatch.getTitleTextColor());
       holder.textView.setText("Item @ " + position);
       holder.imageView.setImageBitmap(item.image);
     }
