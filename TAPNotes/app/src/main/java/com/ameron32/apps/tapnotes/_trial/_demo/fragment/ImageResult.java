@@ -34,13 +34,11 @@ public class ImageResult {
 
   public int imageId;
   public Bitmap image;
-  public Palette.Swatch selected;
-  public Palette.Swatch standard;
+  public Palette palette;
 
-  public ImageResult(int imageId, Bitmap image, Palette.Swatch selected, Palette.Swatch standard) {
+  public ImageResult(int imageId, Bitmap image, Palette palette) {
     this.imageId = imageId;
     this.image = image;
-    this.selected = selected;
-    this.standard = standard;
+    this.palette = palette;
   }
 }
