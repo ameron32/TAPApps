@@ -20,6 +20,7 @@ package com.ameron32.apps.tapnotes.impl.di.module;
 import android.app.Activity;
 
 import com.ameron32.apps.tapnotes.MainActivity;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.GridTestFragment;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.SettingsActivity;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.CollapsingToolbarFragment;
@@ -49,6 +50,7 @@ import dagger.Provides;
 @Module(
     injects = {
         ExpandableTestFragment.class,
+        GridTestFragment.class,
         CollapsingToolbarFragment.class,
         MainActivity.class,
         MyLoginParseActivity.class,

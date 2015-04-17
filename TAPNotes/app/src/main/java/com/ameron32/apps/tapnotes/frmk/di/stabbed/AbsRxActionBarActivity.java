@@ -10,8 +10,12 @@ import java.util.Arrays;
 import java.util.List;
 
 import rx.Observable;
+import rx.Subscription;
+import rx.android.app.AppObservable;
 import rx.android.lifecycle.LifecycleEvent;
+import rx.android.lifecycle.LifecycleObservable;
 import rx.subjects.BehaviorSubject;
+import rx.subscriptions.CompositeSubscription;
 
 
 /**
@@ -68,5 +72,34 @@ public abstract class AbsRxActionBarActivity extends AbsStabbedActionBarActivity
   protected void onDestroy() {
     lifecycleSubject.onNext(LifecycleEvent.DESTROY);
     super.onDestroy();
+  }
+
+
+
+  //TODO: PR this to RxAndroid Framework
+  protected <T> Observable<T> bindLifecycle(Observable<T> observable, LifecycleEvent lifecycleEvent) {
+    Observable<T> boundObservable = AppObservable.bindActivity(this, observable);
+    return LifecycleObservable.bindUntilLifecycleEvent(lifecycle(), boundObservable, lifecycleEvent);
+  }
+
+  //TODO: PR this to RxAndroid Framework
+  protected <T> Observable<T> bindLifecycle(Observable<T> observable) {
+    Observable<T> boundObservable = AppObservable.bindActivity(this, observable);
+    return LifecycleObservable.bindActivityLifecycle(lifecycle(), boundObservable);
+  }
+
+
+
+  private CompositeSubscription mCompositeSubscription;
+
+  public void addToCompositeSubscription(Subscription s) {
+    if (mCompositeSubscription == null || mCompositeSubscription.isUnsubscribed()) {
+      mCompositeSubscription = new CompositeSubscription();
+    }
+    mCompositeSubscription.add(s);
+  }
+
+  public void unsubscribeAll() {
+    mCompositeSubscription.unsubscribe();
   }
 }
