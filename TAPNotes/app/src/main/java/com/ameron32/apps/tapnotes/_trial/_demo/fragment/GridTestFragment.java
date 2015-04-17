@@ -60,7 +60,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by klemeilleur on 4/17/2015.
  */
-public class GridTestFragment extends AbsContentFragment implements Observer<ImageResult> {
+public class GridTestFragment extends AbsContentFragment implements Observer<_ImageResult> {
 
   public static GridTestFragment create() {
     final GridTestFragment t = new GridTestFragment();
@@ -86,7 +86,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
 
     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 //    mRecyclerView.setAdapter(new ColorfulAdapter(null));
-    final Observable<ImageResult> cache = bindLifecycle(getImageResultObservable(), LifecycleEvent.DESTROY).cache();
+    final Observable<_ImageResult> cache = bindLifecycle(getImageResultObservable(), LifecycleEvent.DESTROY).cache();
     addToCompositeSubscription(cache.subscribe(this));
   }
 
@@ -96,10 +96,10 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
     unsubscribeAll();
   }
 
-  private Observable<ImageResult> getImageResultObservable() {
-    return Observable.create(new Observable.OnSubscribe<ImageResult>() {
+  private Observable<_ImageResult> getImageResultObservable() {
+    return Observable.create(new Observable.OnSubscribe<_ImageResult>() {
       @Override
-      public void call(Subscriber<? super ImageResult> subscriber) {
+      public void call(Subscriber<? super _ImageResult> subscriber) {
         if (mResults == null) {
           mResults = new ArrayList<>();
         }
@@ -112,7 +112,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
             final Bitmap bitmap = getBitmapFromAsset(assetManager, s);
             final Palette colors = Palette.generate(bitmap);
             if (bitmap != null) {
-              subscriber.onNext(new ImageResult(i, bitmap, colors));
+              subscriber.onNext(new _ImageResult(i, bitmap, colors));
             }
           }
           subscriber.onCompleted();
@@ -123,10 +123,10 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
     }).subscribeOn(Schedulers.io());
   }
 
-  List<ImageResult> mResults;
+  List<_ImageResult> mResults;
 
   @Override
-  public void onNext(ImageResult result) {
+  public void onNext(_ImageResult result) {
     mResults.add(result);
   }
 
@@ -163,9 +163,9 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
     private static final int DEFAULT_IMAGE_RESOURCE = R.drawable.ic_launcher;
     private static final int DEFAULT_TEXT_COLOR = Color.BLACK;
 
-    private final List<ImageResult> mResults;
+    private final List<_ImageResult> mResults;
 
-    public ColorfulAdapter(List<ImageResult> results) {
+    public ColorfulAdapter(List<_ImageResult> results) {
       if (results == null) {
         results = new ArrayList<>();
       }
@@ -180,7 +180,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-      final ImageResult item = getItem(position);
+      final _ImageResult item = getItem(position);
       final Palette.Swatch mutedSwatch = item.palette.getMutedSwatch();
 
       holder.textView.setBackgroundColor(mutedSwatch.getRgb());
@@ -189,7 +189,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
       holder.imageView.setImageBitmap(item.image);
     }
 
-    private ImageResult getItem(int position) {
+    private _ImageResult getItem(int position) {
       if (position < mResults.size()) {
         return mResults.get(position);
       }

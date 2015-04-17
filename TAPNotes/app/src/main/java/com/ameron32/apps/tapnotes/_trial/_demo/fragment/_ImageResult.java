@@ -30,13 +30,13 @@ import android.support.v7.graphics.Palette;
 /**
  * Created by klemeilleur on 4/17/2015.
  */
-public class ImageResult {
+public class _ImageResult {
 
   public int imageId;
   public Bitmap image;
   public Palette palette;
 
-  public ImageResult(int imageId, Bitmap image, Palette palette) {
+  public _ImageResult(int imageId, Bitmap image, Palette palette) {
     this.imageId = imageId;
     this.image = image;
     this.palette = palette;
