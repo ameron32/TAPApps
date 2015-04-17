@@ -22,23 +22,52 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes._trial._demo.fragment;
+package com.ameron32.apps.tapnotes._trial._demo.fragment.object;
 
-import android.graphics.Bitmap;
-import android.support.v7.graphics.Palette;
+import com.ameron32.apps.tapnotes.frmk.IRxContext;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by klemeilleur on 4/17/2015.
  */
-public class _ImageResult {
+public class RxAsyncTask {
 
-  public int imageId;
-  public Bitmap image;
-  public Palette palette;
+  private final Observable<String> mObservable;
+  private final IRxContext mRxContext;
 
-  public _ImageResult(int imageId, Bitmap image, Palette palette) {
-    this.imageId = imageId;
-    this.image = image;
-    this.palette = palette;
+  public RxAsyncTask(IRxContext rxContext) {
+    mRxContext = rxContext;
+    mObservable = Observable.create(new Observable.OnSubscribe<String>() {
+      @Override
+      public void call(Subscriber<? super String> subscriber) {
+
+      }
+    }).subscribeOn(Schedulers.io());
+  }
+
+  public void doInBackground() {
+    // TODO: publishProgress
+  }
+
+  public void onProgressUpdate() {
+    // TODO: onNext
+  }
+
+  public void onPreExecute() {
+    // TODO: before
+  }
+
+  public void onPostExecute() {
+    // TODO: after
+  }
+
+  public void execute() {
+    // TODO: store subscription
+    cache = mRxContext.bindLifecycle(mObservable, DESTROY).cache();
+    cache.subscribe(RxAndroidFragment.this);
+    // TODO: unsubscribe
   }
 }

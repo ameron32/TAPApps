@@ -22,13 +22,17 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.frmk.di.stabbed;
+package com.ameron32.apps.tapnotes.frmk;
 
-import com.ameron32.apps.tapnotes.frmk.IRxActivity;
+import rx.Observable;
+import rx.android.lifecycle.LifecycleEvent;
 
 /**
  * Created by klemeilleur on 4/17/2015.
  */
-public abstract class AbsTapActionBarActivity extends AbsRxActionBarActivity implements IRxActivity {
+public interface IRxContext {
 
+  public <T> Observable<T> bindLifecycle(Observable<T> observable, LifecycleEvent lifecycleEvent);
+
+  public <T> Observable<T> bindLifecycle(Observable<T> observable);
 }

@@ -27,6 +27,8 @@ package com.ameron32.apps.tapnotes.frmk.di.stabbed;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ameron32.apps.tapnotes.frmk.IRxFragment;
+
 import rx.Observable;
 import rx.Subscription;
 import rx.android.app.AppObservable;
@@ -38,7 +40,7 @@ import rx.subscriptions.CompositeSubscription;
 /**
  * Created by klemeilleur on 4/13/2015.
  */
-public class AbsRxSupportFragment extends AbsStatedSupportFragment {
+public class AbsRxSupportFragment extends AbsStatedSupportFragment implements IRxFragment {
 
   private final BehaviorSubject<LifecycleEvent> lifecycleSubject = BehaviorSubject.create();
 
@@ -109,13 +111,13 @@ public class AbsRxSupportFragment extends AbsStatedSupportFragment {
 
 
   //TODO: PR this to RxAndroid Framework
-  protected <T> Observable<T> bindLifecycle(Observable<T> observable, LifecycleEvent lifecycleEvent) {
+  public <T> Observable<T> bindLifecycle(Observable<T> observable, LifecycleEvent lifecycleEvent) {
     Observable<T> boundObservable = AppObservable.bindFragment(this, observable);
     return LifecycleObservable.bindUntilLifecycleEvent(lifecycle(), boundObservable, lifecycleEvent);
   }
 
   //TODO: PR this to RxAndroid Framework
-  protected <T> Observable<T> bindLifecycle(Observable<T> observable) {
+  public <T> Observable<T> bindLifecycle(Observable<T> observable) {
     Observable<T> boundObservable = AppObservable.bindFragment(this, observable);
     return LifecycleObservable.bindFragmentLifecycle(lifecycle(), boundObservable);
   }

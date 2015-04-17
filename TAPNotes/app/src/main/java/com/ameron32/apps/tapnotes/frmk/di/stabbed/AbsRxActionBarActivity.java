@@ -77,13 +77,13 @@ public abstract class AbsRxActionBarActivity extends AbsStabbedActionBarActivity
 
 
   //TODO: PR this to RxAndroid Framework
-  protected <T> Observable<T> bindLifecycle(Observable<T> observable, LifecycleEvent lifecycleEvent) {
+  public <T> Observable<T> bindLifecycle(Observable<T> observable, LifecycleEvent lifecycleEvent) {
     Observable<T> boundObservable = AppObservable.bindActivity(this, observable);
     return LifecycleObservable.bindUntilLifecycleEvent(lifecycle(), boundObservable, lifecycleEvent);
   }
 
   //TODO: PR this to RxAndroid Framework
-  protected <T> Observable<T> bindLifecycle(Observable<T> observable) {
+  public <T> Observable<T> bindLifecycle(Observable<T> observable) {
     Observable<T> boundObservable = AppObservable.bindActivity(this, observable);
     return LifecycleObservable.bindActivityLifecycle(lifecycle(), boundObservable);
   }

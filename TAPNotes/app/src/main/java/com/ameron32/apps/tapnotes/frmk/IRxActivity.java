@@ -22,13 +22,11 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.frmk.di.stabbed;
-
-import com.ameron32.apps.tapnotes.frmk.IRxActivity;
+package com.ameron32.apps.tapnotes.frmk;
 
 /**
  * Created by klemeilleur on 4/17/2015.
  */
-public abstract class AbsTapActionBarActivity extends AbsRxActionBarActivity implements IRxActivity {
+public interface IRxActivity extends IRxContext {
 
 }

@@ -39,6 +39,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.object.ImageResult;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 
@@ -60,7 +61,7 @@ import rx.schedulers.Schedulers;
 /**
  * Created by klemeilleur on 4/17/2015.
  */
-public class GridTestFragment extends AbsContentFragment implements Observer<_ImageResult> {
+public class GridTestFragment extends AbsContentFragment implements Observer<ImageResult> {
 
   public static GridTestFragment create() {
     final GridTestFragment t = new GridTestFragment();
@@ -86,7 +87,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<_Im
 
     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 //    mRecyclerView.setAdapter(new ColorfulAdapter(null));
-    final Observable<_ImageResult> cache = bindLifecycle(getImageResultObservable(), LifecycleEvent.DESTROY).cache();
+    final Observable<ImageResult> cache = bindLifecycle(getImageResultObservable(), LifecycleEvent.DESTROY).cache();
     addToCompositeSubscription(cache.subscribe(this));
   }
 
@@ -96,10 +97,10 @@ public class GridTestFragment extends AbsContentFragment implements Observer<_Im
     unsubscribeAll();
   }
 
-  private Observable<_ImageResult> getImageResultObservable() {
-    return Observable.create(new Observable.OnSubscribe<_ImageResult>() {
+  private Observable<ImageResult> getImageResultObservable() {
+    return Observable.create(new Observable.OnSubscribe<ImageResult>() {
       @Override
-      public void call(Subscriber<? super _ImageResult> subscriber) {
+      public void call(Subscriber<? super ImageResult> subscriber) {
         if (mResults == null) {
           mResults = new ArrayList<>();
         }
@@ -112,7 +113,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<_Im
             final Bitmap bitmap = getBitmapFromAsset(assetManager, s);
             final Palette colors = Palette.generate(bitmap);
             if (bitmap != null) {
-              subscriber.onNext(new _ImageResult(i, bitmap, colors));
+              subscriber.onNext(new ImageResult(i, bitmap, colors));
             }
           }
           subscriber.onCompleted();
@@ -123,10 +124,10 @@ public class GridTestFragment extends AbsContentFragment implements Observer<_Im
     }).subscribeOn(Schedulers.io());
   }
 
-  List<_ImageResult> mResults;
+  List<ImageResult> mResults;
 
   @Override
-  public void onNext(_ImageResult result) {
+  public void onNext(ImageResult result) {
     mResults.add(result);
   }
 
@@ -163,9 +164,9 @@ public class GridTestFragment extends AbsContentFragment implements Observer<_Im
     private static final int DEFAULT_IMAGE_RESOURCE = R.drawable.ic_launcher;
     private static final int DEFAULT_TEXT_COLOR = Color.BLACK;
 
-    private final List<_ImageResult> mResults;
+    private final List<ImageResult> mResults;
 
-    public ColorfulAdapter(List<_ImageResult> results) {
+    public ColorfulAdapter(List<ImageResult> results) {
       if (results == null) {
         results = new ArrayList<>();
       }
@@ -180,7 +181,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<_Im
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-      final _ImageResult item = getItem(position);
+      final ImageResult item = getItem(position);
       final Palette.Swatch mutedSwatch = item.palette.getMutedSwatch();
 
       holder.textView.setBackgroundColor(mutedSwatch.getRgb());
@@ -189,7 +190,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<_Im
       holder.imageView.setImageBitmap(item.image);
     }
 
-    private _ImageResult getItem(int position) {
+    private ImageResult getItem(int position) {
       if (position < mResults.size()) {
         return mResults.get(position);
       }
