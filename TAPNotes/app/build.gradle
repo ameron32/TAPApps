@@ -375,6 +375,17 @@ dependencies {
   compile 'com.jakewharton:butterknife:6.0.0'
   //
   //
+  // Parceling via Annotation
+  // ---------------------------------------------------------------------------------
+  // NAME: Parceler
+  // LINK: https://parceler.org
+  //       https://github.com/johncarl81/parceler
+  // ---------------------------------------------------------------------------------
+  // STATUS: compiles
+  compile 'org.parceler:parceler-api:0.2.16'
+  provided 'org.parceler:parceler:0.2.16'
+  //
+  //
   // Concurrent image handling
   // ---------------------------------------------------------------------------------
   // NAME: Picasso
@@ -625,6 +636,16 @@ dependencies {
   //       [jitpack.io]
   // STATUS: fails
 //    compile 'net.fredericosilva:showTipsView:1.0.1'
+  //
+  //
+  // [APP WALKTHROUGH]
+  //   HIGHLIGHT AND EXPLAIN HOW TO USE THE APP
+  // ---------------------------------------------------------------------------------
+  // NAME: ShowcaseView
+  // LINK: https://github.com/amlcurran/ShowcaseView
+  // ---------------------------------------------------------------------------------
+  // STATUS: compiles
+  compile 'com.github.amlcurran.showcaseview:library:5.0.0'
   //
   //
   // [ASSORTED ICONS]
