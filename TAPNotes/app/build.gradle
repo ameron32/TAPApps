@@ -167,11 +167,14 @@ android {
       proguardFile 'C:/Users/klemeilleur/Documents/GitHub/TAPApps/TAPNotes/app/proguard-rules.pro'
     }
 
-//    sourceSets {
+    sourceSets {
+      main {
+        res.srcDirs = [ 'src/main/extra-res', 'src/main/res' ]
+      }
 //      androidTest {
 //        setRoot('src/espressoTest')
 //      }
-//    }
+    }
   }
 }
 
@@ -403,6 +406,7 @@ dependencies {
   compile 'io.reactivex:rxjava:1.0.8'
   compile 'io.reactivex:rxandroid:0.24.0'
   compile 'io.reactivex:rxandroid-framework:0.24.0'
+  compile 'io.reactivex:rxjava-async-util:0.21.0'
   //
   //
   // Google JSON Deserialization Library
@@ -728,6 +732,15 @@ dependencies {
   //       no library, reference only
   //
   //
+  // [MATERIAL DESIGN]
+  //   List of Android UI/UX Libraries
+  // ---------------------------------------------------------------------------------
+  // NAME: awesome-android-ui
+  // LINK: https://github.com/wasabeef/awesome-android-ui
+  // ---------------------------------------------------------------------------------
+  //       no library, reference only
+  //
+  //
   //
   //
   // =================================================================================
@@ -976,7 +989,7 @@ dependencies {
   // LINK: https://github.com/JoanZapata/android-pdfview
   // ---------------------------------------------------------------------------------
   // STATUS: functional
-  compile 'com.joanzapata.pdfview:android-pdfview:1.0.+@aar'
+  compile 'com.joanzapata.pdfview:android-pdfview:1.0.2@aar'
   //
   //
   //

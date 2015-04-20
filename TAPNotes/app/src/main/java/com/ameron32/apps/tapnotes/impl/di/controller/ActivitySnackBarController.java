@@ -10,7 +10,7 @@ import com.nispok.snackbar.SnackbarManager;
  */
 public class ActivitySnackBarController extends AbsController {
 
-  public ActivitySnackBarController(Activity activity) {
+  public ActivitySnackBarController(final Activity activity) {
     super(activity);
   }
 

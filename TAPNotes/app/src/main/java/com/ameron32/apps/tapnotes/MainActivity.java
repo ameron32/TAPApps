@@ -3,6 +3,9 @@ package com.ameron32.apps.tapnotes;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -11,7 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ameron32.apps.tapnotes.frmk.activity.AbsTapActionBarActivity;
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
+import com.ameron32.apps.tapnotes.impl.activity.DecoratorActivity;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.impl.fragment.ToolbarFragment;
 import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
@@ -28,10 +33,12 @@ import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.ForApplication;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
+import java.io.IOException;
+
 
 public class MainActivity
     extends
-      AbsRxActionBarActivity
+      DecoratorActivity
     implements
       ToolbarFragment.OnToolbarFragmentCallbacks,
       MainToolbarFragment.ActivityCallbacks
@@ -43,9 +50,23 @@ public class MainActivity
   protected void onCreate(
       Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setThisTheme();
-    setContentView(R.layout.activity_main);
     onLoginComplete();
+  }
+
+  @Override
+  protected int provideLayoutResource() {
+    return R.layout.activity_main;
+  }
+
+  @Override
+  protected Bitmap providePaletteImage() {
+    final AssetManager assets = getResources().getAssets();
+    try {
+      return BitmapFactory.decodeStream(assets.open("2015ProgramConventionOptimized_1.png"));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    return null;
   }
 
   @Override
@@ -99,6 +120,8 @@ public class MainActivity
 
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
   }
 
   private void loadToolbarFragment() {
@@ -194,16 +217,5 @@ public class MainActivity
         .withActivityTheme(R.style.CustomTheme)
         .withActivityColor(c)
         .start(this);
-  }
-
-
-  private void setThisTheme() {
-//    final Random r = new Random();
-//    final boolean custom = r.nextBoolean();
-//    if (custom) {
-//      setTheme(R.style.Theme_AppCompat);
-//    } else {
-      setTheme(R.style.CustomTheme);
-//    }
   }
 }

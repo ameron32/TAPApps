@@ -28,7 +28,7 @@ import android.app.Activity;
  */
 public class ActivityTitleController extends AbsController {
 
-  public ActivityTitleController(Activity activity) {
+  public ActivityTitleController(final Activity activity) {
     super(activity);
   }
 

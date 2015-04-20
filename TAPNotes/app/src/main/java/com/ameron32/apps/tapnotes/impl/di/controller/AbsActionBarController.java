@@ -22,13 +22,24 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.frmk.di.stabbed;
+package com.ameron32.apps.tapnotes.impl.di.controller;
 
-import com.ameron32.apps.tapnotes.frmk.IRxActivity;
+import android.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 
 /**
- * Created by klemeilleur on 4/17/2015.
+ * Created by klemeilleur on 4/20/2015.
  */
-public abstract class AbsTapActionBarActivity extends AbsRxActionBarActivity implements IRxActivity {
+public abstract class AbsActionBarController extends AbsController {
 
+  final ActionBarActivity mActionBarActivity;
+
+  public AbsActionBarController(final ActionBarActivity activity) {
+    super(activity);
+    this.mActionBarActivity = activity;
+  }
+
+  public ActionBarActivity getActionBarActivity() {
+    return mActionBarActivity;
+  }
 }

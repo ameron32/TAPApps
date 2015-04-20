@@ -3,6 +3,7 @@ package com.ameron32.apps.tapnotes.frmk.di.stabbed;
 
 import android.os.Bundle;
 
+import com.ameron32.apps.tapnotes.impl.di.module.ActionBarActivityModule;
 import com.ameron32.apps.tapnotes.impl.di.module.ActivityModule;
 import com.ameron32.apps.tapnotes.impl.di.module.DefaultAndroidActivityModule;
 
@@ -29,7 +30,8 @@ public abstract class AbsRxActionBarActivity extends AbsStabbedActionBarActivity
   protected List<Object> getModules() {
     return Arrays.<Object>asList(
         new DefaultAndroidActivityModule(this),
-        new ActivityModule(this));
+        new ActivityModule(this),
+        new ActionBarActivityModule(this));
   }
 
   private final BehaviorSubject<LifecycleEvent> lifecycleSubject = BehaviorSubject.create();

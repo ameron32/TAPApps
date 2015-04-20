@@ -24,10 +24,12 @@
 
 package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
+import android.app.Activity;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,9 +39,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.object.ImageResult;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.object.RxAsyncTask;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 

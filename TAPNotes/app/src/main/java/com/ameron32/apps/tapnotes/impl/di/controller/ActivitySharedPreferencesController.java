@@ -11,7 +11,7 @@ public class ActivitySharedPreferencesController extends AbsController {
 
   private static final String SHARED_PREFERENCES_KEY = "SharedPreferencesKey";
 
-  public ActivitySharedPreferencesController(Activity activity) {
+  public ActivitySharedPreferencesController(final Activity activity) {
     super(activity);
   }
 

@@ -19,17 +19,7 @@ package com.ameron32.apps.tapnotes.impl.di.module;
 
 import android.app.Activity;
 
-import com.ameron32.apps.tapnotes.MainActivity;
-import com.ameron32.apps.tapnotes._trial._demo.fragment.GridTestFragment;
-import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.SettingsActivity;
-import com.ameron32.apps.tapnotes._trial._demo.fragment.CollapsingToolbarFragment;
-import com.ameron32.apps.tapnotes._trial._demo.fragment.ExpandableTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialImageViewTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.fragment.ParseTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.fragment.PhotoViewerTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.fragment.TableTestFragment;
-import com.ameron32.apps.tapnotes._trial._demo.fragment.TestFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityLoggingController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
@@ -43,68 +33,69 @@ import dagger.Module;
 import dagger.Provides;
 
 /**
- * This module represents objects which exist only for the scope of a single activity. We can
- * safely create singletons using the activity instance because the entire object graph will only
- * ever exist inside of that activity.
+ * This module represents objects which exist only for the scope of a single mActivity. We can
+ * safely create singletons using the mActivity instance because the entire object graph will only
+ * ever exist inside of that mActivity.
  */
 @Module(
     injects = {
-        ExpandableTestFragment.class,
-        GridTestFragment.class,
-        CollapsingToolbarFragment.class,
-        MainActivity.class,
+//        ExpandableTestFragment.class,
+//        GridTestFragment.class,
+//        GridTestFragment.ColorfulAdapter.ViewHolder.class,
+//        CollapsingToolbarFragment.class,
+//        MainActivity.class,
         MyLoginParseActivity.class,
         WelcomeActivity.class,
+//        MainToolbarFragment.class,
+//        ParseTestFragment.class,
+//        TestFragment.class,
+//        TableTestFragment.class,
+//        MaterialImageViewTestFragment.class,
+//        PhotoViewerTestFragment.class,
         SettingsActivity.class,
-        MainToolbarFragment.class,
-        ParseTestFragment.class,
-        TestFragment.class,
-        TableTestFragment.class,
-        MaterialImageViewTestFragment.class,
-        PhotoViewerTestFragment.class
     },
     addsTo = ApplicationModule.class,
     library = true
 )
 public class ActivityModule {
-  private final Activity activity;
+  private final Activity mActivity;
 
-  public ActivityModule(Activity activity) {
-    this.activity = activity;
+  public ActivityModule(final Activity activity) {
+    this.mActivity = activity;
   }
 
 //  /**
-//   * Allow the activity context to be injected but require that it be annotated with
+//   * Allow the mActivity context to be injected but require that it be annotated with
 //   * {@link com.ameron32.apps.tapnotes.impl.di.me.ForActivity @ForActivity} to explicitly differentiate it from application context.
 //   */
 //  @Provides
 //  @Singleton
 //  @ForActivity
 //  Context provideActivityContext() {
-//    return activity;
+//    return mActivity;
 //  }
 
   @Provides
   @Singleton
   ActivityTitleController provideTitleController() {
-    return new ActivityTitleController(activity);
+    return new ActivityTitleController(mActivity);
   }
 
   @Provides
   @Singleton
   ActivitySharedPreferencesController provideSharedPreferencesController() {
-    return new ActivitySharedPreferencesController(activity);
+    return new ActivitySharedPreferencesController(mActivity);
   }
 
   @Provides
   @Singleton
   ActivitySnackBarController provideSnackBarController() {
-    return new ActivitySnackBarController(activity);
+    return new ActivitySnackBarController(mActivity);
   }
 
   @Provides
   @Singleton
   ActivityLoggingController provideLoggingController() {
-    return new ActivityLoggingController(activity);
+    return new ActivityLoggingController(mActivity);
   }
 }

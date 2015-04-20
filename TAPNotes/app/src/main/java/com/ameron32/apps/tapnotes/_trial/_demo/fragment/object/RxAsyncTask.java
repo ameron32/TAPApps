@@ -27,13 +27,22 @@ package com.ameron32.apps.tapnotes._trial._demo.fragment.object;
 import com.ameron32.apps.tapnotes.frmk.IRxContext;
 
 import rx.Observable;
+import rx.Observer;
 import rx.Subscriber;
+import rx.android.app.RxActivity;
+import rx.android.app.support.RxFragment;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import timber.log.Timber;
+
+import static rx.android.lifecycle.LifecycleEvent.DESTROY;
 
 /**
  * Created by klemeilleur on 4/17/2015.
+ *
+ * POSSIBLY BROKEN
  */
-public class RxAsyncTask {
+public class RxAsyncTask implements Observer<String> {
 
   private final Observable<String> mObservable;
   private final IRxContext mRxContext;
@@ -43,31 +52,71 @@ public class RxAsyncTask {
     mObservable = Observable.create(new Observable.OnSubscribe<String>() {
       @Override
       public void call(Subscriber<? super String> subscriber) {
-
+        onNext("Test String");
+        onPostExecute();
       }
-    }).subscribeOn(Schedulers.io());
+    })
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribeOn(Schedulers.io());
   }
 
-  public void doInBackground() {
-    // TODO: publishProgress
+  public final void publishProgress(int... values) {
+    onProgressUpdate(values);
   }
 
-  public void onProgressUpdate() {
-    // TODO: onNext
-  }
+  public void doInBackground() {}
 
-  public void onPreExecute() {
-    // TODO: before
-  }
+  public void onProgressUpdate(int... values) {}
 
-  public void onPostExecute() {
-    // TODO: after
-  }
+  public void onPreExecute() {}
+
+  public void onPostExecute() {}
 
   public void execute() {
-    // TODO: store subscription
-    cache = mRxContext.bindLifecycle(mObservable, DESTROY).cache();
-    cache.subscribe(RxAndroidFragment.this);
-    // TODO: unsubscribe
+    onPreExecute();
+
+    // TODO: verify--does bindLifecycle unsubscribe?
+    Observable<String> cache = mRxContext.bindLifecycle(mObservable, DESTROY).cache();
+    cache.subscribe(this);
+  }
+
+  /**
+   * Notifies the Observer that the {@link rx.Observable} has finished sending push-based notifications.
+   * <p>
+   * The {@link rx.Observable} will not call this method if it calls {@link #onError}.
+   */
+  @Override
+  public void onCompleted() {
+    onPostExecute();
+  }
+
+  /**
+   * Notifies the Observer that the {@link rx.Observable} has experienced an error condition.
+   * <p>
+   * If the {@link rx.Observable} calls this method, it will not thereafter call {@link #onNext} or
+   * {@link #onCompleted}.
+   *
+   * @param e the exception encountered by the Observable
+   */
+  @Override
+  public void onError(Throwable e) {
+    Timber.tag("RxAsyncTask");
+    Timber.e(e, "async failed (onError)", null);
+    Timber.e("async failed (onError)");
+  }
+
+  /**
+   * Provides the Observer with a new item to observe.
+   * <p>
+   * The {@link rx.Observable} may call this method 0 or more times.
+   * <p>
+   * The {@code Observable} will not call this method again after it calls either {@link #onCompleted} or
+   * {@link #onError}.
+   *
+   * @param s the item emitted by the Observable
+   */
+  @Override
+  public void onNext(String s) {
+    doInBackground();
   }
 }

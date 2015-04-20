@@ -42,33 +42,33 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
     addsTo = DefaultAndroidApplicationModule.class,
     library = true)
 public class ApplicationModule {
-  private final AbsApplication application;
+  private final AbsApplication mApplication;
 
   public ApplicationModule(AbsApplication application) {
-    this.application = application;
+    mApplication = application;
   }
 
 //  /**
-//   * Allow the application context to be injected but require that it be annotated with
+//   * Allow the mApplication context to be injected but require that it be annotated with
 //   * {@link com.ameron32.apps.tapnotes.impl.di.me.ForApplication @Annotation} to explicitly differentiate it from an activity context.
 //   */
 //  @Provides
 //  @Singleton
 //  @ForApplication
 //  Context provideApplicationContext() {
-//    return application;
+//    return mApplication;
 //  }
 //
 //  @Provides
 //  @Singleton
 //  LocationManager provideLocationManager() {
-//    return (LocationManager) application.getSystemService(LOCATION_SERVICE);
+//    return (LocationManager) mApplication.getSystemService(LOCATION_SERVICE);
 //  }
 
   @Provides
   @Singleton
   LayoutInflater provideLayoutInflater() {
-    return (LayoutInflater) application.getSystemService(LAYOUT_INFLATER_SERVICE);
+    return (LayoutInflater) mApplication.getSystemService(LAYOUT_INFLATER_SERVICE);
   }
 
   @Provides
