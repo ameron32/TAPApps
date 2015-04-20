@@ -22,20 +22,10 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.impl.di.controller;
+package com.ameron32.apps.tapnotes.frmk;
 
-import android.app.Activity;
-
-
-
-public abstract class AbsController {
-  private final Activity activity;
-
-  public AbsController(final Activity activity) {
-    this.activity = activity;
-  }
-
-  public Activity getActivity() {
-    return activity;
-  }
+/**
+ * Created by klemeilleur on 4/17/2015.
+ */
+public interface IRxFragment extends IRxContext {
 }

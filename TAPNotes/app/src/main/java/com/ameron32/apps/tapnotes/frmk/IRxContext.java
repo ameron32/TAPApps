@@ -22,20 +22,17 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.impl.di.controller;
+package com.ameron32.apps.tapnotes.frmk;
 
-import android.app.Activity;
+import rx.Observable;
+import rx.android.lifecycle.LifecycleEvent;
 
+/**
+ * Created by klemeilleur on 4/17/2015.
+ */
+public interface IRxContext {
 
+  public <T> Observable<T> bindLifecycle(Observable<T> observable, LifecycleEvent lifecycleEvent);
 
-public abstract class AbsController {
-  private final Activity activity;
-
-  public AbsController(final Activity activity) {
-    this.activity = activity;
-  }
-
-  public Activity getActivity() {
-    return activity;
-  }
+  public <T> Observable<T> bindLifecycle(Observable<T> observable);
 }

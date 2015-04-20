@@ -24,11 +24,15 @@
 
 package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -36,6 +40,7 @@ import android.widget.TextView;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.CollapsingTitleLayout;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActionBarActivityFullScreenController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
 
@@ -53,11 +58,15 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
   public static CollapsingToolbarFragment create() {
     final CollapsingToolbarFragment t = new CollapsingToolbarFragment();
     t.setArguments(new Bundle());
+    t.setHasOptionsMenu(true);
     return t;
   }
 
   @Inject
   ActivitySnackBarController snackBarController;
+
+  @Inject
+  ActionBarActivityFullScreenController fullScreenController;
 
   private static final int DUMMY_DATA_LENGTH = 100;
 
@@ -120,6 +129,35 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
         }
       }
     });
+  }
+
+  @Override
+  protected void onFinishInject() {
+    super.onFinishInject();
+    fullScreenController.hideSystemUI(mRecyclerView);
+  }
+
+  @Override
+  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    inflater.inflate(R.menu.immersive, menu);
+    super.onCreateOptionsMenu(menu, inflater);
+  }
+
+  @Override
+  public void onPrepareOptionsMenu(Menu menu) {
+    super.onPrepareOptionsMenu(menu);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+  switch (item.getItemId()) {
+    case R.id.action_status_bar:
+      fullScreenController.showSystemUI(mRecyclerView);
+      return true;
+    default:
+      // none
+  }
+    return super.onOptionsItemSelected(item);
   }
 
   @Override

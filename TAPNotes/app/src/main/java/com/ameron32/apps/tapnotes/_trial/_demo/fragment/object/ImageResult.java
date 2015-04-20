@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes._trial._demo.fragment;
+package com.ameron32.apps.tapnotes._trial._demo.fragment.object;
 
 import android.graphics.Bitmap;
 import android.support.v7.graphics.Palette;
@@ -30,13 +30,13 @@ import android.support.v7.graphics.Palette;
 /**
  * Created by klemeilleur on 4/17/2015.
  */
-public class _ImageResult {
+public class ImageResult {
 
   public int imageId;
   public Bitmap image;
   public Palette palette;
 
-  public _ImageResult(int imageId, Bitmap image, Palette palette) {
+  public ImageResult(int imageId, Bitmap image, Palette palette) {
     this.imageId = imageId;
     this.image = image;
     this.palette = palette;

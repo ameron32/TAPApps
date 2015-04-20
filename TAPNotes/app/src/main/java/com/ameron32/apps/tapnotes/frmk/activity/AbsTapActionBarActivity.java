@@ -22,13 +22,16 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.frmk.di.stabbed;
+package com.ameron32.apps.tapnotes.frmk.activity;
 
-import com.ameron32.apps.tapnotes.frmk.RxActivity;
+import com.ameron32.apps.tapnotes.frmk.IRxActivity;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
 
 /**
- * Created by klemeilleur on 4/17/2015.
+ * Created by klemeilleur on 4/20/2015.
+ *
+ * Dagger and RxAndroid ActionBarActivity
  */
-public abstract class AbsTapActionBarActivity extends AbsRxActionBarActivity implements RxActivity {
+public abstract class AbsTapActionBarActivity extends AbsRxActionBarActivity implements IRxActivity {
 
 }
