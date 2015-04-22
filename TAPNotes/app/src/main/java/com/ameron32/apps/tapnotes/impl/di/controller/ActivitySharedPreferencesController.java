@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.ameron32.apps.tapnotes.frmk.SuccessfulRunnable;
+import com.ameron32.apps.tapnotes.frmk.di.controller.AbsController;
 
 public class ActivitySharedPreferencesController extends AbsController {
 

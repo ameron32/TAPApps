@@ -20,7 +20,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 
 import com.ameron32.apps.tapnotes.CoreApplication;
-import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsApplication;
+import com.ameron32.apps.tapnotes.frmk.AbsApplication;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.ForApplication;
 import com.squareup.otto.Bus;
 import com.squareup.otto.ThreadEnforcer;
 
@@ -67,6 +68,7 @@ public class ApplicationModule {
 
   @Provides
   @Singleton
+  @ForApplication
   LayoutInflater provideLayoutInflater() {
     return (LayoutInflater) mApplication.getSystemService(LAYOUT_INFLATER_SERVICE);
   }

@@ -25,7 +25,7 @@
 package com.ameron32.apps.tapnotes.frmk.activity;
 
 import com.ameron32.apps.tapnotes.frmk.IRxActivity;
-import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
+import com.ameron32.apps.tapnotes.frmk.AbsRxActionBarActivity;
 
 /**
  * Created by klemeilleur on 4/20/2015.

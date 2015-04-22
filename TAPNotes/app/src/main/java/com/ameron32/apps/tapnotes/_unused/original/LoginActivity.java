@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.parse.original;
+package com.ameron32.apps.tapnotes._unused.original;
 
 /*
  *  Copyright (c) 2014, Parse, LLC. All rights reserved.

@@ -22,12 +22,10 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.frmk.di.stabbed;
+package com.ameron32.apps.tapnotes.frmk;
 
 import android.os.Bundle;
 import android.view.View;
-
-import com.ameron32.apps.tapnotes.frmk.IRxFragment;
 
 import rx.Observable;
 import rx.Subscription;

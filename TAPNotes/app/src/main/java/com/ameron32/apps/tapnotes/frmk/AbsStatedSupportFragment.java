@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.frmk.di.stabbed;
+package com.ameron32.apps.tapnotes.frmk;
 
 import android.os.Bundle;
 

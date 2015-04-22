@@ -19,10 +19,8 @@
  *
  */
 
-package com.ameron32.apps.tapnotes.parse.original;
+package com.ameron32.apps.tapnotes._unused.original;
 
-public interface OnLoadingListener {
-  public void onLoadingStart(boolean showSpinner);
-
-  public void onLoadingFinish();
+public interface OnLoginSuccessListener {
+  public void onLoginSuccess();
 }

@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.view.LayoutInflater;
 
 import dagger.Module;
 import dagger.Provides;
@@ -50,21 +51,21 @@ public class DefaultAndroidActivityModule {
 
   @Provides
   @Singleton
-  public Activity provideActivity() {
+  Activity provideActivity() {
     return mActivity;
   }
 
   @Provides
   @Singleton
   @ForActivity
-  public Context provideActivityContext() {
+  Context provideActivityContext() {
     return mActivity;
   }
 
   @Provides
   @Singleton
   @ForActivity
-  public Resources provideResources() {
+  Resources provideResources() {
     return mActivity.getResources();
   }
 
@@ -75,8 +76,15 @@ public class DefaultAndroidActivityModule {
   @Provides
   @Singleton
   @ForActivity
-  public SharedPreferences provideSharedPreferences(final Activity activity) {
+  SharedPreferences provideSharedPreferences(final Activity activity) {
     return activity.getPreferences(Context.MODE_PRIVATE);
+  }
+
+  @Provides
+  @Singleton
+  @ForActivity
+  LayoutInflater provideLayoutInflater(final Activity activity) {
+    return LayoutInflater.from(activity);
   }
 
 }

@@ -14,8 +14,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.ameron32.apps.tapnotes.frmk.activity.AbsTapActionBarActivity;
-import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
 import com.ameron32.apps.tapnotes.impl.activity.DecoratorActivity;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.impl.fragment.ToolbarFragment;

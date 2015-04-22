@@ -152,7 +152,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
   public boolean onOptionsItemSelected(MenuItem item) {
   switch (item.getItemId()) {
     case R.id.action_status_bar:
-      fullScreenController.showSystemUI(mRecyclerView);
+      fullScreenController.toggleSystemUI(mRecyclerView);
       return true;
     default:
       // none

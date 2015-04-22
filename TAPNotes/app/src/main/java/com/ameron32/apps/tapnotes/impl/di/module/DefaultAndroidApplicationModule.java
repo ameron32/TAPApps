@@ -71,21 +71,21 @@ public class DefaultAndroidApplicationModule {
 
   @Provides
   @Singleton
-  public Application provideApplication() {
+  Application provideApplication() {
     return mApplication;
   }
 
   @Provides
   @Singleton
   @ForApplication
-  public Context provideApplicationContext() {
+  Context provideApplicationContext() {
     return mApplication;
   }
 
   @Provides
   @Singleton
   @ForApplication
-  public Resources provideResources() {
+  Resources provideResources() {
     return mApplication.getResources();
   }
 
@@ -96,13 +96,13 @@ public class DefaultAndroidApplicationModule {
   @Provides
   @Singleton
   @ForApplication
-  public SharedPreferences provideSharedPreferences(final Application application) {
+  SharedPreferences provideSharedPreferences(final Application application) {
     return PreferenceManager.getDefaultSharedPreferences(application);
   }
 
   @Provides
   @Singleton
-  public AssetManager provideAssetManager(final Application application) {
+  AssetManager provideAssetManager(final Application application) {
     return application.getAssets();
   }
 
@@ -112,115 +112,115 @@ public class DefaultAndroidApplicationModule {
 
   @Provides
   @Singleton
-  public AccountManager provideAccountManager(final Application application) {
+  AccountManager provideAccountManager(final Application application) {
     return getSystemService(application, Context.ACCOUNT_SERVICE);
   }
 
   @Provides
   @Singleton
-  public ActivityManager provideActivityManager(final Application application) {
+  ActivityManager provideActivityManager(final Application application) {
     return getSystemService(application, Context.ACTIVITY_SERVICE);
   }
 
   @Provides
   @Singleton
-  public AlarmManager provideAlarmManager(final Application application) {
+  AlarmManager provideAlarmManager(final Application application) {
     return getSystemService(application, Context.ALARM_SERVICE);
   }
 
   @Provides
   @Singleton
-  public AudioManager provideAudioManager(final Application application) {
+  AudioManager provideAudioManager(final Application application) {
     return getSystemService(application, Context.AUDIO_SERVICE);
   }
 
   @Provides
   @Singleton
-  public ClipboardManager provideClipboardManager(final Application application) {
+  ClipboardManager provideClipboardManager(final Application application) {
     return getSystemService(application, Context.CLIPBOARD_SERVICE);
   }
 
   @Provides
   @Singleton
-  public ConnectivityManager provideConnectivityManager(final Application application) {
+  ConnectivityManager provideConnectivityManager(final Application application) {
     return getSystemService(application, Context.CONNECTIVITY_SERVICE);
   }
 
   @Provides
   @Singleton
-  public DownloadManager provideDownloadManager(final Application application) {
+  DownloadManager provideDownloadManager(final Application application) {
     return getSystemService(application, Context.DOWNLOAD_SERVICE);
   }
 
   @Provides
   @Singleton
-  public InputManager provideInputManager(final Application application) {
+  InputManager provideInputManager(final Application application) {
     return getSystemService(application, Context.INPUT_SERVICE);
   }
 
   @Provides
   @Singleton
-  public LocationManager provideLocationManager(final Application application) {
+  LocationManager provideLocationManager(final Application application) {
     return getSystemService(application, Context.LOCATION_SERVICE);
   }
 
   @Provides
   @Singleton
-  public NfcManager provideNfcManager(final Application application) {
+  NfcManager provideNfcManager(final Application application) {
     return getSystemService(application, Context.NFC_SERVICE);
   }
 
   @Provides
   @Singleton
-  public NotificationManager provideNotificationManager(final Application application) {
+  NotificationManager provideNotificationManager(final Application application) {
     return getSystemService(application, Context.NOTIFICATION_SERVICE);
   }
 
   @Provides
   @Singleton
-  public PowerManager providePowerManager(final Application application) {
+  PowerManager providePowerManager(final Application application) {
     return getSystemService(application, Context.POWER_SERVICE);
   }
 
   @Provides
   @Singleton
-  public SearchManager provideSearchManager(final Application application) {
+  SearchManager provideSearchManager(final Application application) {
     return getSystemService(application, Context.SEARCH_SERVICE);
   }
 
   @Provides
   @Singleton
-  public SensorManager provideSensorManager(final Application application) {
+  SensorManager provideSensorManager(final Application application) {
     return getSystemService(application, Context.SENSOR_SERVICE);
   }
 
   @Provides
   @Singleton
-  public StorageManager provideStorageManager(final Application application) {
+  StorageManager provideStorageManager(final Application application) {
     return getSystemService(application, Context.STORAGE_SERVICE);
   }
 
   @Provides
   @Singleton
-  public TelephonyManager provideTelephonyManager(final Application application) {
+  TelephonyManager provideTelephonyManager(final Application application) {
     return getSystemService(application, Context.TELEPHONY_SERVICE);
   }
 
   @Provides
   @Singleton
-  public UsbManager provideUsbManager(final Application application) {
+  UsbManager provideUsbManager(final Application application) {
     return getSystemService(application, Context.USB_SERVICE);
   }
 
   @Provides
   @Singleton
-  public Vibrator provideVibrator(final Application application) {
+  Vibrator provideVibrator(final Application application) {
     return getSystemService(application, Context.VIBRATOR_SERVICE);
   }
 
   @Provides
   @Singleton
-  public WifiManager provideWifiManager(final Application application) {
+  WifiManager provideWifiManager(final Application application) {
     return getSystemService(application, Context.WIFI_SERVICE);
   }
 

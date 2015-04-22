@@ -29,6 +29,8 @@ import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
+import com.ameron32.apps.tapnotes.frmk.di.controller.AbsActionBarController;
+
 /**
  * Created by klemeilleur on 4/20/2015.
  */
@@ -68,5 +70,25 @@ public class ActionBarActivityFullScreenController extends AbsActionBarControlle
 //        View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 //            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
         View.SYSTEM_UI_FLAG_VISIBLE);
+  }
+
+  public void toggleSystemUI(View v) {
+    if (isSystemUIShown(v)) {
+      hideSystemUI(v);
+    } else {
+      showSystemUI(v);
+    }
+  }
+
+  private boolean isSystemUIShown(View v) {
+    final int uiVisibility = v.getSystemUiVisibility();
+    switch(uiVisibility) {
+      case View.SYSTEM_UI_FLAG_FULLSCREEN:
+        return false;
+
+      case View.SYSTEM_UI_FLAG_VISIBLE:
+      default:
+        return true;
+    }
   }
 }

@@ -26,4 +26,7 @@ import dagger.Module;
 )
 public class DemoApplicationModule {
   // TODO put your application-specific providers here!
+  /**
+   * CURRENTLY NOT IN USE
+   */
 }

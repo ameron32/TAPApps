@@ -1,4 +1,4 @@
-package com.ameron32.apps.tapnotes.frmk.di.stabbed;
+package com.ameron32.apps.tapnotes.frmk;
 
 import android.content.Context;
 import android.support.multidex.MultiDex;

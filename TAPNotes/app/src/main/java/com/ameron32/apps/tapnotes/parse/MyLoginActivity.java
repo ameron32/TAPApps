@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ameron32.apps.tapnotes.R;
-import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
+import com.ameron32.apps.tapnotes.frmk.AbsRxActionBarActivity;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;

@@ -19,7 +19,7 @@
  *
  */
 
-package com.ameron32.apps.tapnotes.parse.original;
+package com.ameron32.apps.tapnotes._unused.original;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -33,14 +33,14 @@ import com.parse.ParseUser;
 /**
  * Activity that starts ParseLoginActivity if the user is not logged in.
  * Otherwise, it starts the subclass-defined target activity.
- * 
+ *
  * To use this, you should subclass this activity and implement
  * {@link LoginDispatchActivity#getTargetClass} to return the class of the
  * target activity that should be launched after login succeeds. If the user
  * cancels the login, your app will go back to whatever activity it was on before
  * your subclass dispatch activity was launched, or exit the app if your subclass
  * is the first activity in your app's backstack.
- * 
+ *
  * You can think of your subclass as a gate keeper for any activities that
  * require a logged-in user to function. You should have one gate keeper per
  * entry path into your app (e.g. launching the app, or entering through push

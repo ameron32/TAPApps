@@ -1,8 +1,9 @@
-package com.ameron32.apps.tapnotes.frmk.di.stabbed;
+package com.ameron32.apps.tapnotes.frmk;
 
 
 import android.os.Bundle;
 
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsStabbedActionBarActivity;
 import com.ameron32.apps.tapnotes.impl.di.module.ActionBarActivityModule;
 import com.ameron32.apps.tapnotes.impl.di.module.ActivityModule;
 import com.ameron32.apps.tapnotes.impl.di.module.DefaultAndroidActivityModule;

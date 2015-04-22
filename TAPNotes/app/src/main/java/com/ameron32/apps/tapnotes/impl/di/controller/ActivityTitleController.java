@@ -18,6 +18,8 @@ package com.ameron32.apps.tapnotes.impl.di.controller;
 
 import android.app.Activity;
 
+import com.ameron32.apps.tapnotes.frmk.di.controller.AbsController;
+
 /**
  * A simple abstraction which provides the ability to set the title on an activity.
  * <p>

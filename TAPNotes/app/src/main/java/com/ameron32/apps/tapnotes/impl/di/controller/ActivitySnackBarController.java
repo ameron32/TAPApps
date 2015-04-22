@@ -2,6 +2,7 @@ package com.ameron32.apps.tapnotes.impl.di.controller;
 
 import android.app.Activity;
 
+import com.ameron32.apps.tapnotes.frmk.di.controller.AbsController;
 import com.nispok.snackbar.Snackbar;
 import com.nispok.snackbar.SnackbarManager;
 

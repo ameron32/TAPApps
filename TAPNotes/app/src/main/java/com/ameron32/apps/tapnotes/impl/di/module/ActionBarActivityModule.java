@@ -75,7 +75,7 @@ public class ActionBarActivityModule {
 
   @Provides
   @Singleton
-  public ActionBarActivity provideActionBarActivity() {
+  ActionBarActivity provideActionBarActivity() {
     return mActionBarActivity;
   }
 

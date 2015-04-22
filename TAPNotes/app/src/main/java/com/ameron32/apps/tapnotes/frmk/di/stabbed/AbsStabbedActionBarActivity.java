@@ -20,6 +20,8 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
 import dagger.ObjectGraph;
+
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.ExtendedGraphHelper;
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.StabbedContext;
 
 import java.util.List;

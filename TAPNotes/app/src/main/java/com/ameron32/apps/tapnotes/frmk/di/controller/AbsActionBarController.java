@@ -22,9 +22,8 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes.impl.di.controller;
+package com.ameron32.apps.tapnotes.frmk.di.controller;
 
-import android.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 
 /**

@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ameron32.apps.tapnotes.R;
-import com.ameron32.apps.tapnotes.frmk.di.stabbed.AbsRxActionBarActivity;
+import com.ameron32.apps.tapnotes.frmk.AbsRxActionBarActivity;
 
 public class WelcomeActivity extends AbsRxActionBarActivity {
 
