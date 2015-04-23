@@ -36,6 +36,7 @@ import android.widget.AdapterView;
 import android.widget.ImageButton;
 
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.AnimatedPanesTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.CollapsingToolbarFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.ExpandableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.GridTestFragment;
@@ -142,6 +143,7 @@ public class DrawerImpl {
         new PrimaryDrawerItem().withIdentifier(8).withName(ExpandableTestFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_image),
         new PrimaryDrawerItem().withIdentifier(9).withName(CollapsingToolbarFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_image),
         new PrimaryDrawerItem().withIdentifier(10).withName(GridTestFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_image),
+        new PrimaryDrawerItem().withIdentifier(11).withName(AnimatedPanesTestFragment.class.getSimpleName()).withIcon(FontAwesome.Icon.faw_image),
         new DividerDrawerItem(),
         new SecondaryDrawerItem().withIdentifier(5).withName("Settings").withIcon(FontAwesome.Icon.faw_cog),
         new SecondaryDrawerItem().withIdentifier(6).withName("About...").withIcon(FontAwesome.Icon.faw_cog)
@@ -176,6 +178,9 @@ public class DrawerImpl {
             break;
           case 10:
             mActivityCallbacks.changeFragment(GridTestFragment.create());
+            break;
+          case 11:
+            mActivityCallbacks.changeFragment(AnimatedPanesTestFragment.create());
             break;
           case 5:
             mActivityCallbacks.startSettingsActivity();

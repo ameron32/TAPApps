@@ -27,6 +27,7 @@ package com.ameron32.apps.tapnotes.impl.di.module;
 import android.support.v7.app.ActionBarActivity;
 
 import com.ameron32.apps.tapnotes.MainActivity;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.AnimatedPanesTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.GridTestFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActionBarActivityFullScreenController;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
@@ -48,6 +49,7 @@ import dagger.Provides;
  */
 @Module(
     injects = {
+        AnimatedPanesTestFragment.class,
         ExpandableTestFragment.class,
         GridTestFragment.class,
         CollapsingToolbarFragment.class,
