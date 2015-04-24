@@ -23,20 +23,6 @@
   ~ SOFTWARE.
   -->
 
-<set xmlns:android="http://schemas.android.com/apk/res/android">
-
-  <!-- Zoom-In. -->
-  <objectAnimator
-      android:propertyName="scaleX"
-      android:valueFrom="0.5"
-      android:valueTo="1.0"
-      android:duration="2000" />
-
-  <!-- Zoom-In. -->
-  <objectAnimator
-      android:propertyName="scaleY"
-      android:valueFrom="0.5"
-      android:valueTo="1.0"
-      android:duration="2000" />
-
-</set>
+<accelerateDecelerateInterpolator
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:factor="1.5" />

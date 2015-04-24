@@ -69,6 +69,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
   ActionBarActivityFullScreenController fullScreenController;
 
   private static final int DUMMY_DATA_LENGTH = 100;
+  static int mCollapsingTitleLayoutHeight;
 
   @InjectView(R.id.backdrop_toolbar)
   CollapsingTitleLayout mCollapsingTitleLayout;
@@ -99,6 +100,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
     ButterKnife.inject(this, view);
 
     mCollapsingTitleLayout.setTitle(CollapsingToolbarFragment.class.getSimpleName());
+    mCollapsingTitleLayoutHeight = mCollapsingTitleLayout.getHeight();
 
     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     mRecyclerView.setAdapter(new QuickAdapter());
@@ -109,9 +111,15 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
         super.onScrolled(recyclerView, scrollAmountX, scrollAmountY);
 
         final LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-        View firstView = recyclerView.getChildAt(0);
+        final View firstView = recyclerView.getChildAt(0);
         if (firstView != null) {
+          if (layoutManager.findFirstCompletelyVisibleItemPosition() == 1) {
+            // Item 1 is completely visible, toolbar is partially scrolled
+          }
+
           if (layoutManager.findFirstVisibleItemPosition() == 0) {
+            // toolbar is still on the screen
+
             final int toolbarHeight = mToolbar.getHeight();
             final int y = -firstView.getTop();
             final float percent = y / (float) (firstView.getHeight() - mToolbar.getHeight());
@@ -200,6 +208,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
       if (viewType == 1) {
         layoutRes = R.layout.view_spacer;
         final View v = LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false);
+        v.setMinimumHeight(mCollapsingTitleLayoutHeight);
         return new HeaderViewHolder(v);
       } else {
         // viewType == 0

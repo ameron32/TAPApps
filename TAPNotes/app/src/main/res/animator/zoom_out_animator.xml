@@ -27,16 +27,18 @@
 
   <!-- Zoom-Out. -->
   <objectAnimator
+      android:interpolator="@anim/accel_interpolator"
       android:propertyName="scaleX"
       android:valueFrom="1.0"
-      android:valueTo="0.5"
-      android:duration="2000" />
+      android:valueTo="0.8"
+      android:duration="1000" />
 
   <!-- Zoom-Out. -->
   <objectAnimator
+      android:interpolator="@anim/accel_interpolator"
       android:propertyName="scaleY"
       android:valueFrom="1.0"
-      android:valueTo="0.5"
-      android:duration="2000" />
+      android:valueTo="0.8"
+      android:duration="1000" />
 
 </set>

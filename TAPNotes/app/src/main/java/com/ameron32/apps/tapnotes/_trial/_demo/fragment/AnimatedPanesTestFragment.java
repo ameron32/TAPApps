@@ -41,6 +41,8 @@ import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import javax.inject.Inject;
 
 import app.mosn.zdepthshadowlayout.ZDepthShadowLayout;
@@ -93,7 +95,13 @@ public class AnimatedPanesTestFragment extends AbsContentFragment {
   }
 
   private void testAnimation() {
+
+    if (isAnimating()) {
+      return;
+    }
+
     snackBarController.toast("start");
+    isAnimating.set(true);
 
     if (!isABack()) {
       // A to back of B
@@ -112,6 +120,11 @@ public class AnimatedPanesTestFragment extends AbsContentFragment {
           null,
           R.animator.dodge_left_to_back, R.animator.dodge_return_left_to_back);
     }
+  }
+
+  private final AtomicBoolean isAnimating = new AtomicBoolean(false);
+  private boolean isAnimating() {
+    return isAnimating.get();
   }
 
   private boolean isABack() {
@@ -136,12 +149,13 @@ public class AnimatedPanesTestFragment extends AbsContentFragment {
     final Animator anim2 = AnimatorInflater.loadAnimator(getActivity(), a1);
     anim1.setTarget(v);
     anim2.setTarget(v);
+    anim2.setStartDelay(500);
 
     final AnimatorSet set1 = new AnimatorSet();
     final AnimatorSet set2 = new AnimatorSet();
 
     set1.play(anim1);
-    set1.play(anim2).after(anim1);
+    set1.play(anim2).with(anim1);
     set1.addListener(new Animator.AnimatorListener() {
       @Override public void onAnimationEnd(Animator animation) {
         v.setScaleX(0.5f);
@@ -163,10 +177,11 @@ public class AnimatedPanesTestFragment extends AbsContentFragment {
     anim4.setTarget(v);
 
     set2.play(anim3);
-    set2.play(anim4).after(anim3);
+    set2.play(anim4).with(anim3);
     set2.addListener(new Animator.AnimatorListener() {
       @Override public void onAnimationEnd(Animator animation) {
         snackBarController.toast("finished");
+        isAnimating.set(false);
       }
       @Override public void onAnimationStart(Animator animation) {}
       @Override public void onAnimationCancel(Animator animation) {}

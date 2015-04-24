@@ -27,9 +27,10 @@
 
   <!-- Move right linear. -->
   <objectAnimator
+      android:interpolator="@anim/accel_interpolator"
       android:propertyName="translationX"
       android:valueFrom="0"
-      android:valueTo="150"
-      android:duration="2000" />
+      android:valueTo="200"
+      android:duration="500" />
 
 </set>

@@ -25,11 +25,29 @@
 
 <set xmlns:android="http://schemas.android.com/apk/res/android">
 
-  <!-- Return from right linear. -->
-  <objectAnimator
-      android:propertyName="translationX"
-      android:valueFrom="150"
-      android:valueTo="0"
-      android:duration="2000" />
+  <scale
+      android:interpolator="@anim/accel_interpolator"
+      android:duration="3000"
+      android:fromXScale="0.5"
+      android:fromYScale="0.5"
+      android:pivotX="50%"
+      android:pivotY="50%"
+      android:toXScale="2.5"
+      android:toYScale="2.5">
+
+  </scale>
+
+  <scale
+      android:interpolator="@anim/accel_interpolator"
+      android:duration="3000"
+      android:fromXScale="2.5"
+      android:fromYScale="2.5"
+      android:pivotX="50%"
+      android:pivotY="50%"
+      android:startOffset="5000"
+      android:toXScale="0.5"
+      android:toYScale="0.5">
+
+  </scale>
 
 </set>
