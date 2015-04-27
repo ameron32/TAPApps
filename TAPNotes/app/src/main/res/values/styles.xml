@@ -53,4 +53,9 @@
     <item name="android:background">@null</item>
   </style>
 
+    <style name="TextAppearance.TAPNotes.FloatLabel" parent="android:TextAppearance.Small">
+        <item name="android:textColor">@color/float_label</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

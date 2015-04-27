@@ -26,6 +26,7 @@ package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
 import android.app.ActionBar;
 import android.os.Bundle;
+import android.support.v7.internal.widget.ViewUtils;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -35,6 +36,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.R;
@@ -42,6 +44,7 @@ import com.ameron32.apps.tapnotes._trial.ui.CollapsingTitleLayout;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActionBarActivityFullScreenController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
+import com.ameron32.apps.tapnotes.util.ViewUtil;
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
 
 import javax.inject.Inject;
@@ -69,10 +72,12 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
   ActionBarActivityFullScreenController fullScreenController;
 
   private static final int DUMMY_DATA_LENGTH = 100;
-  static int mCollapsingTitleLayoutHeight;
 
   @InjectView(R.id.backdrop_toolbar)
   CollapsingTitleLayout mCollapsingTitleLayout;
+
+  @InjectView(R.id.imageview_fanart)
+  ImageView mImageView;
 
   @InjectView(R.id.recycler_view)
   RecyclerView mRecyclerView;
@@ -100,7 +105,6 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
     ButterKnife.inject(this, view);
 
     mCollapsingTitleLayout.setTitle(CollapsingToolbarFragment.class.getSimpleName());
-    mCollapsingTitleLayoutHeight = mCollapsingTitleLayout.getHeight();
 
     mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     mRecyclerView.setAdapter(new QuickAdapter());
@@ -111,29 +115,50 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
         super.onScrolled(recyclerView, scrollAmountX, scrollAmountY);
 
         final LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-        final View firstView = recyclerView.getChildAt(0);
-        if (firstView != null) {
-          if (layoutManager.findFirstCompletelyVisibleItemPosition() == 1) {
-            // Item 1 is completely visible, toolbar is partially scrolled
-          }
+        final int firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
+        final int visibleItemCount = layoutManager.findLastVisibleItemPosition() - firstVisibleItem;
 
-          if (layoutManager.findFirstVisibleItemPosition() == 0) {
-            // toolbar is still on the screen
+        if (recyclerView.getChildViewHolder(recyclerView.getChildAt(0)) instanceof QuickAdapter.HeaderViewHolder) {
+          final Toolbar toolbar = mToolbar;
 
-            final int toolbarHeight = mToolbar.getHeight();
+          if (visibleItemCount > 0 && firstVisibleItem == 0) {
+            final View firstView = recyclerView.getChildAt(0);
+
+            mCollapsingTitleLayout.setVisibility(View.VISIBLE);
+
+            final int toolbarHeight = toolbar.getHeight();
             final int y = -firstView.getTop();
-            final float percent = y / (float) (firstView.getHeight() - mToolbar.getHeight());
+            final float percent = y / (float) (firstView.getHeight() - toolbar.getHeight());
 
             if (firstView.getBottom() > toolbarHeight) {
               mCollapsingTitleLayout.setTranslationY(0);
-              mCollapsingTitleLayout.setScrollOffset(percent);
+              setBackdropOffset(percent);
             } else {
-              mCollapsingTitleLayout.setTranslationY(firstView.getBottom() - toolbarHeight);
-              mCollapsingTitleLayout.setScrollOffset(1.0f);
+//              mCollapsingTitleLayout.setTranslationY(firstView.getBottom() - toolbarHeight);
+              setBackdropOffset(1f);
             }
+
+//            if (mFadeActionBar && hasCallbacks()) {
+//              getCallbacks().setHeaderScrollValue(percent);
+//            }
           } else {
-            mCollapsingTitleLayout.setScrollOffset(1.0f);
+            setBackdropOffset(1f);
+            mCollapsingTitleLayout.setVisibility(View.GONE);
           }
+          return;
+        }
+
+//        if (mFadeActionBar && hasCallbacks()) {
+//          getCallbacks().setHeaderScrollValue(1f);
+//        }
+      }
+
+      private void setBackdropOffset(float f) {
+        if (mCollapsingTitleLayout != null) {
+          mCollapsingTitleLayout.setScrollOffset(f);
+        }
+        if (mImageView != null) {
+          // offset the image by 1/2 the amount scrolled
         }
       }
     });
@@ -206,9 +231,8 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
     public QuickAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
       int layoutRes;
       if (viewType == 1) {
-        layoutRes = R.layout.view_spacer;
-        final View v = LayoutInflater.from(parent.getContext()).inflate(layoutRes, parent, false);
-        v.setMinimumHeight(mCollapsingTitleLayoutHeight);
+        final View v = new View(parent.getContext());
+        v.setMinimumHeight(Math.round(parent.getContext().getResources().getDimension(R.dimen.expanded_toolbar_height)));
         return new HeaderViewHolder(v);
       } else {
         // viewType == 0

@@ -129,7 +129,7 @@ public class AnimatedPanesTestFragment extends AbsContentFragment {
 
   private boolean isABack() {
     final ViewGroup parent = (ViewGroup) mainPane.getParent();
-    View child = parent.getChildAt(0);
+    final View child = parent.getChildAt(0);
     if (child.getId() == leftPane.getId()) {
       return true;
     }
@@ -158,6 +158,10 @@ public class AnimatedPanesTestFragment extends AbsContentFragment {
     set1.play(anim2).with(anim1);
     set1.addListener(new Animator.AnimatorListener() {
       @Override public void onAnimationEnd(Animator animation) {
+        if (v == null || set2 == null) {
+          return;
+        }
+
         v.setScaleX(0.5f);
         v.setScaleY(0.5f);
         if (runnable != null) {
@@ -180,6 +184,10 @@ public class AnimatedPanesTestFragment extends AbsContentFragment {
     set2.play(anim4).with(anim3);
     set2.addListener(new Animator.AnimatorListener() {
       @Override public void onAnimationEnd(Animator animation) {
+        if (snackBarController == null || isAnimating == null) {
+          return;
+        }
+
         snackBarController.toast("finished");
         isAnimating.set(false);
       }

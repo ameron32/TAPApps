@@ -18,7 +18,7 @@
 
 <!-- see link for usage -->
 <!-- LINK: https://github.com/chrisbanes/philm/blob/master/app/src/main/res/layout/fragment_movie_detail_list.xml -->
-<FrameLayout
+<RelativeLayout
    xmlns:android="http://schemas.android.com/apk/res/android"
    xmlns:app="http://schemas.android.com/apk/res-auto"
    xmlns:tools="http://schemas.android.com/tools"
@@ -27,6 +27,7 @@
 
   <android.support.v7.widget.RecyclerView
       android:id="@+id/recycler_view"
+      android:layout_alignParentTop="true"
       android:layout_width="match_parent"
       android:layout_height="match_parent"/>
 
@@ -34,9 +35,10 @@
     android:id="@+id/backdrop_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
-    app:expandedTextSize="56dp"
-    app:expandedMargin="16dp">
+    app:expandedTextSize="64dp"
+    app:expandedMargin="@dimen/expanded_toolbar_lower_margin">
 
     <ImageView
         android:id="@+id/imageview_fanart"
@@ -44,19 +46,45 @@
         android:layout_height="@dimen/expanded_toolbar_height"
         android:background="?attr/colorPrimary" />
 
+    <LinearLayout
+        android:layout_marginTop="128dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            android:text="Demo Theme Scripture" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            android:text="Demo Question" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            android:text="Demo Speaker Name" />
+    </LinearLayout>
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_height="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        style="@style/Widget.Philm.Toolbar.Transparent" />
+        android:layout_width="match_parent" />
 
   </com.ameron32.apps.tapnotes._trial.ui.CollapsingTitleLayout>
 
   <!-- avoid custom XML attribute "tb_anim_duration". causes crashes when used properly. -->
   <com.github.alexkolpa.fabtoolbar.FabToolbar
       xmlns:tb="http://schemas.android.com/apk/res-auto"
+      android:layout_alignParentBottom="true"
+      android:layout_alignParentRight="true"
       android:id="@+id/fab_toolbar"
-      android:layout_width="match_parent"
+      android:layout_width="240dp"
       android:layout_height="wrap_content"
       android:layout_gravity="bottom"
       tb:tb_button_gravity="end"
@@ -71,4 +99,4 @@
     <!-- More buttons can be added here -->
 
   </com.github.alexkolpa.fabtoolbar.FabToolbar>
-</FrameLayout>
+</RelativeLayout>
