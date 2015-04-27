@@ -39,6 +39,7 @@ import android.widget.ImageView;
 
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -81,6 +82,22 @@ public class AnimatedPanesTestFragment extends AbsContentFragment {
     ButterKnife.inject(this, view);
 
     mainPane.postDelayed(this::testAnimation, 5000);
+  }
+
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
+  @Override
+  protected void onFinishInject() {
+    super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--Fake Material Design shadows" + "\n" +
+            "--Compound animation" + "\n" +
+            "--SnackBar usage" + "\n" +
+            "--AlertDialog usage" + "\n" +
+            "--Code contains lambdas"
+    );
   }
 
   @Override

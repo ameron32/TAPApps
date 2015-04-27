@@ -8,6 +8,7 @@ import com.ameron32.apps.tapnotes._trial.ui.BlurringView;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.MaterialImageView;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityTitleController;
@@ -66,6 +67,25 @@ public class MaterialImageViewTestFragment
     ButterKnife.inject(this, view);
 
     blurringView.setBlurredView(materialImageView2);
+  }
+
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
+  @Override
+  protected void onFinishInject() {
+    super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--Material Design ImageView with shadows and rotation" + "\n" +
+            "--BlurringView (poor results so far)" + "\n" +
+            "--SnackBar usage" + "\n" +
+            "--AlertDialog usage" + "\n" +
+            "--SharedPreferences restore last rotation state (top image)" + "\n" +
+            "--StatedFragment restore rotation state from bundle (bottom image)" + "\n" +
+            "--RxJava usage with LifeCycleObservables" + "\n" +
+            "--Title on Toolbar set via Controller"
+    );
   }
 
   @Override

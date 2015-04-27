@@ -45,6 +45,7 @@ import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.object.ImageResult;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.object.RxAsyncTask;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 
 import java.io.IOException;
@@ -93,6 +94,22 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
 //    mRecyclerView.setAdapter(new ColorfulAdapter(null));
     final Observable<ImageResult> cache = bindLifecycle(getImageResultObservable(), LifecycleEvent.DESTROY).cache();
     addToCompositeSubscription(cache.subscribe(this));
+  }
+
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
+  @Override
+  protected void onFinishInject() {
+    super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--RxJava usage for background processing" + "\n" +
+            "--Composite Subscription for RxJava" + "\n" +
+            "--SnackBar usage" + "\n" +
+            "--AlertDialog usage" + "\n" +
+            "--Palette: Colors derived from PNG images"
+    );
   }
 
   @Override

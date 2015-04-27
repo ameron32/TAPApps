@@ -43,6 +43,7 @@ import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes._trial.ui.CollapsingTitleLayout;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActionBarActivityFullScreenController;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.util.ViewUtil;
 import com.github.alexkolpa.fabtoolbar.FabToolbar;
@@ -164,9 +165,21 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
     });
   }
 
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
   @Override
   protected void onFinishInject() {
     super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--Status Bar Toggling" + "\n" +
+            "--Floating Action Bar Toolbar" + "\n" +
+            "--SnackBar usage" + "\n" +
+            "--AlertDialog usage" + "\n" +
+            "--CollapsingTitleLayout (a modification of Toolbar)"
+    );
+
     fullScreenController.hideSystemUI(mRecyclerView);
   }
 

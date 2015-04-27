@@ -35,6 +35,7 @@ import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityLoggingController;
 import com.levelupstudio.recyclerview.ExpandableRecyclerView;
 import com.squareup.otto.Bus;
@@ -91,9 +92,20 @@ public class ExpandableTestFragment extends AbsContentFragment {
     exp.setExpandableAdapter(getExpandableAdapter());
   }
 
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
   @Override
   protected void onFinishInject() {
     super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--Expandable RecyclerView" + "\n" +
+            "--Event Bus (not yet implemented)" + "\n" +
+            "--Logging (not yet implemented)" + "\n" +
+            "--AlertDialog usage"
+    );
+
     bus.register(this);
   }
 

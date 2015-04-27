@@ -6,7 +6,10 @@ import android.view.View;
 
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.squareup.picasso.Picasso;
+
+import javax.inject.Inject;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -49,9 +52,24 @@ public class PhotoViewerTestFragment
         .into(mPhotoView);
   }
 
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
+  @Override
+  protected void onFinishInject() {
+    super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--PhotoView with zoom and pan" + "\n" +
+            "--Image Loading from internet with Picasso" + "\n" +
+            "--AlertDialog usage"
+    );
+  }
+
   @Override
   public void onDestroyView() {
     super.onDestroyView();
+    ButterKnife.reset(this);
     mAttacher.cleanup();
   }
 }

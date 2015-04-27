@@ -84,12 +84,12 @@ apply plugin: 'spoon'
 //}
 
 
-def versionICode = 6
+def versionICode = 7
 
 def versionMajor = 0
 def versionMinor = 2
 def versionPatch = 0
-def versionBuild = 2 // bump for dogfood builds, public betas, etc.
+def versionBuild = 3 // bump for dogfood builds, public betas, etc.
 
 def buildTime() {
   return new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))

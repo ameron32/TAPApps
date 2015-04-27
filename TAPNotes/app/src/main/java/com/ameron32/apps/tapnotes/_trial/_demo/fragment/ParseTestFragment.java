@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
 import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.ameron32.apps.tapnotes.parse.rx.ParseObservable;
@@ -49,10 +50,28 @@ public class ParseTestFragment extends AbsContentFragment {
     super.onViewCreated(view, savedInstanceState);
     ButterKnife.inject(this, view);
   }
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
+  @Override
+  protected void onFinishInject() {
+    super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--Object query from server using Parse" + "\n" +
+            "--Parse query via RxJava by ParseObservable" + "\n" +
+            "--Save text state with IcePick" + "\n" +
+            "--Custom Fonts with Calligraphy" + "\n" +
+            "--SnackBar usage" + "\n" +
+            "--AlertDialog usage" + "\n" +
+            "--Code contains lambdas"
+    );
+  }
 
   @Override
   public void onDestroyView() {
     super.onDestroyView();
+    ButterKnife.reset(this);
   }
 
   @OnClick(R.id.button_start_parse_test)

@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityTitleController;
 import com.ameron32.apps.tapnotes.parse.adapter.SimpleTableQueryAdapter;
 import com.ameron32.apps.tapnotes.parse.object.TestObject;
@@ -62,6 +63,20 @@ public class TableTestFragment
     mRecyclerView.setLayoutManager(mLayoutManager);
     mAdapter = new SimpleTableQueryAdapter<TestObject>(factory, true);
     mRecyclerView.setAdapter(mAdapter);
+  }
+
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
+  @Override
+  protected void onFinishInject() {
+    super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--TableQueryAdapter of Parse Objects from server" + "\n" +
+            "--Title set with Controller" + "\n" +
+            "--AlertDialog usage"
+    );
   }
 
   @Override

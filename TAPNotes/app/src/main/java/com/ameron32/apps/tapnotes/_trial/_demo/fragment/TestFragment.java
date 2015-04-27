@@ -45,21 +45,9 @@ public class TestFragment extends AbsContentFragment
   @Inject
   ActivitySnackBarController snackBarController;
 
-  @Inject
-  ActivityLoggingController logController;
-
-  @Inject
-  ActivityAlertDialogController alertDialogController;
-
   @Override
   protected int getCustomLayoutResource() {
     return R.layout.trial_fragment_test_basic;
-  }
-
-  @Override
-  public void onActivityCreated(Bundle savedInstanceState) {
-    super.onActivityCreated(savedInstanceState);
-    logController.tag(TestFragment.class.getSimpleName());
   }
 
   @InjectView(R.id.pdfview)
@@ -74,6 +62,23 @@ public class TestFragment extends AbsContentFragment
     ButterKnife.inject(this, view);
   }
 
+  @Inject
+  ActivityAlertDialogController alertDialogController;
+
+  @Override
+  protected void onFinishInject() {
+    super.onFinishInject();
+    alertDialogController.showInformationDialog("Fragment Demo",
+        "This fragment demonstrates..." + "\n" +
+            "--Logging with Controller" + "\n" +
+            "--Title set with Controller" + "\n" +
+            "--SnackBar usage" + "\n" +
+            "--AlertDialog usage" + "\n" +
+            "--PDF rendering with PDFView" + "\n" +
+            "--GPS Location by Controller"
+    );
+  }
+
   @Override
   public void onDestroyView() {
     super.onDestroyView();
@@ -85,10 +90,6 @@ public class TestFragment extends AbsContentFragment
     super.onResume();
 
     loadPdf();
-
-    final String time = sharedPreferencesController.restoreStringPreference("time", "none");
-    titleController.setTitle(time);
-    logController.log(time);
 
     final List<String> allProviders = locationManager.getAllProviders();
     snackBarController.toast(allProviders.toString());
@@ -126,13 +127,5 @@ public class TestFragment extends AbsContentFragment
               failMessage[1] + "\n" +
               failMessage[2]);
     }
-  }
-
-  @Override
-  public void onPause() {
-    super.onPause();
-
-    final String value = String.valueOf(System.currentTimeMillis());
-    sharedPreferencesController.saveStringPreference("time", value);
   }
 }
