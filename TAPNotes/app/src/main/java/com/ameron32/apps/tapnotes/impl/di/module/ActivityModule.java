@@ -20,6 +20,7 @@ package com.ameron32.apps.tapnotes.impl.di.module;
 import android.app.Activity;
 
 import com.ameron32.apps.tapnotes.SettingsActivity;
+import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityLoggingController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySnackBarController;
@@ -97,5 +98,11 @@ public class ActivityModule {
   @Singleton
   ActivityLoggingController provideLoggingController() {
     return new ActivityLoggingController(mActivity);
+  }
+
+  @Provides
+  @Singleton
+  ActivityAlertDialogController provideAlertDialogController() {
+    return new ActivityAlertDialogController(mActivity);
   }
 }

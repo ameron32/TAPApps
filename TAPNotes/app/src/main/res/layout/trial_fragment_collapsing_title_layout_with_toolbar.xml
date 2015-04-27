@@ -35,6 +35,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+    android:minHeight="120dp"
     app:expandedTextSize="56dp"
     app:expandedMargin="16dp">
 
