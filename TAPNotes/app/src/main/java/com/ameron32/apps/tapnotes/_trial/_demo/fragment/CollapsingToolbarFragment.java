@@ -118,11 +118,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
         final int firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
         final int visibleItemCount = layoutManager.findLastVisibleItemPosition() - firstVisibleItem;
 
-<<<<<<< HEAD
         if (recyclerView.getChildViewHolder(recyclerView.getChildAt(0)) instanceof QuickAdapter.HeaderViewHolder) {
-=======
-        if (firstVisibleItem == 0) {
->>>>>>> new
           final Toolbar toolbar = mToolbar;
 
           if (visibleItemCount > 0 && firstVisibleItem == 0) {
@@ -138,11 +134,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
               mCollapsingTitleLayout.setTranslationY(0);
               setBackdropOffset(percent);
             } else {
-<<<<<<< HEAD
 //              mCollapsingTitleLayout.setTranslationY(firstView.getBottom() - toolbarHeight);
-=======
-              mCollapsingTitleLayout.setTranslationY(firstView.getBottom() - toolbarHeight);
->>>>>>> new
               setBackdropOffset(1f);
             }
 
@@ -166,11 +158,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
           mCollapsingTitleLayout.setScrollOffset(f);
         }
         if (mImageView != null) {
-<<<<<<< HEAD
           // offset the image by 1/2 the amount scrolled
-=======
-
->>>>>>> new
         }
       }
     });
@@ -244,11 +232,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
       int layoutRes;
       if (viewType == 1) {
         final View v = new View(parent.getContext());
-<<<<<<< HEAD
         v.setMinimumHeight(Math.round(parent.getContext().getResources().getDimension(R.dimen.expanded_toolbar_height)));
-=======
-        v.setMinimumHeight(ViewUtil.convertDpToPx(parent.getContext(), 120));
->>>>>>> new
         return new HeaderViewHolder(v);
       } else {
         // viewType == 0
