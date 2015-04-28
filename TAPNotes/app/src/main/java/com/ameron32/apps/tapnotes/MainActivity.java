@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.ameron32.apps.tapnotes._trial.ui.TuckawaySlidingPaneLayout;
 import com.ameron32.apps.tapnotes.impl.activity.DecoratorActivity;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.impl.fragment.ToolbarFragment;
@@ -25,6 +26,7 @@ import com.parse.ParseUser;
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.InjectView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.ForApplication;
@@ -78,6 +80,9 @@ public class MainActivity
     bus.register(this);
   }
 
+  @InjectView(R.id.sliding_pane_layout)
+  TuckawaySlidingPaneLayout tuckaway;
+
   private void onLoginComplete() {
     loadToolbarFragment();
     ButterKnife.inject(this);
@@ -118,8 +123,6 @@ public class MainActivity
 
     setSupportActionBar(toolbar);
     getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
   }
 
   private void loadToolbarFragment() {
@@ -182,8 +185,12 @@ public class MainActivity
     // automatically handle clicks on the Home/Up button, so long
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
-    if (id == R.id.action_settings) {
+    switch (id) {
+    case R.id.action_settings:
       startSettingsActivity();
+      return true;
+    case R.id.action_toggle:
+      tuckaway.toggleLayout();
       return true;
     }
     return super.onOptionsItemSelected(item);

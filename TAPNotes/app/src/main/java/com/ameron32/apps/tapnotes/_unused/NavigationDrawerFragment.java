@@ -320,7 +320,7 @@ public class NavigationDrawerFragment
       MenuItem item) {
     if (mActionBarDrawerToggle.onOptionsItemSelected(item)) { return true; }
 
-    if (item.getItemId() == R.id.action_example) {
+    if (item.getItemId() == R.id.action_toggle) {
       Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
       return true;
     }

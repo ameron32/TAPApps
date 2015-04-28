@@ -1013,6 +1013,16 @@ dependencies {
   compile 'com.joanzapata.pdfview:android-pdfview:1.0.2@aar'
   //
   //
+  // Vector Drawables from Lollipop Compatible
+  // ---------------------------------------------------------------------------------
+  // NAME: vector-compat
+  // LINK: https://github.com/wnafee/vector-compat
+  // ---------------------------------------------------------------------------------
+  // NOTE:   REQUIRES BUILD-TOOLS 22.0.1 or higher!!!
+  // STATUS: untested
+//  compile 'com.wnafee:vector-compat:1.0.5'
+  //
+  //
   //
   //
   // =================================================================================

@@ -2,10 +2,11 @@
       xmlns:app="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.ameron32.apps.tapnotes.MainActivity">
-  <item android:id="@+id/action_example"
-        android:title="@string/action_example"
-        android:orderInCategory="101"
-        app:showAsAction="withText|ifRoom"/>
+  <item android:id="@+id/action_toggle"
+        android:icon="@drawable/ic_action_swap_horizontal"
+        android:title="@string/action_toggle"
+        android:orderInCategory="98"
+        app:showAsAction="always"/>
   <item android:id="@+id/action_settings"
         android:title="@string/action_settings"
         android:orderInCategory="100"
