@@ -322,41 +322,41 @@ dependencies {
   // NOTE:   RetroLambda is not recommended with GPS version 5.0.77
   // STATUS: untested
   ////  Google+
-  //  compile 'com.google.android.gms:play-services-plus:7.0.0'
+  //  compile 'com.google.android.gms:play-services-plus:7.3.0'
   ////  Google Account Login
-  //  compile 'com.google.android.gms:play-services-identity:7.0.0'
+  //  compile 'com.google.android.gms:play-services-identity:7.3.0'
   ////  Google Actions, Base Client Library
-  //  compile 'com.google.android.gms:play-services-base:7.0.0'
+  //  compile 'com.google.android.gms:play-services-base:7.3.0'
   ////  Google App Indexing
-  //  compile 'com.google.android.gms:play-services-appindexing:7.0.0'
+  //  compile 'com.google.android.gms:play-services-appindexing:7.3.0'
   ////  Google Analytics
-  //  compile 'com.google.android.gms:play-services-analytics:7.0.0'
+  //  compile 'com.google.android.gms:play-services-analytics:7.3.0'
   ////  Google Cast
-  //  compile 'com.google.android.gms:play-services-cast:7.0.0'
+  //  compile 'com.google.android.gms:play-services-cast:7.3.0'
   ////  Google Cloud Messaging
-  //  compile 'com.google.android.gms:play-services-gcm:7.0.0'
+  //  compile 'com.google.android.gms:play-services-gcm:7.3.0'
   ////  Google Drive
-  //  compile 'com.google.android.gms:play-services-drive:7.0.0'
+  //  compile 'com.google.android.gms:play-services-drive:7.3.0'
   ////  Google Fit
-  //  compile 'com.google.android.gms:play-services-fitness:7.0.0'
+  //  compile 'com.google.android.gms:play-services-fitness:7.3.0'
   ////  Google Location, Activity Recognition, and Places
-  //  compile 'com.google.android.gms:play-services-location:7.0.0'
+  //  compile 'com.google.android.gms:play-services-location:7.3.0'
   ////  Google Maps
-  //  compile 'com.google.android.gms:play-services-maps:7.0.0'
+  //  compile 'com.google.android.gms:play-services-maps:7.3.0'
   ////  Google Mobile Ads
-  //  compile 'com.google.android.gms:play-services-ads:7.0.0'
+  //  compile 'com.google.android.gms:play-services-ads:7.3.0'
   ////  Google Nearby
-  //  compile 'com.google.android.gms:play-services-nearby:7.0.0'
+  //  compile 'com.google.android.gms:play-services-nearby:7.3.0'
   ////  Google Panorama Viewer
-  //  compile 'com.google.android.gms:play-services-panorama:7.0.0'
+  //  compile 'com.google.android.gms:play-services-panorama:7.3.0'
   ////  Google Play Game services
-  //  compile 'com.google.android.gms:play-services-games:7.0.0'
+  //  compile 'com.google.android.gms:play-services-games:7.3.0'
   ////  SafetyNet
-  //  compile 'com.google.android.gms:play-services-safetynet:7.0.0'
+  //  compile 'com.google.android.gms:play-services-safetynet:7.3.0'
   ////  Google Wallet
-  //  compile 'com.google.android.gms:play-services-wallet:7.0.0'
+  //  compile 'com.google.android.gms:play-services-wallet:7.3.0'
   ////  Android Wear
-  //  compile 'com.google.android.gms:play-services-wearable:7.0.0'
+  //  compile 'com.google.android.gms:play-services-wearable:7.3.0'
   //
   //
   // Large application >65K methods repair

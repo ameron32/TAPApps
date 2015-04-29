@@ -24,7 +24,11 @@
 
 package com.ameron32.apps.tapnotes._trial._demo.fragment;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
 import android.app.ActionBar;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.internal.widget.ViewUtils;
 import android.support.v7.widget.LinearLayoutManager;
@@ -36,6 +40,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -119,39 +124,40 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
         final int firstVisibleItem = layoutManager.findFirstVisibleItemPosition();
         final int visibleItemCount = layoutManager.findLastVisibleItemPosition() - firstVisibleItem;
 
-        if (recyclerView.getChildViewHolder(recyclerView.getChildAt(0)) instanceof QuickAdapter.HeaderViewHolder) {
+        updatePeek(scrollAmountY);
+
+        if (isHeaderFirstItem(recyclerView)) {
           final Toolbar toolbar = mToolbar;
+          final int headerViewPosition = 0;
 
-          if (visibleItemCount > 0 && firstVisibleItem == 0) {
-            final View firstView = recyclerView.getChildAt(0);
+          if (visibleItemCount > 0 && firstVisibleItem == headerViewPosition) {
+            final View headerView = recyclerView.getChildAt(0);
 
+            // ensure that Toolbar is visible
             mCollapsingTitleLayout.setVisibility(View.VISIBLE);
 
+            // get percent scrolled
             final int toolbarHeight = toolbar.getHeight();
-            final int y = -firstView.getTop();
-            final float percent = y / (float) (firstView.getHeight() - toolbar.getHeight());
+            final int y = -headerView.getTop();
+            final float percent = y / (float) (headerView.getHeight() - toolbar.getHeight());
 
-            if (firstView.getBottom() > toolbarHeight) {
+            // if the bottom of the headerView is BELOW the minimum toolbar height
+            if (headerView.getBottom() > toolbarHeight) {
               mCollapsingTitleLayout.setTranslationY(0);
               setBackdropOffset(percent);
             } else {
-//              mCollapsingTitleLayout.setTranslationY(firstView.getBottom() - toolbarHeight);
+              //scrollToolbarOffscreen(headerView, toolbarHeight);
+              //keepToolbarOnscreen()
+              peekingToolbarOnScroll(recyclerView, scrollAmountX, scrollAmountY);
               setBackdropOffset(1f);
             }
-
-//            if (mFadeActionBar && hasCallbacks()) {
-//              getCallbacks().setHeaderScrollValue(percent);
-//            }
           } else {
+            // no header OR no list items at all
             setBackdropOffset(1f);
             mCollapsingTitleLayout.setVisibility(View.GONE);
           }
           return;
         }
-
-//        if (mFadeActionBar && hasCallbacks()) {
-//          getCallbacks().setHeaderScrollValue(1f);
-//        }
       }
 
       private void setBackdropOffset(float f) {
@@ -161,6 +167,85 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
         if (mImageView != null) {
           // offset the image by 1/2 the amount scrolled
         }
+      }
+
+      private boolean isHeaderFirstItem(RecyclerView recyclerView) {
+        final View firstChild = recyclerView.getChildAt(0);
+        final RecyclerView.ViewHolder firstViewHolder = recyclerView.getChildViewHolder(firstChild);
+        return (firstViewHolder instanceof QuickAdapter.HeaderViewHolder);
+      }
+
+      private void scrollToolbarOffscreen(View headerView, int toolbarHeight) {
+        mCollapsingTitleLayout.setTranslationY(headerView.getBottom() - toolbarHeight);
+      }
+
+      private void keepToolbarOnscreen() {}
+
+
+
+      // Keeps track of the overall vertical offset in the list
+      int verticalOffset;
+
+      // Determines the scroll UP/DOWN direction
+      boolean scrollingUp;
+
+      private void updatePeek(int dy) {
+        verticalOffset += dy;
+        scrollingUp = dy > 0;
+      }
+
+      private void peekingToolbarOnScroll(RecyclerView recyclerView, int dx, int dy) {
+        int toolbarYOffset = (int) (dy - mCollapsingTitleLayout.getTranslationY());
+        mCollapsingTitleLayout.animate().cancel();
+        if (scrollingUp) {
+          if (toolbarYOffset < mToolbar.getHeight()) {
+            mCollapsingTitleLayout.setTranslationY(-toolbarYOffset);
+          } else {
+            mCollapsingTitleLayout.setTranslationY(-mToolbar.getHeight());
+          }
+        } else {
+          if (toolbarYOffset < 0) {
+            mCollapsingTitleLayout.setTranslationY(0);
+          } else {
+            mCollapsingTitleLayout.setTranslationY(-toolbarYOffset);
+          }
+        }
+      }
+
+      @Override
+      public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+        super.onScrollStateChanged(recyclerView, newState);
+        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+          final int toolbarHeight = mCollapsingTitleLayout.getHeight();
+          if (scrollingUp) {
+            if (verticalOffset > toolbarHeight) {
+              toolbarAnimateHide();
+            } else {
+              toolbarAnimateShow(verticalOffset);
+            }
+          } else {
+            if (mCollapsingTitleLayout.getTranslationY() < toolbarHeight * -0.6
+                && verticalOffset > toolbarHeight) {
+              toolbarAnimateHide();
+            } else {
+              toolbarAnimateShow(verticalOffset);
+            }
+          }
+        }
+      }
+
+      private void toolbarAnimateShow(final int verticalOffset) {
+        mCollapsingTitleLayout.animate()
+            .translationY(0)
+            .setInterpolator(new LinearInterpolator())
+            .setDuration(180);
+      }
+
+      private void toolbarAnimateHide() {
+        mCollapsingTitleLayout.animate()
+            .translationY(-mToolbar.getHeight())
+            .setInterpolator(new LinearInterpolator())
+            .setDuration(180);
       }
     });
   }
