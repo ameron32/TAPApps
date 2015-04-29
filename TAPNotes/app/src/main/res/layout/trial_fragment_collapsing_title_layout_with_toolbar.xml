@@ -38,7 +38,8 @@
     android:layout_alignParentTop="true"
     android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
     app:expandedTextSize="64dp"
-    app:expandedMargin="@dimen/expanded_toolbar_lower_margin">
+    app:expandedMarginStart="@dimen/expanded_toolbar_left_margin"
+    app:expandedMarginBottom="@dimen/expanded_toolbar_bottom_margin">
 
     <ImageView
         android:id="@+id/imageview_fanart"
@@ -53,18 +54,21 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/text_theme_scripture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
             android:text="Demo Theme Scripture" />
 
         <TextView
+            android:id="@+id/text_theme_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
             android:text="Demo Question" />
 
         <TextView
+            android:id="@+id/text_theme_speaker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"

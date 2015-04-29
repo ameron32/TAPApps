@@ -105,6 +105,15 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
     return R.layout.trial_fragment_collapsing_title_layout_with_toolbar;
   }
 
+  @InjectView(R.id.text_theme_scripture)
+  TextView text_theme_scripture;
+
+  @InjectView(R.id.text_theme_question)
+  TextView text_theme_question;
+
+  @InjectView(R.id.text_theme_speaker)
+  TextView text_theme_speaker;
+
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState) {
     super.onViewCreated(view, savedInstanceState);
@@ -143,6 +152,7 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
 
             // if the bottom of the headerView is BELOW the minimum toolbar height
             if (headerView.getBottom() > toolbarHeight) {
+              fadeText(percent);
               mCollapsingTitleLayout.setTranslationY(0);
               setBackdropOffset(percent);
             } else {
@@ -157,6 +167,16 @@ public class CollapsingToolbarFragment extends AbsContentFragment {
             mCollapsingTitleLayout.setVisibility(View.GONE);
           }
           return;
+        }
+      }
+
+      private void fadeText(final float percentComplete) {
+        final float multiplier = 3.0f;
+        if (percentComplete < (1.0f / multiplier)) {
+          final float percent = 1.0f - (percentComplete * multiplier);
+          text_theme_question.setAlpha(percent);
+          text_theme_scripture.setAlpha(percent);
+          text_theme_speaker.setAlpha(percent);
         }
       }
 

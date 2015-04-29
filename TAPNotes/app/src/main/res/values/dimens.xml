@@ -42,6 +42,7 @@
 
   <!-- COLLAPSING TOOLBAR FRAGMENT -->
   <dimen name="expanded_toolbar_height">240dp</dimen>
-  <dimen name="expanded_toolbar_lower_margin">160dp</dimen>
+  <dimen name="expanded_toolbar_left_margin">16dp</dimen>
+  <dimen name="expanded_toolbar_bottom_margin">160dp</dimen>
 
 </resources>
