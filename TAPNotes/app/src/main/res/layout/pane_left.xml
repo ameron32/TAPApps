@@ -28,32 +28,15 @@
     tools:showIn="@layout/activity_main">
 
   <FrameLayout
-      android:layout_width="@dimen/side_pane_width"
+      android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:background="@color/myDrawerBackground">
 
-    <FrameLayout
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_margin="8dp"
-          android:drawableLeft="@drawable/ic_launcher"
-          tools:text="FULL"/>
-    </FrameLayout>
-
-    <FrameLayout
-        android:layout_width="@dimen/partial_pane_width"
-        android:layout_height="match_parent"
-        android:background="@color/myTextPrimaryHintColor">
-
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_margin="8dp"
-          android:drawableLeft="@drawable/ic_launcher"/>
-    </FrameLayout>
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:drawableLeft="@drawable/ic_launcher"
+        tools:text="FULL"/>
   </FrameLayout>
 </merge>

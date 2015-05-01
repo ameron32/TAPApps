@@ -24,6 +24,7 @@
 
 package com.ameron32.apps.tapnotes.impl.activity;
 
+import android.annotation.TargetApi;
 import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -31,6 +32,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.RippleDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.LayoutRes;
@@ -51,6 +53,8 @@ import butterknife.InjectView;
  * Created by klemeilleur on 4/20/2015.
  */
 public class DecoratorActivity extends AbsTapActionBarActivity {
+
+  private static final boolean SET_BACKGROUND_FROM_PALETTE = false;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +120,9 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
 
 
   private void applyPalette(Palette palette) {
-    getWindow().setBackgroundDrawable(new ColorDrawable(palette.getLightVibrantSwatch().getRgb()));
+    if (SET_BACKGROUND_FROM_PALETTE) {
+      getWindow().setBackgroundDrawable(new ColorDrawable(palette.getLightVibrantSwatch().getRgb()));
+    }
 
 //    titleView.setTextColor(palette.getVibrantSwatch().getRgb());
 //    descriptionView.setTextColor(palette.getLightVibrantSwatch().getRgb());
@@ -133,7 +139,7 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
 //    star.setStrokeColor(palette.getLightVibrantColor().getRgb());
   }
 
-
+  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
   private void colorRipple(int id, int bgColor, int tintColor) {
     View buttonView = findViewById(id);
 

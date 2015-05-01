@@ -31,7 +31,7 @@
       android:propertyName="scaleX"
       android:valueFrom="0.8"
       android:valueTo="1.0"
-      android:duration="1000" />
+      android:duration="250" />
 
   <!-- Zoom-In. -->
   <objectAnimator
@@ -39,6 +39,6 @@
       android:propertyName="scaleY"
       android:valueFrom="0.8"
       android:valueTo="1.0"
-      android:duration="1000" />
+      android:duration="250" />
 
 </set>
