@@ -42,6 +42,9 @@ import com.ameron32.apps.tapnotes.R;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import app.mosn.zdepthshadowlayout.ZDepth;
+import app.mosn.zdepthshadowlayout.ZDepthShadowLayoutPlus;
+
 /**
  * Created by klemeilleur on 4/28/2015.
  */
@@ -50,7 +53,7 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
   private static final String TAG = TuckawaySlidingPaneLayout.class.getSimpleName();
 
   private View mainPane = null;
-  private View leftPane = null;
+  private ZDepthShadowLayoutPlus leftPane = null;
   private @AnimatorRes int leftAnimatorA;
   private @AnimatorRes int leftAnimatorB;
   private @AnimatorRes int rightAnimatorA;
@@ -81,7 +84,7 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
         0, 0);
 
     try {
-      // Gets you the 'value' number - 0 or 666 in your example
+      // Gets you the 'value' number
       int value = a.getInt(R.styleable.TuckawaySlidingPaneLayout_tuckawayStyle, 0);
       switch (value) {
         case 2:
@@ -120,7 +123,7 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
 //      return;
 //    }
 
-    leftPane = getChildAt(0);
+    leftPane = (ZDepthShadowLayoutPlus) getChildAt(0);
     mainPane = getChildAt(1);
 
     // assign the animators
@@ -235,7 +238,6 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
     final Context context = getContext();
 
     final Animator anim1 = AnimatorInflater.loadAnimator(context, R.animator.zoom_out_animator);
-    final Animator shadowAnim1 = getShadowAnim1(context);
     final Animator anim2 = getAnim2(context, a1);
     anim1.setTarget(v);
     anim2.setTarget(v);
@@ -246,7 +248,7 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
 
     set1.play(anim1);
     set1.play(anim2).after(anim1);
-    // TODO: use shadowAnim1 and use/create shadowAnim2
+    // TODO: use/create shadowAnim2
     set1.addListener(new Animator.AnimatorListener() {
       @Override
       public void onAnimationEnd(Animator animation) {
@@ -264,6 +266,7 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
 
       @Override
       public void onAnimationStart(Animator animation) {
+        leftPane.detachFromSides();
       }
 
       @Override
@@ -289,6 +292,7 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
           return;
         }
 
+        leftPane.attachToSides(true, true, false, true);
         Log.v(TAG, "end Animation");
         isAnimating.set(false);
       }
@@ -296,38 +300,6 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
       @Override public void onAnimationCancel(Animator animation) {}
       @Override public void onAnimationRepeat(Animator animation) {}
     });
-  }
-
-  private Animator getShadowAnim1(Context context) {
-    AnimatorSet shadowSet = new AnimatorSet();
-    shadowSet.setDuration(250);
-    shadowSet.addListener(new Animator.AnimatorListener() {
-      @Override
-      public void onAnimationStart(Animator animation) {
-        // TODO: animate the zDepth on the shadow
-      }
-
-      @Override
-      public void onAnimationEnd(Animator animation) {
-
-      }
-
-      @Override
-      public void onAnimationCancel(Animator animation) {
-
-      }
-
-      @Override
-      public void onAnimationRepeat(Animator animation) {
-
-      }
-    });
-    return shadowSet;
-  }
-
-  private Animator getShadowAnim2(Context context) {
-    // TODO: duplicate getShadowAnim1()
-    return null;
   }
 
   private Animator getAnim2(Context context, @AnimatorRes int a1) {

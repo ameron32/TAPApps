@@ -35,20 +35,21 @@
           android:layout_height="match_parent" >
 
         <!-- LEFT PANE -->
-        <com.ameron32.apps.tapnotes._trial.ui.ZDepthShadowLayoutPlus
+        <app.mosn.zdepthshadowlayout.ZDepthShadowLayoutPlus
             xmlns:shadow="http://schemas.android.com/apk/res-auto"
             android:id="@+id/a_pane"
             android:layout_width="@dimen/side_pane_width"
             android:layout_height="match_parent"
             shadow:z_depth="z_depth2"
-            shadow:z_depth_paddingLeft="z_depth0"
-            shadow:z_depth_paddingTop="z_depth0"
+            shadow:z_depth_doAnim="false"
+            shadow:z_depth_paddingLeft="z_depth2"
+            shadow:z_depth_paddingTop="z_depth2"
             shadow:z_depth_paddingRight="z_depth2"
-            shadow:z_depth_paddingBottom="z_depth0"
+            shadow:z_depth_paddingBottom="z_depth2"
             shadow:z_depth_shape="rect">
 
           <include layout="@layout/pane_left" />
-        </com.ameron32.apps.tapnotes._trial.ui.ZDepthShadowLayoutPlus>
+        </app.mosn.zdepthshadowlayout.ZDepthShadowLayoutPlus>
         <!-- /LEFT -->
 
         <!-- MAIN CONTENT PANE -->
