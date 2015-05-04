@@ -52,7 +52,7 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
 
   private static final String TAG = TuckawaySlidingPaneLayout.class.getSimpleName();
 
-  private View mainPane = null;
+  private ZDepthShadowLayoutPlus mainPane = null;
   private ZDepthShadowLayoutPlus leftPane = null;
   private @AnimatorRes int leftAnimatorA;
   private @AnimatorRes int leftAnimatorB;
@@ -123,8 +123,12 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
 //      return;
 //    }
 
-    leftPane = (ZDepthShadowLayoutPlus) getChildAt(0);
-    mainPane = getChildAt(1);
+    try {
+      leftPane = (ZDepthShadowLayoutPlus) getChildAt(0);
+      mainPane = (ZDepthShadowLayoutPlus) getChildAt(1);
+    } catch (ClassCastException e) {
+      throw new IllegalStateException("Both childViews of " + TAG + " must be of type " + ZDepthShadowLayoutPlus.class.getSimpleName());
+    }
 
     // assign the animators
     leftAnimatorA = R.animator.dodge_left_to_back;
@@ -228,6 +232,9 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
     if (null != parent) {
       parent.removeView(child);
       parent.addView(child, 0);
+      if (child instanceof ZDepthShadowLayoutPlus) {
+//        ((ZDepthShadowLayoutPlus) child).detachFromSides();
+      }
     }
   }
 
@@ -266,7 +273,8 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
 
       @Override
       public void onAnimationStart(Animator animation) {
-        leftPane.detachFromSides();
+//        mainPane.detachFromSides();
+//        leftPane.detachFromSides();
       }
 
       @Override
@@ -292,7 +300,11 @@ public class TuckawaySlidingPaneLayout extends FrameLayout {
           return;
         }
 
-        leftPane.attachToSides(true, true, false, true);
+//        mainPane.attachToSides(false, true, true, true);
+//        leftPane.attachToSides(true, true, false, true);
+//        mainPane.attachToSides();
+//        leftPane.attachToSides();
+
         Log.v(TAG, "end Animation");
         isAnimating.set(false);
       }

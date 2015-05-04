@@ -40,6 +40,10 @@
             android:id="@+id/a_pane"
             android:layout_width="@dimen/side_pane_width"
             android:layout_height="match_parent"
+            shadow:attachedToLeft="true"
+            shadow:attachedToTop="true"
+            shadow:attachedToRight="false"
+            shadow:attachedToBottom="true"
             shadow:z_depth="z_depth2"
             shadow:z_depth_doAnim="false"
             shadow:z_depth_paddingLeft="z_depth2"
@@ -53,21 +57,30 @@
         <!-- /LEFT -->
 
         <!-- MAIN CONTENT PANE -->
-
-        <!-- INFLATE CONTENT HERE -->
-        <!--<app.mosn.zdepthshadowlayout.ZDepthShadowLayout-->
-            <!--xmlns:shadow="http://schemas.android.com/apk/res-auto"-->
-            <!--android:id="@+id/b_pane"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--shadow:z_depth="z_depth2"-->
-            <!--shadow:z_depth_padding="z_depth2"-->
-            <!--shadow:z_depth_shape="rect">-->
-        <FrameLayout
-            android:id="@+id/container"
+        <app.mosn.zdepthshadowlayout.ZDepthShadowLayoutPlus
+            xmlns:shadow="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/b_pane"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-        <!--</app.mosn.zdepthshadowlayout.ZDepthShadowLayout>-->
+            android:layout_height="match_parent"
+            shadow:attachedToLeft="true"
+            shadow:attachedToTop="true"
+            shadow:attachedToRight="true"
+            shadow:attachedToBottom="true"
+            shadow:z_depth="z_depth2"
+            shadow:z_depth_doAnim="false"
+            shadow:z_depth_paddingLeft="z_depth2"
+            shadow:z_depth_paddingTop="z_depth2"
+            shadow:z_depth_paddingRight="z_depth2"
+            shadow:z_depth_paddingBottom="z_depth2"
+            shadow:z_depth_shape="rect">
+
+          <!-- INFLATE CONTENT HERE -->
+          <FrameLayout
+              android:id="@+id/container"
+              android:background="@color/white"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" />
+        </app.mosn.zdepthshadowlayout.ZDepthShadowLayoutPlus>
         <!-- /CONTENT -->
 
       </com.ameron32.apps.tapnotes._trial.ui.TuckawaySlidingPaneLayout>

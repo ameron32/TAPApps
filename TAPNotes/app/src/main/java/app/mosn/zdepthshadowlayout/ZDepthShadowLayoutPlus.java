@@ -32,6 +32,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.ameron32.apps.tapnotes.R;
+
 
 public class ZDepthShadowLayoutPlus extends FrameLayout {
   public static final String TAG = "ZDepthShadowLayout";
@@ -78,6 +80,12 @@ public class ZDepthShadowLayoutPlus extends FrameLayout {
     mAttrZDepthAnimDuration = typedArray.getInt(R.styleable.ZDepthShadowLayout_z_depth_animDuration, DEFAULT_ATTR_ZDEPTH_ANIM_DURATION);
     mAttrZDepthDoAnimation = typedArray.getBoolean(R.styleable.ZDepthShadowLayout_z_depth_doAnim, DEFAULT_ATTR_ZDEPTH_DO_ANIMATION);
 
+    // creates padding overrides for a given side
+    isLeftAttached = typedArray.getBoolean(R.styleable.ZDepthShadowLayoutPlus_attachedToLeft, DEFAULT_ATTACHED_STATE);
+    isTopAttached = typedArray.getBoolean(R.styleable.ZDepthShadowLayoutPlus_attachedToTop, DEFAULT_ATTACHED_STATE);
+    isRightAttached = typedArray.getBoolean(R.styleable.ZDepthShadowLayoutPlus_attachedToRight, DEFAULT_ATTACHED_STATE);
+    isBottomAttached = typedArray.getBoolean(R.styleable.ZDepthShadowLayoutPlus_attachedToBottom, DEFAULT_ATTACHED_STATE);
+
     int attrZDepthPadding = typedArray.getInt(R.styleable.ZDepthShadowLayout_z_depth_padding, -1);
     int attrZDepthPaddingLeft = typedArray.getInt(R.styleable.ZDepthShadowLayout_z_depth_paddingLeft, -1);
     int attrZDepthPaddingTop = typedArray.getInt(R.styleable.ZDepthShadowLayout_z_depth_paddingTop, -1);
@@ -85,11 +93,13 @@ public class ZDepthShadowLayoutPlus extends FrameLayout {
     int attrZDepthPaddingBottom = typedArray.getInt(R.styleable.ZDepthShadowLayout_z_depth_paddingBottom, -1);
 
     if (attrZDepthPadding > -1) {
+      // TODO choose between 0 padding and attrZDepthPadding based on isXAttached
       mAttrZDepthPaddingLeft   = attrZDepthPadding;
       mAttrZDepthPaddingTop    = attrZDepthPadding;
       mAttrZDepthPaddingRight  = attrZDepthPadding;
       mAttrZDepthPaddingBottom = attrZDepthPadding;
     } else {
+      // TODO choose between 0 padding and attrZDepthPadding based on isXAttached
       mAttrZDepthPaddingLeft   = attrZDepthPaddingLeft   > -1 ? attrZDepthPaddingLeft   : DEFAULT_ATTR_ZDEPTH_PADDING;
       mAttrZDepthPaddingTop    = attrZDepthPaddingTop    > -1 ? attrZDepthPaddingTop    : DEFAULT_ATTR_ZDEPTH_PADDING;
       mAttrZDepthPaddingRight  = attrZDepthPaddingRight  > -1 ? attrZDepthPaddingRight  : DEFAULT_ATTR_ZDEPTH_PADDING;
@@ -120,7 +130,7 @@ public class ZDepthShadowLayoutPlus extends FrameLayout {
     int paddingBottom = mShadowView.getZDepthPaddingBottom();
     setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
 
-    attachToSides(true, true, false, true);
+//    attachToSides();
   }
 
   @Override
@@ -146,8 +156,8 @@ public class ZDepthShadowLayoutPlus extends FrameLayout {
     maxChildViewWidth  += paddingLeft + paddingRight; // ??? padding ?????
     maxChildViewHeight += paddingTop + paddingBottom; // ??? padding ?????
     mShadowView.measure(
-            MeasureSpec.makeMeasureSpec(maxChildViewWidth,  MeasureSpec.EXACTLY),
-            MeasureSpec.makeMeasureSpec(maxChildViewHeight, MeasureSpec.EXACTLY)
+        MeasureSpec.makeMeasureSpec(maxChildViewWidth, MeasureSpec.EXACTLY),
+        MeasureSpec.makeMeasureSpec(maxChildViewHeight, MeasureSpec.EXACTLY)
     );
   }
 
@@ -181,34 +191,33 @@ public class ZDepthShadowLayoutPlus extends FrameLayout {
     removeViewAt(0);
   }
 
+  private static final boolean DEFAULT_ATTACHED_STATE = false;
   boolean isLeftAttached, isTopAttached, isRightAttached, isBottomAttached;
 
-  public void attachToSides(boolean left, boolean top, boolean right, boolean bottom) {
+  public void setAttachedToSides(boolean left, boolean top, boolean right, boolean bottom) {
     isLeftAttached = left;
     isTopAttached = top;
     isRightAttached = right;
     isBottomAttached = bottom;
+  }
 
-    ShadowView shadowView = mShadowView;
-    if (null != shadowView) {
-      setPadding(isLeftAttached ? 0 : shadowView.getZDepthPaddingLeft(),
-              isTopAttached ? 0 : shadowView.getZDepthPaddingTop(),
-              isRightAttached ? 0 : shadowView.getZDepthPaddingRight(),
-              isBottomAttached ? 0 : shadowView.getZDepthPaddingBottom());
-      requestLayout();
-      invalidate();
-    }
+  public void attachToSides() {
+    final ShadowView shadowView = mShadowView;
+    setPadding(isLeftAttached ? 0 : shadowView.getZDepthPaddingLeft(),
+        isTopAttached ? 0 : shadowView.getZDepthPaddingTop(),
+        isRightAttached ? 0 : shadowView.getZDepthPaddingRight(),
+        isBottomAttached ? 0 : shadowView.getZDepthPaddingBottom());
+    requestLayout();
+    invalidate();
   }
 
   public void detachFromSides() {
-    ShadowView shadowView = mShadowView;
-    if (null != shadowView) {
-      setPadding(shadowView.getZDepthPaddingLeft(),
-              shadowView.getZDepthPaddingTop(),
-              shadowView.getZDepthPaddingRight(),
-              shadowView.getZDepthPaddingBottom());
-      requestLayout();
-      invalidate();
-    }
+    final ShadowView shadowView = mShadowView;
+    setPadding(shadowView.getZDepthPaddingLeft(),
+        shadowView.getZDepthPaddingTop(),
+        shadowView.getZDepthPaddingRight(),
+        shadowView.getZDepthPaddingBottom());
+    requestLayout();
+    invalidate();
   }
 }
