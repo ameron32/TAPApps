@@ -1023,6 +1023,15 @@ dependencies {
 //  compile 'com.wnafee:vector-compat:1.0.5'
   //
   //
+  // ViewPager with Material Design, special header functionality
+  // ---------------------------------------------------------------------------------
+  // NAME: MaterialViewPager
+  // LINK: https://github.com/florent37/MaterialViewPager
+  // ---------------------------------------------------------------------------------
+  // STATUS: compiles
+  compile ('com.github.florent37:materialviewpager:1.0.1@aar') { transitive = true }
+  //
+  //
   //
   //
   // =================================================================================

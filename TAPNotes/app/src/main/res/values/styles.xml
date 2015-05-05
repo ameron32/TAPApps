@@ -8,7 +8,7 @@
   </style>
 
   <!--<style name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
-  <style name="CustomTheme" parent="MaterialDrawerTheme.Light">
+  <style name="CustomTAPTheme" parent="MaterialDrawerTheme.Light">
 
     <!-- Customize your theme here. -->
     <item name="colorPrimary">@color/myPrimaryColor</item>
