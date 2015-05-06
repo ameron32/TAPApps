@@ -169,7 +169,10 @@ android {
 
     sourceSets {
       main {
-        res.srcDirs = [ 'src/main/extra-res', 'src/main/res' ]
+        res.srcDirs = [
+            'src/main/extra-res',
+            'src/main/res'
+        ]
       }
 //      androidTest {
 //        setRoot('src/espressoTest')
@@ -1030,6 +1033,15 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
   compile ('com.github.florent37:materialviewpager:1.0.1@aar') { transitive = true }
+  //
+  //
+  // CoverFlow of Images (like iTunes)
+  // ---------------------------------------------------------------------------------
+  // NAME: CoverFlow
+  // LINK: https://github.com/moondroid/CoverFlow
+  // ---------------------------------------------------------------------------------
+  // STATUS: compiles
+  compile 'com.github.moondroid.coverflow:library:1.0'
   //
   //
   //
