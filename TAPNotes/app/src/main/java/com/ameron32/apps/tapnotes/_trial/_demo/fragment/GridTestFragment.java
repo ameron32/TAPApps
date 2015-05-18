@@ -32,6 +32,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -90,10 +91,22 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
     super.onViewCreated(view, savedInstanceState);
     ButterKnife.inject(this, view);
 
-    mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+    mRecyclerView.setLayoutManager(getLayoutManager());
 //    mRecyclerView.setAdapter(new ColorfulAdapter(null));
     final Observable<ImageResult> cache = bindLifecycle(getImageResultObservable(), LifecycleEvent.DESTROY).cache();
     addToCompositeSubscription(cache.subscribe(this));
+  }
+
+  private RecyclerView.LayoutManager getLayoutManager() {
+    return new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+//    final GridLayoutManager lm = new GridLayoutManager(getActivity(), 3);
+//    lm.setReverseLayout(true);
+//    lm.setSpanSizeLookup(mSpanSizeLookup);
+//    return lm;
+  }
+
+  private RecyclerView.Adapter getAdapter() {
+    return new ColorfulAdapter(mResults);
   }
 
   @Inject
@@ -159,7 +172,7 @@ public class GridTestFragment extends AbsContentFragment implements Observer<Ima
 
   @Override
   public void onCompleted() {
-    mRecyclerView.setAdapter(new ColorfulAdapter(mResults));
+    mRecyclerView.setAdapter(getAdapter());
     snackBarController.toast("Observable complete!");
   }
 
