@@ -901,6 +901,15 @@ dependencies {
   //  compile 'com.marshalchen.ultimaterecyclerview:library:0.3.0'
   //
   //
+  // Another RecyclerView
+  // ---------------------------------------------------------------------------------
+  // NAME: Advanced RecyclerView
+  // LINK: https://github.com/h6ah4i/android-advancedrecyclerview
+  // ---------------------------------------------------------------------------------
+  // STATUS: compiles
+  compile 'com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.7.1'
+  //
+  //
   // Activities/Fragments for Parse
   // ---------------------------------------------------------------------------------
   // NAME: ParseUI for Parse

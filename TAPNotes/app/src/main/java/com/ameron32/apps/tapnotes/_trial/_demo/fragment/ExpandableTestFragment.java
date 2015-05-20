@@ -51,6 +51,8 @@ import butterknife.InjectView;
  */
 public class ExpandableTestFragment extends AbsContentFragment {
 
+  private ExpandableDraggableSwipeableItemDelegate mDelegate;
+
   public static ExpandableTestFragment create() {
     final ExpandableTestFragment t = new ExpandableTestFragment();
     t.setArguments(new Bundle());
@@ -70,9 +72,9 @@ public class ExpandableTestFragment extends AbsContentFragment {
   };
 
   private static final String[][] dummyContent = {
-      {"1","2","3"},
-      {"4","5","6","7","8"},
-      {"9","10"}
+      {"fri 1","fri 2","fri 3"},
+      {"sat 4","sat 5","sat 6","sat 7","sat 8"},
+      {"sun 9","sun 10"}
   };
 
   @Override
@@ -90,6 +92,7 @@ public class ExpandableTestFragment extends AbsContentFragment {
 
     exp.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     exp.setExpandableAdapter(getExpandableAdapter());
+    mDelegate = new ExpandableDraggableSwipeableItemDelegate();
   }
 
   @Inject
