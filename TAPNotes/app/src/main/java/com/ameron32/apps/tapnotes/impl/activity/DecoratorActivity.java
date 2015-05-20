@@ -114,7 +114,7 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
       return;
     }
 
-    Palette palette = Palette.generate(photo);
+    Palette palette = Palette.from(photo).generate();
     applyPalette(palette);
   }
 
