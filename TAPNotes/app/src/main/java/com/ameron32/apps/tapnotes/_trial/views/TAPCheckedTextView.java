@@ -25,13 +25,13 @@
 package com.ameron32.apps.tapnotes._trial.views;
 
 import android.content.Context;
-import android.support.v7.internal.widget.TintCheckedTextView;
+import android.support.v7.widget.AppCompatCheckedTextView;
 import android.util.AttributeSet;
 
 /**
  * Created by klemeilleur on 3/31/2015.
  */
-public class TAPCheckedTextView extends TintCheckedTextView {
+public class TAPCheckedTextView extends AppCompatCheckedTextView {
   public TAPCheckedTextView(Context context) {
     super(context);
   }

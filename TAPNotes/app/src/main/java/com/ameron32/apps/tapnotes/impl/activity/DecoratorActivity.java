@@ -59,7 +59,7 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    supportRequestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+    getDelegate().requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(provideLayoutResource());
     setTheme(provideTheme());
 
@@ -97,7 +97,7 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
   private void setTheme(Theme theme) {
     switch(theme) {
       case FALLBACK:
-        setTheme(R.style.Theme_AppCompat);
+        setTheme(R.style.Theme_AppCompat_Light_NoActionBar);
         break;
       case STANDARD:
       default:

@@ -21,13 +21,13 @@
     <!--<item name="snack_bar_text_color">@color/myTextPrimaryHintColor</item>-->
     <!--<item name="snack_bar_duration">5000</item>-->
 
-    <item name="android:windowNoTitle">true</item>
+    <item name="windowNoTitle">true</item>
     <!-- For 2.x version -->
     <item name="windowActionBar">false</item>
   </style>
 
   <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
-    <item name="android:windowNoTitle">true</item>
+    <item name="windowNoTitle">true</item>
     <!-- For 2.x version -->
     <item name="windowActionBar">false</item>
   </style>

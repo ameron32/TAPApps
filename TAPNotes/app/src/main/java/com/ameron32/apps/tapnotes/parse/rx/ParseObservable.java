@@ -16,6 +16,7 @@
 
 package com.ameron32.apps.tapnotes.parse.rx;
 
+import bolts.Task;
 import rx.schedulers.*;
 import rx.Observable;
 import rx.functions.*;
@@ -38,15 +39,15 @@ public class ParseObservable<T extends ParseObject> {
     mSubClass = subclass;
   }
 
-//  @Deprecated
-//  public static <T extends ParseObject> ParseObservable<T> from(Class<T> subclass) {
-//    return of(subclass);
-//  }
-//
-//  @Deprecated
-//  public static <T extends ParseObject> ParseObservable<T> of(Class<T> subclass) {
-//    return new ParseObservable<T>(subclass);
-//  }
+  @Deprecated
+  public static <T extends ParseObject> ParseObservable<T> from(Class<T> subclass) {
+    return of(subclass);
+  }
+
+  @Deprecated
+  public static <T extends ParseObject> ParseObservable<T> of(Class<T> subclass) {
+    return new ParseObservable<T>(subclass);
+  }
 
   @Deprecated
   public ParseQuery<T> getQuery() {
@@ -59,23 +60,60 @@ public class ParseObservable<T extends ParseObject> {
     return ParseQuery.getQuery(mSubClass);
   }
 
-//  @Deprecated
-//  public Observable<T> find() {
-//    return find(getQuery());
-//  }
+  @Deprecated
+  public Observable<T> find() {
+    return find(getQuery());
+  }
 
-  public static <R extends ParseObject> Observable<R> find(ParseQuery<R> query) {
-    Observable<List<R>> list = Observable.create(sub -> {
-      query.findInBackground(Callbacks.find((l, e) -> {
-        if (e != null) {
-          sub.onError(e);
+  // Bolts2Rx
+  // Bolts.Task2Observable
+  // RxBolts
+  // RxTask
+  // BoltsObservable
+  // TaskObservable
+  public static <R> Observable<R> just(Task<R> task, boolean nullable) {
+    return Observable.create(sub -> {
+      task.continueWith(t -> {
+        android.util.Log.d("ParseObservable", "task: " + task);
+        if (t.isCancelled()) {
+          android.util.Log.d("ParseObservable", "cancel");
+          // NOTICE: doOnUnsubscribe(() -> Observable.just(query) in outside
+          sub.unsubscribe(); //sub.onCompleted();?
+        } else if (t.isFaulted()) {
+          Throwable error = t.getError();
+          android.util.Log.d("ParseObservable", "error: " + error);
+          sub.onError(error);
         } else {
-          sub.onNext(l);
+          R r = t.getResult();
+          android.util.Log.d("ParseObservable", "r: " + r);
+          if (nullable || r != null) sub.onNext(r);
           sub.onCompleted();
         }
-      }));
+        return null;
+      });
     });
-    return list.flatMap(l -> Observable.from(l))
+  }
+
+  public static <R> Observable<R> justNullable(Task<R> task) {
+    return just(task, true);
+  }
+
+  public static <R> Observable<R> just(Task<R> task) {
+    return just(task, false);
+  }
+
+  @Deprecated
+  public static <R> Observable<R> just(Func0<Task<R>> task) {
+    return defer(task);
+  }
+
+  public static <R> Observable<R> defer(Func0<Task<R>> task) {
+    return Observable.defer(() -> just(task.call()));
+  }
+
+  public static <R extends ParseObject> Observable<R> find(ParseQuery<R> query) {
+    return Observable.defer(() -> just(query.findInBackground()))
+        .flatMap(l -> Observable.from(l))
         .doOnUnsubscribe(() -> Observable.just(query)
             .doOnNext(q -> q.cancel())
             .timeout(1, TimeUnit.SECONDS)
@@ -84,52 +122,58 @@ public class ParseObservable<T extends ParseObject> {
   }
 
   public static <R extends ParseObject> Observable<Integer> count(ParseQuery<R> query) {
-    return Observable.<Integer>create(sub -> {
-      query.countInBackground(Callbacks.count((c, e) -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(new Integer(c));
-          sub.onCompleted();
-        }
-      }));
-    })
+    return Observable.defer(() -> just(query.countInBackground()))
         .doOnUnsubscribe(() -> Observable.just(query)
             .doOnNext(q -> q.cancel())
             .timeout(1, TimeUnit.SECONDS)
             .subscribeOn(Schedulers.io())
             .subscribe(o -> {}, e -> {}));
+
   }
 
+  @Deprecated
   public Observable<Integer> count() {
     return count(getQuery());
   }
 
   public static <R extends ParseObject> Observable<R> pin(R object) {
-    return Observable.create(sub -> {
-      object.pinInBackground(Callbacks.save(e -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(object);
-          sub.onCompleted();
-        }
-      }));
-    });
+    return Observable.defer(() -> justNullable(object.pinInBackground()))
+        .map(v -> object);
   }
 
   public static <R extends ParseObject> Observable<R> pin(List<R> objects) {
-    Observable<List<R>> list = Observable.create(sub -> {
-      ParseObject.pinAllInBackground(objects, Callbacks.save(e -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(objects);
-          sub.onCompleted();
-        }
-      }));
-    });
-    return list.flatMap(l -> Observable.from(l));
+    return Observable.defer(() -> justNullable(ParseObject.pinAllInBackground(objects)))
+        .flatMap(v -> Observable.from(objects));
+  }
+
+  public static <R extends ParseObject> Observable<R> pin(String name, R object) {
+    return Observable.defer(() -> justNullable(object.pinInBackground(name)))
+        .map(v -> object);
+  }
+
+  public static <R extends ParseObject> Observable<R> pin(String name, List<R> objects) {
+    return Observable.defer(() -> justNullable(ParseObject.pinAllInBackground(name, objects)))
+        .flatMap(v -> Observable.from(objects));
+  }
+
+  public static <R extends ParseObject> Observable<R> unpin(R object) {
+    return Observable.defer(() -> justNullable(object.unpinInBackground()))
+        .map(v -> object);
+  }
+
+  public static <R extends ParseObject> Observable<R> unpin(List<R> objects) {
+    return Observable.defer(() -> justNullable(ParseObject.unpinAllInBackground(objects)))
+        .flatMap(v -> Observable.from(objects));
+  }
+
+  public static <R extends ParseObject> Observable<R> unpin(String name, R object) {
+    return Observable.defer(() -> justNullable(object.unpinInBackground(name)))
+        .map(v -> object);
+  }
+
+  public static <R extends ParseObject> Observable<R> unpin(String name, List<R> objects) {
+    return Observable.defer(() -> justNullable(ParseObject.unpinAllInBackground(name, objects)))
+        .flatMap(v -> Observable.from(objects));
   }
 
   public static <R extends ParseObject> Observable<R> all(ParseQuery<R> query) {
@@ -152,16 +196,7 @@ public class ParseObservable<T extends ParseObject> {
   }
 
   public static <R extends ParseObject> Observable<R> first(ParseQuery<R> query) {
-    return Observable.<R>create(sub -> {
-      query.getFirstInBackground(Callbacks.get((o, e) -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(o);
-          sub.onCompleted();
-        }
-      }));
-    })
+    return Observable.defer(() -> just(query.getFirstInBackground()))
         .doOnUnsubscribe(() -> Observable.just(query)
             .doOnNext(q -> q.cancel())
             .timeout(1, TimeUnit.SECONDS)
@@ -169,18 +204,14 @@ public class ParseObservable<T extends ParseObject> {
             .subscribe(o -> {}, e -> {}));
   }
 
+  @Deprecated
   public Observable<T> get(String objectId) {
-    ParseQuery<T> query = getQuery();
-    return Observable.<T>create(sub -> {
-      query.getInBackground(objectId, Callbacks.get((o, e) -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(o);
-          sub.onCompleted();
-        }
-      }));
-    })
+    return get(mSubClass, objectId);
+  }
+
+  public static <R extends ParseObject> Observable<R> get(Class<R> clazz, String objectId) {
+    ParseQuery<R> query = ParseQuery.getQuery(clazz);
+    return Observable.defer(() -> just(query.getInBackground(objectId)))
         .doOnUnsubscribe(() -> Observable.just(query)
             .doOnNext(q -> q.cancel())
             .timeout(1, TimeUnit.SECONDS)
@@ -188,85 +219,104 @@ public class ParseObservable<T extends ParseObject> {
             .subscribe(o -> {}, e -> {}));
   }
 
-  public static Observable<ParseUser> loginWithFacebook(Activity activity, Collection<String> permissions) {
-    return Observable.create(sub -> {
-      ParseFacebookUtils.logIn(permissions, activity, Callbacks.login((user, e) -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(user);
-          sub.onCompleted();
-        }
-      }));
-    });
-  }
+//  @Deprecated
+//  /**
+//   * {@link ParseFacebookUtils.logInWithReadPermissionsInBackground}
+//   */
+//  public static Observable<ParseUser> loginWithFacebook(Activity activity, Collection<String> permissions) {
+//    return logInWithReadPermissionsInBackground(activity, permissions);
+//  }
+//
+//  public static Observable<ParseUser> logInWithReadPermissionsInBackground(Activity activity, Collection<String> permissions) {
+//    // TODO
+//    return Observable.create(sub -> {
+//      ParseFacebookUtils.logIn(permissions, activity, Callbacks.login((user, e) -> {
+//        if (e != null) {
+//          sub.onError(e);
+//        } else {
+//          sub.onNext(user);
+//          sub.onCompleted();
+//        }
+//      }));
+//    });
+//  }
 
-  public static Observable<ParseUser> loginWithFacebook(Activity activity) {
-    return loginWithFacebook(activity, Arrays.asList("public_profile", "email"));
-  }
+//  @Deprecated
+//  /**
+//   * {@link ParseFacebookUtils.logInWithReadPermissionsInBackground}
+//   */
+//  public static Observable<ParseUser> loginWithFacebook(Activity activity) {
+//    return loginWithFacebook(activity, Arrays.asList("public_profile", "email"));
+//  }
 
   public static <R> Observable<R> callFunction(String name, Map<String, R> params) {
-    return Observable.create(sub -> {
-      ParseCloud.callFunctionInBackground(name, params, Callbacks.<R>function((o, e) -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(o);
-          sub.onCompleted();
-        }
-      }));
-    });
+    return Observable.defer(() -> justNullable(ParseCloud.callFunctionInBackground(name, params)));
   }
 
   public static <R extends ParseObject> Observable<R> save(R object) {
-    return Observable.create(sub -> {
-      object.saveInBackground(Callbacks.save(e -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(object);
-          sub.onCompleted();
-        }
-      }));
-    });
+    return Observable.defer(() -> justNullable(object.saveInBackground()))
+        .map(v -> object);
+  }
+
+  public static <R extends ParseObject> Observable<R> save(List<R> objects) {
+    return Observable.defer(() -> justNullable(ParseObject.saveAllInBackground(objects)))
+        .flatMap(v -> Observable.from(objects));
+  }
+
+  public static <R extends ParseObject> Observable<R> saveEventually(R object) {
+    return Observable.defer(() -> justNullable(object.saveEventually()))
+        .map(v -> object);
   }
 
   public static <R extends ParseObject> Observable<R> fetchIfNeeded(R object) {
-    return Observable.<R>create(sub -> {
-      object.<R>fetchIfNeededInBackground(Callbacks.get((o, e) -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(o);
-          sub.onCompleted();
-        }
-      }));
-    });
+    return Observable.defer(() -> justNullable(object.fetchIfNeededInBackground()));
+  }
+
+  public static <R extends ParseObject> Observable<R> fetchIfNeeded(List<R> objects) {
+    return Observable.defer(() -> justNullable(ParseObject.fetchAllIfNeededInBackground(objects)))
+        .flatMap(l -> Observable.from(l));
   }
 
   public static <R extends ParseObject> Observable<R> delete(R object) {
-    return Observable.create(sub -> {
-      object.deleteInBackground(Callbacks.delete(e -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(object);
-          sub.onCompleted();
-        }
-      }));
-    });
+    return Observable.defer(() -> justNullable(object.deleteInBackground()))
+        .map(v -> object);
   }
 
   public static <R extends ParseObject> Observable<R> delete(List<R> objects) {
-    return Observable.<List<R>>create(sub -> {
-      ParseObject.deleteAllInBackground(objects, Callbacks.delete(e -> {
-        if (e != null) {
-          sub.onError(e);
-        } else {
-          sub.onNext(objects);
-          sub.onCompleted();
-        }
-      }));
-    }).flatMap(l -> Observable.from(l));
+    return Observable.defer(() -> justNullable(ParseObject.deleteAllInBackground(objects)))
+        .flatMap(v -> Observable.from(objects));
   }
+
+  public static Observable<String> subscribe(String channel) {
+    android.util.Log.d("ParseObservable", "subscribe: channel: " + channel);
+
+    return Observable.defer(() -> justNullable(ParsePush.subscribeInBackground(channel)))
+        .doOnNext(v -> android.util.Log.d("ParseObservable", "doOnNext: " + v))
+        .map(v -> channel);
+  }
+
+  public static Observable<String> unsubscribe(String channel) {
+    android.util.Log.d("ParseObservable", "unsubscribe, channel: " + channel);
+
+    return Observable.defer(() -> justNullable(ParsePush.unsubscribeInBackground(channel)))
+        .map(v -> channel);
+  }
+
+  // TODO
+  // ParsePush
+  // send(JSONObject data, ParseQuery<ParseInstallation> query)
+  // send()
+  // sendMessage(String message)
+  //
+  // ParseObject
+  // refresh()
+  // fetchFromLocalDatastore()
+  //
+  // ParseUser
+  // becomeInBackground()
+  // enableRevocableSessionInBackground
+  // logInInBackground(String username, String password)
+  // logOutInBackground()
+  // requestPasswordResetInBackground(String email)
+  // signUpInBackground()
 }

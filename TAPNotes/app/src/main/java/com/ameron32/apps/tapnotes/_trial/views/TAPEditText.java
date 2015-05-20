@@ -25,13 +25,13 @@
 package com.ameron32.apps.tapnotes._trial.views;
 
 import android.content.Context;
-import android.support.v7.internal.widget.TintMultiAutoCompleteTextView;
+import android.support.v7.widget.AppCompatMultiAutoCompleteTextView;
 import android.util.AttributeSet;
 
 /**
  * Created by klemeilleur on 3/31/2015.
  */
-public class TAPEditText extends TintMultiAutoCompleteTextView {
+public class TAPEditText extends AppCompatMultiAutoCompleteTextView {
   public TAPEditText(Context context) {
     super(context);
   }

@@ -26,17 +26,17 @@ package com.ameron32.apps.tapnotes.impl.di.controller;
 
 import android.annotation.TargetApi;
 import android.os.Build;
-import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 
 import com.ameron32.apps.tapnotes.frmk.di.controller.AbsActionBarController;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.ActivityWithDelegate;
 
 /**
  * Created by klemeilleur on 4/20/2015.
  */
 public class ActionBarActivityFullScreenController extends AbsActionBarController {
 
-  public ActionBarActivityFullScreenController(final ActionBarActivity actionBarActivity) {
+  public ActionBarActivityFullScreenController(final ActivityWithDelegate actionBarActivity) {
     super(actionBarActivity);
   }
 

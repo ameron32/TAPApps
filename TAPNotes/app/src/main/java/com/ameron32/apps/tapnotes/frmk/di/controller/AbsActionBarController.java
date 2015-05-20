@@ -24,21 +24,21 @@
 
 package com.ameron32.apps.tapnotes.frmk.di.controller;
 
-import android.support.v7.app.ActionBarActivity;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.ActivityWithDelegate;
 
 /**
  * Created by klemeilleur on 4/20/2015.
  */
 public abstract class AbsActionBarController extends AbsController {
 
-  final ActionBarActivity mActionBarActivity;
+  final ActivityWithDelegate mActionBarActivity;
 
-  public AbsActionBarController(final ActionBarActivity activity) {
-    super(activity);
+  public AbsActionBarController(final ActivityWithDelegate activity) {
+    super(activity.getActivity());
     this.mActionBarActivity = activity;
   }
 
-  public ActionBarActivity getActionBarActivity() {
+  public ActivityWithDelegate getActionBarActivity() {
     return mActionBarActivity;
   }
 }

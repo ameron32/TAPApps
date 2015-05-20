@@ -34,16 +34,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.R;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.model.GraphUser;
+//import com.facebook.Request;
+//import com.facebook.Response;
+//import com.facebook.model.GraphUser;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
-import com.parse.ParseFacebookUtils;
-import com.parse.ParseTwitterUtils;
+//import com.parse.ParseFacebookUtils;
+//import com.parse.ParseTwitterUtils;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.parse.twitter.Twitter;
+//import com.parse.twitter.Twitter;
 
 /**
  * Fragment for the user login screen.
@@ -109,10 +109,10 @@ public class LoginFragment extends LoginFragmentBase {
       setUpParseLoginAndSignup();
     }
     if (allowFacebookLogin()) {
-      setUpFacebookLogin();
+//      setUpFacebookLogin();
     }
     if (allowTwitterLogin()) {
-      setUpTwitterLogin();
+//      setUpTwitterLogin();
     }
     return v;
   }
@@ -236,127 +236,127 @@ public class LoginFragment extends LoginFragmentBase {
     });
   }
 
-  private void setUpFacebookLogin() {
-    facebookLoginButton.setVisibility(View.VISIBLE);
+//  private void setUpFacebookLogin() {
+//    facebookLoginButton.setVisibility(View.VISIBLE);
+//
+//    if (config.getFacebookLoginButtonText() != null) {
+//      facebookLoginButton.setText(config.getFacebookLoginButtonText());
+//    }
+//
+//    facebookLoginButton.setOnClickListener(new OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        loadingStart(true);
+//        ParseFacebookUtils.logIn(config.getFacebookLoginPermissions(),
+//            getActivity(), new LogInCallback() {
+//          @Override
+//          public void done(ParseUser user, ParseException e) {
+//            if (isActivityDestroyed()) {
+//              return;
+//            }
+//
+//            if (user == null) {
+//              loadingFinish();
+//              if (e != null) {
+//                showToast(R.string.com_parse_ui_facebook_login_failed_toast);
+//                debugLog(getString(R.string.com_parse_ui_login_warning_facebook_login_failed) +
+//                    e.toString());
+//              }
+//            } else if (user.isNew()) {
+////              Request.newMeRequest(ParseFacebookUtils.getSession(),
+////                  new Request.GraphUserCallback() {
+////                    @Override
+////                    public void onCompleted(GraphUser fbUser,
+////                                            Response response) {
+////                      /*
+////                        If we were able to successfully retrieve the Facebook
+////                        user's name, let's set it on the fullName field.
+////                      */
+////                      ParseUser parseUser = ParseUser.getCurrentUser();
+////                      if (fbUser != null && parseUser != null
+////                          && fbUser.getName().length() > 0) {
+////                        parseUser.put(USER_OBJECT_NAME_FIELD, fbUser.getName());
+////                        parseUser.saveInBackground(new SaveCallback() {
+////                          @Override
+////                          public void done(ParseException e) {
+////                            if (e != null) {
+////                              debugLog(getString(
+////                                  R.string.com_parse_ui_login_warning_facebook_login_user_update_failed) +
+////                                  e.toString());
+////                            }
+////                            loginSuccess();
+////                          }
+////                        });
+////                      }
+////                      loginSuccess();
+////                    }
+////                  }
+////              ).executeAsync();
+//            } else {
+//              loginSuccess();
+//            }
+//          }
+//        });
+//      }
+//    });
+//  }
 
-    if (config.getFacebookLoginButtonText() != null) {
-      facebookLoginButton.setText(config.getFacebookLoginButtonText());
-    }
-
-    facebookLoginButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        loadingStart(true);
-        ParseFacebookUtils.logIn(config.getFacebookLoginPermissions(),
-            getActivity(), new LogInCallback() {
-          @Override
-          public void done(ParseUser user, ParseException e) {
-            if (isActivityDestroyed()) {
-              return;
-            }
-
-            if (user == null) {
-              loadingFinish();
-              if (e != null) {
-                showToast(R.string.com_parse_ui_facebook_login_failed_toast);
-                debugLog(getString(R.string.com_parse_ui_login_warning_facebook_login_failed) +
-                    e.toString());
-              }
-            } else if (user.isNew()) {
-              Request.newMeRequest(ParseFacebookUtils.getSession(),
-                  new Request.GraphUserCallback() {
-                    @Override
-                    public void onCompleted(GraphUser fbUser,
-                                            Response response) {
-                      /*
-                        If we were able to successfully retrieve the Facebook
-                        user's name, let's set it on the fullName field.
-                      */
-                      ParseUser parseUser = ParseUser.getCurrentUser();
-                      if (fbUser != null && parseUser != null
-                          && fbUser.getName().length() > 0) {
-                        parseUser.put(USER_OBJECT_NAME_FIELD, fbUser.getName());
-                        parseUser.saveInBackground(new SaveCallback() {
-                          @Override
-                          public void done(ParseException e) {
-                            if (e != null) {
-                              debugLog(getString(
-                                  R.string.com_parse_ui_login_warning_facebook_login_user_update_failed) +
-                                  e.toString());
-                            }
-                            loginSuccess();
-                          }
-                        });
-                      }
-                      loginSuccess();
-                    }
-                  }
-              ).executeAsync();
-            } else {
-              loginSuccess();
-            }
-          }
-        });
-      }
-    });
-  }
-
-  private void setUpTwitterLogin() {
-    twitterLoginButton.setVisibility(View.VISIBLE);
-
-    if (config.getTwitterLoginButtonText() != null) {
-      twitterLoginButton.setText(config.getTwitterLoginButtonText());
-    }
-
-    twitterLoginButton.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        loadingStart(false); // Twitter login pop-up already has a spinner
-        ParseTwitterUtils.logIn(getActivity(), new LogInCallback() {
-          @Override
-          public void done(ParseUser user, ParseException e) {
-            if (isActivityDestroyed()) {
-              return;
-            }
-
-            if (user == null) {
-              loadingFinish();
-              if (e != null) {
-                showToast(R.string.com_parse_ui_twitter_login_failed_toast);
-                debugLog(getString(R.string.com_parse_ui_login_warning_twitter_login_failed) +
-                    e.toString());
-              }
-            } else if (user.isNew()) {
-              Twitter twitterUser = ParseTwitterUtils.getTwitter();
-              if (twitterUser != null
-                  && twitterUser.getScreenName().length() > 0) {
-                /*
-                  To keep this example simple, we put the users' Twitter screen name
-                  into the name field of the Parse user object. If you want the user's
-                  real name instead, you can implement additional calls to the
-                  Twitter API to fetch it.
-                */
-                user.put(USER_OBJECT_NAME_FIELD, twitterUser.getScreenName());
-                user.saveInBackground(new SaveCallback() {
-                  @Override
-                  public void done(ParseException e) {
-                    if (e != null) {
-                      debugLog(getString(
-                          R.string.com_parse_ui_login_warning_twitter_login_user_update_failed) +
-                          e.toString());
-                    }
-                    loginSuccess();
-                  }
-                });
-              }
-            } else {
-              loginSuccess();
-            }
-          }
-        });
-      }
-    });
-  }
+//  private void setUpTwitterLogin() {
+//    twitterLoginButton.setVisibility(View.VISIBLE);
+//
+//    if (config.getTwitterLoginButtonText() != null) {
+//      twitterLoginButton.setText(config.getTwitterLoginButtonText());
+//    }
+//
+//    twitterLoginButton.setOnClickListener(new OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        loadingStart(false); // Twitter login pop-up already has a spinner
+//        ParseTwitterUtils.logIn(getActivity(), new LogInCallback() {
+//          @Override
+//          public void done(ParseUser user, ParseException e) {
+//            if (isActivityDestroyed()) {
+//              return;
+//            }
+//
+//            if (user == null) {
+//              loadingFinish();
+//              if (e != null) {
+//                showToast(R.string.com_parse_ui_twitter_login_failed_toast);
+//                debugLog(getString(R.string.com_parse_ui_login_warning_twitter_login_failed) +
+//                    e.toString());
+//              }
+//            } else if (user.isNew()) {
+//              Twitter twitterUser = ParseTwitterUtils.getTwitter();
+//              if (twitterUser != null
+//                  && twitterUser.getScreenName().length() > 0) {
+//                /*
+//                  To keep this example simple, we put the users' Twitter screen name
+//                  into the name field of the Parse user object. If you want the user's
+//                  real name instead, you can implement additional calls to the
+//                  Twitter API to fetch it.
+//                */
+//                user.put(USER_OBJECT_NAME_FIELD, twitterUser.getScreenName());
+//                user.saveInBackground(new SaveCallback() {
+//                  @Override
+//                  public void done(ParseException e) {
+//                    if (e != null) {
+//                      debugLog(getString(
+//                          R.string.com_parse_ui_login_warning_twitter_login_user_update_failed) +
+//                          e.toString());
+//                    }
+//                    loginSuccess();
+//                  }
+//                });
+//              }
+//            } else {
+//              loginSuccess();
+//            }
+//          }
+//        });
+//      }
+//    });
+//  }
 
   private boolean allowParseLoginAndSignup() {
     if (!config.isParseLoginEnabled()) {

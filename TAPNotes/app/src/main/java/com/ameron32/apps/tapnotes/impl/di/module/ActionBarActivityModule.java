@@ -24,12 +24,11 @@
 
 package com.ameron32.apps.tapnotes.impl.di.module;
 
-import android.support.v7.app.ActionBarActivity;
-
 import com.ameron32.apps.tapnotes.MainActivity;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.AnimatedPanesTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.GridTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialViewPagerTestFragment;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.ActivityWithDelegate;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActionBarActivityFullScreenController;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.CollapsingToolbarFragment;
@@ -72,15 +71,15 @@ import dagger.Provides;
 )
 public class ActionBarActivityModule {
 
-  private final ActionBarActivity mActionBarActivity;
+  private final ActivityWithDelegate mActionBarActivity;
 
-  public ActionBarActivityModule(final ActionBarActivity actionBarActivity) {
+  public ActionBarActivityModule(final ActivityWithDelegate actionBarActivity) {
     this.mActionBarActivity = actionBarActivity;
   }
 
   @Provides
   @Singleton
-  ActionBarActivity provideActionBarActivity() {
+  ActivityWithDelegate provideActionBarActivity() {
     return mActionBarActivity;
   }
 

@@ -82,19 +82,19 @@ apply plugin: 'spoon'
 //  // To run a single method in TestCase
 //  methodName = 'testMyApp'
 //}
-
-
+//
+//
 def versionICode = 8
-
+//
 def versionMajor = 0
 def versionMinor = 2
 def versionPatch = 0
 def versionBuild = 4 // bump for dogfood builds, public betas, etc.
-
+//
 def buildTime() {
   return new Date().format("yyyy-MM-dd'T'HH:mm'Z'", TimeZone.getTimeZone("UTC"))
 }
-
+//
 // configures all the Android-specific build options
 android {
   compileSdkVersion 21
@@ -180,16 +180,10 @@ android {
     }
   }
 }
-
+//
 // suggested
 // https://www.bignerdranch.com/blog/all-in-together-android-studio-gradle-and-robolectric/
-// TODO: abandon with Android Studio 1.2
-//apply plugin: 'android-unit-test'
-// TODO: abandon with Android Studio 1.2
-//afterEvaluate {
-//  tasks.findByName("assembleDebug").dependsOn("testDebugClasses")
-//}
-
+//
 dependencies {
   //
   // =================================================================================
@@ -248,10 +242,14 @@ dependencies {
   // LINK: https://parse.com
   // ---------------------------------------------------------------------------------
   // STATUS: functional
-  compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
-  compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
-  compile files('libs/Parse-1.8.2.jar')
-  compile files('libs/ParseCrashReporting-1.8.2.jar')
+//  compile fileTree(include: ['Parse-1.8.2.jar'], dir: 'libs')
+//  compile fileTree(include: ['ParseCrashReporting-1.8.2.jar'], dir: 'libs')
+//  compile files('libs/Parse-1.8.2.jar')
+//  compile files('libs/ParseCrashReporting-1.8.2.jar')
+  compile fileTree(include: ['Parse-1.9.2.jar'], dir: 'libs')
+  compile fileTree(include: ['ParseCrashReporting-1.9.2.jar'], dir: 'libs')
+  compile files('libs/Parse-1.9.2.jar')
+  compile files('libs/ParseCrashReporting-1.9.2.jar')
   //
   //
   // Parse calls for RxJava
@@ -292,7 +290,7 @@ dependencies {
   // LINK: https://github.com/BoltsFramework/Bolts-Android
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.parse.bolts:bolts-android:1.1.4'
+  compile 'com.parse.bolts:bolts-android:1.2.0'
   //
   //
   // Web-managed Crash Reporting
@@ -320,11 +318,11 @@ dependencies {
   //       https://developer.android.com/tools/support-library/features.html
   // ---------------------------------------------------------------------------------
   // STATUS: functional
-  compile 'com.android.support:support-v4:21.0.3'
-  compile 'com.android.support:appcompat-v7:21.0.3'
-  compile 'com.android.support:cardview-v7:21.0.3'
-  compile 'com.android.support:recyclerview-v7:21.0.3'
-  compile 'com.android.support:palette-v7:21.0.3'
+  compile 'com.android.support:support-v4:22.1.1'
+  compile 'com.android.support:appcompat-v7:22.1.1'
+  compile 'com.android.support:cardview-v7:22.1.1'
+  compile 'com.android.support:recyclerview-v7:22.1.1'
+  compile 'com.android.support:palette-v7:22.1.1'
   //
   //
   // Google Play Services
@@ -700,7 +698,7 @@ dependencies {
   // LINK: https://github.com/chrisjenx/Calligraphy
   // ---------------------------------------------------------------------------------
   // STATUS: functional
-  compile 'uk.co.chrisjenx:calligraphy:2.0.2'
+  compile 'uk.co.chrisjenx:calligraphy:2.1.0'
   //
   //
   // [FONTS IN TEXTVIEWS]
@@ -882,10 +880,16 @@ dependencies {
   // LINK: https://github.com/Malinskiy/SuperRecyclerView
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.malinskiy:superrecyclerview:1.0.1'
-  //         [required library for ItemDecoration headers]
+  compile 'com.malinskiy:superrecyclerview:1.1.0'
+  //         [required library for ItemDecoration headers] [NOW DEPRECIATED]
   // STATUS: compiles
   compile 'com.eowise:recyclerview-stickyheaders:0.5.0@aar'
+  //         [potential alternative headers]
+  // LINK: https://github.com/TonicArtos/SuperSLiM
+  // ---------------------------------------------------------------------------------
+  // NOTE: requires recyclerview-v7-22.1.1
+  // STATUS: error
+//  compile 'com.tonicartos:superslim:0.4.13'
   //
   //
   // Improved SuperRecyclerView
@@ -909,7 +913,7 @@ dependencies {
   //  compile project(':ParseLoginUI')
   //       [required if using facebook login]
   // STATUS: compiles
-  compile 'com.facebook.android:facebook-android-sdk:3.21.1'
+//  compile 'com.facebook.android:facebook-android-sdk:3.21.1'
   //
   //
   // Color Palette Views

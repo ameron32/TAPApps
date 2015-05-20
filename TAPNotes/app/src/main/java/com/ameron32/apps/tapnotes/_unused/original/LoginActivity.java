@@ -36,7 +36,7 @@ import android.view.Window;
 
 import com.ameron32.apps.tapnotes.R;
 import com.parse.Parse;
-import com.parse.ParseFacebookUtils;
+//import com.parse.ParseFacebookUtils;
 
 /**
  * Encapsulates the Parse login flow. The user can log in by username/password,
@@ -130,7 +130,7 @@ public abstract class LoginActivity
 
 
     // Required for making Facebook login work
-    ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
+//    ParseFacebookUtils.finishAuthentication(requestCode, resultCode, data);
   }
 
 

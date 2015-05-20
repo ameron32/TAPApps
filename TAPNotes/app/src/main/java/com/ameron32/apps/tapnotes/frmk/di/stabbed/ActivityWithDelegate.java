@@ -22,25 +22,16 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes._trial.views;
+package com.ameron32.apps.tapnotes.frmk.di.stabbed;
 
-import android.content.Context;
-import android.support.v7.widget.AppCompatSpinner;
-import android.util.AttributeSet;
+import android.app.Activity;
+import android.support.v7.app.AppCompatDelegate;
 
 /**
- * Created by klemeilleur on 3/31/2015.
+ * Created by klemeilleur on 5/20/2015.
  */
-public class TAPSpinner extends AppCompatSpinner {
-  public TAPSpinner(Context context) {
-    super(context);
-  }
+public interface ActivityWithDelegate {
+  public Activity getActivity();
 
-  public TAPSpinner(Context context, AttributeSet attrs) {
-    super(context, attrs);
-  }
-
-  public TAPSpinner(Context context, AttributeSet attrs, int defStyleAttr) {
-    super(context, attrs, defStyleAttr);
-  }
+  public AppCompatDelegate getDelegate();
 }
