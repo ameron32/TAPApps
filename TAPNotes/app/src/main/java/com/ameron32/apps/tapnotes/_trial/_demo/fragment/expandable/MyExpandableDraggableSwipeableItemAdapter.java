@@ -22,9 +22,9 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes._trial._demo.fragment;
+package com.ameron32.apps.tapnotes._trial._demo.fragment.expandable;
 
-/*
+
 import android.support.v4.view.ViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,11 +47,9 @@ import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractDraggableSwipeabl
 import com.h6ah4i.android.widget.advrecyclerview.utils.AbstractExpandableItemAdapter;
 import com.h6ah4i.android.widget.advrecyclerview.utils.RecyclerViewAdapterUtils;
 import com.wnafee.vector.MorphButton;
-*/
+
 
 public class MyExpandableDraggableSwipeableItemAdapter
-{
-  /*
     extends AbstractExpandableItemAdapter<MyExpandableDraggableSwipeableItemAdapter.MyGroupViewHolder, MyExpandableDraggableSwipeableItemAdapter.MyChildViewHolder>
     implements ExpandableDraggableItemAdapter<MyExpandableDraggableSwipeableItemAdapter.MyGroupViewHolder, MyExpandableDraggableSwipeableItemAdapter.MyChildViewHolder>,
     ExpandableSwipeableItemAdapter<MyExpandableDraggableSwipeableItemAdapter.MyGroupViewHolder, MyExpandableDraggableSwipeableItemAdapter.MyChildViewHolder> {
@@ -525,5 +523,4 @@ public class MyExpandableDraggableSwipeableItemAdapter
   public void setEventListener(EventListener eventListener) {
     mEventListener = eventListener;
   }
-  */
 }

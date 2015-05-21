@@ -22,10 +22,9 @@
  * SOFTWARE.
  */
 
-package com.ameron32.apps.tapnotes._trial._demo.fragment;
+package com.ameron32.apps.tapnotes._trial._demo.fragment.expandable;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.NinePatchDrawable;
 import android.os.Build;
@@ -51,7 +50,7 @@ import com.h6ah4i.android.widget.advrecyclerview.utils.WrapperAdapterUtils;
  * Created by klemeilleur on 5/20/2015.
  */
 public class ExpandableDraggableSwipeableItemDelegate {
-  /*
+
 
   private static final String SAVED_STATE_EXPANDABLE_ITEM_MANAGER = "RecyclerViewExpandableItemManager";
 
@@ -279,5 +278,5 @@ public class ExpandableDraggableSwipeableItemDelegate {
   public Resources getResources() {
     return getActivity().getResources();
   }
-  */
+
 }
