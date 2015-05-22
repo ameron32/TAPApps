@@ -56,6 +56,7 @@ public class ExpandableDraggableSwipeableItemDelegate {
 
   private Activity mActivity;
   private View mView;
+  private Callbacks mCallbacks;
 
   private RecyclerView mRecyclerView;
   private RecyclerView.LayoutManager mLayoutManager;
@@ -66,9 +67,10 @@ public class ExpandableDraggableSwipeableItemDelegate {
   private RecyclerViewSwipeManager mRecyclerViewSwipeManager;
   private RecyclerViewTouchActionGuardManager mRecyclerViewTouchActionGuardManager;
 
-  public ExpandableDraggableSwipeableItemDelegate(Activity activity, View view) {
+  public ExpandableDraggableSwipeableItemDelegate(Callbacks callbacks, Activity activity, View view) {
     mActivity = activity;
     mView = view;
+    mCallbacks = callbacks;
   }
 
   public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -88,6 +90,7 @@ public class ExpandableDraggableSwipeableItemDelegate {
     // drag & drop manager
     mRecyclerViewDragDropManager = new RecyclerViewDragDropManager();
     mRecyclerViewDragDropManager.setDraggingItemShadowDrawable(
+//  TODO      (NinePatchDrawable) getResources().getDrawable(R.drawable.material_shadow_z3));
         (NinePatchDrawable) getResources().getDrawable(R.drawable.material_shadow_z3));
 
     // swipe manager
@@ -100,22 +103,22 @@ public class ExpandableDraggableSwipeableItemDelegate {
     myItemAdapter.setEventListener(new MyExpandableDraggableSwipeableItemAdapter.EventListener() {
       @Override
       public void onGroupItemRemoved(int groupPosition) {
-        ((ExpandableDraggableSwipeableExampleActivity) getActivity()).onGroupItemRemoved(groupPosition);
+        mCallbacks.onGroupItemRemoved(groupPosition);
       }
 
       @Override
       public void onChildItemRemoved(int groupPosition, int childPosition) {
-        ((ExpandableDraggableSwipeableExampleActivity) getActivity()).onChildItemRemoved(groupPosition, childPosition);
+        mCallbacks.onChildItemRemoved(groupPosition, childPosition);
       }
 
       @Override
       public void onGroupItemPinned(int groupPosition) {
-        ((ExpandableDraggableSwipeableExampleActivity) getActivity()).onGroupItemPinned(groupPosition);
+        mCallbacks.onGroupItemPinned(groupPosition);
       }
 
       @Override
       public void onChildItemPinned(int groupPosition, int childPosition) {
-        ((ExpandableDraggableSwipeableExampleActivity) getActivity()).onChildItemPinned(groupPosition, childPosition);
+        mCallbacks.onChildItemPinned(groupPosition, childPosition);
       }
 
       @Override
@@ -223,9 +226,9 @@ public class ExpandableDraggableSwipeableItemDelegate {
     final int childPosition = RecyclerViewExpandableItemManager.getPackedPositionChild(expandablePosition);
 
     if (childPosition == RecyclerView.NO_POSITION) {
-      ((ExpandableDraggableSwipeableExampleActivity) getActivity()).onGroupItemClicked(groupPosition);
+      mCallbacks.onGroupItemClicked(groupPosition);
     } else {
-      ((ExpandableDraggableSwipeableExampleActivity) getActivity()).onChildItemClicked(groupPosition, childPosition);
+      mCallbacks.onChildItemClicked(groupPosition, childPosition);
     }
   }
 
@@ -234,7 +237,7 @@ public class ExpandableDraggableSwipeableItemDelegate {
   }
 
   public AbstractExpandableDataProvider getDataProvider() {
-    return ((ExpandableDraggableSwipeableExampleActivity) getActivity()).getDataProvider();
+    return mCallbacks.getDataProvider();
   }
 
   public void notifyGroupItemRestored(int groupPosition) {
@@ -277,6 +280,16 @@ public class ExpandableDraggableSwipeableItemDelegate {
 
   public Resources getResources() {
     return getActivity().getResources();
+  }
+
+  public interface Callbacks {
+    public AbstractExpandableDataProvider getDataProvider();
+    public void onGroupItemClicked(int groupPosition);
+    public void onChildItemClicked(int groupPosition, int childPosition);
+    public void onGroupItemRemoved(int groupPosition);
+    public void onChildItemRemoved(int groupPosition, int childPosition);
+    public void onGroupItemPinned(int groupPosition);
+    public void onChildItemPinned(int groupPosition, int childPosition);
   }
 
 }

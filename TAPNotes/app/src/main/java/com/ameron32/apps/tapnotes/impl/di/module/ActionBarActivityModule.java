@@ -26,6 +26,8 @@ package com.ameron32.apps.tapnotes.impl.di.module;
 
 import com.ameron32.apps.tapnotes.MainActivity;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.AnimatedPanesTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.ExpandableDraggableSwipeableTestFragment;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.FlippableStackViewTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.GridTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialViewPagerTestFragment;
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.ActivityWithDelegate;
@@ -63,7 +65,9 @@ import dagger.Provides;
         TableTestFragment.class,
         MaterialImageViewTestFragment.class,
         MaterialViewPagerTestFragment.class,
-        PhotoViewerTestFragment.class
+        PhotoViewerTestFragment.class,
+        ExpandableDraggableSwipeableTestFragment.class,
+        FlippableStackViewTestFragment.class
     },
     includes = ActivityModule.class,
     addsTo = ApplicationModule.class,

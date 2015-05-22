@@ -33,9 +33,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.R;
-import com.h6ah4i.android.example.advrecyclerview.common.compat.MorphButtonCompat;
-import com.h6ah4i.android.example.advrecyclerview.common.data.AbstractExpandableDataProvider;
-import com.h6ah4i.android.example.advrecyclerview.common.utils.ViewUtils;
+
+import com.ameron32.apps.tapnotes._trial.views.compat.MorphButtonCompat;
+import com.ameron32.apps.tapnotes.util.ViewUtil;
 import com.h6ah4i.android.widget.advrecyclerview.draggable.ItemDraggableRange;
 import com.h6ah4i.android.widget.advrecyclerview.draggable.RecyclerViewDragDropManager;
 import com.h6ah4i.android.widget.advrecyclerview.expandable.ExpandableDraggableItemAdapter;
@@ -185,14 +185,14 @@ public class MyExpandableDraggableSwipeableItemAdapter
   @Override
   public MyGroupViewHolder onCreateGroupViewHolder(ViewGroup parent, int viewType) {
     final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-    final View v = inflater.inflate(R.layout.list_group_item, parent, false);
+    final View v = inflater.inflate(R.layout.arv_list_group_item, parent, false);
     return new MyGroupViewHolder(v);
   }
 
   @Override
   public MyChildViewHolder onCreateChildViewHolder(ViewGroup parent, int viewType) {
     final LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-    final View v = inflater.inflate(R.layout.list_item, parent, false);
+    final View v = inflater.inflate(R.layout.arv_list_item, parent, false);
     return new MyChildViewHolder(v);
   }
 
@@ -310,7 +310,7 @@ public class MyExpandableDraggableSwipeableItemAdapter
     final int offsetX = containerView.getLeft() + (int) (ViewCompat.getTranslationX(containerView) + 0.5f);
     final int offsetY = containerView.getTop() + (int) (ViewCompat.getTranslationY(containerView) + 0.5f);
 
-    return !ViewUtils.hitTest(dragHandleView, x - offsetX, y - offsetY);
+    return !ViewUtil.hitTest(dragHandleView, x - offsetX, y - offsetY);
   }
 
   @Override
@@ -322,7 +322,7 @@ public class MyExpandableDraggableSwipeableItemAdapter
     final int offsetX = containerView.getLeft() + (int) (ViewCompat.getTranslationX(containerView) + 0.5f);
     final int offsetY = containerView.getTop() + (int) (ViewCompat.getTranslationY(containerView) + 0.5f);
 
-    return ViewUtils.hitTest(dragHandleView, x - offsetX, y - offsetY);
+    return ViewUtil.hitTest(dragHandleView, x - offsetX, y - offsetY);
   }
 
   @Override
@@ -334,7 +334,7 @@ public class MyExpandableDraggableSwipeableItemAdapter
     final int offsetX = containerView.getLeft() + (int) (ViewCompat.getTranslationX(containerView) + 0.5f);
     final int offsetY = containerView.getTop() + (int) (ViewCompat.getTranslationY(containerView) + 0.5f);
 
-    return ViewUtils.hitTest(dragHandleView, x - offsetX, y - offsetY);
+    return ViewUtil.hitTest(dragHandleView, x - offsetX, y - offsetY);
   }
 
   @Override
@@ -523,4 +523,5 @@ public class MyExpandableDraggableSwipeableItemAdapter
   public void setEventListener(EventListener eventListener) {
     mEventListener = eventListener;
   }
+
 }

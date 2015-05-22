@@ -51,3 +51,6 @@
 -dontwarn icepick.**
 -keep class **$$Icicle { *; }
 -keepnames class * { @icepick.Icicle *;}
+
+#REQUIRED BY: Vector-Compat
+-keep class com.wnafee.vector.** { *; }

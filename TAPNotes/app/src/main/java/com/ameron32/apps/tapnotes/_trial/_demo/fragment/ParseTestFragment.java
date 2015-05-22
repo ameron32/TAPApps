@@ -13,6 +13,8 @@ import com.ameron32.apps.tapnotes.parse.object.TestObject;
 import com.ameron32.apps.tapnotes.parse.rx.ParseObservable;
 import com.parse.ParseQuery;
 
+import junit.framework.Test;
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,6 +24,7 @@ import butterknife.InjectViews;
 import butterknife.OnClick;
 import icepick.Icepick;
 import icepick.Icicle;
+import rx.Observable;
 
 /**
  * Created by Kris on 3/31/2015.

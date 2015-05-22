@@ -34,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ameron32.apps.tapnotes.R;
+import com.ameron32.apps.tapnotes._trial._demo.fragment.expandable.ExpandableDraggableSwipeableItemDelegate;
 import com.ameron32.apps.tapnotes.frmk.fragment.AbsContentFragment;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityAlertDialogController;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivityLoggingController;
@@ -50,8 +51,6 @@ import butterknife.InjectView;
  * Created by klemeilleur on 4/13/2015.
  */
 public class ExpandableTestFragment extends AbsContentFragment {
-
-  private ExpandableDraggableSwipeableItemDelegate mDelegate;
 
   public static ExpandableTestFragment create() {
     final ExpandableTestFragment t = new ExpandableTestFragment();
@@ -92,7 +91,6 @@ public class ExpandableTestFragment extends AbsContentFragment {
 
     exp.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     exp.setExpandableAdapter(getExpandableAdapter());
-    mDelegate = new ExpandableDraggableSwipeableItemDelegate();
   }
 
   @Inject

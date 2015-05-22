@@ -97,8 +97,8 @@ def buildTime() {
 //
 // configures all the Android-specific build options
 android {
-  compileSdkVersion 21
-  buildToolsVersion "21.1.2"
+  compileSdkVersion rootProject.compileSdkVersion
+  buildToolsVersion rootProject.buildToolsVersion
 
   compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
@@ -906,7 +906,7 @@ dependencies {
   // NAME: Advanced RecyclerView
   // LINK: https://github.com/h6ah4i/android-advancedrecyclerview
   // ---------------------------------------------------------------------------------
-  // STATUS: compiles
+  // STATUS: functional
   compile 'com.h6ah4i.android.widget.advrecyclerview:advrecyclerview:0.7.1'
   //
   //
@@ -1021,8 +1021,8 @@ dependencies {
   // LINK: https://github.com/wnafee/vector-compat
   // ---------------------------------------------------------------------------------
   // NOTE:   REQUIRES BUILD-TOOLS 22.0.1 or higher!!!
-  // STATUS: untested
-//  compile 'com.wnafee:vector-compat:1.0.5'
+  // STATUS: functional
+  compile 'com.wnafee:vector-compat:1.0.5'
   //
   //
   // ViewPager with Material Design, special header functionality
@@ -1039,8 +1039,17 @@ dependencies {
   // NAME: CoverFlow
   // LINK: https://github.com/moondroid/CoverFlow
   // ---------------------------------------------------------------------------------
-  // STATUS: compiles
+  // STATUS: functional
   compile 'com.github.moondroid.coverflow:library:1.0'
+  //
+  //
+  // Stack of Views that flips forward
+  // ---------------------------------------------------------------------------------
+  // NAME: FlippableStackView
+  // LINK: https://github.com/blipinsk/FlippableStackView
+  // ---------------------------------------------------------------------------------
+  // STATUS: functional
+  compile 'com.bartoszlipinski.flippablestackview:library:1.2.1'
   //
   //
   //
