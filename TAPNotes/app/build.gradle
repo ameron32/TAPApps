@@ -542,7 +542,7 @@ dependencies {
   // LINK: https://github.com/soarcn/BottomSheet
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.cocosw:bottomsheet:0.6@aar'
+  compile 'com.cocosw:bottomsheet:1.+@aar'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -561,7 +561,9 @@ dependencies {
   // NAME: ZDepthShadowLayout
   // LINK: https://github.com/ShogoMizumoto/ZDepthShadowLayout
   // ---------------------------------------------------------------------------------
-  // STATUS: compiles
+  // NOTE:   replacement ZDepthShadowLayoutPlus class created to patch some issues.
+  //         otherwise, same usage and functionality
+  // STATUS: functional
   compile 'com.github.ShogoMizumoto:ZDepthShadowLayout:1.0.4'
   //
   //
