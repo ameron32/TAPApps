@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ameron32.apps.tapnotes._trial.ui.TuckawaySlidingPaneLayout;
+import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.ForApplication;
 import com.ameron32.apps.tapnotes.impl.activity.DecoratorActivity;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes.impl.fragment.ToolbarFragment;
@@ -22,6 +23,10 @@ import com.ameron32.apps.tapnotes.parse.MyDispatchMainActivity;
 import com.mikepenz.aboutlibraries.Libs;
 import com.mikepenz.aboutlibraries.util.Colors;
 import com.parse.ParseUser;
+import com.squareup.otto.Bus;
+import com.squareup.otto.Subscribe;
+
+import java.io.IOException;
 
 import javax.inject.Inject;
 
@@ -29,21 +34,22 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
-import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.ForApplication;
-import com.squareup.otto.Bus;
-import com.squareup.otto.Subscribe;
-
-import java.io.IOException;
-
 
 public class MainActivity
     extends
-      DecoratorActivity
+    DecoratorActivity
     implements
-      ToolbarFragment.OnToolbarFragmentCallbacks,
-      MainToolbarFragment.ActivityCallbacks
-{
+    ToolbarFragment.OnToolbarFragmentCallbacks,
+    MainToolbarFragment.ActivityCallbacks {
 
+  private static final int LOGIN_REQUEST_CODE = 4647;
+  @InjectView(R.id.sliding_pane_layout)
+  TuckawaySlidingPaneLayout tuckaway;
+  @Inject
+  @ForApplication
+  SharedPreferences sharedPreferences;
+  @Inject
+  Bus bus;
   private ToolbarFragment mToolbarFragment;
 
   @Override
@@ -80,21 +86,13 @@ public class MainActivity
     bus.register(this);
   }
 
-  @InjectView(R.id.sliding_pane_layout)
-  TuckawaySlidingPaneLayout tuckaway;
-
   private void onLoginComplete() {
     loadToolbarFragment();
     ButterKnife.inject(this);
   }
 
-  /*
-   * RETURN from LoginActivity
-   */
-
-  private static final int LOGIN_REQUEST_CODE = 4647;
-
-  @Override protected void onActivityResult(
+  @Override
+  protected void onActivityResult(
       int requestCode, int resultCode,
       Intent arg2) {
     // return from ParseLogin
@@ -104,13 +102,6 @@ public class MainActivity
       }
     }
   }
-
-  @Inject
-  @ForApplication
-  SharedPreferences sharedPreferences;
-
-  @Inject
-  Bus bus;
 
   @Subscribe
   public void hearMessage(String message) {
@@ -155,21 +146,18 @@ public class MainActivity
     transaction.commit();
   }
 
-  public void onSectionAttached(
-      int number) {
+  @Override
+  public void onAttachFragment(Fragment fragment) {
+    super.onAttachFragment(fragment);
     supportInvalidateOptionsMenu();
   }
 
   @Override
   public boolean onCreateOptionsMenu(
       Menu menu) {
-//    if (!mDrawer.isDrawerOpen()) {
-      // Only show items in the action bar relevant to this screen
-      // if the drawer is not showing. Otherwise, let the drawer
-      // decide what to show in the action bar.
-
-//      return true;
-//    }
+    // Only show items in the action bar relevant to this screen
+    // if the drawer is not showing. Otherwise, let the drawer
+    // decide what to show in the action bar.
     inflateCoreMenu(menu);
     return super.onCreateOptionsMenu(menu);
   }
@@ -186,18 +174,17 @@ public class MainActivity
     // as you specify a parent activity in AndroidManifest.xml.
     int id = item.getItemId();
     switch (id) {
-    case R.id.action_settings:
-      startSettingsActivity();
-      return true;
-    case R.id.action_toggle:
-      tuckaway.toggleLayout();
-      return true;
+      case R.id.action_settings:
+        startSettingsActivity();
+        return true;
+      case R.id.action_toggle:
+        tuckaway.toggleLayout();
+        return true;
     }
     return super.onOptionsItemSelected(item);
   }
 
   public void onLogoutClick() {
-//    snackBarController.toast("Logout");
     ParseUser.logOut();
     startDispatchActivity();
     finish();
