@@ -139,14 +139,14 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
 //    star.setStrokeColor(palette.getLightVibrantColor().getRgb());
   }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-  private void colorRipple(int id, int bgColor, int tintColor) {
-    View buttonView = findViewById(id);
-
-    RippleDrawable ripple = (RippleDrawable) buttonView.getBackground();
-    GradientDrawable rippleBackground = (GradientDrawable) ripple.getDrawable(0);
-    rippleBackground.setColor(bgColor);
-
-    ripple.setColor(ColorStateList.valueOf(tintColor));
-  }
+//  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+//  private void colorRipple(int id, int bgColor, int tintColor) {
+//    View buttonView = findViewById(id);
+//
+//    RippleDrawable ripple = (RippleDrawable) buttonView.getBackground();
+//    GradientDrawable rippleBackground = (GradientDrawable) ripple.getDrawable(0);
+//    rippleBackground.setColor(bgColor);
+//
+//    ripple.setColor(ColorStateList.valueOf(tintColor));
+//  }
 }
