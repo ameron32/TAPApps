@@ -1,10 +1,10 @@
 package com.ameron32.apps.tapnotes.impl.di.controller;
 
 import android.app.Activity;
+import android.support.design.widget.Snackbar;
 
 import com.ameron32.apps.tapnotes.frmk.di.controller.AbsController;
-import com.nispok.snackbar.Snackbar;
-import com.nispok.snackbar.SnackbarManager;
+
 
 /**
  * Created by klemeilleur on 3/2/2015.
@@ -16,6 +16,11 @@ public class ActivitySnackBarController extends AbsController {
   }
 
   public void toast(String message) {
+
+    // from Design Support Library
+    Snackbar.make(getActivity().getWindow().getDecorView().findViewById(android.R.id.content),
+        message, Snackbar.LENGTH_LONG).show();
+
     // from package com.kenny.snackbar.SnackBar
 //    SnackBar.show(getActivity(), message);
 
@@ -23,9 +28,9 @@ public class ActivitySnackBarController extends AbsController {
 //    new SnackBar(getActivity(), message).show();
 
     // from package com.nispok.snackbar.Snackbar
-    SnackbarManager.show(
-        Snackbar.with(getActivity().getApplicationContext())
-            .text(message), getActivity());
+//    SnackbarManager.show(
+//        Snackbar.with(getActivity().getApplicationContext())
+//            .text(message), getActivity());
 
     //
 //    com.rey.material.widget.

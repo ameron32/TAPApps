@@ -26,23 +26,25 @@ package com.ameron32.apps.tapnotes.impl.fragment;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.ameron32.apps.tapnotes.impl.DrawerImpl;
+import com.ameron32.apps.tapnotes.R;
 import com.ameron32.apps.tapnotes.frmk.SuccessfulRunnable;
+import com.ameron32.apps.tapnotes.impl.DrawerImpl;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActivitySharedPreferencesController;
 
 import javax.inject.Inject;
 
 /**
- * Created by klemeilleur on 3/27/2015.
+ * Created by klemeilleur on 6/9/2015.
  */
-public class MainToolbarFragment extends ToolbarFragment {
+public class EnhancedToolbarFragment extends ToolbarFragment {
 
-  public static MainToolbarFragment create() {
-    MainToolbarFragment f = new MainToolbarFragment();
+  public static EnhancedToolbarFragment create() {
+    EnhancedToolbarFragment f = new EnhancedToolbarFragment();
     f.setArguments(new Bundle());
     return f;
   }
@@ -63,6 +65,14 @@ public class MainToolbarFragment extends ToolbarFragment {
     } else {
       throw new IllegalStateException("activity should inherit ActivityCallbacks");
     }
+  }
+
+  protected @LayoutRes int getCustomLayout() {
+    return R.layout.fragment_toolbar_enhanced;
+  }
+
+  protected @IdRes int getToolbarIdWithinCustomLayout() {
+    return R.id.toolbar;
   }
 
   @Override

@@ -49,6 +49,7 @@ import com.ameron32.apps.tapnotes._trial._demo.fragment.PhotoViewerTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.TableTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.TestFragment;
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.ExtendedGraphHelper;
+import com.ameron32.apps.tapnotes.impl.fragment.ActivityCallbacks;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.mikepenz.iconics.typeface.FontAwesome;
 import com.mikepenz.materialdrawer.Drawer;
@@ -68,11 +69,11 @@ public class DrawerImpl {
   private final Activity activity;
   private final Toolbar toolbar;
   private final ViewGroup rootView;
-  private final MainToolbarFragment.ActivityCallbacks mActivityCallbacks;
+  private final ActivityCallbacks mActivityCallbacks;
   private final Drawer.Result mDrawer;
 
   public DrawerImpl(final Activity activity, final Toolbar toolbar, final ViewGroup rootView,
-                    final MainToolbarFragment.ActivityCallbacks mActivityCallbacks) {
+                    final ActivityCallbacks mActivityCallbacks) {
 
     this.activity = activity;
     this.toolbar = toolbar;

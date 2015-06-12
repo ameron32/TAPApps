@@ -3,6 +3,7 @@ package com.ameron32.apps.tapnotes;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -236,6 +237,11 @@ public class SettingsActivity extends PreferenceActivity {
         PreferenceManager
             .getDefaultSharedPreferences(preference.getContext())
             .getString(preference.getKey(), ""));
+  }
+
+  public static Intent makeIntent(
+      Context context) {
+    return new Intent(context, SettingsActivity.class);
   }
 
   /**

@@ -84,7 +84,6 @@ public class ParseTestFragment extends AbsContentFragment {
 
   int count;
   private void performTest() {
-//    getBus().post("Event start.");
     count = -1;
     ParseObservable.find(ParseQuery.getQuery(TestObject.class).orderByDescending("updatedAt"))
         .take(textViews.size())
@@ -92,7 +91,6 @@ public class ParseTestFragment extends AbsContentFragment {
         .subscribe(testObject -> textViews.get(count).setText(testObject.getString("key")));
   }
 
-//  private static final String TEXTVIEWS_PARCEL_KEY = "TextViews Parcelable ArrayList Key";
   @Icicle
   String text1;
   @Icicle
@@ -112,14 +110,6 @@ public class ParseTestFragment extends AbsContentFragment {
     text4 = textViews.get(3).getText().toString();
 
     Icepick.saveInstanceState(this, outState);
-//
-//    ArrayList<Parcelable> textViewContents = new ArrayList<>();
-//    for (int i = 0; i < textViews.size(); i++) {
-//      TextView t = textViews.get(i);
-//      Parcelable parcelable = t.onSaveInstanceState();
-//      textViewContents.add(parcelable);
-//    }
-//    outState.putParcelableArrayList(TEXTVIEWS_PARCEL_KEY, textViewContents);
   }
 
   @Override
@@ -131,17 +121,5 @@ public class ParseTestFragment extends AbsContentFragment {
     textViews.get(1).setText(text2);
     textViews.get(2).setText(text3);
     textViews.get(3).setText(text4);
-//
-//    ArrayList<Parcelable> textViewContents = savedInstanceState.getParcelableArrayList(TEXTVIEWS_PARCEL_KEY);
-//    for (int i = 0; i < textViews.size(); i++) {
-//      TextView t = textViews.get(i);
-//      Parcelable textViewContent = textViewContents.get(i);
-//      t.onRestoreInstanceState(textViewContent);
-//    }
   }
-
-//  @Subscribe
-//  public void hearMessage(String message) {
-//    snackBarController.toast("Otto message: " + message);
-//  }
 }

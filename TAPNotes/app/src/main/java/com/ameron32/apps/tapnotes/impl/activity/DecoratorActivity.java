@@ -25,6 +25,7 @@
 package com.ameron32.apps.tapnotes.impl.activity;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
@@ -48,6 +49,7 @@ import java.io.IOException;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by klemeilleur on 4/20/2015.
@@ -59,7 +61,7 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    getDelegate().requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+//    getDelegate().requestWindowFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
     setContentView(provideLayoutResource());
     setTheme(provideTheme());
 
@@ -85,12 +87,6 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
   }
 
   protected Bitmap providePaletteImage() {
-    final AssetManager assets = getResources().getAssets();
-    try {
-      return BitmapFactory.decodeStream(assets.open("2015ProgramConventionOptimized_1.png"));
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
     return null;
   }
 
@@ -101,7 +97,7 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
         break;
       case STANDARD:
       default:
-        setTheme(R.style.CustomTheme);
+        setTheme(R.style.CustomTAPTheme);
     }
   }
 
@@ -118,6 +114,11 @@ public class DecoratorActivity extends AbsTapActionBarActivity {
     applyPalette(palette);
   }
 
+  @Override
+  protected void attachBaseContext(
+      Context newBase) {
+    super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+  }
 
   private void applyPalette(Palette palette) {
     if (SET_BACKGROUND_FROM_PALETTE) {

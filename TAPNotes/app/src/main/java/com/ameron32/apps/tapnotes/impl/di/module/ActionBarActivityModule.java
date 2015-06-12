@@ -32,6 +32,7 @@ import com.ameron32.apps.tapnotes._trial._demo.fragment.GridTestFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.MaterialViewPagerTestFragment;
 import com.ameron32.apps.tapnotes.frmk.di.stabbed.ActivityWithDelegate;
 import com.ameron32.apps.tapnotes.impl.di.controller.ActionBarActivityFullScreenController;
+import com.ameron32.apps.tapnotes.impl.fragment.EnhancedToolbarFragment;
 import com.ameron32.apps.tapnotes.impl.fragment.MainToolbarFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.CollapsingToolbarFragment;
 import com.ameron32.apps.tapnotes._trial._demo.fragment.ExpandableTestFragment;
@@ -60,6 +61,7 @@ import dagger.Provides;
 //        WelcomeActivity.class,
 //        SettingsActivity.class,
         MainToolbarFragment.class,
+        EnhancedToolbarFragment.class,
         ParseTestFragment.class,
         TestFragment.class,
         TableTestFragment.class,

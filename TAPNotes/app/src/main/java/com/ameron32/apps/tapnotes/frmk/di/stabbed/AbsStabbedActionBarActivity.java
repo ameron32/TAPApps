@@ -23,6 +23,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
@@ -36,7 +37,7 @@ import com.ameron32.apps.tapnotes.frmk.di.stabbed.mport.StabbedContext;
 import java.util.List;
 
 public abstract class AbsStabbedActionBarActivity
-    extends FragmentActivity
+    extends AppCompatActivity
     implements StabbedContext, ActivityWithDelegate {
 
   private AppCompatDelegate mDelegate;

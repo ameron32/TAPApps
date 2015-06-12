@@ -16,13 +16,6 @@
 #   public *;
 #}
 
-# REQUIRED BY: Otto Event Bus by Square
--keepattributes *Annotation*
--keepclassmembers class ** {
-    @com.squareup.otto.Subscribe public *;
-    @com.squareup.otto.Produce public *;
-}
-
 # REQUIRED BY: Google Play Services
 -keep class * extends java.util.ListResourceBundle {
     protected Object[][] getContents();
@@ -43,6 +36,13 @@
 -keep class io.realm.** { *; }
 -dontwarn javax.**
 -dontwarn io.realm.**
+
+# REQUIRED BY: Otto Event Bus by Square
+-keepattributes *Annotation*
+-keepclassmembers class ** {
+    @com.squareup.otto.Subscribe public *;
+    @com.squareup.otto.Produce public *;
+}
 
 #REQUIRED BY: RetroLambda/RxParse
 -dontwarn java.lang.invoke.*

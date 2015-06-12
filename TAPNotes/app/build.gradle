@@ -15,7 +15,7 @@ buildscript {
     classpath 'io.fabric.tools:gradle:1.15.2'
     //
     // required for RxParse
-    classpath 'me.tatarka:gradle-retrolambda:3.0.0'
+    classpath 'me.tatarka:gradle-retrolambda:3.1.0'
     //
     // suggested in AndroidTestingPlease
     // https://github.com/farmapromlab/AndroidTestingPlease
@@ -299,7 +299,7 @@ dependencies {
   // LINK: https://www.fabric.io
   // ---------------------------------------------------------------------------------
   // STATUS: functional
-  compile('com.crashlytics.sdk.android:crashlytics:2.2.3@aar') { transitive = true; }
+  compile('com.crashlytics.sdk.android:crashlytics:2.3.2@aar') { transitive = true; }
   //
   //
   // Phone Number Authentication
@@ -321,8 +321,8 @@ dependencies {
   compile 'com.android.support:support-v4:22.2.0'
   compile 'com.android.support:appcompat-v7:22.2.0'
   compile 'com.android.support:support-v13:22.2.0'
-  // FAILED @ 5/28/2015
-//  compile 'com.android.support:support-design:22.2.0'
+  // NOTE: conflicts with MaterialDesignLibrary 1.3 (rippleColor duplicate)
+  compile 'com.android.support:design:22.2.0'
   compile 'com.android.support:support-annotations:22.2.0'
   compile 'com.android.support:cardview-v7:22.2.0'
   compile 'com.android.support:recyclerview-v7:22.2.0'
@@ -526,7 +526,7 @@ dependencies {
   // ---------------------------------------------------------------------------------
   // ERROR:  TODO: possibly fixed. typeface in colors.xml
   // STATUS: compiles
-  compile 'com.rengwuxian.materialedittext:library:2.0.3'
+//  compile 'com.rengwuxian.materialedittext:library:2.0.3'
   //
   //
   // [NOTE EDITOR]
@@ -536,7 +536,7 @@ dependencies {
   // LINK: https://github.com/JMPergar/AwesomeText
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.jmpergar:AwesomeText:1.0.0'
+//  compile 'com.jmpergar:AwesomeText:1.0.0'
   //
   //
   // [NOTE CONTEXTUAL MENU]
@@ -546,7 +546,7 @@ dependencies {
   // LINK: https://github.com/soarcn/BottomSheet
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.cocosw:bottomsheet:1.+@aar'
+//  compile 'com.cocosw:bottomsheet:1.+@aar'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -556,7 +556,7 @@ dependencies {
   // LINK: https://github.com/h6ah4i/android-materialshadowninepatch
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
+//  compile 'com.h6ah4i.android.materialshadowninepatch:materialshadowninepatch:0.5.0'
   //
   //
   // [GLOBAL UI DECORATION]
@@ -578,7 +578,7 @@ dependencies {
   // LINK: https://github.com/prolificinteractive/material-calendarview
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.prolificinteractive:material-calendarview:0.2.5'
+//  compile 'com.prolificinteractive:material-calendarview:0.2.5'
   //
   //
   // [IMPROVED TOASTS]
@@ -595,7 +595,7 @@ dependencies {
   //   "NEW PROGRAM" FLOATING ACTION BUTTON WITH TOOLBAR (Material Design)
   // ---------------------------------------------------------------------------------
   // NAME: Floating Action Button Toolbar
-  // LINK: https://github.com/AlexKolpa/fab-toolbar
+//   LINK: https://github.com/AlexKolpa/fab-toolbar
   // ---------------------------------------------------------------------------------
   // NOTE:   contains Floating Action Button & CircularReveal
   // ERROR:  using XML custom attribute "tb_anim_duration" causes crashes. avoid.
@@ -652,7 +652,7 @@ dependencies {
   // LINK: https://github.com/Malinskiy/android-material-icons
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.malinskiy:materialicons:1.0.1'
+//  compile 'com.malinskiy:materialicons:1.0.1'
   //
   //
   // [MATERIAL DESIGN]
@@ -662,7 +662,7 @@ dependencies {
   // LINK: https://github.com/navasmdc/MaterialDesignLibrary
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.github.navasmdc:MaterialDesign:1.3@aar'
+//  compile 'com.github.navasmdc:MaterialDesign:1.3@aar'
   //
   //
   // [IMPROVED TOASTS]
@@ -803,7 +803,7 @@ dependencies {
   // ---------------------------------------------------------------------------------
   //       WARNING: Use only as a last resort
   // STATUS: compiles
-  compile 'com.nineoldandroids:library:2.4.0'
+//  compile 'com.nineoldandroids:library:2.4.0'
   //
   //
   // Logging
@@ -833,7 +833,7 @@ dependencies {
   // LINK: https://github.com/thyrlian/AwesomeValidation
   // ---------------------------------------------------------------------------------
   // STATUS: compiles
-  compile 'com.basgeekball:awesome-validation:1.0'
+//  compile 'com.basgeekball:awesome-validation:1.0'
   //
   //
   // Fast Implementation Navigation Drawer in Material Design
@@ -842,7 +842,7 @@ dependencies {
   // LINK: https://github.com/mikepenz/MaterialDrawer
   // ---------------------------------------------------------------------------------
   // STATUS: functional
-  compile('com.mikepenz.materialdrawer:library:1.0.2@aar') { transitive = true }
+//  compile('com.mikepenz.materialdrawer:library:1.0.2@aar') { transitive = true }
   //
   //
   // Simple, Elegant About Screen for Open Source Libraries in Material Design
