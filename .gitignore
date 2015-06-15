@@ -30,6 +30,7 @@ strings_keys.xml
 com_crashlytics*.xml
 crashlytics.properties
 crashlytics-build.properties
+fabric.properties
 
 # Android Studio
 .gradle
