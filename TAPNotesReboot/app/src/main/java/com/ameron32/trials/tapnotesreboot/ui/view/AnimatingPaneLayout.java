@@ -1,4 +1,4 @@
-package com.ameron32.trials.tapnotesreboot;
+package com.ameron32.trials.tapnotesreboot.ui.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorInflater;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.ameron32.trials.tapnotesreboot.R;
+
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -21,7 +23,6 @@ public class AnimatingPaneLayout extends FrameLayout {
 
   private View mLeftPane;
   private View mMainPane;
-  private AnimationStyle slideStyle;
   private @AnimatorRes int zoomAnimatorStart;
   private @AnimatorRes int zoomAnimatorEnd;
   private @AnimatorRes int leftAnimatorStart;
@@ -30,6 +31,10 @@ public class AnimatingPaneLayout extends FrameLayout {
   private @AnimatorRes int rightAnimatorEnd;
   private @AnimatorRes int nullAnimator;
   private boolean isEnabled = false;
+  private AnimationOptions leftToTopOptions;
+  private AnimationOptions mainToBottomOptions;
+  private AnimationOptions leftToBottomOptions;
+  private AnimationOptions mainToTopOptions;
 
 
   public AnimatingPaneLayout(Context context) {
@@ -53,29 +58,6 @@ public class AnimatingPaneLayout extends FrameLayout {
   }
 
   private void initAttrs(Context context, AttributeSet attrs) {
-//    final TypedArray a = context.getTheme().obtainStyledAttributes(
-//        attrs,
-//        R.styleable.TuckawaySlidingPaneLayout,
-//        0, 0);
-//
-//    try {
-//      // Gets you the 'value' number
-//      int value = a.getInt(R.styleable.AnimatingPaneLayout_animationStyle, 0);
-//      switch (value) {
-//        case 2:
-//          slideStyle = AnimationStyle.HEAVY_SHIFT_ON_RIGHT_SIDE;
-//          break;
-//        case 1:
-//          slideStyle = AnimationStyle.HEAVY_SHIFT_ON_LEFT_SIDE;
-//          break;
-//        case 0:
-//        default:
-//          slideStyle = AnimationStyle.EQUAL_SHIFT_BOTH_SIDES;
-//      }
-//    } finally {
-//      a.recycle();
-//    }
-
     // assign the animators
     zoomAnimatorStart = R.animator.zoom_out_animator;
     zoomAnimatorEnd = R.animator.zoom_in_animator;
@@ -99,6 +81,24 @@ public class AnimatingPaneLayout extends FrameLayout {
     isEnabled = true;
   }
 
+  @Override
+  protected void onAttachedToWindow() {
+    super.onAttachedToWindow();
+    reset();
+  }
+
+  private void reset() {
+    leftToTopOptions = loadAnimationOptions(Pane.Left, Position.Bottom);
+    mainToBottomOptions = loadAnimationOptions(Pane.Main, Position.Top);
+    leftToBottomOptions = loadAnimationOptions(Pane.Left, Position.Top);
+    mainToTopOptions = loadAnimationOptions(Pane.Main, Position.Bottom);
+  }
+
+  @Override
+  protected void onDetachedFromWindow() {
+    super.onDetachedFromWindow();
+    leftToTopOptions = mainToBottomOptions = leftToBottomOptions = mainToTopOptions = null;
+  }
 
   public void toggleLayout() {
     if (isAnimating() || !isEnabled) {
@@ -111,15 +111,11 @@ public class AnimatingPaneLayout extends FrameLayout {
   private void performAnimation() {
     setAnimating(true);
     if (!isLeftPaneOnTop()) {
-      final AnimationOptions leftOptions = loadAnimationOptions(Pane.Left, Position.Bottom);
-      final AnimationOptions mainOptions = loadAnimationOptions(Pane.Main, Position.Top);
-      animateViewToPositionWithAnimator(leftOptions);
-      animateViewToPositionWithAnimator(mainOptions);
+      animateViewToPositionWithAnimator(leftToTopOptions);
+      animateViewToPositionWithAnimator(mainToBottomOptions);
     } else {
-      final AnimationOptions leftOptions = loadAnimationOptions(Pane.Left, Position.Top);
-      final AnimationOptions mainOptions = loadAnimationOptions(Pane.Main, Position.Bottom);
-      animateViewToPositionWithAnimator(leftOptions);
-      animateViewToPositionWithAnimator(mainOptions);
+      animateViewToPositionWithAnimator(leftToBottomOptions);
+      animateViewToPositionWithAnimator(mainToTopOptions);
     }
   }
 
@@ -155,7 +151,8 @@ public class AnimatingPaneLayout extends FrameLayout {
 
     options.animationComplete = new AnimationComplete();
     if (position == Position.Top && options.view != null) {
-      options.switchActions = new SwitchActions(options.view, options.secondSet, new Runnable() {
+      options.switchActions = new SwitchActions(options.view, options.secondSet,
+          new Runnable() {
 
         @Override
         public void run() {
@@ -170,6 +167,11 @@ public class AnimatingPaneLayout extends FrameLayout {
   }
 
   private void animateViewToPositionWithAnimator(final AnimationOptions options) {
+    if (options == null) {
+      setAnimating(false);
+      return;
+    }
+
     options.zoomOut.setTarget(options.view);
     options.zoomIn.setTarget(options.view);
     options.start.setTarget(options.view);
@@ -187,14 +189,6 @@ public class AnimatingPaneLayout extends FrameLayout {
   }
 
 
-
-
-
-  public enum AnimationStyle {
-    EQUAL_SHIFT_BOTH_SIDES,
-    HEAVY_SHIFT_ON_LEFT_SIDE,
-    HEAVY_SHIFT_ON_RIGHT_SIDE
-  }
 
   private enum Position { Top, Bottom }
   private enum Pane { Left, Main }
@@ -240,7 +234,7 @@ public class AnimatingPaneLayout extends FrameLayout {
 
   class SwitchActions implements Animator.AnimatorListener {
 
-    private static final float SCALE_AMOUNT = 0.8f;
+    private static final float SCALE_AMOUNT = 0.95f;
 
     private final View mView;
     private final AnimatorSet mSet;
@@ -279,6 +273,7 @@ public class AnimatingPaneLayout extends FrameLayout {
     @Override
     public void onAnimationEnd(Animator animation) {
       setAnimating(false);
+      reset();
     }
 
     @Override    public void onAnimationCancel(Animator animation) {    }

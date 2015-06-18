@@ -30,7 +30,7 @@
       android:interpolator="@anim/accel_interpolator"
       android:propertyName="scaleX"
       android:valueFrom="1.0"
-      android:valueTo="0.8"
+      android:valueTo="0.95"
       android:duration="250" />
 
   <!-- Zoom-Out. -->
@@ -38,7 +38,7 @@
       android:interpolator="@anim/accel_interpolator"
       android:propertyName="scaleY"
       android:valueFrom="1.0"
-      android:valueTo="0.8"
+      android:valueTo="0.95"
       android:duration="250" />
 
 </set>

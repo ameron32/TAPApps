@@ -29,7 +29,7 @@
   <objectAnimator
       android:interpolator="@anim/accel_interpolator"
       android:propertyName="translationX"
-      android:valueFrom="200"
+      android:valueFrom="400"
       android:valueTo="0"
       android:duration="500" />
 

@@ -29,7 +29,7 @@
   <objectAnimator
       android:interpolator="@anim/accel_interpolator"
       android:propertyName="scaleX"
-      android:valueFrom="0.8"
+      android:valueFrom="0.95"
       android:valueTo="1.0"
       android:duration="250" />
 
@@ -37,7 +37,7 @@
   <objectAnimator
       android:interpolator="@anim/accel_interpolator"
       android:propertyName="scaleY"
-      android:valueFrom="0.8"
+      android:valueFrom="0.95"
       android:valueTo="1.0"
       android:duration="250" />
 
