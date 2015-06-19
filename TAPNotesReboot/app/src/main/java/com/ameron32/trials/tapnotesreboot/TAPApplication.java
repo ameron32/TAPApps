@@ -17,6 +17,8 @@ import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
 
+import net.danlew.android.joda.JodaTimeAndroid;
+
 import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -33,6 +35,7 @@ public class TAPApplication extends Application {
     initializeTimber();
     initializeParse(this);
     initializeCalligraphy();
+    initializeJodaTimeAndroid(this);
   }
 
   private void initializeTimber() {
@@ -81,5 +84,9 @@ public class TAPApplication extends Application {
       }
     });
     Parse.setLogLevel(Parse.LOG_LEVEL_VERBOSE);
+  }
+
+  private void initializeJodaTimeAndroid(Application app) {
+    JodaTimeAndroid.init(app);
   }
 }

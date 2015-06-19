@@ -68,15 +68,15 @@ public class TAPActivity extends AppCompatActivity {
 
 
 
-  private Context getContext() {
+  protected Context getContext() {
     return getActivity();
   }
 
-  private Activity getActivity() {
+  protected Activity getActivity() {
     return TAPActivity.this;
   }
 
-  private View getView() {
+  protected View getView() {
     return getWindow().getDecorView().findViewById(android.R.id.content);
   }
 

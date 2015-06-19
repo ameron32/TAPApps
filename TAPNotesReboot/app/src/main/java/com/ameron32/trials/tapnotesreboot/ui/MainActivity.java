@@ -1,20 +1,23 @@
 package com.ameron32.trials.tapnotesreboot.ui;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AlertDialog;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.ameron32.trials.tapnotesreboot.R;
-import com.ameron32.trials.tapnotesreboot.ui.EditorFragment;
-import com.ameron32.trials.tapnotesreboot.ui.NotesFragment;
-import com.ameron32.trials.tapnotesreboot.ui.ProgramFragment;
-import com.ameron32.trials.tapnotesreboot.ui.TAPActivity;
 import com.ameron32.trials.tapnotesreboot.ui.view.AnimatingPaneLayout;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+
+import org.joda.time.DateTime;
 
 import butterknife.InjectView;
 
@@ -100,9 +103,39 @@ public class MainActivity extends TAPActivity
       case R.id.action_settings:
 
         return true;
-    }
+      }
 
     return super.onOptionsItemSelected(item);
+  }
+
+  /**
+   * CURRENTLY NOT USED
+   */
+  private void showCalendarViewDialog() {
+    new AlertDialog.Builder(getContext())
+        .setView(getCalendarView())
+        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+            switch(which) {
+              case DialogInterface.BUTTON_POSITIVE:
+              case DialogInterface.BUTTON_NEGATIVE:
+              case DialogInterface.BUTTON_NEUTRAL:
+              default:
+                // do nothing
+            }
+            dialog.dismiss();
+          }
+        })
+        .create()
+        .show();
+  }
+
+  private View getCalendarView() {
+    View view = LayoutInflater.from(getContext()).inflate(R.layout.dialog_calendar, null);
+    MaterialCalendarView calendarView = (MaterialCalendarView) view.findViewById(R.id.calendarView);
+    calendarView.setSelectedDate(DateTime.now().toDate());
+    return view;
   }
 
   private void openNavigationDrawer() {
